@@ -153,7 +153,7 @@ main{padding:20px 24px 50px;max-width:1100px;margin:0 auto}
 .meth-toggle:hover{border-color:#334155}
 .meth-toggle-icon{font-size:14px;color:var(--text3);transition:transform .2s;width:20px;text-align:center}
 .meth-toggle.open .meth-toggle-icon{transform:rotate(90deg)}
-.meth-toggle h3{font-size:15px;color:var(--gold);margin:0}
+.meth-toggle h3{font-size:15px;color:var(--text3);margin:0}
 .meth-toggle-sub{font-size:11px;color:var(--text3);margin-left:auto}
 .meth-body{display:none}
 .meth-body.open{display:block}
@@ -199,14 +199,9 @@ footer{
   <div class="jri-box">
     <div class="jri-value" id="jri-value">—</div>
     <div class="jri-label">JRI<br>индекс</div>
-    <div class="jri-delta" id="jri-delta"></div>
   </div>
   <div class="level-badge" id="level-badge">J?</div>
 </header>
-
-<div class="hero">
-  <p>Jarvis — персональный ИИ, который постоянно понимает контекст человека, помнит его историю и предпочтения, самостоятельно планирует и выполняет цифровые или физические действия, оставаясь управляемым, безопасным и экономически доступным.</p>
-</div>
 
 <main>
   <div class="dash-row" id="dash-row"></div>
@@ -2608,9 +2603,6 @@ footer{
 
     // Header
     document.getElementById('jri-value').textContent=jri.value;
-    var del=document.getElementById('jri-delta');
-    del.textContent=(jri.delta>0?'+':'')+jri.delta;
-    del.className='jri-delta '+(jri.delta>0?'up':'down');
     document.getElementById('level-badge').textContent=level;
     document.getElementById('footer-updated').textContent='Обновлено: '+(data.meta.lastUpdated||'—');
 
@@ -2630,9 +2622,35 @@ footer{
       :'Все барьеры пройдены ✅';
     var dash=document.getElementById('dash-row');
     dash.innerHTML=''+
+      '<div class="dash-card" style="grid-column:1/-1;text-align:center;padding:18px 24px">'+
+        '<p style="font-size:14px;color:var(--text2);max-width:700px;margin:0 auto;line-height:1.6">Jarvis — персональный ИИ, который постоянно понимает контекст человека, помнит его историю и предпочтения, самостоятельно планирует и выполняет цифровые или физические действия, оставаясь управляемым, безопасным и экономически доступным.</p>'+
+      '</div>'+
       '<div class="dash-card"><div class="dash-card-label">Текущий уровень · '+route.name+'</div><div class="dash-card-value">'+level+' / J6</div><div class="dash-card-sub">'+data.levels.find(function(l){return l.code===level}).description+'</div></div>'+
       '<div class="dash-card"><div class="dash-card-label">Следующий уровень: '+nextLevel+'</div><div class="dash-card-value">'+nextGates.length+' барьеров</div><div class="dash-card-sub" style="font-size:10px;line-height:1.5">'+barrierHtml+'</div></div>'+
       '<div class="dash-card"><div class="dash-card-label">Прогноз P50</div><div class="dash-card-value">~'+p50+'</div><div class="dash-card-sub" style="font-size:10px">2026 + 6 × (1 − JRI/100)<br>JRI='+jri.value+' → '+(6*(1-jri.value/100)).toFixed(1)+' лет</div></div>';
+
+    // Level badge click → dropdown
+    document.getElementById('level-badge').style.cursor='pointer';
+    document.getElementById('level-badge').onclick=function(e){
+      e.stopPropagation();
+      var exist=document.getElementById('level-drop');
+      if(exist){exist.remove();return;}
+      var drop=document.createElement('div');
+      drop.id='level-drop';
+      drop.style.cssText='position:absolute;top:100%;right:24px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;z-index:15;min-width:340px;max-height:60vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.5)';
+      drop.innerHTML='<div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Уровни Jarvis J0–J6</div>'+
+        data.levels.map(function(l){
+          var isCurrent=l.code===level;
+          return '<div style="padding:8px 10px;border-radius:6px;margin-bottom:4px;'+(isCurrent?'background:rgba(251,191,36,0.1);border:1px solid var(--gold)':'')+'">'+
+            '<b style="font-size:13px;'+(isCurrent?'color:var(--gold)':'')+'">'+l.code+'</b>'+
+            (isCurrent?' <span style="font-size:10px;color:var(--gold);margin-left:4px">← текущий</span>':'')+
+            '<div style="font-size:10px;color:var(--text3);margin-top:2px">'+l.name+'</div>'+
+            '<div style="font-size:10px;color:var(--text2);margin-top:2px;line-height:1.3">'+l.description+'</div>'+
+          '</div>';
+        }).join('');
+      document.getElementById('level-badge').appendChild(drop);
+      setTimeout(function(){document.addEventListener('click',function f(e){if(!drop.contains(e.target)){drop.remove();document.removeEventListener('click',f);}});},100);
+    };
 
     // Tracks
     var tg=document.getElementById('tracks-grid');tg.innerHTML='';
@@ -2693,7 +2711,7 @@ footer{
       '<div class="meth-toggle" id="meth-toggle">'+
         '<span class="meth-toggle-icon">&#9654;</span>'+
         '<h3>Методология</h3>'+
-        '<span class="meth-toggle-sub">JRI · Уровни J0–J6 · Треки A–H · Шкала 0–5</span>'+
+        '<span class="meth-toggle-sub">JRI · Уровни J0–J6 · Шкала 0–5</span>'+
       '</div>'+
       '<div class="meth-body" id="meth-body">'+
         '<div class="meth-block">'+
