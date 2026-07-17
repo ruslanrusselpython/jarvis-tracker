@@ -140,8 +140,21 @@ main{padding:20px 24px 50px;max-width:1100px;margin:0 auto}
 .news-empty{font-size:12px;color:var(--text3);text-align:center;padding:20px 0}
 /* Methodology */
 #methodology{margin-top:32px}
-.meth-block{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px}
-.meth-block h3{font-size:15px;margin-bottom:12px;color:var(--gold)}
+.meth-toggle{
+  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:16px 20px;cursor:pointer;display:flex;align-items:center;gap:12px;
+  transition:border-color .2s;margin-bottom:0;
+}
+.meth-toggle:hover{border-color:#334155}
+.meth-toggle-icon{font-size:14px;color:var(--text3);transition:transform .2s;width:20px;text-align:center}
+.meth-toggle.open .meth-toggle-icon{transform:rotate(90deg)}
+.meth-toggle h3{font-size:15px;color:var(--gold);margin:0}
+.meth-toggle-sub{font-size:11px;color:var(--text3);margin-left:auto}
+.meth-body{display:none}
+.meth-body.open{display:block}
+.meth-block{background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 10px 10px;padding:0 20px 20px}
+.meth-block h3{font-size:14px;margin:16px 0 10px;color:var(--text)}
+.meth-block h3:first-child{margin-top:0}
 .meth-levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
 .meth-level{background:var(--surface2);border-radius:8px;padding:12px 14px;border-left:3px solid var(--gold)}
 .meth-level-code{font-size:14px;font-weight:700;margin-bottom:2px}
@@ -2639,40 +2652,53 @@ footer{
 
     // ── Methodology section ──
     var meth=document.getElementById('methodology');
+    var methOpen=false;
     meth.innerHTML=
-      '<div class="meth-block">'+
-        '<h3>Методология Jarvis Index</h3>'+
-        '<div class="meth-formula">'+
-          '<b>JRI (Jarvis Readiness Index)</b> = 100 × ∏(TrackScore<sub>k</sub> / 100)<sup>w<sub>k</sub></sup><br><br>'+
-          '<b>TrackScore</b> = 100 × среднее(maturity<sub>i</sub> / 5) по всем подэтапам трека<br><br>'+
-          'JRI использует взвешенное геометрическое среднее, чтобы сильный прогресс одного трека не компенсировал критическое отставание другого.'+
-        '</div>'+
+      '<div class="meth-toggle" id="meth-toggle">'+
+        '<span class="meth-toggle-icon">&#9654;</span>'+
+        '<h3>Методология</h3>'+
+        '<span class="meth-toggle-sub">JRI · Уровни J0–J6 · Треки A–H · Шкала 0–5</span>'+
       '</div>'+
-      '<div class="meth-block">'+
-        '<h3>Уровни зрелости Jarvis (J0–J6)</h3>'+
-        '<div class="meth-levels">'+
-          data.levels.map(function(l){return '<div class="meth-level"><div class="meth-level-code">'+l.code+'</div><div class="meth-level-name">'+l.name+'</div><div class="meth-level-desc">'+l.description+'</div></div>';}).join('')+
+      '<div class="meth-body" id="meth-body">'+
+        '<div class="meth-block">'+
+          '<h3>Формула JRI</h3>'+
+          '<div class="meth-formula">'+
+            '<b>JRI (Jarvis Readiness Index)</b> = 100 × ∏(TrackScore<sub>k</sub> / 100)<sup>w<sub>k</sub></sup><br><br>'+
+            '<b>TrackScore</b> = 100 × среднее(maturity<sub>i</sub> / 5) по всем подэтапам трека<br><br>'+
+            'JRI использует взвешенное геометрическое среднее, чтобы сильный прогресс одного трека не компенсировал критическое отставание другого.'+
+          '</div>'+
         '</div>'+
-      '</div>'+
-      '<div class="meth-block">'+
-        '<h3>Треки (A–H)</h3>'+
-        '<div class="meth-tracks">'+
-          data.tracks.map(function(t){return '<div class="meth-track"><div class="meth-track-id" style="color:'+(TRACK_COLORS[t.id]||'#888')+'">'+t.id+' · '+t.name+'</div><div class="meth-track-q">'+t.question+'</div></div>';}).join('')+
+        '<div class="meth-block">'+
+          '<h3>Уровни зрелости Jarvis (J0–J6)</h3>'+
+          '<div class="meth-levels">'+
+            data.levels.map(function(l){return '<div class="meth-level"><div class="meth-level-code">'+l.code+'</div><div class="meth-level-name">'+l.name+'</div><div class="meth-level-desc">'+l.description+'</div></div>';}).join('')+
+          '</div>'+
         '</div>'+
-      '</div>'+
-      '<div class="meth-block">'+
-        '<h3>Шкала зрелости 0–5</h3>'+
-        '<div class="meth-levels">'+
-          ['0 — Absent: Работающего подхода нет, нет проверяемого доказательства',
-           '1 — Research: Есть теория, ранний эксперимент или разовая демонстрация',
-           '2 — Demonstration: Повторяемая лабораторная демонстрация в контролируемой среде',
-           '3 — Pilot: Работает в ограниченных реальных сценариях с участием человека',
-           '4 — Production: Надёжно работает в массовом продукте для типовых задач',
-           '5 — Infrastructure: Стало дешёвым, стандартным, масштабируемым и повсеместным'].map(function(s,i){
-            return '<div class="meth-level" style="border-left-color:'+['#6B7280','#A78BFA','#60A5FA','#FBBF24','#6EE7B7','#34D399'][i]+'"><div class="meth-level-code">'+s+'</div></div>';
-          }).join('')+
+        '<div class="meth-block">'+
+          '<h3>Треки (A–H)</h3>'+
+          '<div class="meth-tracks">'+
+            data.tracks.map(function(t){return '<div class="meth-track"><div class="meth-track-id" style="color:'+(TRACK_COLORS[t.id]||'#888')+'">'+t.id+' · '+t.name+'</div><div class="meth-track-q">'+t.question+'</div></div>';}).join('')+
+          '</div>'+
+        '</div>'+
+        '<div class="meth-block">'+
+          '<h3>Шкала зрелости 0–5</h3>'+
+          '<div class="meth-levels">'+
+            ['0 — Absent: Работающего подхода нет, нет проверяемого доказательства',
+             '1 — Research: Есть теория, ранний эксперимент или разовая демонстрация',
+             '2 — Demonstration: Повторяемая лабораторная демонстрация в контролируемой среде',
+             '3 — Pilot: Работает в ограниченных реальных сценариях с участием человека',
+             '4 — Production: Надёжно работает в массовом продукте для типовых задач',
+             '5 — Infrastructure: Стало дешёвым, стандартным, масштабируемым и повсеместным'].map(function(s,i){
+              return '<div class="meth-level" style="border-left-color:'+['#6B7280','#A78BFA','#60A5FA','#FBBF24','#6EE7B7','#34D399'][i]+'"><div class="meth-level-code">'+s+'</div></div>';
+            }).join('')+
+          '</div>'+
         '</div>'+
       '</div>';
+    document.getElementById('meth-toggle').addEventListener('click',function(){
+      methOpen=!methOpen;
+      this.classList.toggle('open',methOpen);
+      document.getElementById('meth-body').classList.toggle('open',methOpen);
+    });
   }
 
   function openNode(nodeId){
