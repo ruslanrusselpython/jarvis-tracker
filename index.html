@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -15,324 +15,246 @@
   --text: #E2E8F0;
   --text2: #94A3B8;
   --text3: #64748B;
-
-  --track-models: #4A9EFF;
-  --track-interface: #4ADE80;
-  --track-infra: #A78BFA;
-  --track-society: #FB923C;
-  --track-goal: #FBBF24;
-
-  --glow-models: rgba(74,158,255,0.3);
-  --glow-interface: rgba(74,222,128,0.3);
-  --glow-infra: rgba(167,139,250,0.3);
-  --glow-society: rgba(251,146,60,0.3);
-  --glow-goal: rgba(251,191,36,0.4);
+  --models: #4A9EFF;
+  --interface: #4ADE80;
+  --infra: #A78BFA;
+  --society: #FB923C;
+  --goal: #FBBF24;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  overflow: hidden;
-  height: 100dvh;
-  user-select: none;
+  min-height: 100dvh;
+  line-height: 1.5;
 }
-
-#app { display:flex; flex-direction:column; height:100dvh; }
 
 /* ── Header ── */
 header {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
+  padding: 16px 24px;
   display: flex;
   align-items: center;
-  gap: 24px;
-  z-index: 10;
+  gap: 20px;
+  position: sticky; top:0; z-index:10;
+  flex-wrap: wrap;
 }
+.logo { font-size:20px; font-weight:700; letter-spacing:-0.5px; white-space:nowrap; }
+.logo span { color:var(--goal); }
 
-.logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; white-space: nowrap; }
-.logo span { color: var(--track-goal); }
-
-.progress-wrap { flex:1; max-width: 400px; }
+.progress-wrap { flex:1; max-width:340px; min-width:140px; }
 .progress-label { display:flex; justify-content:space-between; font-size:12px; color:var(--text2); margin-bottom:4px; }
 .progress-bar { height:6px; background:var(--surface2); border-radius:3px; overflow:hidden; }
-.progress-fill { height:100%; background:linear-gradient(90deg, var(--track-models), var(--track-interface), var(--track-goal)); border-radius:3px; transition:width .6s ease; }
+.progress-fill { height:100%; background:linear-gradient(90deg, var(--models), var(--interface), var(--goal)); border-radius:3px; transition:width .6s; }
 
 .eta { font-size:13px; color:var(--text2); white-space:nowrap; }
-.eta strong { color:var(--track-goal); }
+.eta strong { color:var(--goal); }
 
-.header-actions { display:flex; gap:8px; margin-left:auto; }
-.header-actions button {
+.filters { display:flex; gap:6px; margin-left:auto; flex-wrap:wrap; }
+.filters button {
   background: var(--surface2);
   border: 1px solid var(--border);
-  color: var(--text);
+  color: var(--text2);
   padding: 6px 14px;
   border-radius: 6px;
   font-size: 12px;
   cursor: pointer;
   transition: all .2s;
+  white-space: nowrap;
 }
-.header-actions button:hover { background: #243049; border-color: #334155; }
-.header-actions button.active { background: #1E3A5F; border-color: var(--track-models); color: var(--track-models); }
+.filters button:hover { background:#243049; color:var(--text); }
+.filters button.active { border-color:var(--models); color:var(--models); background:#1E3A5F; }
 
-/* ── Main graph ── */
-main { flex:1; position:relative; overflow:hidden; }
+/* ── Main ── */
+main { padding: 20px 24px 40px; max-width:1200px; margin:0 auto; }
 
-#graph { width:100%; height:100%; }
+/* Layer section */
+.layer-section { margin-bottom: 32px; }
 
-.node-group { cursor:pointer; }
-.node-group .node-bg { transition: r .2s, filter .2s; }
-.node-group:hover .node-bg { filter: brightness(1.3); }
-.node-group.highlighted .node-bg { filter: brightness(1.4) drop-shadow(0 0 6px var(--node-color)); }
-
-.node-label { font-size:11px; fill:var(--text); pointer-events:none; font-weight:500; text-anchor:middle; }
-.node-pct { font-size:9px; fill:var(--text2); pointer-events:none; text-anchor:middle; }
-
-.edge-line { stroke:#2A3A5C; stroke-width:1.5; transition: stroke .2s; }
-.edge-line.highlighted { stroke:#5A7ABF; stroke-width:2.5; }
-.edge-line.dimmed { stroke:#1A2A4A; stroke-width:1; opacity:0.5; }
-
-/* ── Legend ── */
-#legend {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 5;
-}
-.legend-item {
+.layer-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--text2);
-  padding: 5px 10px;
-  background: rgba(19,26,43,0.85);
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: all .2s;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
-.legend-item:hover { background: rgba(26,34,54,0.9); }
-.legend-item .dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
-.legend-item.filtered { opacity:0.4; }
+.layer-num {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 18px;
+  flex-shrink: 0;
+}
+.layer-num.models { background:var(--models); color:#000; }
+.layer-num.interface { background:var(--interface); color:#000; }
+.layer-num.infra { background:var(--infra); color:#000; }
+.layer-num.society { background:var(--society); color:#000; }
+.layer-num.goal { background:var(--goal); color:#000; }
+
+.layer-title { font-size:20px; font-weight:700; }
+.layer-meta { font-size:12px; color:var(--text3); display:flex; gap:16px; align-items:center; }
+
+/* Layer news highlight */
+.layer-news {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--models);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color .2s;
+}
+.layer-news:hover { border-color: #334155; }
+.layer-news-label { font-size:10px; color:var(--text3); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+.layer-news-title { color:var(--text); line-height:1.4; }
+.layer-news-source { font-size:10px; color:var(--text3); margin-top:4px; }
+
+/* Sub-node cards */
+.subnodes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.node-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color .2s, transform .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.node-card:hover { border-color: #334155; transform: translateY(-1px); }
+.node-card:active { transform: translateY(0); }
+
+.node-card-top { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.node-card-dot {
+  width:12px; height:12px; border-radius:50%; flex-shrink:0;
+}
+.node-card-name { font-size:14px; font-weight:600; }
+
+.node-card-bar-wrap { display:flex; align-items:center; gap:8px; }
+.node-card-bar {
+  flex:1; height:4px; background:var(--surface2); border-radius:2px; overflow:hidden;
+}
+.node-card-bar-fill { height:100%; border-radius:2px; transition:width .4s; }
+.node-card-pct { font-size:11px; color:var(--text3); white-space:nowrap; min-width:32px; text-align:right; }
+
+.node-card-date { font-size:11px; color:var(--text3); margin-top:8px; }
+.node-card-news-count { font-size:10px; color:var(--text3); margin-top:2px; }
 
 /* ── Side Panel ── */
 #panel-overlay {
-  position: fixed; inset:0; background:rgba(0,0,0,0.5); z-index:20;
+  position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:20;
   opacity:0; pointer-events:none; transition:opacity .3s;
 }
 #panel-overlay.open { opacity:1; pointer-events:auto; }
 
 #panel {
-  position: fixed; top:0; right:0; width:420px; max-width:100vw; height:100vh;
-  background: var(--surface); border-left: 1px solid var(--border);
+  position:fixed; top:0; right:0; width:440px; max-width:100vw; height:100dvh;
+  background:var(--surface); border-left:1px solid var(--border);
   z-index:21;
   transform: translateX(100%);
-  transition: transform .35s cubic-bezier(0.22, 0.61, 0.36, 1);
-  display: flex; flex-direction: column;
-  overflow-y: auto;
+  transition: transform .35s cubic-bezier(0.22,0.61,0.36,1);
+  display:flex; flex-direction:column;
+  overflow-y:auto;
 }
-#panel.open { transform: translateX(0); }
+#panel.open { transform:translateX(0); }
 
 .panel-header {
-  padding: 20px 24px 12px;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: flex-start; justify-content: space-between;
-  position: sticky; top:0; background: var(--surface); z-index:1;
+  padding:20px 24px 12px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:flex-start; justify-content:space-between;
+  position:sticky; top:0; background:var(--surface); z-index:1;
 }
 .panel-header h2 { font-size:18px; line-height:1.3; }
-.panel-header .track-badge {
-  font-size:10px; padding:3px 10px; border-radius:10px;
-  text-transform: uppercase; letter-spacing:0.5px; font-weight:600;
-  white-space:nowrap; margin-top:4px;
-}
 .panel-close {
-  background: none; border: none; color: var(--text2); font-size: 22px;
-  cursor: pointer; line-height:1; padding:2px 6px; border-radius:4px;
+  background:none; border:none; color:var(--text2); font-size:22px;
+  cursor:pointer; line-height:1; padding:2px 6px; border-radius:4px;
 }
-.panel-close:hover { background: var(--surface2); color: var(--text); }
+.panel-close:hover { background:var(--surface2); color:var(--text); }
 
-.panel-progress { padding: 12px 24px; border-bottom: 1px solid var(--border); }
+.panel-progress { padding:12px 24px; border-bottom:1px solid var(--border); }
 .panel-progress .mini-bar { height:4px; background:var(--surface2); border-radius:2px; margin-top:4px; overflow:hidden; }
 .panel-progress .mini-fill { height:100%; border-radius:2px; transition:width .4s; }
 
-.panel-desc { padding: 14px 24px; font-size:13px; color:var(--text2); line-height:1.6; border-bottom: 1px solid var(--border); }
+.panel-desc { padding:14px 24px; font-size:13px; color:var(--text2); line-height:1.6; border-bottom:1px solid var(--border); }
 
-.panel-news { padding: 14px 24px 30px; flex:1; }
+.panel-news { padding:14px 24px 30px; flex:1; }
 .panel-news h3 { font-size:13px; color:var(--text2); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; }
 
 .news-item {
-  padding: 12px 14px;
-  background: var(--surface2);
-  border-radius: 8px;
-  margin-bottom: 8px;
-  border: 1px solid transparent;
-  transition: border-color .2s;
-  cursor: pointer;
+  padding:12px 14px;
+  background:var(--surface2);
+  border-radius:8px;
+  margin-bottom:8px;
+  border:1px solid transparent;
+  transition:border-color .2s;
+  cursor:pointer;
 }
-.news-item:hover { border-color: var(--border); }
+.news-item:hover { border-color:var(--border); }
 .news-item .news-date { font-size:10px; color:var(--text3); margin-bottom:4px; }
-.news-item .news-title { font-size:13px; line-height:1.4; color:var(--text); }
-.news-item .news-source { font-size:10px; color:var(--text3); margin-top:4px; }
+.news-item .news-title { font-size:13px; line-height:1.4; color:var(--text); word-break:break-word; }
+.news-item .news-source { font-size:10px; color:var(--text3); margin-top:4px; word-break:break-all; }
 .news-empty { font-size:13px; color:var(--text3); text-align:center; padding:30px 0; }
-
-/* ── Tooltip ── */
-#tooltip {
-  position: fixed;
-  padding: 10px 14px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 12px;
-  color: var(--text);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .15s;
-  z-index: 15;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  max-width: 260px;
-}
-#tooltip .tt-name { font-weight:600; font-size:13px; margin-bottom:2px; }
-#tooltip .tt-track { font-size:10px; color:var(--text3); }
-#tooltip .tt-pct { font-size:11px; color:var(--track-goal); margin-top:4px; }
 
 /* ── Footer ── */
 footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  padding: 8px 24px;
-  font-size: 11px;
-  color: var(--text3);
-  display: flex;
-  justify-content: space-between;
-  z-index: 10;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  padding:12px 24px;
+  font-size:11px;
+  color:var(--text3);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:6px;
 }
 
-/* ── Scrollbar ── */
 ::-webkit-scrollbar { width:4px; }
 ::-webkit-scrollbar-track { background:transparent; }
 ::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
 
+/* ── Mobile ── */
 @media (max-width:768px) {
-  body { overflow: auto; }
-  #app { height: auto; min-height: 100dvh; }
-
-  header {
-    padding: 10px 12px;
-    gap: 8px;
-    flex-wrap: wrap;
-    position: sticky; top: 0; z-index: 10;
-  }
-  .logo { font-size: 14px; }
-  .progress-wrap { flex: 1 1 120px; max-width: 140px; }
-  .eta { font-size: 11px; }
-  .header-actions { gap: 4px; }
-  .header-actions button { padding: 5px 10px; font-size: 11px; }
-
-  main { flex: none; overflow: visible; padding: 8px; }
-
-  #graph { display: none; }
-  #mobile-list { display: block; }
-
-  #legend { position: static; flex-direction: row; flex-wrap: wrap; gap: 4px; padding: 8px; }
-  .legend-item { font-size: 10px; padding: 4px 8px; }
-
-  #panel { width: 100vw; }
-  #panel-overlay { z-index: 25; }
-  #panel { z-index: 26; }
-
-  footer { font-size: 10px; padding: 8px 12px; flex-wrap: wrap; gap: 4px; }
+  header { padding:10px 14px; gap:10px; }
+  .logo { font-size:16px; }
+  .progress-wrap { max-width:160px; }
+  .filters { gap:4px; }
+  .filters button { padding:5px 10px; font-size:11px; }
+  main { padding:12px 10px 30px; }
+  .layer-title { font-size:17px; }
+  .subnodes { grid-template-columns: 1fr; }
+  #panel { width:100vw; }
+  footer { font-size:10px; padding:10px 14px; }
 }
-
-/* ── Mobile vertical list ── */
-#mobile-list {
-  display: none;
-  flex-direction: column;
-  gap: 12px;
-}
-.mobile-layer {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 12px;
-}
-.mobile-layer-title {
-  font-size: 10px;
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-.mobile-card {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 8px;
-  background: var(--surface2);
-  cursor: pointer;
-  margin-bottom: 6px;
-  border: 1px solid transparent;
-  transition: border-color .15s;
-  -webkit-tap-highlight-color: transparent;
-}
-.mobile-card:last-child { margin-bottom: 0; }
-.mobile-card:active { border-color: var(--border); }
-.mobile-card-dot {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.mobile-card-info { flex: 1; min-width: 0; }
-.mobile-card-name { font-size: 13px; font-weight: 600; line-height: 1.3; }
-.mobile-card-pct { font-size: 11px; color: var(--text3); margin-top: 2px; }
-.mobile-card-bar {
-  height: 3px;
-  background: var(--surface);
-  border-radius: 2px;
-  margin-top: 4px;
-  overflow: hidden;
-}
-.mobile-card-bar-fill {
-  height: 100%;
-  border-radius: 2px;
-  transition: width .4s;
-}
-.mobile-card-arrow { color: var(--text3); font-size: 16px; flex-shrink: 0; }
 </style>
 </head>
 <body>
-<div id="app">
-  <header>
-    <div class="logo">ROADMAP TO <span>JARVIS</span></div>
-    <div class="progress-wrap">
-      <div class="progress-label"><span>Общий прогресс</span><span id="overall-pct">42%</span></div>
-      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:42%"></div></div>
-    </div>
-    <div class="eta">До Jarvis: <strong id="eta-text">~2030</strong></div>
-    <div class="header-actions">
-      <button id="btn-reset" title="Сбросить вид">Сброс</button>
-      <button id="btn-all" class="active" title="Все треки">Все</button>
-    </div>
-  </header>
 
-  <main>
-    <svg id="graph"></svg>
-    <div id="mobile-list"></div>
-    <div id="legend"></div>
-  </main>
+<header>
+  <div class="logo">ROADMAP TO <span>JARVIS</span></div>
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Общий прогресс</span><span id="overall-pct">—</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+  <div class="eta">До Jarvis: <strong id="eta-text">~2030</strong></div>
+  <div class="filters" id="filters">
+    <button class="active" data-track="">Все</button>
+  </div>
+</header>
 
-  <footer>
-    <span id="footer-updated"></span>
-    <span>Данные: открытые источники · Новости обновляются еженедельно</span>
-  </footer>
-</div>
+<main id="main-content"></main>
 
-<div id="tooltip"></div>
+<footer>
+  <span id="footer-updated"></span>
+  <span>Данные: открытые источники · Обновляется еженедельно</span>
+</footer>
 
 <div id="panel-overlay" onclick="closePanel()"></div>
 <div id="panel">
@@ -350,660 +272,6 @@ footer {
     <div id="panel-news-list"></div>
   </div>
 </div>
-
-<script>
-// ═══════════════════════════════════════════
-//  ROADMAP TO JARVIS — Pure Vanilla JS + SVG
-//  No D3.js, no external dependencies
-// ═══════════════════════════════════════════
-
-(function() {
-  'use strict';
-
-  const SVG_NS = 'http://www.w3.org/2000/svg';
-  const TRACK_HEX = {
-    models: '#4A9EFF',
-    interface: '#4ADE80',
-    infrastructure: '#A78BFA',
-    society: '#FB923C',
-    goal: '#FBBF24'
-  };
-  const TRACK_NAMES = {
-    models: 'Модели и AGI',
-    interface: 'Интерфейс',
-    infrastructure: 'Инфраструктура',
-    society: 'Общество',
-    goal: 'Цель'
-  };
-  const LAYER_LABELS = ['ФУНДАМЕНТ', 'БАЗОВЫЕ ТЕХНОЛОГИИ', 'ПРОДВИНУТЫЕ', 'ЭКОСИСТЕМА', 'ПРИНЯТИЕ', 'JARVIS'];
-
-  let currentData = null;
-  let activeTrack = null;
-  let nodeMap = {};
-  let edgeElements = [];
-  let nodeGroupElements = [];
-
-  // ── SVG helpers ──
-  function svgEl(tag, attrs) {
-    const el = document.createElementNS(SVG_NS, tag);
-    if (attrs) { for (const k in attrs) el.setAttribute(k, attrs[k]); }
-    return el;
-  }
-
-  // ── Data loading ──
-  async function init() {
-    try {
-      const resp = await fetch('data.json');
-      if (!resp.ok) throw new Error('fetch failed');
-      currentData = await resp.json();
-    } catch (_) {
-      const el = document.getElementById('embedded-data');
-      if (el) {
-        try { currentData = JSON.parse(el.textContent); } catch (e) {
-          showError('Ошибка парсинга встроенных данных');
-          return;
-        }
-      } else {
-        showError('Не удалось загрузить данные.<br>Запустите через HTTP-сервер:<br><code>python -m http.server 8080</code><br>и откройте <code>http://localhost:8080</code>');
-        return;
-      }
-    }
-
-    if (!currentData || !currentData.nodes) {
-      showError('Данные повреждены');
-      return;
-    }
-
-    const regularNodes = currentData.nodes.filter(function(n) { return n.id !== 'jarvis'; });
-    const overallProgress = Math.round(
-      regularNodes.reduce(function(sum, n) { return sum + n.progress; }, 0) / regularNodes.length
-    );
-
-    document.getElementById('overall-pct').textContent = overallProgress + '%';
-    document.getElementById('progress-fill').style.width = overallProgress + '%';
-
-    const targetYear = currentData.meta.targetYear;
-    const progressRatio = overallProgress / 100;
-    const yearsRemaining = Math.max(1, Math.round((targetYear - 2026) * (1 - progressRatio)));
-    document.getElementById('eta-text').textContent = '~' + (2026 + yearsRemaining);
-    document.getElementById('footer-updated').textContent = 'Обновлено: ' + currentData.meta.lastUpdated;
-
-    buildLegend();
-    buildTrackButtons();
-    buildGraph();
-    buildMobileList();
-
-    window.addEventListener('resize', handleResize);
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePanel(); });
-  }
-
-  function showError(msg) {
-    document.body.innerHTML = '<div style="color:white;padding:40px;text-align:center;font-family:sans-serif"><h2>Ошибка</h2><p style="margin-top:12px;line-height:1.6">' + msg + '</p></div>';
-  }
-
-  // ── Legend ──
-  function buildLegend() {
-    const legend = document.getElementById('legend');
-    legend.innerHTML = '';
-
-    Object.keys(TRACK_NAMES).forEach(function(track) {
-      const item = document.createElement('div');
-      item.className = 'legend-item';
-      item.dataset.track = track;
-      item.innerHTML = '<span class="dot" style="background:' + TRACK_HEX[track] + '"></span>' + TRACK_NAMES[track];
-      item.addEventListener('click', function() {
-        activeTrack = (activeTrack === track) ? null : track;
-        updateFilter();
-        syncFilterUI();
-      });
-      legend.appendChild(item);
-    });
-  }
-
-  // ── Track filter buttons ──
-  function buildTrackButtons() {
-    const container = document.querySelector('.header-actions');
-
-    Object.keys(TRACK_NAMES).forEach(function(track) {
-      const btn = document.createElement('button');
-      btn.textContent = TRACK_NAMES[track];
-      btn.dataset.track = track;
-      btn.addEventListener('click', function() {
-        if (activeTrack === track) {
-          activeTrack = null;
-          document.getElementById('btn-all').classList.add('active');
-        } else {
-          activeTrack = track;
-          document.getElementById('btn-all').classList.remove('active');
-        }
-        updateFilter();
-        syncFilterUI();
-      });
-      container.appendChild(btn);
-    });
-
-    document.getElementById('btn-all').addEventListener('click', function() {
-      activeTrack = null;
-      document.getElementById('btn-all').classList.add('active');
-      updateFilter();
-      syncFilterUI();
-    });
-  }
-
-  function syncFilterUI() {
-    var allBtns = document.querySelectorAll('.header-actions button[data-track]');
-    for (var i = 0; i < allBtns.length; i++) {
-      allBtns[i].classList.toggle('active', allBtns[i].dataset.track === activeTrack);
-    }
-    document.getElementById('btn-all').classList.toggle('active', !activeTrack);
-
-    var legendItems = document.querySelectorAll('.legend-item');
-    for (var j = 0; j < legendItems.length; j++) {
-      legendItems[j].classList.toggle('filtered', activeTrack && legendItems[j].dataset.track !== activeTrack);
-    }
-  }
-
-  function updateFilter() {
-    syncFilterUI();
-    updateMobileFilter();
-
-    if (!nodeGroupElements.length) return;
-
-    for (var i = 0; i < nodeGroupElements.length; i++) {
-      var grp = nodeGroupElements[i];
-      var d = grp.__data;
-      var isGoal = d.track === 'goal';
-      var visible = !activeTrack || d.track === activeTrack || isGoal;
-      grp.style.opacity = visible ? '1' : '0.15';
-      grp.style.pointerEvents = visible ? 'auto' : 'none';
-    }
-
-    for (var j = 0; j < edgeElements.length; j++) {
-      var el = edgeElements[j];
-      var ed = el.__data;
-      var fromN = nodeMap[ed.from];
-      var toN = nodeMap[ed.to];
-      var fromVis = !activeTrack || (fromN && (fromN.track === activeTrack || fromN.track === 'goal'));
-      var toVis = !activeTrack || (toN && (toN.track === activeTrack || toN.track === 'goal'));
-      el.style.opacity = (fromVis && toVis) ? '1' : '0.1';
-    }
-
-    // Also filter labels (they're in the labels group)
-    var svg = document.getElementById('graph');
-    var labels = svg.querySelectorAll('.node-label, .node-pct');
-    for (var k = 0; k < labels.length; k++) {
-      var lbl = labels[k];
-      var d = lbl.__data;
-      if (!d) continue;
-      var vis = !activeTrack || d.track === activeTrack || d.track === 'goal';
-      lbl.style.opacity = vis ? '1' : '0';
-    }
-  }
-
-  // ── Graph building ──
-  function buildGraph() {
-    var svg = document.getElementById('graph');
-    var width = svg.clientWidth;
-    var height = svg.clientHeight;
-
-    // Clear
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
-    edgeElements = [];
-    nodeGroupElements = [];
-    nodeMap = {};
-
-    // ── Defs ──
-    var defs = svgEl('defs');
-    var marker = svgEl('marker', {
-      id: 'arrowhead', viewBox: '0 -4 8 8', refX: '20', refY: '0',
-      markerWidth: '6', markerHeight: '6', orient: 'auto'
-    });
-    marker.appendChild(svgEl('path', { d: 'M0,-4L8,0L0,4', fill: '#2A3A5C' }));
-    defs.appendChild(marker);
-
-    // Highlight arrow marker
-    var markerHl = svgEl('marker', {
-      id: 'arrowhead-hl', viewBox: '0 -4 8 8', refX: '20', refY: '0',
-      markerWidth: '6', markerHeight: '6', orient: 'auto'
-    });
-    markerHl.appendChild(svgEl('path', { d: 'M0,-4L8,0L0,4', fill: '#5A7ABF' }));
-    defs.appendChild(markerHl);
-
-    svg.appendChild(defs);
-
-    // ── Layout ──
-    var layers = [0, 1, 2, 3, 4, 5];
-    var startX = 100;
-    var layerWidth = (width - 160) / 5;
-    var padTop = 70;
-    var padBottom = 50;
-    var availH = height - padTop - padBottom;
-
-    // Group nodes by layer
-    var nodesByLayer = {};
-    for (var i = 0; i < currentData.nodes.length; i++) {
-      var n = currentData.nodes[i];
-      if (!nodesByLayer[n.layer]) nodesByLayer[n.layer] = [];
-      nodesByLayer[n.layer].push(n);
-    }
-
-    // Create position objects
-    var nodes = [];
-    for (var i2 = 0; i2 < currentData.nodes.length; i2++) {
-      var nd = currentData.nodes[i2];
-      var layerNodes = nodesByLayer[nd.layer];
-      var idx = layerNodes.indexOf(nd);
-      nodes.push({
-        id: nd.id,
-        name: nd.name,
-        shortName: nd.shortName,
-        description: nd.description,
-        track: nd.track,
-        layer: nd.layer,
-        progress: nd.progress,
-        news: nd.news || [],
-        x: startX + nd.layer * layerWidth,
-        y: padTop + (availH / (layerNodes.length + 1)) * (idx + 1),
-        fx: startX + nd.layer * layerWidth
-      });
-    }
-
-    // Build nodeMap
-    for (var i3 = 0; i3 < nodes.length; i3++) {
-      nodeMap[nodes[i3].id] = nodes[i3];
-    }
-
-    // ── Simple force layout (Y-only) ──
-    runSimulation(nodes, currentData.edges, height, padTop, padBottom);
-
-    // ── Layer divider lines ──
-    for (var li = 0; li < layers.length; li++) {
-      var lx = startX + layers[li] * layerWidth;
-      svg.appendChild(svgEl('line', {
-        x1: lx, y1: 45,
-        x2: lx, y2: height - 40,
-        stroke: 'var(--border)', 'stroke-width': '1', 'stroke-dasharray': '2,4'
-      }));
-    }
-
-    // ── Layer labels ──
-    for (var ll = 0; ll < LAYER_LABELS.length; ll++) {
-      var t = svgEl('text', {
-        x: startX + ll * layerWidth, y: 30,
-        'text-anchor': 'middle', fill: 'var(--text3)',
-        'font-size': '10', 'letter-spacing': '1'
-      });
-      t.textContent = LAYER_LABELS[ll];
-      svg.appendChild(t);
-    }
-
-    // ── Edges group ──
-    var edgesG = svgEl('g');
-    for (var ei = 0; ei < currentData.edges.length; ei++) {
-      var e = currentData.edges[ei];
-      var fromN = nodeMap[e.from];
-      var toN = nodeMap[e.to];
-      if (!fromN || !toN) continue;
-
-      var line = svgEl('line', {
-        x1: fromN.x, y1: fromN.y,
-        x2: toN.x, y2: toN.y,
-        'marker-end': 'url(#arrowhead)'
-      });
-      line.setAttribute('class', 'edge-line');
-      line.__data = e;
-      edgeElements.push(line);
-      edgesG.appendChild(line);
-    }
-    svg.appendChild(edgesG);
-
-    // ── Nodes group ──
-    var nodesG = svgEl('g');
-
-    for (var ni = 0; ni < nodes.length; ni++) {
-      var nd2 = nodes[ni];
-      var isJarvis = nd2.id === 'jarvis';
-      var r = isJarvis ? 36 : 18 + nd2.progress * 0.18;
-      var hexColor = isJarvis ? TRACK_HEX.goal : TRACK_HEX[nd2.track];
-
-      var grp = svgEl('g', { id: 'node-' + nd2.id });
-      grp.setAttribute('class', 'node-group');
-      grp.__data = nd2;
-
-      // Circle
-      var circle = svgEl('circle', {
-        r: r, cx: nd2.x, cy: nd2.y,
-        fill: isJarvis ? 'var(--surface2)' : (hexColor + '20'),
-        stroke: hexColor,
-        'stroke-width': isJarvis ? '3' : '2',
-        'stroke-dasharray': isJarvis ? '6,3' : 'none',
-        style: '--node-color:' + hexColor
-      });
-      circle.setAttribute('class', 'node-bg');
-      grp.appendChild(circle);
-
-      // Progress arc (non-Jarvis)
-      if (!isJarvis) {
-        var arcR = r + 5;
-        var pct = nd2.progress / 100;
-        var startAngle = -Math.PI / 2;
-        var endAngle = startAngle + pct * 2 * Math.PI;
-        var x1a = nd2.x + arcR * Math.cos(startAngle);
-        var y1a = nd2.y + arcR * Math.sin(startAngle);
-        var x2a = nd2.x + arcR * Math.cos(endAngle);
-        var y2a = nd2.y + arcR * Math.sin(endAngle);
-        var largeArc = pct > 0.5 ? '1' : '0';
-        var arcD = 'M ' + x1a + ' ' + y1a + ' A ' + arcR + ' ' + arcR + ' 0 ' + largeArc + ' 1 ' + x2a + ' ' + y2a;
-        grp.appendChild(svgEl('path', {
-          d: arcD, fill: 'none', stroke: hexColor,
-          'stroke-width': '3', 'stroke-linecap': 'round'
-        }));
-      }
-
-      // Star for Jarvis
-      if (isJarvis) {
-        var star = svgEl('text', {
-          x: nd2.x, y: nd2.y, 'text-anchor': 'middle', dy: '0.35em',
-          fill: TRACK_HEX.goal, 'font-size': '11', 'font-weight': '700'
-        });
-        star.textContent = '\u2605';
-        grp.appendChild(star);
-      }
-
-      // Events
-      grp.addEventListener('click', (function(d) {
-        return function(evt) { openPanel(d); };
-      })(nd2));
-      grp.addEventListener('mouseenter', (function(d) {
-        return function(evt) { showTooltip(evt, d); };
-      })(nd2));
-      grp.addEventListener('mouseleave', hideTooltip);
-
-      nodesG.appendChild(grp);
-      nodeGroupElements.push(grp);
-    }
-
-    svg.appendChild(nodesG);
-
-    // ── Labels group ──
-    var labelsG = svgEl('g');
-
-    for (var li2 = 0; li2 < nodes.length; li2++) {
-      var nd3 = nodes[li2];
-      var isJv = nd3.id === 'jarvis';
-      var nr = isJv ? 36 : 18 + nd3.progress * 0.18;
-
-      var nameLbl = svgEl('text', {
-        x: nd3.x, y: nd3.y + nr + 16, 'text-anchor': 'middle',
-        'font-size': '11', fill: 'var(--text)', 'font-weight': '500'
-      });
-      nameLbl.setAttribute('class', 'node-label');
-      nameLbl.__data = nd3;
-      nameLbl.textContent = nd3.shortName;
-      labelsG.appendChild(nameLbl);
-
-      var pctLbl = svgEl('text', {
-        x: nd3.x, y: nd3.y + nr + 29, 'text-anchor': 'middle',
-        'font-size': '9', fill: 'var(--text2)'
-      });
-      pctLbl.setAttribute('class', 'node-pct');
-      pctLbl.__data = nd3;
-      pctLbl.textContent = isJv ? 'ЦЕЛЬ' : nd3.progress + '%';
-      labelsG.appendChild(pctLbl);
-    }
-
-    svg.appendChild(labelsG);
-
-    // Store layout state for resize
-    svg._layout = {
-      nodes: nodes, edges: currentData.edges, startX: startX,
-      layerWidth: layerWidth, height: height, padTop: padTop, padBottom: padBottom,
-      edgeElements: edgeElements, nodeGroupElements: nodeGroupElements
-    };
-  }
-
-  // ── Mobile vertical list ──
-  function buildMobileList() {
-    var container = document.getElementById('mobile-list');
-    container.innerHTML = '';
-
-    if (!currentData || !currentData.nodes) return;
-
-    // Group by layer
-    var layers = {};
-    for (var i = 0; i < currentData.nodes.length; i++) {
-      var n = currentData.nodes[i];
-      if (!layers[n.layer]) layers[n.layer] = [];
-      layers[n.layer].push(n);
-    }
-
-    var layerKeys = Object.keys(layers).sort(function(a,b) { return a - b; });
-
-    for (var li = 0; li < layerKeys.length; li++) {
-      var layer = parseInt(layerKeys[li]);
-      var layerNodes = layers[layer];
-
-      var layerDiv = document.createElement('div');
-      layerDiv.className = 'mobile-layer';
-      layerDiv.innerHTML = '<div class="mobile-layer-title">' + (LAYER_LABELS[layer] || 'Слой ' + layer) + '</div>';
-
-      for (var ni = 0; ni < layerNodes.length; ni++) {
-        var nd = layerNodes[ni];
-        var hexColor = nd.id === 'jarvis' ? TRACK_HEX.goal : TRACK_HEX[nd.track];
-        var isVisible = !activeTrack || nd.track === activeTrack || nd.track === 'goal';
-
-        var card = document.createElement('div');
-        card.className = 'mobile-card';
-        card.style.opacity = isVisible ? '1' : '0.25';
-        card.style.pointerEvents = isVisible ? 'auto' : 'none';
-        card.dataset.nodeId = nd.id;
-        card.__data = nd;
-
-        var pctText = nd.id === 'jarvis' ? 'ЦЕЛЬ' : nd.progress + '%';
-        var pctWidth = nd.id === 'jarvis' ? '0' : nd.progress + '%';
-
-        card.innerHTML =
-          '<div class="mobile-card-dot" style="background:' + hexColor + '"></div>' +
-          '<div class="mobile-card-info">' +
-            '<div class="mobile-card-name">' + nd.shortName + '</div>' +
-            '<div class="mobile-card-pct">' + pctText + '</div>' +
-            '<div class="mobile-card-bar"><div class="mobile-card-bar-fill" style="width:' + pctWidth + ';background:' + hexColor + '"></div></div>' +
-          '</div>' +
-          '<div class="mobile-card-arrow">&rsaquo;</div>';
-
-        card.addEventListener('click', function(d) { return function() { openPanel(d); }; }(nd));
-        layerDiv.appendChild(card);
-      }
-
-      container.appendChild(layerDiv);
-    }
-  }
-
-  function updateMobileFilter() {
-    var cards = document.querySelectorAll('.mobile-card');
-    for (var i = 0; i < cards.length; i++) {
-      var d = cards[i].__data;
-      if (!d) continue;
-      var isGoal = d.track === 'goal';
-      var visible = !activeTrack || d.track === activeTrack || isGoal;
-      cards[i].style.opacity = visible ? '1' : '0.25';
-      cards[i].style.pointerEvents = visible ? 'auto' : 'none';
-    }
-  }
-
-  // ── Minimal force simulation (Y-only) ──
-  function runSimulation(nodes, edges, height, padTop, padBottom) {
-    var ITER = 200;
-    var nodeMapLocal = {};
-    for (var i = 0; i < nodes.length; i++) nodeMapLocal[nodes[i].id] = nodes[i];
-
-    for (var iter = 0; iter < ITER; iter++) {
-      var alpha = 1 - iter / ITER;
-
-      // Collision
-      for (var a = 0; a < nodes.length; a++) {
-        for (var b = a + 1; b < nodes.length; b++) {
-          var na = nodes[a];
-          var nb = nodes[b];
-          var dy = na.y - nb.y;
-          var dist = Math.abs(dy);
-          var ra = na.id === 'jarvis' ? 36 : 18 + na.progress * 0.18;
-          var rb = nb.id === 'jarvis' ? 36 : 18 + nb.progress * 0.18;
-          var minDist = ra + rb + 24;
-          if (dist < minDist && dist > 0.001) {
-            var force = ((minDist - dist) / dist) * alpha * 2;
-            na.y += dy * force * 0.5;
-            nb.y -= dy * force * 0.5;
-          }
-        }
-      }
-
-      // Link attraction (Y only)
-      for (var ei = 0; ei < edges.length; ei++) {
-        var ae = edges[ei];
-        var sa = nodeMapLocal[ae.from];
-        var ta = nodeMapLocal[ae.to];
-        if (!sa || !ta) continue;
-        var ldy = ta.y - sa.y;
-        var lab = Math.abs(ldy);
-        if (lab > 200) {
-          var lforce = (lab - 120) * alpha * 0.003;
-          sa.y += Math.sign(ldy) * lforce;
-          ta.y -= Math.sign(ldy) * lforce;
-        }
-      }
-
-      // Center pull
-      var centerY = height / 2;
-      for (var ci = 0; ci < nodes.length; ci++) {
-        nodes[ci].y += (centerY - nodes[ci].y) * alpha * 0.01;
-      }
-
-      // Clamp
-      for (var cl = 0; cl < nodes.length; cl++) {
-        var n = nodes[cl];
-        if (n.y < padTop + 20) n.y = padTop + 20;
-        if (n.y > height - padBottom - 20) n.y = height - padBottom - 20;
-      }
-    }
-  }
-
-  // ── Tooltip ──
-  function showTooltip(event, d) {
-    var tooltip = document.getElementById('tooltip');
-    tooltip.innerHTML =
-      '<div class="tt-name">' + d.name + '</div>' +
-      '<div class="tt-track">' + (TRACK_NAMES[d.track] || 'Цель') + '</div>' +
-      '<div class="tt-pct">Готовность: ' + (d.id === 'jarvis' ? '\u2014' : d.progress + '%') + '</div>';
-    tooltip.style.opacity = '1';
-    tooltip.style.left = (event.clientX + 16) + 'px';
-    tooltip.style.top = (event.clientY - 50) + 'px';
-
-    // Highlight connected edges
-    for (var i = 0; i < edgeElements.length; i++) {
-      var el = edgeElements[i];
-      var ed = el.__data;
-      var isConnected = ed.from === d.id || ed.to === d.id;
-      el.setAttribute('marker-end', isConnected ? 'url(#arrowhead-hl)' : 'url(#arrowhead)');
-      if (isConnected) {
-        el.classList.add('highlighted');
-        el.classList.remove('dimmed');
-      } else {
-        el.classList.add('dimmed');
-        el.classList.remove('highlighted');
-      }
-    }
-
-    // Highlight node
-    for (var j = 0; j < nodeGroupElements.length; j++) {
-      var grp = nodeGroupElements[j];
-      grp.classList.toggle('highlighted', grp.__data.id === d.id);
-    }
-  }
-
-  function hideTooltip() {
-    document.getElementById('tooltip').style.opacity = '0';
-    for (var i = 0; i < edgeElements.length; i++) {
-      var el = edgeElements[i];
-      el.classList.remove('highlighted', 'dimmed');
-      el.setAttribute('marker-end', 'url(#arrowhead)');
-    }
-    for (var j = 0; j < nodeGroupElements.length; j++) {
-      nodeGroupElements[j].classList.remove('highlighted');
-    }
-  }
-
-  // ── Side Panel ──
-  function openPanel(d) {
-    document.getElementById('panel-overlay').classList.add('open');
-    document.getElementById('panel').classList.add('open');
-    document.getElementById('panel-title').textContent = d.name;
-
-    var badge = TRACK_NAMES[d.track] || 'Цель';
-    var badgeColor = TRACK_HEX[d.track] || TRACK_HEX.goal;
-    var titleArea = document.getElementById('panel-title').parentElement;
-    var badgeEl = titleArea.querySelector('.track-badge');
-    if (!badgeEl) {
-      badgeEl = document.createElement('div');
-      badgeEl.className = 'track-badge';
-      titleArea.appendChild(badgeEl);
-    }
-    badgeEl.textContent = badge;
-    badgeEl.style.background = badgeColor + '20';
-    badgeEl.style.color = badgeColor;
-    badgeEl.style.border = '1px solid ' + badgeColor + '40';
-
-    document.getElementById('panel-pct').textContent =
-      d.id === 'jarvis' ? 'Цель' : d.progress + '%';
-    var miniFill = document.getElementById('panel-mini-fill');
-    miniFill.style.width = d.id === 'jarvis' ? '0%' : d.progress + '%';
-    miniFill.style.background = badgeColor;
-
-    document.getElementById('panel-desc').textContent = d.description;
-
-    var newsList = document.getElementById('panel-news-list');
-    if (d.news && d.news.length > 0) {
-      newsList.innerHTML = d.news.map(function(n) {
-        return '<div class="news-item" onclick="window.open(\'' + n.url + '\',\'_blank\')" title="' + n.url + '">' +
-          '<div class="news-date">' + n.date + ' · ' + n.source + '</div>' +
-          '<div class="news-title">' + n.title + '</div>' +
-          '<div class="news-source">' + n.url + '</div>' +
-          '</div>';
-      }).join('');
-    } else {
-      newsList.innerHTML = '<div class="news-empty">Новостей пока нет — этот этап ещё впереди</div>';
-    }
-
-    document.getElementById('panel').scrollTop = 0;
-  }
-
-  function closePanel() {
-    document.getElementById('panel-overlay').classList.remove('open');
-    document.getElementById('panel').classList.remove('open');
-  }
-
-  // ── Resize ──
-  function handleResize() {
-    buildGraph();
-    buildMobileList();
-    if (activeTrack) updateFilter();
-  }
-
-  // ── Reset ──
-  document.getElementById('btn-reset').addEventListener('click', function() {
-    buildGraph();
-    buildMobileList();
-    if (activeTrack) updateFilter();
-  });
-
-  // ── Expose panel functions globally (used by onclick) ──
-  window.closePanel = closePanel;
-  window.openPanel = openPanel;
-
-  // ── Start ──
-  init();
-})();
-</script>
 
 <script id="embedded-data" type="application/json">{
   "meta": {
@@ -1227,7 +495,7 @@ footer {
       "id": "voice-rt",
       "name": "Голосовой интерфейс RT",
       "shortName": "Голос RT",
-      "description": "Естественный голосовой диалог с задержкой <200мс. ИИ слышит интонации, эмоции, фоновый шум. Перебивание, многоголосие, шёпот.",
+      "description": "Естественный голосовой диалог с задержкой &lt;200мс. ИИ слышит интонации, эмоции, фоновый шум. Перебивание, многоголосие, шёпот.",
       "track": "interface",
       "layer": 1,
       "progress": 62,
@@ -1781,5 +1049,252 @@ footer {
     }
   ]
 }</script>
+
+<script>
+(function() {
+  'use strict';
+
+  var TRACK_HEX = { models:'#4A9EFF', interface:'#4ADE80', infrastructure:'#A78BFA', society:'#FB923C', goal:'#FBBF24' };
+  var TRACK_NAMES = { models:'Модели и AGI', interface:'Интерфейс', infrastructure:'Инфраструктура', society:'Общество', goal:'Цель' };
+  var LAYER_TITLES = ['Фундамент', 'Базовые технологии', 'Продвинутые', 'Экосистема', 'Принятие', 'JARVIS'];
+  var LAYER_ICONS = ['01','02','03','04','05','★'];
+
+  var currentData = null;
+  var activeTrack = '';
+
+  // ── Helpers ──
+  function progressToDate(progress, targetYear) {
+    if (progress >= 95) return targetYear + '';
+    var startYear = 2026;
+    var yearsToGo = (targetYear - startYear) * (1 - progress / 100);
+    var year = startYear + yearsToGo;
+    var quarter = Math.floor((year - Math.floor(year)) * 4) + 1;
+    var y = Math.floor(year);
+    if (yearsToGo < 0.5) return 'Q' + quarter + ' ' + y;
+    return y + '';
+  }
+
+  function avgProgress(nodes) {
+    if (!nodes.length) return 0;
+    var sum = 0;
+    for (var i = 0; i < nodes.length; i++) sum += nodes[i].progress;
+    return Math.round(sum / nodes.length);
+  }
+
+  function latestNews(nodes) {
+    var all = [];
+    for (var i = 0; i < nodes.length; i++) {
+      if (nodes[i].news) all = all.concat(nodes[i].news);
+    }
+    all.sort(function(a,b) { return b.date.localeCompare(a.date); });
+    return all[0] || null;
+  }
+
+  // ── Init ──
+  async function init() {
+    try {
+      var resp = await fetch('data.json');
+      if (!resp.ok) throw new Error('fetch failed');
+      currentData = await resp.json();
+    } catch(e) {
+      var el = document.getElementById('embedded-data');
+      if (el && el.textContent.trim()) {
+        try { currentData = JSON.parse(el.textContent); } catch(e2) {
+          document.getElementById('main-content').innerHTML = '<p style="color:var(--text2);text-align:center;padding:40px">Ошибка данных</p>';
+          return;
+        }
+      } else {
+        document.getElementById('main-content').innerHTML = '<p style="color:var(--text2);text-align:center;padding:40px">Не удалось загрузить данные. Запустите:<br><code>python -m http.server 8080</code></p>';
+        return;
+      }
+    }
+
+    if (!currentData || !currentData.nodes) return;
+
+    // Overall progress
+    var regular = currentData.nodes.filter(function(n) { return n.id !== 'jarvis'; });
+    var overall = avgProgress(regular);
+    document.getElementById('overall-pct').textContent = overall + '%';
+    document.getElementById('progress-fill').style.width = overall + '%';
+
+    // ETA
+    var tY = currentData.meta.targetYear || 2032;
+    var pr = overall / 100;
+    var etaYear = Math.max(2027, Math.round(2026 + (tY - 2026) * (1 - pr)));
+    document.getElementById('eta-text').textContent = '~' + etaYear;
+
+    // Footer
+    document.getElementById('footer-updated').textContent = 'Обновлено: ' + (currentData.meta.lastUpdated || '—');
+
+    buildFilters();
+    render();
+  }
+
+  // ── Filters ──
+  function buildFilters() {
+    var container = document.getElementById('filters');
+    // Keep "All" button, add track buttons
+    Object.keys(TRACK_NAMES).forEach(function(t) {
+      var btn = document.createElement('button');
+      btn.textContent = TRACK_NAMES[t];
+      btn.dataset.track = t;
+      btn.addEventListener('click', function() {
+        activeTrack = (activeTrack === t) ? '' : t;
+        document.querySelectorAll('#filters button').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.track === activeTrack);
+          if (b.dataset.track === '') b.classList.toggle('active', !activeTrack);
+        });
+        render();
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  // ── Render ──
+  function render() {
+    var main = document.getElementById('main-content');
+    main.innerHTML = '';
+
+    // Group nodes by layer
+    var byLayer = {};
+    for (var i = 0; i < currentData.nodes.length; i++) {
+      var n = currentData.nodes[i];
+      if (!byLayer[n.layer]) byLayer[n.layer] = [];
+      byLayer[n.layer].push(n);
+    }
+
+    var layers = Object.keys(byLayer).sort(function(a,b) { return a - b; });
+    var targetYear = currentData.meta.targetYear || 2032;
+
+    for (var li = 0; li < layers.length; li++) {
+      var layer = parseInt(layers[li]);
+      var nodes = byLayer[layer];
+
+      // Filter by track
+      var visibleNodes = nodes;
+      if (activeTrack) {
+        visibleNodes = nodes.filter(function(n) {
+          return n.track === activeTrack || n.track === 'goal';
+        });
+        if (visibleNodes.length === 0) continue;
+      }
+
+      var layerAvg = avgProgress(visibleNodes.filter(function(n) { return n.id !== 'jarvis'; }));
+      var layerDate = progressToDate(layerAvg, targetYear);
+      var topNews = latestNews(visibleNodes);
+
+      // Determine layer accent color (use first node's track or dominant)
+      var accentTrack = nodes[0].track;
+      var accentHex = TRACK_HEX[accentTrack] || '#4A9EFF';
+
+      // Layer section
+      var section = document.createElement('div');
+      section.className = 'layer-section';
+
+      // Header
+      var iconClass = (layer === 5) ? 'goal' : (accentTrack);
+      section.innerHTML =
+        '<div class="layer-header">' +
+          '<div class="layer-num ' + iconClass + '">' + (LAYER_ICONS[layer] || layer+1) + '</div>' +
+          '<div class="layer-title">' + (LAYER_TITLES[layer] || 'Слой ' + layer) + '</div>' +
+          '<div class="layer-meta">' +
+            '<span>Прогресс слоя: <b>' + layerAvg + '%</b></span>' +
+            '<span>Ожидаемый срок: <b>' + layerDate + '</b></span>' +
+            '<span>Подэтапов: <b>' + visibleNodes.length + '</b></span>' +
+          '</div>' +
+        '</div>';
+
+      // Highlight news
+      if (topNews) {
+        var newsDiv = document.createElement('div');
+        newsDiv.className = 'layer-news';
+        newsDiv.style.borderLeftColor = accentHex;
+        newsDiv.innerHTML =
+          '<div class="layer-news-label">Свежая новость · ' + topNews.date + '</div>' +
+          '<div class="layer-news-title">' + topNews.title + '</div>' +
+          '<div class="layer-news-source">' + topNews.source + ' · ' + topNews.url + '</div>';
+        newsDiv.addEventListener('click', function() { window.open(topNews.url, '_blank'); });
+        section.appendChild(newsDiv);
+      }
+
+      // Sub-node cards
+      var subGrid = document.createElement('div');
+      subGrid.className = 'subnodes';
+
+      for (var ni = 0; ni < visibleNodes.length; ni++) {
+        var nd = visibleNodes[ni];
+        var hex = (nd.id === 'jarvis') ? TRACK_HEX.goal : (TRACK_HEX[nd.track] || '#4A9EFF');
+        var pct = nd.id === 'jarvis' ? '—' : nd.progress + '%';
+        var pctW = nd.id === 'jarvis' ? 0 : nd.progress;
+        var ndDate = nd.id === 'jarvis' ? targetYear : progressToDate(nd.progress, targetYear);
+        var newsN = nd.news ? nd.news.length : 0;
+
+        var card = document.createElement('div');
+        card.className = 'node-card';
+        card.innerHTML =
+          '<div class="node-card-top">' +
+            '<div class="node-card-dot" style="background:' + hex + '"></div>' +
+            '<div class="node-card-name">' + nd.shortName + '</div>' +
+          '</div>' +
+          '<div class="node-card-bar-wrap">' +
+            '<div class="node-card-bar"><div class="node-card-bar-fill" style="width:' + pctW + '%;background:' + hex + '"></div></div>' +
+            '<div class="node-card-pct">' + pct + '</div>' +
+          '</div>' +
+          '<div class="node-card-date">Ожидаемый срок: ' + ndDate + '</div>' +
+          (newsN > 0 ? '<div class="node-card-news-count">Новостей: ' + newsN + '</div>' : '');
+
+        card.addEventListener('click', function(d) { return function() { openPanel(d); }; }(nd));
+        subGrid.appendChild(card);
+      }
+
+      section.appendChild(subGrid);
+      main.appendChild(section);
+    }
+  }
+
+  // ── Panel ──
+  function openPanel(d) {
+    document.getElementById('panel-overlay').classList.add('open');
+    document.getElementById('panel').classList.add('open');
+    document.getElementById('panel-title').textContent = d.name;
+    document.getElementById('panel-pct').textContent = (d.id === 'jarvis') ? 'Цель' : d.progress + '%';
+
+    var hex = TRACK_HEX[d.track] || TRACK_HEX.goal;
+    var fill = document.getElementById('panel-mini-fill');
+    fill.style.width = (d.id === 'jarvis') ? '0%' : d.progress + '%';
+    fill.style.background = hex;
+
+    document.getElementById('panel-desc').textContent = d.description;
+
+    var newsList = document.getElementById('panel-news-list');
+    if (d.news && d.news.length > 0) {
+      newsList.innerHTML = d.news.map(function(n) {
+        return '<div class="news-item" onclick="window.open(\'' + n.url + '\',\'_blank\')" title="' + n.url + '">' +
+          '<div class="news-date">' + n.date + ' · ' + n.source + '</div>' +
+          '<div class="news-title">' + n.title + '</div>' +
+          '<div class="news-source">' + n.url + '</div>' +
+        '</div>';
+      }).join('');
+    } else {
+      newsList.innerHTML = '<div class="news-empty">Новостей пока нет — этот этап ещё впереди</div>';
+    }
+
+    document.getElementById('panel').scrollTop = 0;
+  }
+
+  function closePanel() {
+    document.getElementById('panel-overlay').classList.remove('open');
+    document.getElementById('panel').classList.remove('open');
+  }
+
+  window.openPanel = openPanel;
+  window.closePanel = closePanel;
+
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePanel(); });
+
+  // ── Start ──
+  init();
+})();
+</script>
 </body>
 </html>
