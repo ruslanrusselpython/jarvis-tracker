@@ -62,22 +62,22 @@
       "progress": 68,
       "news": [
         {
+          "date": "2026-03-30",
+          "title": "Alibaba Qwen Team Releases Qwen3.5 Omni: Native Multimodal Model for Text, Audio, Video, and Realtime Interaction",
+          "url": "https://www.marktechpost.com/2026/03/30/alibaba-qwen-team-releases-qwen3-5-omni-a-native-multimodal-model-for-text-audio-video-and-realtime-interaction/",
+          "source": "MarkTechPost"
+        },
+        {
+          "date": "2026-06-03",
+          "title": "Google DeepMind Releases Gemma 4 12B: Encoder-Free Multimodal with Native Audio, runs on 16GB laptop",
+          "url": "https://www.marktechpost.com/2026/06/03/google-deepmind-releases-gemma-4-12b-an-encoder-free-multimodal-model-with-native-audio-that-runs-on-a-16-gb-laptop/",
+          "source": "MarkTechPost"
+        },
+        {
           "date": "2026-07-15",
-          "title": "Inkling: Our Open-Weights Model — Thinking Machines Lab",
-          "url": "https://thinkingmachines.ai/news/introducing-inkling",
-          "source": "Thinking Machines Lab"
-        },
-        {
-          "date": "2026-04-17",
-          "title": "Qwen3.5-Omni Technical Report — multimodal text/image/video/audio",
-          "url": "https://arxiv.org/pdf/2604.15804",
-          "source": "arXiv / Qwen Team"
-        },
-        {
-          "date": "2025-11-18",
-          "title": "A new era of intelligence with Gemini 3",
-          "url": "https://blog.google/products-and-platforms/products/gemini/gemini-3",
-          "source": "Google Blog"
+          "title": "Thinking Machines amps up its bet with first open model, Inkling",
+          "url": "https://techcrunch.com/2026/07/15/thinking-machines-amps-up-its-bet-against-one-size-fits-all-ai-with-its-first-open-model-inkling/",
+          "source": "TechCrunch"
         },
         {
           "date": "2026-07-01",
@@ -425,16 +425,22 @@
       "progress": 18,
       "news": [
         {
-          "date": "2026-07-16",
-          "title": "Google's AI Mode now lets you link and interact with select apps",
-          "url": "https://techcrunch.com/2026/07/16/googles-ai-mode-now-lets-you-link-and-interact-with-select-apps/",
-          "source": "TechCrunch"
+          "date": "2026-05-14",
+          "title": "Android's latest AI feature predicts what you'll do next",
+          "url": "https://www.theverge.com/tech/930318/android-contextual-suggestions-google-ai-feature-rollout",
+          "source": "The Verge"
         },
         {
-          "date": "2026-07-16",
-          "title": "Intapp Makes Celeste Generally Available — 'AI Coworker' for law firms",
-          "url": "https://www.lawnext.com/2026/07/intapp-makes-celeste-generally-available-calling-it-an-ai-coworker-to-run-the-business-side-of-law-firms.html",
-          "source": "LawNext"
+          "date": "2026-04-28",
+          "title": "Here's your first look at Gemini's new Proactive Assistance feature",
+          "url": "https://www.androidauthority.com/google-gemini-proactive-assistance-3661314/",
+          "source": "Android Authority"
+        },
+        {
+          "date": "2026-05-28",
+          "title": "AI Agents Are Learning to Predict What Users Want—Before They Ask for It",
+          "url": "https://tech.yahoo.com/ai/articles/ai-agents-learning-predict-users-202453441.html",
+          "source": "Yahoo Tech"
         },
         {
           "date": "2026-04-12",
