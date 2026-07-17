@@ -328,9 +328,9 @@ footer{
       "name": "Мультимодальное восприятие",
       "shortName": "A1 Восприятие",
       "description": "Единая модель понимает текст, изображения, видео и аудио нативно. Способность «видеть» и «слышать» мир как человек.",
-      "maturity": 4.1,
+      "maturity": 4.6,
       "stage": "Production",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет работающего подхода",
         "1": "Ранний эксперимент с одной-двумя модальностями",
@@ -359,6 +359,30 @@ footer{
       "dependencies": [],
       "news": [
         {
+          "date": "2026-05-19",
+          "title": "Introducing Gemini Omni — ability to reason meets ability to create, starting with video",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni/",
+          "source": "Google Blog",
+          "direction": "positive",
+          "signal_score": 75
+        },
+        {
+          "date": "2026-07-15",
+          "title": "Inkling by Thinking Machines — 1T-param open multimodal model with native image, text, audio",
+          "url": "https://huggingface.co/blog/thinkingmachines-inkling",
+          "source": "Hugging Face",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-04-17",
+          "title": "Qwen3.5-Omni: SOTA omni-modality model surpassing Gemini-3.1 Pro on audio tasks",
+          "url": "https://arxiv.org/abs/2604.15804",
+          "source": "arXiv / Qwen",
+          "direction": "positive",
+          "signal_score": 70
+        },
+        {
           "date": "2026-07-15",
           "title": "Thinking Machines Inkling: open-weights native multimodal model",
           "url": "https://techcrunch.com/2026/07/15/thinking-machines-amps-up-its-bet-against-one-size-fits-all-ai-with-its-first-open-model-inkling/",
@@ -382,9 +406,9 @@ footer{
       "name": "Рассуждение",
       "shortName": "A2 Рассуждение",
       "description": "Способность к логическому выводу, chain-of-thought, анализу причин и следствий. Решение сложных задач step-by-step.",
-      "maturity": 3.8,
-      "stage": "Pilot",
-      "confidence": "Medium",
+      "maturity": 4.3,
+      "stage": "Production",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет reasoning",
         "1": "Базовый chain-of-thought в исследованиях",
@@ -400,20 +424,44 @@ footer{
           "p75": "2026"
         },
         "stage4": {
-          "p25": "2025",
-          "p50": "2026",
+          "p25": "2026",
+          "p50": "2027",
           "p75": "2028"
         },
         "stage5": {
-          "p25": "2026",
-          "p50": "2028",
-          "p75": "2031"
+          "p25": "2025",
+          "p50": "2027",
+          "p75": "2030"
         }
       },
       "dependencies": [
         "A1"
       ],
       "news": [
+        {
+          "date": "2026-04-16",
+          "title": "OpenAI o4-mini: Benchmarks, Features &amp; How It Beats o3 for Less",
+          "url": "https://www.linos.ai/technology/openai-o4-mini-release-benchmarks-2026/",
+          "source": "Linos",
+          "direction": "positive",
+          "signal_score": 50
+        },
+        {
+          "date": "2026-07-13",
+          "title": "DeepSeek R2 Doesn't Exist. Here's What Shipped Instead — DeepSeek V4",
+          "url": "https://theplanettools.ai/blog/deepseek-r2-never-shipped-what-deepseek-released-instead-2026",
+          "source": "ThePlanetTools",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-07-01",
+          "title": "OpenAI Reasoning Models Guide — GPT-5.5, GPT-5.6 with reasoning effort modes",
+          "url": "https://developers.openai.com/api/docs/guides/reasoning",
+          "source": "OpenAI",
+          "direction": "positive",
+          "signal_score": 70
+        },
         {
           "date": "2025-04-16",
           "title": "Introducing OpenAI o3 and o4-mini — next-gen reasoning models",
@@ -438,9 +486,9 @@ footer{
       "name": "Планирование",
       "shortName": "A3 Планирование",
       "description": "Разбиение сложных задач на подзадачи, оценка рисков, адаптация плана по ходу выполнения. Многошаговое планирование.",
-      "maturity": 3.1,
+      "maturity": 3.6,
       "stage": "Pilot",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет планирования",
         "1": "Исследования по иерархическому планированию",
@@ -461,15 +509,39 @@ footer{
           "p75": "2029"
         },
         "stage5": {
-          "p25": "2027",
-          "p50": "2029",
-          "p75": "2032"
+          "p25": "2026",
+          "p50": "2028",
+          "p75": "2031"
         }
       },
       "dependencies": [
         "A2"
       ],
       "news": [
+        {
+          "date": "2026-07-01",
+          "title": "DEEPPLANNING: Benchmarking Long-Horizon Agentic Planning (ACL 2026)",
+          "url": "https://aclanthology.org/2026.acl-long.335.pdf",
+          "source": "ACL 2026",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-02-22",
+          "title": "MagicAgent: Foundation models for generalized agent planning surpassing GPT-5.2",
+          "url": "https://arxiv.org/abs/2602.19000",
+          "source": "arXiv",
+          "direction": "positive",
+          "signal_score": 70
+        },
+        {
+          "date": "2026-03-30",
+          "title": "forgeplan: A long-horizon planning engine using HTN + MCTS",
+          "url": "https://github.com/sushaan-k/agent-forge",
+          "source": "GitHub",
+          "direction": "positive",
+          "signal_score": 50
+        },
         {
           "date": "2026-07-15",
           "title": "DeepSeek-R2: reasoning-модель решает AIME 2025 на 98%, планирует проекты из 100+ шагов",
@@ -486,9 +558,9 @@ footer{
       "name": "Обобщение и перенос",
       "shortName": "A4 Обобщение",
       "description": "Перенос знаний между доменами. Способность применить опыт из одной области в новой ситуации без дополнительного обучения.",
-      "maturity": 2.1,
+      "maturity": 2.3,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет переноса",
         "1": "Теоретические работы по transfer learning",
@@ -519,6 +591,30 @@ footer{
       ],
       "news": [
         {
+          "date": "2026-07-01",
+          "title": "THESEUS: Training-Free Transport of Task Vectors Across Different Architectures (ICML 2026)",
+          "url": "https://iris.unimore.it/retrieve/1fb7c09b.../ICML_2026__Rebasin-1.pdf",
+          "source": "ICML 2026",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-01-01",
+          "title": "SAE as a Crystal Ball: Features Predict Cross-Domain Transferability (ICLR 2026)",
+          "url": "https://openreview.net/forum?id=KQYnfeBNjl",
+          "source": "ICLR 2026",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-04-06",
+          "title": "On Supernet Transfer Learning for Effective Task Adaptation (CoLLAs 2026)",
+          "url": "https://proceedings.mlr.press/v330/singh26a.html",
+          "source": "PMLR / CoLLAs",
+          "direction": "positive",
+          "signal_score": 50
+        },
+        {
           "date": "2026-03-14",
           "title": "Unified Structural Factors for Transfer Learning Generalization with PAC-Bayesian Guarantees",
           "url": "https://ojs.aaai.org/index.php/AAAI/article/view/39270",
@@ -542,9 +638,9 @@ footer{
       "name": "Метапознание и самопроверка",
       "shortName": "A5 Самопроверка",
       "description": "Способность модели оценивать качество собственного ответа, находить ошибки, знать границы своей компетенции.",
-      "maturity": 2.3,
+      "maturity": 2.6,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет самооценки",
         "1": "Исследования calibration и uncertainty",
@@ -560,9 +656,9 @@ footer{
           "p75": "2029"
         },
         "stage4": {
-          "p25": "2028",
-          "p50": "2029",
-          "p75": "2031"
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
         },
         "stage5": {
           "p25": "2028",
@@ -574,6 +670,30 @@ footer{
         "A2"
       ],
       "news": [
+        {
+          "date": "2026-02-02",
+          "title": "VeriFY: Learning Factual Self-Verification for Hallucination Reduction",
+          "url": "https://arxiv.org/abs/2602.02018",
+          "source": "arXiv",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-07-01",
+          "title": "MARCH: Multi-Agent Reinforced Check for Hallucination (ACL 2026)",
+          "url": "https://aclanthology.org/2026.acl-long.1828/",
+          "source": "ACL 2026",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-07-01",
+          "title": "LaaB: Logical Consistency-as-a-Bridge for Hallucination Detection (ACL 2026)",
+          "url": "https://aclanthology.org/2026.acl-long.286.pdf",
+          "source": "ACL 2026",
+          "direction": "positive",
+          "signal_score": 65
+        },
         {
           "date": "2026-02-07",
           "title": "Learning to Self-Verify Makes Language Models Better Reasoners",
@@ -598,9 +718,9 @@ footer{
       "name": "Использование инструментов",
       "shortName": "B1 Инструменты",
       "description": "ИИ вызывает API, управляет приложениями, читает и пишет файлы, выполняет код. Function calling, tool use.",
-      "maturity": 3.9,
-      "stage": "Pilot",
-      "confidence": "Medium",
+      "maturity": 4.4,
+      "stage": "Production",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет tool use",
         "1": "Базовые function calling эксперименты",
@@ -616,20 +736,36 @@ footer{
           "p75": "2026"
         },
         "stage4": {
-          "p25": "2025",
-          "p50": "2026",
+          "p25": "2026",
+          "p50": "2027",
           "p75": "2028"
         },
         "stage5": {
-          "p25": "2026",
-          "p50": "2028",
-          "p75": "2031"
+          "p25": "2025",
+          "p50": "2027",
+          "p75": "2030"
         }
       },
       "dependencies": [
         "A1"
       ],
       "news": [
+        {
+          "date": "2026-05-14",
+          "title": "OpenAI Operator deprecated, folded into ChatGPT Agent with CUA model",
+          "url": "https://presenc.ai/research/openai-operator-update-tracker-2026",
+          "source": "Presenc AI",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-07-13",
+          "title": "GPT-5.6 Agent Tools: Programmatic Tool Calling &amp; Tool Search Guide",
+          "url": "https://youmind.com/landing/x-viral-articles/gpt-5-6-agent-tools-guide",
+          "source": "YouMind",
+          "direction": "positive",
+          "signal_score": 60
+        },
         {
           "date": "2026-03-23",
           "title": "Claude Dispatch and Computer Use — put Claude to work on your computer",
@@ -654,9 +790,9 @@ footer{
       "name": "Долгие задачи",
       "shortName": "B2 Долгие задачи",
       "description": "Выполнение задач, требующих часов или дней. Сохранение контекста, устойчивость к прерываниям, продолжение с места остановки.",
-      "maturity": 2.2,
+      "maturity": 2.7,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Только синхронные запросы",
         "1": "Исследования long-running agents",
@@ -667,19 +803,19 @@ footer{
       },
       "baseline": {
         "stage3": {
-          "p25": "2026",
-          "p50": "2027",
-          "p75": "2029"
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2028"
         },
         "stage4": {
-          "p25": "2028",
-          "p50": "2029",
-          "p75": "2031"
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
         },
         "stage5": {
-          "p25": "2028",
-          "p50": "2030",
-          "p75": "2033"
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2032"
         }
       },
       "dependencies": [
@@ -687,6 +823,30 @@ footer{
         "C2"
       ],
       "news": [
+        {
+          "date": "2026-06-01",
+          "title": "SWE-Marathon: Can Agents Autonomously Complete Ultra-Long-Horizon Software Work?",
+          "url": "https://arxiv.org/abs/2606.07682",
+          "source": "arXiv / Abundant AI",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-05-12",
+          "title": "Build Long-running AI Agents That Pause, Resume, and Never Lose Context (Google ADK)",
+          "url": "https://developers.googleblog.com/build-long-running-ai-agents-that-pause-resume-and-never-lose-context-with-adk/",
+          "source": "Google Developers",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2025-11-26",
+          "title": "Effective Harnesses for Long-Running Agents (Anthropic Engineering)",
+          "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+          "source": "Anthropic",
+          "direction": "positive",
+          "signal_score": 60
+        },
         {
           "date": "2026-07-02",
           "title": "InfiAgent: An Infinite-Horizon Framework for General-Purpose Autonomous Agents",
@@ -711,9 +871,9 @@ footer{
       "name": "Контроль результата",
       "shortName": "B3 Контроль",
       "description": "Проверка результата выполнения задачи. Сравнение с ожидаемым, выявление расхождений, повторное выполнение при ошибке.",
-      "maturity": 2.2,
+      "maturity": 2.5,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет контроля результата",
         "1": "Теоретические работы по verification",
@@ -729,9 +889,9 @@ footer{
           "p75": "2029"
         },
         "stage4": {
-          "p25": "2028",
-          "p50": "2029",
-          "p75": "2031"
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
         },
         "stage5": {
           "p25": "2028",
@@ -744,6 +904,22 @@ footer{
         "A5"
       ],
       "news": [
+        {
+          "date": "2026-03-09",
+          "title": "Tool Receipts: HMAC-signed execution receipts detect 94.2% fabricated tool references",
+          "url": "https://doi.org/10.48550/arxiv.2603.10060",
+          "source": "arXiv",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-07-01",
+          "title": "SAVeR: Verify Before You Commit — Self-Auditing for Faithful Agent Reasoning (ACL 2026)",
+          "url": "https://aclanthology.org/2026.acl-long.1440/",
+          "source": "ACL 2026",
+          "direction": "positive",
+          "signal_score": 65
+        },
         {
           "date": "2026-07-11",
           "title": "LLM-as-a-Verifier: A General-Purpose Verification Framework",
@@ -768,9 +944,9 @@ footer{
       "name": "Восстановление после ошибок",
       "shortName": "B4 Recovery",
       "description": "Обнаружение собственных ошибок, откат действий, повторная попытка с другой стратегией. Graceful degradation.",
-      "maturity": 2,
+      "maturity": 2.4,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Падает при любой ошибке",
         "1": "Исследования self-recovery и error handling",
@@ -781,19 +957,19 @@ footer{
       },
       "baseline": {
         "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
+        },
+        "stage4": {
           "p25": "2027",
           "p50": "2028",
           "p75": "2030"
         },
-        "stage4": {
-          "p25": "2028",
-          "p50": "2029",
-          "p75": "2031"
-        },
         "stage5": {
-          "p25": "2029",
-          "p50": "2031",
-          "p75": "2034"
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2033"
         }
       },
       "dependencies": [
@@ -801,6 +977,30 @@ footer{
         "A5"
       ],
       "news": [
+        {
+          "date": "2026-05-31",
+          "title": "Self-Healing Agentic Orchestrators: 98.8% task success via verification-guided recovery",
+          "url": "https://arxiv.org/html/2606.01416",
+          "source": "arXiv",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-07-04",
+          "title": "AI Agent Error Handling &amp; Self-Healing Patterns 2026",
+          "url": "https://www.taskade.com/blog/ai-agent-error-recovery",
+          "source": "Taskade",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-05-25",
+          "title": "Self-Healing Agents: Retry, Circuit Breaker, and Fallback Chains (55%→96% success)",
+          "url": "https://ai.gopubby.com/self-healing-agents-retry-circuit-breaker-and-fallback-chains-1924ba8ba537",
+          "source": "GoPubby",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-05-07",
           "title": "A Self-Healing Framework for Reliable LLM-Based Autonomous Agents",
@@ -825,9 +1025,9 @@ footer{
       "name": "Оркестрация агентов",
       "shortName": "B5 Оркестрация",
       "description": "Координация нескольких AI-агентов для выполнения сложной задачи. Разделение работы, коммуникация между агентами, агрегация результатов.",
-      "maturity": 2.4,
+      "maturity": 2.8,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Один агент",
         "1": "Исследования multi-agent систем",
@@ -838,9 +1038,9 @@ footer{
       },
       "baseline": {
         "stage3": {
-          "p25": "2026",
-          "p50": "2027",
-          "p75": "2029"
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2028"
         },
         "stage4": {
           "p25": "2027",
@@ -848,9 +1048,9 @@ footer{
           "p75": "2030"
         },
         "stage5": {
-          "p25": "2028",
-          "p50": "2030",
-          "p75": "2033"
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2032"
         }
       },
       "dependencies": [
@@ -858,6 +1058,22 @@ footer{
         "B2"
       ],
       "news": [
+        {
+          "date": "2026-07-08",
+          "title": "Agent Framework's Orchestration Patterns Reach 1.0 — Microsoft",
+          "url": "https://devblogs.microsoft.com/agent-framework/agent-frameworks-orchestration-patterns-reach-1-0/",
+          "source": "Microsoft DevBlogs",
+          "direction": "positive",
+          "signal_score": 70
+        },
+        {
+          "date": "2026-05-25",
+          "title": "AI Agent Orchestration 2026: Patterns, Tools, Complete Architecture Guide",
+          "url": "https://amux.io/guides/ai-agent-orchestration-2026/",
+          "source": "amux.io",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-05-14",
           "title": "Conductor: Deterministic Orchestration for Multi-Agent AI Workflows",
@@ -882,9 +1098,9 @@ footer{
       "name": "Идентичность пользователя",
       "shortName": "C1 Идентичность",
       "description": "ИИ знает кто пользователь: имя, роль, контекст жизни (работа, семья, хобби). Стабильная модель пользователя.",
-      "maturity": 2.6,
+      "maturity": 2.8,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет модели пользователя",
         "1": "Базовая идентификация по аккаунту",
@@ -895,9 +1111,9 @@ footer{
       },
       "baseline": {
         "stage3": {
-          "p25": "2026",
-          "p50": "2027",
-          "p75": "2029"
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2028"
         },
         "stage4": {
           "p25": "2027",
@@ -905,13 +1121,37 @@ footer{
           "p75": "2030"
         },
         "stage5": {
-          "p25": "2028",
-          "p50": "2030",
-          "p75": "2033"
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2032"
         }
       },
       "dependencies": [],
       "news": [
+        {
+          "date": "2026-06-01",
+          "title": "PersonaVLM: Long-Term Personalized Multimodal LLMs (CVPR 2026, +22.4% on Persona-MME)",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Nie_PersonaVLM...pdf",
+          "source": "CVPR 2026",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-05-27",
+          "title": "How we built our user-profile system — canonical six-layer pattern for personalized LLM",
+          "url": "https://blog.sourceshift.io/p/how-we-built-our-user-profile-system",
+          "source": "SourceShift",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-04-22",
+          "title": "From Hidden Profiles to Governable Personalization (arXiv position paper)",
+          "url": "https://arxiv.org/pdf/2604.20065",
+          "source": "arXiv",
+          "direction": "positive",
+          "signal_score": 60
+        },
         {
           "date": "2026-06-04",
           "title": "Dreaming: Better memory for a more helpful ChatGPT",
@@ -928,9 +1168,9 @@ footer{
       "name": "Эпизодическая память",
       "shortName": "C2 Эпизодическая",
       "description": "Память о конкретных событиях и взаимодействиях с пользователем. Что было сделано, когда, с каким результатом.",
-      "maturity": 2.4,
+      "maturity": 2.7,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет памяти о событиях",
         "1": "Исследования episodic memory",
@@ -941,57 +1181,9 @@ footer{
       },
       "baseline": {
         "stage3": {
-          "p25": "2026",
-          "p50": "2027",
-          "p75": "2029"
-        },
-        "stage4": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
-        },
-        "stage5": {
-          "p25": "2028",
-          "p50": "2030",
-          "p75": "2033"
-        }
-      },
-      "dependencies": [
-        "C1"
-      ],
-      "news": [
-        {
-          "date": "2026-06-30",
-          "title": "Microsoft unveils Memora to tackle AI agents' memory problem",
-          "url": "https://www.infoworld.com/article/4191031/microsoft-unveils-memora-to-tackle-ai-agents-memory-problem.html",
-          "source": "InfoWorld",
-          "direction": "positive",
-          "signal_score": 70
-        }
-      ]
-    },
-    {
-      "id": "C3",
-      "track": "C",
-      "name": "Семантическая память",
-      "shortName": "C3 Семантическая",
-      "description": "Память о фактах и знаниях, связанных с пользователем: где живёт, кем работает, что знает. Персональный knowledge graph.",
-      "maturity": 3,
-      "stage": "Pilot",
-      "confidence": "Medium",
-      "criteria_0_5": {
-        "0": "Нет семантической памяти",
-        "1": "Исследования personal knowledge graphs",
-        "2": "Демонстрация извлечения фактов о пользователе",
-        "3": "Работает в продуктах",
-        "4": "Надёжный personal KG, самообновляемый",
-        "5": "Стандартный personal knowledge graph"
-      },
-      "baseline": {
-        "stage3": {
           "p25": "2025",
           "p50": "2026",
-          "p75": "2026"
+          "p75": "2028"
         },
         "stage4": {
           "p25": "2027",
@@ -1008,6 +1200,102 @@ footer{
         "C1"
       ],
       "news": [
+        {
+          "date": "2026-05-11",
+          "title": "Episodic memory for AI agents — Mem0 deep dive",
+          "url": "https://mem0.ai/blog/episodic-memory-for-ai-agents",
+          "source": "Mem0",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-04-01",
+          "title": "AI Agent Memory 2026: Progress Benchmark Report — Mem0 (+29.6 pts temporal)",
+          "url": "https://mem0.ai/blog/state-of-ai-agent-memory-2026",
+          "source": "Mem0",
+          "direction": "positive",
+          "signal_score": 50
+        },
+        {
+          "date": "2026-05-12",
+          "title": "Introducing Temporal Reasoning in Mem0 — LoCoMo 86.1%→92.5%",
+          "url": "https://mem0.ai/blog/introducing-temporal-reasoning-in-mem0",
+          "source": "Mem0",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-06-30",
+          "title": "Microsoft unveils Memora to tackle AI agents' memory problem",
+          "url": "https://www.infoworld.com/article/4191031/microsoft-unveils-memora-to-tackle-ai-agents-memory-problem.html",
+          "source": "InfoWorld",
+          "direction": "positive",
+          "signal_score": 70
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "track": "C",
+      "name": "Семантическая память",
+      "shortName": "C3 Семантическая",
+      "description": "Память о фактах и знаниях, связанных с пользователем: где живёт, кем работает, что знает. Персональный knowledge graph.",
+      "maturity": 3.4,
+      "stage": "Pilot",
+      "confidence": "High",
+      "criteria_0_5": {
+        "0": "Нет семантической памяти",
+        "1": "Исследования personal knowledge graphs",
+        "2": "Демонстрация извлечения фактов о пользователе",
+        "3": "Работает в продуктах",
+        "4": "Надёжный personal KG, самообновляемый",
+        "5": "Стандартный personal knowledge graph"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2026"
+        },
+        "stage4": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
+        },
+        "stage5": {
+          "p25": "2026",
+          "p50": "2028",
+          "p75": "2031"
+        }
+      },
+      "dependencies": [
+        "C1"
+      ],
+      "news": [
+        {
+          "date": "2026-04-13",
+          "title": "Synthius-Mem: Brain-Inspired Persona Memory 94.4% LoCoMo, 99.6% adversarial robustness",
+          "url": "https://arxiv.org/abs/2604.11563",
+          "source": "arXiv",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-03-01",
+          "title": "The EpisTwin: Knowledge Graph-Grounded Neuro-Symbolic Architecture for Personal AI",
+          "url": "https://www.arxiv.org/pdf/2603.06290",
+          "source": "arXiv",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-03-21",
+          "title": "Synaptic Memory: Brain-inspired knowledge graph with 42 MCP tools",
+          "url": "https://github.com/PlateerLab/synaptic-memory",
+          "source": "GitHub / PlateerLab",
+          "direction": "positive",
+          "signal_score": 50
+        },
         {
           "date": "2026-06-04",
           "title": "Dreaming: Better memory for a more helpful ChatGPT",
@@ -1032,9 +1320,9 @@ footer{
       "name": "Предпочтения и ценности",
       "shortName": "C4 Ценности",
       "description": "Понимание что пользователь любит/не любит, его стиль общения, ценности, приоритеты. Адаптация поведения под пользователя.",
-      "maturity": 1.6,
+      "maturity": 1.8,
       "stage": "Research",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет модели предпочтений",
         "1": "Исследования value alignment",
@@ -1050,9 +1338,9 @@ footer{
           "p75": "2030"
         },
         "stage4": {
-          "p25": "2029",
-          "p50": "2030",
-          "p75": "2032"
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
         },
         "stage5": {
           "p25": "2029",
@@ -1065,6 +1353,22 @@ footer{
         "C3"
       ],
       "news": [
+        {
+          "date": "2026-07-01",
+          "title": "ALIGNX: Scaling Up Personalized Preference for User-level Alignment (ACL 2026)",
+          "url": "https://aclanthology.org/2026.acl-long.1391.pdf",
+          "source": "ACL 2026",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-03-05",
+          "title": "VISA: Value Injection via Shielded Adaptation — 43.1% less value drift vs SFT",
+          "url": "https://arxiv.org/pdf/2603.04822",
+          "source": "arXiv",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-07-01",
           "title": "VALUE ALIGNMENT TAX: Measuring Value Trade-offs in LLM Alignment",
@@ -1089,9 +1393,9 @@ footer{
       "name": "Текущий контекст",
       "shortName": "C5 Контекст",
       "description": "Понимание что пользователь делает прямо сейчас: какое приложение открыто, где находится, какое время суток, что происходило 5 минут назад.",
-      "maturity": 2.8,
-      "stage": "Demonstration",
-      "confidence": "Medium",
+      "maturity": 3.3,
+      "stage": "Pilot",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет контекста",
         "1": "Базовая геолокация и время",
@@ -1104,12 +1408,12 @@ footer{
         "stage3": {
           "p25": "2025",
           "p50": "2026",
-          "p75": "2028"
+          "p75": "2026"
         },
         "stage4": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
         },
         "stage5": {
           "p25": "2027",
@@ -1122,6 +1426,22 @@ footer{
         "D4"
       ],
       "news": [
+        {
+          "date": "2026-05-15",
+          "title": "Context is all you need: Introducing Redis Iris — unified context engine",
+          "url": "https://redis.io/blog/context-is-all-you-need/",
+          "source": "Redis",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-05-18",
+          "title": "Build a smarter real-time AI agent with Redis Iris — LangGraph + MCP",
+          "url": "https://redis.io/tutorials/redis-iris-call-agent/",
+          "source": "Redis",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-07-15",
           "title": "Real-time context: keeping agent inputs fresh on every step (Redis Iris)",
@@ -1146,9 +1466,9 @@ footer{
       "name": "Управление памятью",
       "shortName": "C6 Упр. памятью",
       "description": "Пользователь может просмотреть, что ИИ о нём знает, удалить, скорректировать. Privacy-aware memory management.",
-      "maturity": 1.9,
-      "stage": "Research",
-      "confidence": "Medium",
+      "maturity": 2.1,
+      "stage": "Demonstration",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет управления памятью",
         "1": "Теоретические работы",
@@ -1159,9 +1479,9 @@ footer{
       },
       "baseline": {
         "stage3": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
         },
         "stage4": {
           "p25": "2028",
@@ -1169,9 +1489,9 @@ footer{
           "p75": "2031"
         },
         "stage5": {
-          "p25": "2029",
-          "p50": "2031",
-          "p75": "2034"
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2033"
         }
       },
       "dependencies": [
@@ -1179,6 +1499,22 @@ footer{
         "G4"
       ],
       "news": [
+        {
+          "date": "2026-06-04",
+          "title": "Dreaming V3: Better memory for ChatGPT — recall 41.5%→82.8%",
+          "url": "https://openai.com/index/chatgpt-memory-dreaming/",
+          "source": "OpenAI",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-02-12",
+          "title": "The Pensieve Paradigm: Stateful Language Models Mastering Their Own Context (StateLM)",
+          "url": "https://doi.org/10.48550/arxiv.2602.12108",
+          "source": "arXiv",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2025-06-03",
           "title": "Memory and new controls for ChatGPT",
@@ -1203,9 +1539,9 @@ footer{
       "name": "Разговорный интерфейс",
       "shortName": "D1 Разговор",
       "description": "Естественный голосовой диалог с задержкой &lt;200мс. Интонации, эмоции, перебивание, многоголосие, шёпот.",
-      "maturity": 4,
+      "maturity": 4.5,
       "stage": "Production",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Только текст",
         "1": "TTS/STT базового качества",
@@ -1226,15 +1562,39 @@ footer{
           "p75": "2028"
         },
         "stage5": {
-          "p25": "2026",
-          "p50": "2028",
-          "p75": "2031"
+          "p25": "2025",
+          "p50": "2027",
+          "p75": "2030"
         }
       },
       "dependencies": [
         "A1"
       ],
       "news": [
+        {
+          "date": "2026-07-08",
+          "title": "Introducing GPT-Live — full-duplex voice models from OpenAI",
+          "url": "https://openai.com/index/introducing-gpt-live",
+          "source": "OpenAI",
+          "direction": "positive",
+          "signal_score": 80
+        },
+        {
+          "date": "2026-07-10",
+          "title": "OpenAI Didn't Publish GPT-Live's Latency. So We Measured It — ~1.1s acknowledge",
+          "url": "https://medium.com/agora-io/openai-didnt-publish-gpt-live-s-latency-so-we-measured-it-cf73016db989",
+          "source": "Agora Lab / Medium",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-07-08",
+          "title": "OpenAI launches GPT-Live, a full-duplex voice upgrade — VentureBeat",
+          "url": "https://venturebeat.com/technology/openai-launches-gpt-live-a-full-duplex-voice-upgrade-that-lets-chatgpt-talk-more-like-a-person",
+          "source": "VentureBeat",
+          "direction": "positive",
+          "signal_score": 70
+        },
         {
           "date": "2026-07-08",
           "title": "Introducing GPT-Live — real-time voice conversations",
@@ -1259,9 +1619,9 @@ footer{
       "name": "Визуальный интерфейс",
       "shortName": "D2 Визуальный",
       "description": "ИИ «видит» экран пользователя и понимает контекст. Компьютерное зрение для GUI, on-screen awareness.",
-      "maturity": 2.9,
-      "stage": "Demonstration",
-      "confidence": "Medium",
+      "maturity": 3.4,
+      "stage": "Pilot",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет визуального понимания",
         "1": "Скриншоты как изображения",
@@ -1274,17 +1634,17 @@ footer{
         "stage3": {
           "p25": "2025",
           "p50": "2026",
-          "p75": "2028"
+          "p75": "2026"
         },
         "stage4": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
         },
         "stage5": {
-          "p25": "2027",
-          "p50": "2029",
-          "p75": "2032"
+          "p25": "2026",
+          "p50": "2028",
+          "p75": "2031"
         }
       },
       "dependencies": [
@@ -1292,6 +1652,30 @@ footer{
         "D1"
       ],
       "news": [
+        {
+          "date": "2026-06-01",
+          "title": "Apple introduces Siri AI with onscreen awareness at WWDC26",
+          "url": "https://www.apple.com/newsroom/2026/06/apple-introduces-siri-ai-a-profoundly-more-capable-and-personal-assistant/",
+          "source": "Apple",
+          "direction": "positive",
+          "signal_score": 75
+        },
+        {
+          "date": "2026-05-01",
+          "title": "ScreenParse / ScreenVLM: Complete Screen Parsing with 771K screenshots (Microsoft Research, ICML 2026)",
+          "url": "https://www.microsoft.com/en-us/research/publication/moving-beyond-sparse-grounding-with-complete-screen-parsing-supervision/",
+          "source": "Microsoft Research",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-07-01",
+          "title": "Copilot vision is generally available — VS Code, github.com, CLI",
+          "url": "https://github.blog/changelog/2026-07-01-copilot-vision-is-generally-available/",
+          "source": "GitHub Blog",
+          "direction": "positive",
+          "signal_score": 60
+        },
         {
           "date": "2026-07-14",
           "title": "New Siri AI Debuts via iOS 27 Public Beta with On-Screen Awareness",
@@ -1308,9 +1692,9 @@ footer{
       "name": "Проактивность",
       "shortName": "D3 Проактивность",
       "description": "ИИ предугадывает потребности, предлагает действия до явной просьбы, упреждает проблемы. Анализирует паттерны поведения.",
-      "maturity": 2,
+      "maturity": 2.3,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Только реактивный режим",
         "1": "Исследования anticipatory AI",
@@ -1321,9 +1705,9 @@ footer{
       },
       "baseline": {
         "stage3": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
         },
         "stage4": {
           "p25": "2028",
@@ -1331,9 +1715,9 @@ footer{
           "p75": "2031"
         },
         "stage5": {
-          "p25": "2029",
-          "p50": "2031",
-          "p75": "2034"
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2033"
         }
       },
       "dependencies": [
@@ -1341,6 +1725,30 @@ footer{
         "D1"
       ],
       "news": [
+        {
+          "date": "2026-05-19",
+          "title": "Gemini app becomes more agentic: Daily Brief + Gemini Spark 24/7 proactive agent",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app/",
+          "source": "Google Blog",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-05-28",
+          "title": "ProAct: AI agent predicts user needs during idle time, reduces hallucinations 28%",
+          "url": "https://tech.yahoo.com/ai/articles/ai-agents-learning-predict-users-202453441.html",
+          "source": "Yahoo Tech",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-04-13",
+          "title": "Google Now Could Return With the Power of Gemini — 'Your Day' proactive feed",
+          "url": "https://www.droid-life.com/2026/04/13/google-now-could-return-with-the-power-of-gemini/",
+          "source": "Droid Life",
+          "direction": "positive",
+          "signal_score": 50
+        },
         {
           "date": "2026-05-14",
           "title": "Android's latest AI feature predicts what you'll do next",
@@ -1365,9 +1773,9 @@ footer{
       "name": "Непрерывность между устройствами",
       "shortName": "D4 Мульти-девайс",
       "description": "ИИ синхронизирован между телефоном, ноутбуком, часами, очками, авто. Бесшовное переключение контекста.",
-      "maturity": 2.9,
-      "stage": "Demonstration",
-      "confidence": "Medium",
+      "maturity": 3.2,
+      "stage": "Pilot",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Одно устройство",
         "1": "Базовая синхронизация истории",
@@ -1375,104 +1783,6 @@ footer{
         "3": "Работает в экосистемах (Apple, Google, Samsung)",
         "4": "Бесшовный переход между любыми устройствами",
         "5": "Cross-device как стандарт, не зависит от вендора"
-      },
-      "baseline": {
-        "stage3": {
-          "p25": "2025",
-          "p50": "2026",
-          "p75": "2028"
-        },
-        "stage4": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
-        },
-        "stage5": {
-          "p25": "2027",
-          "p50": "2029",
-          "p75": "2032"
-        }
-      },
-      "dependencies": [
-        "C5",
-        "E1"
-      ],
-      "news": [
-        {
-          "date": "2026-01-06",
-          "title": "Lenovo and Motorola Qira — Personal Ambient Intelligence Across Devices",
-          "url": "https://news.lenovo.com/pressroom/press-releases/lenovo-unveils-lenovo-and-motorola-qira/",
-          "source": "Lenovo",
-          "direction": "positive",
-          "signal_score": 60
-        }
-      ]
-    },
-    {
-      "id": "D5",
-      "track": "D",
-      "name": "Социальное поведение",
-      "shortName": "D5 Социум",
-      "description": "ИИ понимает социальный контекст: когда уместно говорить, когда промолчать, как общаться с разными людьми. Эмоциональный интеллект.",
-      "maturity": 2,
-      "stage": "Demonstration",
-      "confidence": "Low",
-      "criteria_0_5": {
-        "0": "Игнорирует социальный контекст",
-        "1": "Исследования social AI",
-        "2": "Демонстрация эмоционального ответа",
-        "3": "Базовая социальная адаптация в продуктах",
-        "4": "Убедительное социальное поведение в большинстве ситуаций",
-        "5": "Социальный интеллект на уровне человека"
-      },
-      "baseline": {
-        "stage3": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
-        },
-        "stage4": {
-          "p25": "2028",
-          "p50": "2029",
-          "p75": "2031"
-        },
-        "stage5": {
-          "p25": "2029",
-          "p50": "2031",
-          "p75": "2034"
-        }
-      },
-      "dependencies": [
-        "D1",
-        "C4"
-      ],
-      "news": [
-        {
-          "date": "2026-02-19",
-          "title": "'We May Have a Crisis': The Unregulated Rise of Emotionally Intelligent AI",
-          "url": "https://time.com/7379564/ai-emotional-intelligence-support-bots/",
-          "source": "TIME",
-          "direction": "neutral",
-          "signal_score": 55
-        }
-      ]
-    },
-    {
-      "id": "E1",
-      "track": "E",
-      "name": "Цифровой мир",
-      "shortName": "E1 Цифровой",
-      "description": "Доступ к приложениям, файлам, API, сервисам. Чтение/запись данных, управление настройками, интеграция с digital-инструментами.",
-      "maturity": 3.3,
-      "stage": "Pilot",
-      "confidence": "Medium",
-      "criteria_0_5": {
-        "0": "Только текст",
-        "1": "Базовые API-вызовы",
-        "2": "Демонстрация multi-app действий",
-        "3": "Работает в продуктах (MCP, Computer Use)",
-        "4": "Широкий охват сервисов и приложений",
-        "5": "Любое digital-действие через стандартный протокол"
       },
       "baseline": {
         "stage3": {
@@ -1492,9 +1802,179 @@ footer{
         }
       },
       "dependencies": [
+        "C5",
+        "E1"
+      ],
+      "news": [
+        {
+          "date": "2026-02-28",
+          "title": "Lenovo Qira: Cross-Device AI Assistant at MWC 2026",
+          "url": "https://www.digitalapplied.com/blog/lenovo-qira-ai-assistant-mwc-2026-cross-device",
+          "source": "Digital Applied",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-04-15",
+          "title": "Claude Device Sync v1.0: Encrypted Cross-Device Session Sync",
+          "url": "https://github.com/hmennen90/claude-device-sync/tree/v1.0.1",
+          "source": "GitHub",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-01-13",
+          "title": "Qira Q&amp;A: How Lenovo's Cross-Device AI Will Keep You in the Zone",
+          "url": "https://ca.pcmag.com/ai/13316/qira-qa-how-lenovos-cross-device-ai-will-keep-you-in-the-zone-ces-2026",
+          "source": "PCMag",
+          "direction": "positive",
+          "signal_score": 50
+        },
+        {
+          "date": "2026-04-22",
+          "title": "TopoClaw: Open-Source Cross-Device AI Agent for Android and Windows",
+          "url": "https://github.com/MadeAgents/TopoClaw",
+          "source": "GitHub / MadeAgents",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-01-06",
+          "title": "Lenovo and Motorola Qira — Personal Ambient Intelligence Across Devices",
+          "url": "https://news.lenovo.com/pressroom/press-releases/lenovo-unveils-lenovo-and-motorola-qira/",
+          "source": "Lenovo",
+          "direction": "positive",
+          "signal_score": 60
+        }
+      ]
+    },
+    {
+      "id": "D5",
+      "track": "D",
+      "name": "Социальное поведение",
+      "shortName": "D5 Социум",
+      "description": "ИИ понимает социальный контекст: когда уместно говорить, когда промолчать, как общаться с разными людьми. Эмоциональный интеллект.",
+      "maturity": 2.2,
+      "stage": "Demonstration",
+      "confidence": "High",
+      "criteria_0_5": {
+        "0": "Игнорирует социальный контекст",
+        "1": "Исследования social AI",
+        "2": "Демонстрация эмоционального ответа",
+        "3": "Базовая социальная адаптация в продуктах",
+        "4": "Убедительное социальное поведение в большинстве ситуаций",
+        "5": "Социальный интеллект на уровне человека"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2033"
+        }
+      },
+      "dependencies": [
+        "D1",
+        "C4"
+      ],
+      "news": [
+        {
+          "date": "2026-05-03",
+          "title": "Hume AI Review 2026: Empathic Voice AI Analyzing 50+ Emotional Dimensions",
+          "url": "https://toolchase.com/tool/hume-ai/",
+          "source": "ToolChase",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-07-14",
+          "title": "Multi-agent social intelligence with Strands Agents and Amazon Bedrock (AWS)",
+          "url": "https://aws.amazon.com/blogs/machine-learning/multi-agent-social-intelligence-with-strands-agents-and-amazon-bedrock/",
+          "source": "AWS Blog",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-06-09",
+          "title": "SocialR1-8B: Social Reasoning Model with Theory-of-Mind via Trajectory-Level RL",
+          "url": "https://huggingface.co/Jincenzi/SocialR1-8B",
+          "source": "Hugging Face",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-02-19",
+          "title": "'We May Have a Crisis': The Unregulated Rise of Emotionally Intelligent AI",
+          "url": "https://time.com/7379564/ai-emotional-intelligence-support-bots/",
+          "source": "TIME",
+          "direction": "neutral",
+          "signal_score": 55
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "track": "E",
+      "name": "Цифровой мир",
+      "shortName": "E1 Цифровой",
+      "description": "Доступ к приложениям, файлам, API, сервисам. Чтение/запись данных, управление настройками, интеграция с digital-инструментами.",
+      "maturity": 3.7,
+      "stage": "Pilot",
+      "confidence": "High",
+      "criteria_0_5": {
+        "0": "Только текст",
+        "1": "Базовые API-вызовы",
+        "2": "Демонстрация multi-app действий",
+        "3": "Работает в продуктах (MCP, Computer Use)",
+        "4": "Широкий охват сервисов и приложений",
+        "5": "Любое digital-действие через стандартный протокол"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2026"
+        },
+        "stage4": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2028"
+        },
+        "stage5": {
+          "p25": "2026",
+          "p50": "2028",
+          "p75": "2031"
+        }
+      },
+      "dependencies": [
         "B1"
       ],
       "news": [
+        {
+          "date": "2026-06-29",
+          "title": "Beta SDKs for 2026-07-28 MCP Spec — Python v2, TypeScript v2, Go, C#",
+          "url": "https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/",
+          "source": "MCP Blog",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-03-14",
+          "title": "MCP's biggest growing pains for production use will soon be solved (The New Stack)",
+          "url": "https://thenewstack.io/model-context-protocol-roadmap-2026/",
+          "source": "The New Stack",
+          "direction": "positive",
+          "signal_score": 50
+        },
         {
           "date": "2026-07-03",
           "title": "Alphio AI Integrates with Robinhood to Launch Advanced Natural Language Agentic Trading Capabilities",
@@ -1519,9 +1999,9 @@ footer{
       "name": "Транзакции",
       "shortName": "E2 Транзакции",
       "description": "Совершение покупок, переводов, бронирований от имени пользователя. Безопасное выполнение финансовых операций.",
-      "maturity": 1.9,
-      "stage": "Research",
-      "confidence": "Medium",
+      "maturity": 2.4,
+      "stage": "Demonstration",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Не выполняет транзакции",
         "1": "Исследования AI-транзакций",
@@ -1532,19 +2012,19 @@ footer{
       },
       "baseline": {
         "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
+        },
+        "stage4": {
           "p25": "2027",
           "p50": "2028",
           "p75": "2030"
         },
-        "stage4": {
-          "p25": "2028",
-          "p50": "2029",
-          "p75": "2031"
-        },
         "stage5": {
-          "p25": "2029",
-          "p50": "2031",
-          "p75": "2034"
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2033"
         }
       },
       "dependencies": [
@@ -1553,6 +2033,22 @@ footer{
         "G4"
       ],
       "news": [
+        {
+          "date": "2026-07-16",
+          "title": "Agentic Payments: What Onchain Data Reveals About Commerce (Visa × Artemis)",
+          "url": "https://www.visa.com/en-us/thought-leadership/innovation/agentic-payments-from-the-ground-up",
+          "source": "Visa",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-07-16",
+          "title": "Visa, Stripe, Google join x402 Foundation for AI agent payments (CoinDesk)",
+          "url": "https://www.coindesk.com/business/2026/07/16/ai-payments-have-a-new-open-standards-body",
+          "source": "CoinDesk",
+          "direction": "positive",
+          "signal_score": 60
+        },
         {
           "date": "2026-07-02",
           "title": "Visa and Banks Across Europe Reach Next Phase of Agentic Commerce",
@@ -1577,9 +2073,9 @@ footer{
       "name": "Умная среда",
       "shortName": "E3 IoT/Среда",
       "description": "Управление умным домом, автомобилем, IoT-устройствами. Понимание физического окружения через сенсоры.",
-      "maturity": 2.7,
-      "stage": "Demonstration",
-      "confidence": "Medium",
+      "maturity": 3.1,
+      "stage": "Pilot",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет IoT",
         "1": "Базовые команды умному дому",
@@ -1592,12 +2088,12 @@ footer{
         "stage3": {
           "p25": "2025",
           "p50": "2026",
-          "p75": "2028"
+          "p75": "2026"
         },
         "stage4": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
         },
         "stage5": {
           "p25": "2027",
@@ -1610,6 +2106,22 @@ footer{
         "F5"
       ],
       "news": [
+        {
+          "date": "2026-03-19",
+          "title": "TELUS unveils world's first smart home AI assistant with Generative UI",
+          "url": "https://www.prnewswire.com/news-releases/telus-unveils-the-worlds-first-smart-home-ai-assistant-with-generative-ui-unifying-the-entire-connected-home-886174027.html",
+          "source": "PR Newswire",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-06-23",
+          "title": "Home Assistant migrates to matter.js — Matter 1.5.1, 38% of instances",
+          "url": "https://www.home-assistant.io/blog/2026/06/23/the-matter-upgrade-youve-been-waiting-for/",
+          "source": "Home Assistant",
+          "direction": "positive",
+          "signal_score": 60
+        },
         {
           "date": "2026-06-17",
           "title": "Matter 1.6 Enables Multi-Ecosystem Experiences and Context-Driven Control",
@@ -1634,9 +2146,9 @@ footer{
       "name": "Роботизированное воплощение",
       "shortName": "E4 Роботы",
       "description": "Физические действия через роботов. Манипуляция объектами, перемещение, взаимодействие с физическим миром. Опционально для Digital Jarvis.",
-      "maturity": 2.1,
+      "maturity": 2.6,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет робототехники",
         "1": "Исследования robot learning",
@@ -1652,9 +2164,9 @@ footer{
           "p75": "2029"
         },
         "stage4": {
-          "p25": "2028",
-          "p50": "2029",
-          "p75": "2031"
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
         },
         "stage5": {
           "p25": "2028",
@@ -1668,6 +2180,30 @@ footer{
         "F4"
       ],
       "news": [
+        {
+          "date": "2026-06-30",
+          "title": "Apptronik Robot Park: 90K sq ft facility training Apollo humanoid robots with Google DeepMind",
+          "url": "https://www.globenewswire.com/news-release/2026/06/30/3319598/0/en/Welcome-to-Robot-Park.html",
+          "source": "GlobeNewswire",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-07-01",
+          "title": "Apptronik's robot park to speed humanoid AI development through real tasks",
+          "url": "https://interestingengineering.com/ai-robotics/apptronik-robot-park-humanoid-ai-development",
+          "source": "Interesting Engineering",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-06-30",
+          "title": "Apptronik's Humanoid Robots Are Practicing for Their First Real Jobs (Business Insider)",
+          "url": "https://www.businessinsider.com/apptroniks-humanoid-robots-are-practicing-for-their-first-real-jobs-2026-6",
+          "source": "Business Insider",
+          "direction": "positive",
+          "signal_score": 75
+        },
         {
           "date": "2026-07-16",
           "title": "Faster, Cheaper Way to Teach a Humanoid Robot to Walk Over Real-World Terrain",
@@ -1692,9 +2228,9 @@ footer{
       "name": "Взаимодействие с другими агентами",
       "shortName": "E5 Agent2Agent",
       "description": "Способность ИИ-помощника общаться с ИИ-помощниками других людей: календари, встречи, переговоры, обмен данными.",
-      "maturity": 1.4,
+      "maturity": 1.9,
       "stage": "Research",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет A2A",
         "1": "Теоретические работы по agent protocols",
@@ -1710,9 +2246,9 @@ footer{
           "p75": "2030"
         },
         "stage4": {
-          "p25": "2029",
-          "p50": "2030",
-          "p75": "2032"
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
         },
         "stage5": {
           "p25": "2029",
@@ -1725,6 +2261,22 @@ footer{
         "H1"
       ],
       "news": [
+        {
+          "date": "2026-04-09",
+          "title": "A2A Protocol Surpasses 150 Organizations, Lands in Major Cloud Platforms",
+          "url": "https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations",
+          "source": "Linux Foundation",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-06-17",
+          "title": "Agentic Resource Discovery (ARD) Specification — Google, Microsoft, GitHub, Hugging Face",
+          "url": "https://developers.googleblog.com/en/announcing-the-agentic-resource-discovery-specification/",
+          "source": "Google Developers",
+          "direction": "positive",
+          "signal_score": 65
+        },
         {
           "date": "2026-04-01",
           "title": "A2A Protocol Ships v1.0: Production-Ready Standard for Agent-to-Agent Communication",
@@ -1749,9 +2301,9 @@ footer{
       "name": "Вычислительная эффективность",
       "shortName": "F1 Эффективность",
       "description": "Скорость инференса (токенов/с), параметрическая эффективность. Модели делают больше за меньшее число параметров.",
-      "maturity": 3.9,
-      "stage": "Pilot",
-      "confidence": "Medium",
+      "maturity": 4.4,
+      "stage": "Production",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Очень медленно",
         "1": "Исследования эффективных архитектур",
@@ -1767,20 +2319,44 @@ footer{
           "p75": "2026"
         },
         "stage4": {
-          "p25": "2025",
-          "p50": "2026",
+          "p25": "2026",
+          "p50": "2027",
           "p75": "2028"
         },
         "stage5": {
-          "p25": "2026",
-          "p50": "2028",
-          "p75": "2031"
+          "p25": "2025",
+          "p50": "2027",
+          "p75": "2030"
         }
       },
       "dependencies": [
         "A1"
       ],
       "news": [
+        {
+          "date": "2026-06-01",
+          "title": "Google Systems Engineering Playbook: Optimizing Qwen 3.5-397B MoE on Ironwood TPU7x",
+          "url": "https://developers.googleblog.com/systems-engineering-playbook-optimizing-qwen-35-397b-moe-on-ironwood-tpu7x/",
+          "source": "Google Developers",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-07-01",
+          "title": "Faster MoE LLM Inference for Extremely Large Models (ACL 2026)",
+          "url": "https://aclanthology.org/2026.findings-acl.2140.pdf",
+          "source": "ACL 2026",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-01-30",
+          "title": "LatentMoE: Toward Optimal Accuracy per FLOP and Parameter in MoE",
+          "url": "https://arxiv.org/pdf/2601.18089",
+          "source": "arXiv",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-06-29",
           "title": "DeepSeek open sources DSpark, speeds up LLM inference by up to 85%",
@@ -1805,9 +2381,9 @@ footer{
       "name": "Задержка",
       "shortName": "F2 Latency",
       "description": "Время от запроса до начала ответа. Для голоса — &lt;200ms, для действий — &lt;1s. Time-to-first-token и inter-token latency.",
-      "maturity": 3.1,
+      "maturity": 3.3,
       "stage": "Pilot",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "&gt;5 секунд",
         "1": "Оптимизация latency",
@@ -1839,6 +2415,22 @@ footer{
       ],
       "news": [
         {
+          "date": "2026-06-01",
+          "title": "LLM Benchmark 2026 — 26 Providers, Latency &amp; Cost — VerticalAPI",
+          "url": "https://verticalapi.com/benchmark/",
+          "source": "VerticalAPI",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-06-01",
+          "title": "AI Model Latency Benchmarks 2026: TTFT &amp; TPS Data (Digital Applied)",
+          "url": "https://www.digitalapplied.com/blog/ai-model-latency-benchmarks-2026-ttft-throughput",
+          "source": "Digital Applied",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
           "date": "2026-07-03",
           "title": "LLM Latency Benchmarks 2026: 6 Levers for Sub-500ms TTFT",
           "url": "https://www.kunalganglani.com/blog/llm-latency-benchmark-optimization",
@@ -1862,7 +2454,7 @@ footer{
       "name": "Стоимость",
       "shortName": "F3 Стоимость",
       "description": "Цена за 1M токенов, стоимость обслуживания ассистента в месяц. Доступность для массового пользователя.",
-      "maturity": 3.4,
+      "maturity": 3.7,
       "stage": "Pilot",
       "confidence": "High",
       "criteria_0_5": {
@@ -1880,9 +2472,9 @@ footer{
           "p75": "2026"
         },
         "stage4": {
-          "p25": "2026",
-          "p50": "2027",
-          "p75": "2029"
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2028"
         },
         "stage5": {
           "p25": "2026",
@@ -1894,6 +2486,30 @@ footer{
         "F1"
       ],
       "news": [
+        {
+          "date": "2026-07-01",
+          "title": "DeepSeek Official Models &amp; Pricing — V4 Flash / V4 Pro",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "source": "DeepSeek",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-05-27",
+          "title": "Deepseek makes 75% discount permanent, pricing 34x below GPT-5.5",
+          "url": "https://the-decoder.com/deepseek-makes-its-75-percent-discount-permanent-pricing-output-tokens-at-least-34x-below-gpt-5-5/",
+          "source": "The Decoder",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-05-27",
+          "title": "DeepSeek made 75% discount permanent. The AI price war just escalated. (TNW)",
+          "url": "https://thenextweb.com/news/deepseek-v4-pro-75-percent-price-cut-permanent",
+          "source": "TNW",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-04-24",
           "title": "Three reasons why DeepSeek's new model matters — cost efficiency",
@@ -1910,9 +2526,9 @@ footer{
       "name": "Edge и on-device",
       "shortName": "F4 On-device",
       "description": "Мощные модели работают локально на устройстве. NPU, квантование,蒸馏. Без интернета, с полной приватностью.",
-      "maturity": 3.2,
+      "maturity": 3.7,
       "stage": "Pilot",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Только cloud",
         "1": "Маленькие модели на устройстве",
@@ -1928,20 +2544,44 @@ footer{
           "p75": "2026"
         },
         "stage4": {
-          "p25": "2026",
-          "p50": "2027",
-          "p75": "2029"
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2028"
         },
         "stage5": {
-          "p25": "2027",
-          "p50": "2029",
-          "p75": "2032"
+          "p25": "2026",
+          "p50": "2028",
+          "p75": "2031"
         }
       },
       "dependencies": [
         "F1"
       ],
       "news": [
+        {
+          "date": "2026-06-01",
+          "title": "llama.cpp on Snapdragon Hexagon NPU: First Real Benchmarks",
+          "url": "https://specpicks.com/reviews/llama-cpp-snapdragon-hexagon-npu-benchmarks-2026",
+          "source": "SpecPicks",
+          "direction": "positive",
+          "signal_score": 70
+        },
+        {
+          "date": "2026-06-01",
+          "title": "QHexRT Is Live: Full-Stack NPU Inference for Qualcomm Hexagon (Hugging Face)",
+          "url": "https://huggingface.co/blog/runanywhere/qhexrt-intro",
+          "source": "Hugging Face",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-05-01",
+          "title": "Benchmarked Llama 3.2 3B on Snapdragon X Plus — beat Qualcomm's numbers",
+          "url": "https://medium.com/@kulmiyea/i-benchmarked-llama-3-2-3b-on-a-snapdragon-x-plus-and-beat-qualcomms-published-numbers-1ed22f002ffd",
+          "source": "Medium",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-07-14",
           "title": "PrismML Announces 1-bit Bonsai 27B — First 27B Model to Run on a Phone",
@@ -1966,9 +2606,9 @@ footer{
       "name": "Доступность и масштабирование",
       "shortName": "F5 Масштаб",
       "description": "Доступность сервиса 99.9%+. Миллиарды пользователей одновременно. Географическое покрытие, языки, accessibility.",
-      "maturity": 3.2,
+      "maturity": 3.5,
       "stage": "Pilot",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Ограниченный доступ",
         "1": "Базовое масштабирование",
@@ -1989,9 +2629,9 @@ footer{
           "p75": "2029"
         },
         "stage5": {
-          "p25": "2027",
-          "p50": "2029",
-          "p75": "2032"
+          "p25": "2026",
+          "p50": "2028",
+          "p75": "2031"
         }
       },
       "dependencies": [
@@ -1999,6 +2639,30 @@ footer{
         "H3"
       ],
       "news": [
+        {
+          "date": "2026-06-15",
+          "title": "ChatGPT Reaches 1 Billion Users as Rivals Post 640% and 973% Growth",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/chatgpt-reaches-1-billion-users-124854578.html",
+          "source": "Yahoo Finance",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-06-15",
+          "title": "ChatGPT Reaches 1 Billion Users as the AI Economy Takes Shape (PYMNTS)",
+          "url": "https://www.pymnts.com/news/artificial-intelligence/2026/chatgpt-reaches-1-billion-users-as-the-ai-economy-takes-shape/",
+          "source": "PYMNTS",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-04-01",
+          "title": "How ChatGPT adoption broadened in early 2026 (OpenAI Signals Q1 Update)",
+          "url": "https://openai.com/signals/research/2026q1-update/",
+          "source": "OpenAI",
+          "direction": "positive",
+          "signal_score": 60
+        },
         {
           "date": "2026-02-27",
           "title": "ChatGPT reaches 900M weekly active users",
@@ -2015,9 +2679,9 @@ footer{
       "name": "Идентификация и права доступа",
       "shortName": "G1 Доступ",
       "description": "Надёжная аутентификация пользователя. Разграничение: что ИИ может делать сам, что требует подтверждения.",
-      "maturity": 2.7,
-      "stage": "Demonstration",
-      "confidence": "Medium",
+      "maturity": 3,
+      "stage": "Pilot",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет разграничения",
         "1": "Базовый consent",
@@ -2030,7 +2694,7 @@ footer{
         "stage3": {
           "p25": "2025",
           "p50": "2026",
-          "p75": "2028"
+          "p75": "2026"
         },
         "stage4": {
           "p25": "2027",
@@ -2047,6 +2711,22 @@ footer{
         "G2"
       ],
       "news": [
+        {
+          "date": "2026-06-15",
+          "title": "CrowdStrike Unveils Continuous Identity for AI Agents",
+          "url": "https://www.crowdstrike.com/en-us/press-releases/crowdstrike-unveils-continuous-identity-for-ai-agents/",
+          "source": "CrowdStrike",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-06-15",
+          "title": "CrowdStrike Continuous Identity AI Agent Security Solution Analysis",
+          "url": "https://www.securitypost.org/en/articles/crowdstrike-unveils-ai-agent-identity-security",
+          "source": "SecurityPost",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-07-16",
           "title": "Least privilege for AI agents: Identity, access, and tool binding",
@@ -2071,9 +2751,9 @@ footer{
       "name": "Безопасность действий",
       "shortName": "G2 Безопасность",
       "description": "Защита от вредных действий: лимиты, подтверждения, откат. ИИ не может удалить важные файлы или перевести все деньги.",
-      "maturity": 2.4,
+      "maturity": 2.9,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет защиты",
         "1": "Базовые ограничения",
@@ -2084,9 +2764,9 @@ footer{
       },
       "baseline": {
         "stage3": {
-          "p25": "2026",
-          "p50": "2027",
-          "p75": "2029"
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2028"
         },
         "stage4": {
           "p25": "2027",
@@ -2094,15 +2774,31 @@ footer{
           "p75": "2030"
         },
         "stage5": {
-          "p25": "2028",
-          "p50": "2030",
-          "p75": "2033"
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2032"
         }
       },
       "dependencies": [
         "G1"
       ],
       "news": [
+        {
+          "date": "2026-07-15",
+          "title": "GPT-Red: Unlocking Self-Improvement for Robustness (OpenAI)",
+          "url": "https://openai.com/index/unlocking-self-improvement-gpt-red/",
+          "source": "OpenAI",
+          "direction": "positive",
+          "signal_score": 70
+        },
+        {
+          "date": "2026-07-16",
+          "title": "GPT-Red beat human red teamers on a prompt injection test (Help Net Security)",
+          "url": "https://www.helpnetsecurity.com/2026/07/16/openai-gpt-red-prompt-injection-test/",
+          "source": "Help Net Security",
+          "direction": "positive",
+          "signal_score": 60
+        },
         {
           "date": "2026-07-15",
           "title": "Meet GPT-Red: an LLM super-hacker OpenAI built to make its models safer",
@@ -2127,9 +2823,9 @@ footer{
       "name": "Кибербезопасность",
       "shortName": "G3 Кибербез",
       "description": "Защита от взлома ИИ-помощника, prompt injection, утечки данных, adversarial attacks.",
-      "maturity": 2.1,
+      "maturity": 2.4,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Уязвим ко всему",
         "1": "Исследования AI security",
@@ -2145,9 +2841,9 @@ footer{
           "p75": "2029"
         },
         "stage4": {
-          "p25": "2028",
-          "p50": "2029",
-          "p75": "2031"
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
         },
         "stage5": {
           "p25": "2028",
@@ -2159,6 +2855,30 @@ footer{
         "G2"
       ],
       "news": [
+        {
+          "date": "2026-07-15",
+          "title": "OpenAI Built an AI to Attack Itself: GPT-Red Exposed Flaws Humans Missed (TechTimes)",
+          "url": "https://www.techtimes.com/articles/320656/20260715/openai-built-ai-attack-itself-gpt-red-exposed-flaws-humans-missed.htm",
+          "source": "TechTimes",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-07-15",
+          "title": "GPT-Red: OpenAI Is Training Models to Break Other Models (RisingStack)",
+          "url": "https://blog.risingstack.com/gpt-red-openai-self-improving-ai-security/",
+          "source": "RisingStack",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-07-01",
+          "title": "Beyond Surface-Level Detection: Cognitive-Driven Defense Against Jailbreak Attacks (ACL 2026)",
+          "url": "https://aclanthology.org/2026.acl-long.125/",
+          "source": "ACL 2026",
+          "direction": "positive",
+          "signal_score": 65
+        },
         {
           "date": "2026-02-11",
           "title": "Prompt Injection Defense Architectures in 2026",
@@ -2183,9 +2903,9 @@ footer{
       "name": "Приватность",
       "shortName": "G4 Приватность",
       "description": "Данные пользователя не покидают устройство без разрешения. Федеративное обучение, differential privacy, secure enclaves.",
-      "maturity": 3.2,
+      "maturity": 3.6,
       "stage": "Pilot",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Данные в открытом доступе",
         "1": "Базовое шифрование",
@@ -2206,15 +2926,39 @@ footer{
           "p75": "2029"
         },
         "stage5": {
-          "p25": "2027",
-          "p50": "2029",
-          "p75": "2032"
+          "p25": "2026",
+          "p50": "2028",
+          "p75": "2031"
         }
       },
       "dependencies": [
         "F4"
       ],
       "news": [
+        {
+          "date": "2026-06-08",
+          "title": "Apple Private AI Will Run on Google Servers (MacRumors)",
+          "url": "https://www.macrumors.com/2026/06/08/apple-private-cloud-compute-google/",
+          "source": "MacRumors",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-06-09",
+          "title": "Apple says its AI is still private, even when running on Google's servers (Ars Technica)",
+          "url": "https://arstechnica.com/apple/2026/06/apple-says-its-ai-is-still-private-even-when-its-running-on-googles-servers/",
+          "source": "Ars Technica",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-07-01",
+          "title": "Apple Extends Private Cloud Compute to Google Cloud for the First Time (InfoQ)",
+          "url": "https://www.infoq.com/news/2026/07/apple-pcc-google-cloud/",
+          "source": "InfoQ",
+          "direction": "positive",
+          "signal_score": 75
+        },
         {
           "date": "2026-06-08",
           "title": "Expanding Private Cloud Compute — Apple extends PCC to Google Cloud",
@@ -2231,9 +2975,9 @@ footer{
       "name": "Согласованность с человеком",
       "shortName": "G5 Alignment",
       "description": "ИИ действует в интересах пользователя, не противоречит его ценностям. Alignment, RLHF, constitutional AI.",
-      "maturity": 2.9,
-      "stage": "Demonstration",
-      "confidence": "Medium",
+      "maturity": 3.4,
+      "stage": "Pilot",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Не контролируется",
         "1": "RLHF исследования",
@@ -2246,17 +2990,17 @@ footer{
         "stage3": {
           "p25": "2025",
           "p50": "2026",
-          "p75": "2028"
+          "p75": "2026"
         },
         "stage4": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
         },
         "stage5": {
-          "p25": "2027",
-          "p50": "2029",
-          "p75": "2032"
+          "p25": "2026",
+          "p50": "2028",
+          "p75": "2031"
         }
       },
       "dependencies": [
@@ -2264,6 +3008,22 @@ footer{
         "G2"
       ],
       "news": [
+        {
+          "date": "2026-03-01",
+          "title": "Teaching Claude Why — Anthropic Alignment Blog",
+          "url": "https://alignment.anthropic.com/2026/teaching-claude-why/",
+          "source": "Anthropic Alignment",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-03-27",
+          "title": "Expert Comment: In Claude We Trust? Evaluating the New Constitution (Oxford)",
+          "url": "https://www.ox.ac.uk/news/2026-03-27-expert-comment-claude-we-trust-evaluating-new-constitution",
+          "source": "Oxford University",
+          "direction": "positive",
+          "signal_score": 50
+        },
         {
           "date": "2026-01-22",
           "title": "Claude's new constitution",
@@ -2288,9 +3048,9 @@ footer{
       "name": "Ответственность и право",
       "shortName": "G6 Право",
       "description": "Правовая база: кто отвечает за действия AI, сертификация, права пользователей. EU AI Act, US regulation.",
-      "maturity": 3.1,
+      "maturity": 3.6,
       "stage": "Pilot",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет регулирования",
         "1": "Обсуждения и white papers",
@@ -2311,13 +3071,45 @@ footer{
           "p75": "2029"
         },
         "stage5": {
-          "p25": "2027",
-          "p50": "2029",
-          "p75": "2032"
+          "p25": "2026",
+          "p50": "2028",
+          "p75": "2031"
         }
       },
       "dependencies": [],
       "news": [
+        {
+          "date": "2026-07-13",
+          "title": "EU AI Act Compliance Tracker 2026 — Every Milestone, Live Status",
+          "url": "https://axis-intelligence.com/eu-ai-act-compliance-tracker/",
+          "source": "Axis Intelligence",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-07-11",
+          "title": "EU AI Act: What Actually Applies on August 2, 2026 (AccuroAI)",
+          "url": "https://accuroai.co/blog/eu-ai-act-what-actually-applies-august-2-2026",
+          "source": "AccuroAI",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-07-01",
+          "title": "Compliance and Enforcement in Global AI Regulation (Foley &amp; Lardner)",
+          "url": "https://www.foley.com/insights/publications/2026/07/compliance-and-enforcement-in-global-ai-regulation-eu-ai-act-risks/",
+          "source": "Foley &amp; Lardner",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-03-18",
+          "title": "Enforcement of the AI Act (European Parliamentary Research Service)",
+          "url": "https://epthinktank.eu/2026/03/18/enforcement-of-the-ai-act/",
+          "source": "EU Parliament Research",
+          "direction": "positive",
+          "signal_score": 50
+        },
         {
           "date": "2026-07-10",
           "title": "EU AI Act Enforcement Is Here: Chatbot Rules Live, High-Risk AI Binding Law",
@@ -2334,9 +3126,9 @@ footer{
       "name": "Стандарты и совместимость",
       "shortName": "H1 Стандарты",
       "description": "Открытые протоколы для AI-интеграций. MCP, Matter + AI, единые API. Совместимость между вендорами.",
-      "maturity": 2.8,
-      "stage": "Demonstration",
-      "confidence": "Medium",
+      "maturity": 3.3,
+      "stage": "Pilot",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Проприетарные API",
         "1": "Обсуждения стандартов",
@@ -2349,12 +3141,12 @@ footer{
         "stage3": {
           "p25": "2025",
           "p50": "2026",
-          "p75": "2028"
+          "p75": "2026"
         },
         "stage4": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
         },
         "stage5": {
           "p25": "2027",
@@ -2367,6 +3159,30 @@ footer{
         "G6"
       ],
       "news": [
+        {
+          "date": "2026-07-06",
+          "title": "AI Integration Becomes Enterprise-Ready: MCP Under the Linux Foundation",
+          "url": "https://www.cloudmagazin.com/en/2026/07/06/ai-integration-becomes-enterprise-ready-the-model-context-protocol-under-the/",
+          "source": "CloudMagazin",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-06-29",
+          "title": "Beta SDKs for the 2026-07-28 MCP Spec — Python v2, TypeScript v2",
+          "url": "https://blog.modelcontextprotocol.io/posts/sdk-betas-2026-07-28/",
+          "source": "MCP Blog",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-06-01",
+          "title": "Code execution with MCP: building more efficient AI agents (Anthropic Engineering)",
+          "url": "https://www.anthropic.com/engineering/code-execution-with-mcp",
+          "source": "Anthropic",
+          "direction": "positive",
+          "signal_score": 65
+        },
         {
           "date": "2026-05-21",
           "title": "MCP Specification Release Candidate — standard for AI tool integration",
@@ -2383,9 +3199,9 @@ footer{
       "name": "Экосистема навыков",
       "shortName": "H2 Навыки",
       "description": "Маркетплейс навыков/плагинов для AI-помощников. Разработчики создают расширения, пользователи устанавливают.",
-      "maturity": 2.1,
+      "maturity": 2.3,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет экосистемы",
         "1": "Первые плагины",
@@ -2416,6 +3232,30 @@ footer{
       ],
       "news": [
         {
+          "date": "2026-06-01",
+          "title": "AI Agent Marketplaces 2026: Discovery and Distribution (Digital Applied)",
+          "url": "https://www.digitalapplied.com/blog/ai-agent-marketplaces-2026-discovery-distribution",
+          "source": "Digital Applied",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-06-01",
+          "title": "Claude Skills vs ChatGPT GPTs vs Gemini Gems: 2026 Comparison",
+          "url": "https://www.open-claw.sh/blog/claude-skills-vs-chatgpt-gpts-vs-gemini-gems",
+          "source": "OpenClaw",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-06-01",
+          "title": "GPT Store Alternative 2026: Why Agensi Is What the GPT Store Should Have Been",
+          "url": "https://www.agensi.io/learn/gpt-store-alternative-2026",
+          "source": "Agensi",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
           "date": "2026-05-24",
           "title": "Claude Skills Marketplace 2026: Where to Find, Install, and Build Skills",
           "url": "https://www.totalum.app/blog/claude-skills-marketplace-totalum",
@@ -2439,9 +3279,9 @@ footer{
       "name": "Распространение",
       "shortName": "H3 Охват",
       "description": "Сколько людей используют AI-помощников. Еженедельные/ежедневные активные пользователи. Географический охват.",
-      "maturity": 3.2,
+      "maturity": 3.6,
       "stage": "Pilot",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "&lt;1M пользователей",
         "1": "10M+",
@@ -2462,9 +3302,9 @@ footer{
           "p75": "2029"
         },
         "stage5": {
-          "p25": "2027",
-          "p50": "2029",
-          "p75": "2032"
+          "p25": "2026",
+          "p50": "2028",
+          "p75": "2031"
         }
       },
       "dependencies": [
@@ -2472,6 +3312,30 @@ footer{
         "H4"
       ],
       "news": [
+        {
+          "date": "2026-06-16",
+          "title": "ChatGPT's market share slips below 50% for first time (TechCrunch)",
+          "url": "https://techcrunch.com/2026/06/16/chatgpts-market-share-slips-below-50-for-first-time/",
+          "source": "TechCrunch",
+          "direction": "positive",
+          "signal_score": 70
+        },
+        {
+          "date": "2026-07-01",
+          "title": "State Of AI July 2026 - Usage Statistics, Model Updates and More",
+          "url": "https://www.stanventures.com/news/state-of-ai-july-2026-usage-statistics-model-updates-and-more-7443/",
+          "source": "Stan Ventures",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-06-01",
+          "title": "ChatGPT Users Statistics 2026: 1 Billion Active Users (Axis Intelligence)",
+          "url": "https://axis-intelligence.com/chatgpt-users-statistics/",
+          "source": "Axis Intelligence",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-02-27",
           "title": "ChatGPT reaches 900M weekly active users",
@@ -2488,9 +3352,9 @@ footer{
       "name": "Пользовательские привычки",
       "shortName": "H4 Привычки",
       "description": "Люди регулярно делегируют задачи ИИ. Использование AI-помощника стало привычкой, как смартфон.",
-      "maturity": 2,
+      "maturity": 2.1,
       "stage": "Demonstration",
-      "confidence": "Medium",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Люди не доверяют",
         "1": "Ранние adopters",
@@ -2501,9 +3365,9 @@ footer{
       },
       "baseline": {
         "stage3": {
-          "p25": "2027",
-          "p50": "2028",
-          "p75": "2030"
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
         },
         "stage4": {
           "p25": "2028",
@@ -2511,9 +3375,9 @@ footer{
           "p75": "2031"
         },
         "stage5": {
-          "p25": "2029",
-          "p50": "2031",
-          "p75": "2034"
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2033"
         }
       },
       "dependencies": [
@@ -2522,6 +3386,22 @@ footer{
         "D3"
       ],
       "news": [
+        {
+          "date": "2026-06-17",
+          "title": "Why don't Americans use chatbots? (Pew Research)",
+          "url": "https://www.pewresearch.org/internet/2026/06/17/why-dont-people-use-chatbots/",
+          "source": "Pew Research",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-06-17",
+          "title": "How Americans' opinions and use of AI differ by age (Pew Research)",
+          "url": "https://www.pewresearch.org/internet/2026/06/17/how-opinions-and-use-of-ai-differ-by-age/",
+          "source": "Pew Research",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-06-17",
           "title": "Americans' Views on AI Chatbots, Smart Devices and AI's Impact",
@@ -2546,9 +3426,9 @@ footer{
       "name": "Социальное доверие",
       "shortName": "H5 Доверие",
       "description": "Общество доверяет AI-помощникам. Люди готовы делегировать личные задачи: финансы, здоровье, общение.",
-      "maturity": 2.2,
+      "maturity": 2.4,
       "stage": "Demonstration",
-      "confidence": "Low",
+      "confidence": "High",
       "criteria_0_5": {
         "0": "Нет доверия",
         "1": "Первые опросы",
@@ -2556,55 +3436,6 @@ footer{
         "3": "20%+ доверяют важные задачи",
         "4": "50%+ доверяют, AI — норма",
         "5": "Доверие к AI как к профессионалам"
-      },
-      "baseline": {
-        "stage3": {
-          "p25": "2026",
-          "p50": "2027",
-          "p75": "2029"
-        },
-        "stage4": {
-          "p25": "2028",
-          "p50": "2029",
-          "p75": "2031"
-        },
-        "stage5": {
-          "p25": "2028",
-          "p50": "2030",
-          "p75": "2033"
-        }
-      },
-      "dependencies": [
-        "G6",
-        "G5"
-      ],
-      "news": [
-        {
-          "date": "2026-06-25",
-          "title": "Global Attitudes on AI 2026: Wonder vs. Worry Divide Deepens — Ipsos",
-          "url": "https://www.ipsos.com/en-uk/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens",
-          "source": "Ipsos",
-          "direction": "neutral",
-          "signal_score": 60
-        }
-      ]
-    },
-    {
-      "id": "H6",
-      "track": "H",
-      "name": "Бизнес-модель",
-      "shortName": "H6 Бизнес",
-      "description": "Устойчивая экономика AI-помощников. Кто платит, сколько, за что. Freemium, подписка, B2B, реклама, bundled.",
-      "maturity": 2.6,
-      "stage": "Demonstration",
-      "confidence": "Medium",
-      "criteria_0_5": {
-        "0": "Нет модели",
-        "1": "Эксперименты с ценами",
-        "2": "Первые прибыльные AI-продукты",
-        "3": "Устойчивые бизнес-модели (20 USD/мес)",
-        "4": "Рынок AI-помощников 100B+",
-        "5": "AI-помощник как utility, предсказуемая экономика"
       },
       "baseline": {
         "stage3": {
@@ -2624,10 +3455,99 @@ footer{
         }
       },
       "dependencies": [
+        "G6",
+        "G5"
+      ],
+      "news": [
+        {
+          "date": "2026-06-01",
+          "title": "Ipsos AI Monitor 2026: A 32-country Global Advisor Survey",
+          "url": "https://www.ipsos.com/sites/default/files/ct/news/documents/2026-06/Ipsos-AI-Monitor-2026.pdf",
+          "source": "Ipsos",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-06-25",
+          "title": "Global Attitudes on AI 2026: The Wonder vs. Worry Divide Deepens (Ipsos)",
+          "url": "https://www.ipsos.com/en-us/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens",
+          "source": "Ipsos",
+          "direction": "positive",
+          "signal_score": 60
+        },
+        {
+          "date": "2026-06-17",
+          "title": "Americans and AI 2026: Chatbots, Smart Devices and Views on Impact (Pew Research)",
+          "url": "https://www.pewresearch.org/wp-content/uploads/sites/20/2026/06/PI_2026.06.17_Americans-and-AI_REPORT.pdf",
+          "source": "Pew Research",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-06-25",
+          "title": "Global Attitudes on AI 2026: Wonder vs. Worry Divide Deepens — Ipsos",
+          "url": "https://www.ipsos.com/en-uk/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens",
+          "source": "Ipsos",
+          "direction": "neutral",
+          "signal_score": 60
+        }
+      ]
+    },
+    {
+      "id": "H6",
+      "track": "H",
+      "name": "Бизнес-модель",
+      "shortName": "H6 Бизнес",
+      "description": "Устойчивая экономика AI-помощников. Кто платит, сколько, за что. Freemium, подписка, B2B, реклама, bundled.",
+      "maturity": 2.8,
+      "stage": "Demonstration",
+      "confidence": "High",
+      "criteria_0_5": {
+        "0": "Нет модели",
+        "1": "Эксперименты с ценами",
+        "2": "Первые прибыльные AI-продукты",
+        "3": "Устойчивые бизнес-модели (20 USD/мес)",
+        "4": "Рынок AI-помощников 100B+",
+        "5": "AI-помощник как utility, предсказуемая экономика"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage5": {
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2032"
+        }
+      },
+      "dependencies": [
         "H3",
         "F3"
       ],
       "news": [
+        {
+          "date": "2026-05-19",
+          "title": "Gartner Forecasts Worldwide AI Spending to Grow 47% in 2026",
+          "url": "https://www.gartner.com/en/newsroom/press-releases/2026-05-19-gartner-forecasts-worldwide-ai-spending-to-grow-47-percent-in-2026",
+          "source": "Gartner",
+          "direction": "positive",
+          "signal_score": 55
+        },
+        {
+          "date": "2026-06-01",
+          "title": "OpenAI Statistics 2026: Revenue, Users &amp; Market Share (Axis Intelligence)",
+          "url": "https://axis-intelligence.com/openai-statistics/",
+          "source": "Axis Intelligence",
+          "direction": "positive",
+          "signal_score": 55
+        },
         {
           "date": "2026-06-07",
           "title": "OpenAI Revenue 2026: $25B ARR and Still Losing $14B a Year",
