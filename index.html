@@ -5,233 +5,162 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Roadmap to Jarvis — Прогресс создания ИИ-помощника</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box}
 
-:root {
-  --bg: #0A0E17;
-  --surface: #131A2B;
-  --surface2: #1A2236;
-  --border: #1E293B;
-  --text: #E2E8F0;
-  --text2: #94A3B8;
-  --text3: #64748B;
-  --models: #4A9EFF;
-  --interface: #4ADE80;
-  --infra: #A78BFA;
-  --society: #FB923C;
-  --goal: #FBBF24;
+:root{
+  --bg:#0A0E17; --surface:#131A2B; --surface2:#1A2236; --border:#1E293B;
+  --text:#E2E8F0; --text2:#94A3B8; --text3:#64748B;
+  --blue:#3B82F6; --green:#10B981; --purple:#8B5CF6; --amber:#F59E0B; --red:#EF4444; --gold:#FBBF24;
+  --t-models:#4A9EFF; --t-interface:#4ADE80; --t-infra:#A78BFA; --t-society:#FB923C; --t-goal:#FBBF24;
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  min-height: 100dvh;
-  line-height: 1.5;
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+  min-height:100dvh; line-height:1.5;
 }
 
 /* ── Header ── */
-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  position: sticky; top:0; z-index:10;
-  flex-wrap: wrap;
+header{
+  background:var(--surface); border-bottom:1px solid var(--border);
+  padding:14px 24px; display:flex; align-items:center; gap:16px;
+  position:sticky; top:0; z-index:10; flex-wrap:wrap;
 }
-.logo { font-size:20px; font-weight:700; letter-spacing:-0.5px; white-space:nowrap; }
-.logo span { color:var(--goal); }
+.logo{font-size:18px;font-weight:700;white-space:nowrap}
+.logo span{color:var(--gold)}
 
-.progress-wrap { flex:1; max-width:340px; min-width:140px; }
-.progress-label { display:flex; justify-content:space-between; font-size:12px; color:var(--text2); margin-bottom:4px; }
-.progress-bar { height:6px; background:var(--surface2); border-radius:3px; overflow:hidden; }
-.progress-fill { height:100%; background:linear-gradient(90deg, var(--models), var(--interface), var(--goal)); border-radius:3px; transition:width .6s; }
+.progress-wrap{flex:1;max-width:320px;min-width:120px}
+.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text2);margin-bottom:3px}
+.progress-bar{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--green),var(--gold));border-radius:3px;transition:width .6s}
 
-.eta { font-size:13px; color:var(--text2); white-space:nowrap; }
-.eta strong { color:var(--goal); }
+.eta{font-size:13px;color:var(--text2);white-space:nowrap}
+.eta strong{color:var(--gold)}
 
-.filters { display:flex; gap:6px; margin-left:auto; flex-wrap:wrap; }
-.filters button {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  color: var(--text2);
-  padding: 6px 14px;
-  border-radius: 6px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all .2s;
-  white-space: nowrap;
+.filters{display:flex;gap:5px;margin-left:auto;flex-wrap:wrap}
+.filters button{
+  background:var(--surface2);border:1px solid var(--border);color:var(--text2);
+  padding:5px 12px;border-radius:6px;font-size:11px;cursor:pointer;transition:all .2s;white-space:nowrap
 }
-.filters button:hover { background:#243049; color:var(--text); }
-.filters button.active { border-color:var(--models); color:var(--models); background:#1E3A5F; }
+.filters button:hover{background:#243049;color:var(--text)}
+.filters button.active{border-color:var(--blue);color:#60A5FA;background:#1E3050}
 
 /* ── Main ── */
-main { padding: 20px 24px 40px; max-width:1200px; margin:0 auto; }
+main{padding:20px 24px 50px;max-width:1000px;margin:0 auto}
 
-/* Layer section */
-.layer-section { margin-bottom: 32px; }
-
-.layer-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
+/* ── LAYER BLOCK ── */
+.layer-block{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; margin-bottom:28px; overflow:hidden;
 }
-.layer-num {
-  width: 40px; height: 40px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 18px;
-  flex-shrink: 0;
+.layer-top{
+  display:flex; align-items:flex-start; gap:14px;
+  padding:18px 20px 14px;
+  border-bottom:1px solid var(--border);
 }
-.layer-num.models { background:var(--models); color:#000; }
-.layer-num.interface { background:var(--interface); color:#000; }
-.layer-num.infra { background:var(--infra); color:#000; }
-.layer-num.society { background:var(--society); color:#000; }
-.layer-num.goal { background:var(--goal); color:#000; }
-
-.layer-title { font-size:20px; font-weight:700; }
-.layer-meta { font-size:12px; color:var(--text3); display:flex; gap:16px; align-items:center; }
+.layer-icon{
+  width:44px; height:44px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:20px; flex-shrink:0;
+}
+.layer-info{flex:1;min-width:0}
+.layer-title{font-size:18px;font-weight:700;margin-bottom:2px}
+.layer-stats{display:flex;gap:14px;font-size:11px;color:var(--text2);flex-wrap:wrap}
+.layer-stats b{font-weight:600}
 
 /* Layer news highlight */
-.layer-news {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--models);
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin-bottom: 14px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: border-color .2s;
+.layer-news-block{
+  margin:0 20px; padding:12px 16px;
+  background:var(--surface2); border-radius:8px;
+  margin-top:14px; margin-bottom:6px; cursor:pointer; transition:background .2s;
 }
-.layer-news:hover { border-color: #334155; }
-.layer-news-label { font-size:10px; color:var(--text3); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
-.layer-news-title { color:var(--text); line-height:1.4; }
-.layer-news-source { font-size:10px; color:var(--text3); margin-top:4px; }
+.layer-news-block:hover{background:#1E2A42}
+.layer-news-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.layer-news-title{font-size:13px;line-height:1.4;color:var(--text)}
+.layer-news-meta{font-size:10px;color:var(--text3);margin-top:3px}
 
-/* Sub-node cards */
-.subnodes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 10px;
+/* ── TRACK GROUP ── */
+.layer-body{padding:10px 20px 18px}
+.track-group{margin-bottom:12px}
+.track-group:last-child{margin-bottom:0}
+.track-group-head{
+  display:flex; align-items:center; gap:7px;
+  margin-bottom:8px; padding-bottom:6px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
 }
+.track-group-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.track-group-name{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
 
-.node-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
-  cursor: pointer;
-  transition: border-color .2s, transform .15s;
-  -webkit-tap-highlight-color: transparent;
+/* ── NODE CARDS ── */
+.node-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:8px;
 }
-.node-card:hover { border-color: #334155; transform: translateY(-1px); }
-.node-card:active { transform: translateY(0); }
-
-.node-card-top { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-.node-card-dot {
-  width:12px; height:12px; border-radius:50%; flex-shrink:0;
+.node-card{
+  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05);
+  border-radius:8px; padding:12px 14px; cursor:pointer;
+  transition:border-color .2s,background .2s;
+  -webkit-tap-highlight-color:transparent;
 }
-.node-card-name { font-size:14px; font-weight:600; }
+.node-card:hover{border-color:rgba(255,255,255,0.12);background:rgba(255,255,255,0.03)}
+.node-card:active{background:rgba(255,255,255,0.04)}
 
-.node-card-bar-wrap { display:flex; align-items:center; gap:8px; }
-.node-card-bar {
-  flex:1; height:4px; background:var(--surface2); border-radius:2px; overflow:hidden;
-}
-.node-card-bar-fill { height:100%; border-radius:2px; transition:width .4s; }
-.node-card-pct { font-size:11px; color:var(--text3); white-space:nowrap; min-width:32px; text-align:right; }
+.node-card-row1{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.node-card-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.node-card-name{font-size:13px;font-weight:600;line-height:1.3}
 
-.node-card-date { font-size:11px; color:var(--text3); margin-top:8px; }
-.node-card-news-count { font-size:10px; color:var(--text3); margin-top:2px; }
+.node-card-row2{display:flex;align-items:center;gap:8px}
+.node-card-bar{flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+.node-card-bar-fill{height:100%;border-radius:2px;transition:width .4s}
+.node-card-pct{font-size:11px;color:var(--text3);min-width:34px;text-align:right}
 
-/* ── Side Panel ── */
-#panel-overlay {
-  position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:20;
-  opacity:0; pointer-events:none; transition:opacity .3s;
-}
-#panel-overlay.open { opacity:1; pointer-events:auto; }
+.node-card-footer{display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:var(--text3)}
 
-#panel {
-  position:fixed; top:0; right:0; width:440px; max-width:100vw; height:100dvh;
-  background:var(--surface); border-left:1px solid var(--border);
-  z-index:21;
-  transform: translateX(100%);
-  transition: transform .35s cubic-bezier(0.22,0.61,0.36,1);
-  display:flex; flex-direction:column;
-  overflow-y:auto;
-}
-#panel.open { transform:translateX(0); }
-
-.panel-header {
-  padding:20px 24px 12px;
-  border-bottom:1px solid var(--border);
-  display:flex; align-items:flex-start; justify-content:space-between;
-  position:sticky; top:0; background:var(--surface); z-index:1;
-}
-.panel-header h2 { font-size:18px; line-height:1.3; }
-.panel-close {
-  background:none; border:none; color:var(--text2); font-size:22px;
-  cursor:pointer; line-height:1; padding:2px 6px; border-radius:4px;
-}
-.panel-close:hover { background:var(--surface2); color:var(--text); }
-
-.panel-progress { padding:12px 24px; border-bottom:1px solid var(--border); }
-.panel-progress .mini-bar { height:4px; background:var(--surface2); border-radius:2px; margin-top:4px; overflow:hidden; }
-.panel-progress .mini-fill { height:100%; border-radius:2px; transition:width .4s; }
-
-.panel-desc { padding:14px 24px; font-size:13px; color:var(--text2); line-height:1.6; border-bottom:1px solid var(--border); }
-
-.panel-news { padding:14px 24px 30px; flex:1; }
-.panel-news h3 { font-size:13px; color:var(--text2); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; }
-
-.news-item {
-  padding:12px 14px;
-  background:var(--surface2);
-  border-radius:8px;
-  margin-bottom:8px;
-  border:1px solid transparent;
-  transition:border-color .2s;
-  cursor:pointer;
-}
-.news-item:hover { border-color:var(--border); }
-.news-item .news-date { font-size:10px; color:var(--text3); margin-bottom:4px; }
-.news-item .news-title { font-size:13px; line-height:1.4; color:var(--text); word-break:break-word; }
-.news-item .news-source { font-size:10px; color:var(--text3); margin-top:4px; word-break:break-all; }
-.news-empty { font-size:13px; color:var(--text3); text-align:center; padding:30px 0; }
+/* ── Side Panel (same as before) ── */
+#panel-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:20;opacity:0;pointer-events:none;transition:opacity .3s}
+#panel-overlay.open{opacity:1;pointer-events:auto}
+#panel{position:fixed;top:0;right:0;width:440px;max-width:100vw;height:100dvh;background:var(--surface);border-left:1px solid var(--border);z-index:21;transform:translateX(100%);transition:transform .35s cubic-bezier(0.22,0.61,0.36,1);display:flex;flex-direction:column;overflow-y:auto}
+#panel.open{transform:translateX(0)}
+.panel-header{padding:20px 24px 12px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;position:sticky;top:0;background:var(--surface);z-index:1}
+.panel-header h2{font-size:18px;line-height:1.3}
+.panel-close{background:none;border:none;color:var(--text2);font-size:22px;cursor:pointer;padding:2px 6px;border-radius:4px}
+.panel-close:hover{background:var(--surface2);color:var(--text)}
+.panel-progress{padding:12px 24px;border-bottom:1px solid var(--border)}
+.panel-progress .mini-bar{height:4px;background:var(--surface2);border-radius:2px;margin-top:4px;overflow:hidden}
+.panel-progress .mini-fill{height:100%;border-radius:2px;transition:width .4s}
+.panel-desc{padding:14px 24px;font-size:13px;color:var(--text2);line-height:1.6;border-bottom:1px solid var(--border)}
+.panel-news{padding:14px 24px 30px;flex:1}
+.panel-news h3{font-size:13px;color:var(--text2);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
+.news-item{padding:12px 14px;background:var(--surface2);border-radius:8px;margin-bottom:8px;border:1px solid transparent;cursor:pointer;transition:border-color .2s}
+.news-item:hover{border-color:var(--border)}
+.news-item .news-date{font-size:10px;color:var(--text3);margin-bottom:4px}
+.news-item .news-title{font-size:13px;line-height:1.4;color:var(--text);word-break:break-word}
+.news-item .news-source{font-size:10px;color:var(--text3);margin-top:4px;word-break:break-all}
+.news-empty{font-size:13px;color:var(--text3);text-align:center;padding:30px 0}
 
 /* ── Footer ── */
-footer {
-  background:var(--surface);
-  border-top:1px solid var(--border);
-  padding:12px 24px;
-  font-size:11px;
-  color:var(--text3);
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:6px;
-}
-
-::-webkit-scrollbar { width:4px; }
-::-webkit-scrollbar-track { background:transparent; }
-::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+footer{background:var(--surface);border-top:1px solid var(--border);padding:10px 24px;font-size:11px;color:var(--text3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 
 /* ── Mobile ── */
-@media (max-width:768px) {
-  header { padding:10px 14px; gap:10px; }
-  .logo { font-size:16px; }
-  .progress-wrap { max-width:160px; }
-  .filters { gap:4px; }
-  .filters button { padding:5px 10px; font-size:11px; }
-  main { padding:12px 10px 30px; }
-  .layer-title { font-size:17px; }
-  .subnodes { grid-template-columns: 1fr; }
-  #panel { width:100vw; }
-  footer { font-size:10px; padding:10px 14px; }
+@media(max-width:768px){
+  header{padding:10px 14px;gap:8px}
+  .logo{font-size:15px}
+  .progress-wrap{max-width:150px}
+  .filters{gap:3px}
+  .filters button{padding:4px 10px;font-size:10px}
+  main{padding:12px 8px 30px}
+  .layer-top{padding:14px 14px 10px;gap:10px}
+  .layer-icon{width:36px;height:36px;font-size:16px}
+  .layer-title{font-size:16px}
+  .layer-body{padding:8px 14px 14px}
+  .layer-news-block{margin:0 14px;margin-top:10px}
+  .node-grid{grid-template-columns:1fr}
+  #panel{width:100vw}
+  footer{font-size:10px;padding:8px 14px}
 }
 </style>
 </head>
@@ -263,7 +192,7 @@ footer {
     <button class="panel-close" onclick="closePanel()">&times;</button>
   </div>
   <div class="panel-progress">
-    <div class="progress-label"><span>Готовность этапа</span><span id="panel-pct"></span></div>
+    <div class="progress-label"><span>Готовность</span><span id="panel-pct"></span></div>
     <div class="mini-bar"><div class="mini-fill" id="panel-mini-fill"></div></div>
   </div>
   <div class="panel-desc" id="panel-desc"></div>
@@ -1054,31 +983,26 @@ footer {
 (function() {
   'use strict';
 
-  var TRACK_HEX = { models:'#4A9EFF', interface:'#4ADE80', infrastructure:'#A78BFA', society:'#FB923C', goal:'#FBBF24' };
-  var TRACK_NAMES = { models:'Модели и AGI', interface:'Интерфейс', infrastructure:'Инфраструктура', society:'Общество', goal:'Цель' };
-  var LAYER_TITLES = ['Фундамент', 'Базовые технологии', 'Продвинутые', 'Экосистема', 'Принятие', 'JARVIS'];
-  var LAYER_ICONS = ['01','02','03','04','05','★'];
+  var TRACK_HEX = {models:'#4A9EFF',interface:'#4ADE80',infrastructure:'#A78BFA',society:'#FB923C',goal:'#FBBF24'};
+  var TRACK_NAMES = {models:'Модели и AGI',interface:'Интерфейс',infrastructure:'Инфраструктура',society:'Общество',goal:'Цель'};
+  var LAYER_TITLES = ['Фундамент','Базовые технологии','Продвинутые возможности','Экосистема','Принятие обществом','J.A.R.V.I.S.'];
+  var LAYER_COLORS = ['#3B82F6','#10B981','#8B5CF6','#F59E0B','#EF4444','#FBBF24'];
 
   var currentData = null;
   var activeTrack = '';
 
-  // ── Helpers ──
-  function progressToDate(progress, targetYear) {
-    if (progress >= 95) return targetYear + '';
-    var startYear = 2026;
-    var yearsToGo = (targetYear - startYear) * (1 - progress / 100);
-    var year = startYear + yearsToGo;
-    var quarter = Math.floor((year - Math.floor(year)) * 4) + 1;
-    var y = Math.floor(year);
-    if (yearsToGo < 0.5) return 'Q' + quarter + ' ' + y;
-    return y + '';
-  }
-
   function avgProgress(nodes) {
     if (!nodes.length) return 0;
-    var sum = 0;
-    for (var i = 0; i < nodes.length; i++) sum += nodes[i].progress;
-    return Math.round(sum / nodes.length);
+    var s = 0; for (var i = 0; i < nodes.length; i++) s += nodes[i].progress;
+    return Math.round(s / nodes.length);
+  }
+
+  function progressToDate(progress, targetYear) {
+    if (progress >= 95) return targetYear + '';
+    var sy = 2026, ty = targetYear;
+    var y = sy + (ty - sy) * (1 - progress / 100);
+    if (y - sy < 0.8) return 'Q' + (Math.floor((y - Math.floor(y)) * 4) + 1) + ' ' + Math.floor(y);
+    return Math.round(y) + '';
   }
 
   function latestNews(nodes) {
@@ -1090,72 +1014,58 @@ footer {
     return all[0] || null;
   }
 
-  // ── Init ──
   async function init() {
     try {
       var resp = await fetch('data.json');
-      if (!resp.ok) throw new Error('fetch failed');
+      if (!resp.ok) throw new Error('fail');
       currentData = await resp.json();
     } catch(e) {
       var el = document.getElementById('embedded-data');
       if (el && el.textContent.trim()) {
-        try { currentData = JSON.parse(el.textContent); } catch(e2) {
-          document.getElementById('main-content').innerHTML = '<p style="color:var(--text2);text-align:center;padding:40px">Ошибка данных</p>';
-          return;
-        }
-      } else {
-        document.getElementById('main-content').innerHTML = '<p style="color:var(--text2);text-align:center;padding:40px">Не удалось загрузить данные. Запустите:<br><code>python -m http.server 8080</code></p>';
-        return;
+        try { currentData = JSON.parse(el.textContent); } catch(e2) {}
       }
     }
 
-    if (!currentData || !currentData.nodes) return;
+    if (!currentData || !currentData.nodes) {
+      document.getElementById('main-content').innerHTML = '<p style="text-align:center;padding:40px;color:var(--text2)">Нет данных</p>';
+      return;
+    }
 
-    // Overall progress
     var regular = currentData.nodes.filter(function(n) { return n.id !== 'jarvis'; });
     var overall = avgProgress(regular);
     document.getElementById('overall-pct').textContent = overall + '%';
     document.getElementById('progress-fill').style.width = overall + '%';
 
-    // ETA
     var tY = currentData.meta.targetYear || 2032;
-    var pr = overall / 100;
-    var etaYear = Math.max(2027, Math.round(2026 + (tY - 2026) * (1 - pr)));
+    var etaYear = Math.max(2027, Math.round(2026 + (tY - 2026) * (1 - overall / 100)));
     document.getElementById('eta-text').textContent = '~' + etaYear;
-
-    // Footer
     document.getElementById('footer-updated').textContent = 'Обновлено: ' + (currentData.meta.lastUpdated || '—');
 
     buildFilters();
     render();
   }
 
-  // ── Filters ──
   function buildFilters() {
-    var container = document.getElementById('filters');
-    // Keep "All" button, add track buttons
+    var c = document.getElementById('filters');
     Object.keys(TRACK_NAMES).forEach(function(t) {
-      var btn = document.createElement('button');
-      btn.textContent = TRACK_NAMES[t];
-      btn.dataset.track = t;
-      btn.addEventListener('click', function() {
+      var b = document.createElement('button');
+      b.textContent = TRACK_NAMES[t]; b.dataset.track = t;
+      b.addEventListener('click', function() {
         activeTrack = (activeTrack === t) ? '' : t;
-        document.querySelectorAll('#filters button').forEach(function(b) {
-          b.classList.toggle('active', b.dataset.track === activeTrack);
-          if (b.dataset.track === '') b.classList.toggle('active', !activeTrack);
+        document.querySelectorAll('#filters button').forEach(function(x) {
+          x.classList.toggle('active', x.dataset.track === activeTrack);
+          if (!x.dataset.track) x.classList.toggle('active', !activeTrack);
         });
         render();
       });
-      container.appendChild(btn);
+      c.appendChild(b);
     });
   }
 
-  // ── Render ──
   function render() {
     var main = document.getElementById('main-content');
     main.innerHTML = '';
 
-    // Group nodes by layer
     var byLayer = {};
     for (var i = 0; i < currentData.nodes.length; i++) {
       var n = currentData.nodes[i];
@@ -1164,121 +1074,152 @@ footer {
     }
 
     var layers = Object.keys(byLayer).sort(function(a,b) { return a - b; });
-    var targetYear = currentData.meta.targetYear || 2032;
+    var TY = currentData.meta.targetYear || 2032;
 
     for (var li = 0; li < layers.length; li++) {
       var layer = parseInt(layers[li]);
       var nodes = byLayer[layer];
 
-      // Filter by track
-      var visibleNodes = nodes;
+      // Filter
+      var shown = nodes;
       if (activeTrack) {
-        visibleNodes = nodes.filter(function(n) {
-          return n.track === activeTrack || n.track === 'goal';
-        });
-        if (visibleNodes.length === 0) continue;
+        shown = nodes.filter(function(n) { return n.track === activeTrack || n.track === 'goal'; });
+        if (shown.length === 0) continue;
       }
 
-      var layerAvg = avgProgress(visibleNodes.filter(function(n) { return n.id !== 'jarvis'; }));
-      var layerDate = progressToDate(layerAvg, targetYear);
-      var topNews = latestNews(visibleNodes);
+      var lAvg = avgProgress(shown.filter(function(n) { return n.id !== 'jarvis'; }));
+      var lDate = progressToDate(lAvg, TY);
+      var lNews = latestNews(shown);
+      var lColor = LAYER_COLORS[layer] || '#3B82F6';
 
-      // Determine layer accent color (use first node's track or dominant)
-      var accentTrack = nodes[0].track;
-      var accentHex = TRACK_HEX[accentTrack] || '#4A9EFF';
+      // Group shown nodes by track
+      var byTrack = {};
+      var trackOrder = [];
+      for (var ti = 0; ti < shown.length; ti++) {
+        var nd = shown[ti];
+        var t = nd.track;
+        if (!byTrack[t]) { byTrack[t] = []; trackOrder.push(t); }
+        byTrack[t].push(nd);
+      }
 
-      // Layer section
-      var section = document.createElement('div');
-      section.className = 'layer-section';
+      // ── Build layer block ──
+      var block = document.createElement('div');
+      block.className = 'layer-block';
+      block.style.borderTop = '3px solid ' + lColor;
 
-      // Header
-      var iconClass = (layer === 5) ? 'goal' : (accentTrack);
-      section.innerHTML =
-        '<div class="layer-header">' +
-          '<div class="layer-num ' + iconClass + '">' + (LAYER_ICONS[layer] || layer+1) + '</div>' +
-          '<div class="layer-title">' + (LAYER_TITLES[layer] || 'Слой ' + layer) + '</div>' +
-          '<div class="layer-meta">' +
-            '<span>Прогресс слоя: <b>' + layerAvg + '%</b></span>' +
-            '<span>Ожидаемый срок: <b>' + layerDate + '</b></span>' +
-            '<span>Подэтапов: <b>' + visibleNodes.length + '</b></span>' +
+      // Top bar
+      var lTitle = LAYER_TITLES[layer] || 'Этап ' + (layer + 1);
+      block.innerHTML =
+        '<div class="layer-top">' +
+          '<div class="layer-icon" style="background:' + lColor + ';color:#000">' + (layer === 5 ? '★' : '0' + (layer + 1)) + '</div>' +
+          '<div class="layer-info">' +
+            '<div class="layer-title">' + lTitle + '</div>' +
+            '<div class="layer-stats">' +
+              '<span>Прогресс: <b>' + lAvg + '%</b></span>' +
+              '<span>Срок: <b>' + lDate + '</b></span>' +
+              '<span>Подэтапов: <b>' + shown.length + '</b></span>' +
+            '</div>' +
           '</div>' +
         '</div>';
 
-      // Highlight news
-      if (topNews) {
-        var newsDiv = document.createElement('div');
-        newsDiv.className = 'layer-news';
-        newsDiv.style.borderLeftColor = accentHex;
-        newsDiv.innerHTML =
-          '<div class="layer-news-label">Свежая новость · ' + topNews.date + '</div>' +
-          '<div class="layer-news-title">' + topNews.title + '</div>' +
-          '<div class="layer-news-source">' + topNews.source + ' · ' + topNews.url + '</div>';
-        newsDiv.addEventListener('click', function() { window.open(topNews.url, '_blank'); });
-        section.appendChild(newsDiv);
+      // News highlight
+      if (lNews) {
+        var ndiv = document.createElement('div');
+        ndiv.className = 'layer-news-block';
+        ndiv.innerHTML =
+          '<div class="layer-news-label">Последняя новость · ' + lNews.date + '</div>' +
+          '<div class="layer-news-title">' + lNews.title + '</div>' +
+          '<div class="layer-news-meta">' + lNews.source + '</div>';
+        ndiv.addEventListener('click', function(u) { return function() { window.open(u, '_blank'); }; }(lNews.url));
+        block.appendChild(ndiv);
       }
 
-      // Sub-node cards
-      var subGrid = document.createElement('div');
-      subGrid.className = 'subnodes';
+      // Body with track groups
+      var body = document.createElement('div');
+      body.className = 'layer-body';
 
-      for (var ni = 0; ni < visibleNodes.length; ni++) {
-        var nd = visibleNodes[ni];
-        var hex = (nd.id === 'jarvis') ? TRACK_HEX.goal : (TRACK_HEX[nd.track] || '#4A9EFF');
-        var pct = nd.id === 'jarvis' ? '—' : nd.progress + '%';
-        var pctW = nd.id === 'jarvis' ? 0 : nd.progress;
-        var ndDate = nd.id === 'jarvis' ? targetYear : progressToDate(nd.progress, targetYear);
-        var newsN = nd.news ? nd.news.length : 0;
+      for (var tii = 0; tii < trackOrder.length; tii++) {
+        var track = trackOrder[tii];
+        var trackNodes = byTrack[track];
+        var tHex = TRACK_HEX[track] || '#4A9EFF';
+        var tName = TRACK_NAMES[track] || track;
 
-        var card = document.createElement('div');
-        card.className = 'node-card';
-        card.innerHTML =
-          '<div class="node-card-top">' +
-            '<div class="node-card-dot" style="background:' + hex + '"></div>' +
-            '<div class="node-card-name">' + nd.shortName + '</div>' +
-          '</div>' +
-          '<div class="node-card-bar-wrap">' +
-            '<div class="node-card-bar"><div class="node-card-bar-fill" style="width:' + pctW + '%;background:' + hex + '"></div></div>' +
-            '<div class="node-card-pct">' + pct + '</div>' +
-          '</div>' +
-          '<div class="node-card-date">Ожидаемый срок: ' + ndDate + '</div>' +
-          (newsN > 0 ? '<div class="node-card-news-count">Новостей: ' + newsN + '</div>' : '');
+        var tg = document.createElement('div');
+        tg.className = 'track-group';
 
-        card.addEventListener('click', function(d) { return function() { openPanel(d); }; }(nd));
-        subGrid.appendChild(card);
+        // Only show track label if >1 track in layer
+        if (trackOrder.length > 1) {
+          var th = document.createElement('div');
+          th.className = 'track-group-head';
+          th.innerHTML = '<span class="track-group-dot" style="background:' + tHex + '"></span><span class="track-group-name">' + tName + '</span>';
+          tg.appendChild(th);
+        }
+
+        var grid = document.createElement('div');
+        grid.className = 'node-grid';
+
+        for (var ni = 0; ni < trackNodes.length; ni++) {
+          var nd = trackNodes[ni];
+          var isGoal = nd.id === 'jarvis';
+          var nHex = isGoal ? '#FBBF24' : tHex;
+          var nPct = isGoal ? '—' : nd.progress + '%';
+          var nW = isGoal ? 0 : nd.progress;
+          var nDate = isGoal ? TY + '' : progressToDate(nd.progress, TY);
+          var nNews = nd.news ? nd.news.length : 0;
+
+          var card = document.createElement('div');
+          card.className = 'node-card';
+          card.innerHTML =
+            '<div class="node-card-row1">' +
+              '<div class="node-card-dot" style="background:' + nHex + '"></div>' +
+              '<div class="node-card-name">' + nd.shortName + '</div>' +
+            '</div>' +
+            '<div class="node-card-row2">' +
+              '<div class="node-card-bar"><div class="node-card-bar-fill" style="width:' + nW + '%;background:' + nHex + '"></div></div>' +
+              '<div class="node-card-pct">' + nPct + '</div>' +
+            '</div>' +
+            '<div class="node-card-footer">' +
+              '<span>' + nDate + '</span>' +
+              (nNews ? '<span>' + nNews + ' нов.</span>' : '<span></span>') +
+            '</div>';
+
+          card.addEventListener('click', function(d) { return function() { openPanel(d); }; }(nd));
+          grid.appendChild(card);
+        }
+
+        tg.appendChild(grid);
+        body.appendChild(tg);
       }
 
-      section.appendChild(subGrid);
-      main.appendChild(section);
+      block.appendChild(body);
+      main.appendChild(block);
     }
   }
 
-  // ── Panel ──
   function openPanel(d) {
     document.getElementById('panel-overlay').classList.add('open');
     document.getElementById('panel').classList.add('open');
     document.getElementById('panel-title').textContent = d.name;
     document.getElementById('panel-pct').textContent = (d.id === 'jarvis') ? 'Цель' : d.progress + '%';
 
-    var hex = TRACK_HEX[d.track] || TRACK_HEX.goal;
-    var fill = document.getElementById('panel-mini-fill');
-    fill.style.width = (d.id === 'jarvis') ? '0%' : d.progress + '%';
-    fill.style.background = hex;
+    var hex = TRACK_HEX[d.track] || '#FBBF24';
+    var f = document.getElementById('panel-mini-fill');
+    f.style.width = (d.id === 'jarvis') ? '0%' : d.progress + '%';
+    f.style.background = hex;
 
     document.getElementById('panel-desc').textContent = d.description;
 
-    var newsList = document.getElementById('panel-news-list');
+    var list = document.getElementById('panel-news-list');
     if (d.news && d.news.length > 0) {
-      newsList.innerHTML = d.news.map(function(n) {
-        return '<div class="news-item" onclick="window.open(\'' + n.url + '\',\'_blank\')" title="' + n.url + '">' +
+      list.innerHTML = d.news.map(function(n) {
+        return '<div class="news-item" onclick="window.open(\'' + n.url + '\',\'_blank\')">' +
           '<div class="news-date">' + n.date + ' · ' + n.source + '</div>' +
           '<div class="news-title">' + n.title + '</div>' +
-          '<div class="news-source">' + n.url + '</div>' +
-        '</div>';
+          '<div class="news-source">' + n.url + '</div></div>';
       }).join('');
     } else {
-      newsList.innerHTML = '<div class="news-empty">Новостей пока нет — этот этап ещё впереди</div>';
+      list.innerHTML = '<div class="news-empty">Новостей пока нет</div>';
     }
-
     document.getElementById('panel').scrollTop = 0;
   }
 
@@ -1289,10 +1230,8 @@ footer {
 
   window.openPanel = openPanel;
   window.closePanel = closePanel;
-
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePanel(); });
 
-  // ── Start ──
   init();
 })();
 </script>
