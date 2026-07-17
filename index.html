@@ -3854,7 +3854,33 @@ footer{
     document.getElementById('footer-updated').textContent='Обновлено: '+(data.meta.lastUpdated||'—');
 
     // Dashboard cards
-    var p50=2026+Math.round((6*(1-jri.value/100)));
+    // P50 = critical path: latest stage5 date among J6 gate nodes
+    var j6Gates=data.gates['J6']||[];
+    var criticalNodes=[];
+    var maxP50=2026,maxP25=2026,maxP75=2026;
+    var bottleneck='';
+    for(var bi=0;bi<j6Gates.length;bi++){
+      var gn=data.nodes.find(function(x){return x.id===j6Gates[bi].node});
+      if(!gn||!gn.baseline||!gn.baseline.stage5)continue;
+      var s5=gn.baseline.stage5;
+      var np50=parseInt(s5.p50)||2026;
+      var np25=parseInt(s5.p25)||2026;
+      var np75=parseInt(s5.p75)||2026;
+      criticalNodes.push({id:gn.id,name:gn.shortName,p50:np50});
+      if(np50>maxP50){maxP50=np50;maxP25=np25;maxP75=np75;bottleneck=gn.shortName;}
+    }
+    // Also check ALL nodes' stage5 for overall latest
+    var allMaxP50=maxP50,allBottleneck=bottleneck;
+    for(var ni=0;ni<data.nodes.length;ni++){
+      var nd=data.nodes[ni];if(!nd.baseline||!nd.baseline.stage5)continue;
+      var np50=parseInt(nd.baseline.stage5.p50)||2026;
+      if(np50>allMaxP50){allMaxP50=np50;allBottleneck=nd.shortName;}
+    }
+    var p50=maxP50;
+    var displayP50='~'+p50;
+    if(allMaxP50>maxP50)displayP50='~'+p50+' – '+allMaxP50;
+    var p50Explain='Критический путь: самая поздняя стадия 5 среди обязательных узлов<br>Бутылочное горлышко: <b>'+bottleneck+'</b> (P50='+maxP50+', P25='+maxP25+', P75='+maxP75+')'+
+      (allMaxP50>maxP50?'<br>Самый дальний узел (не на крит. пути): <b>'+allBottleneck+'</b> (P50='+allMaxP50+')':'');
     var levelOrder=['J0','J1','J2','J3','J4','J5','J6'];
     var levelIdx=levelOrder.indexOf(level);
     var nextLevel=levelIdx<levelOrder.length-1?levelOrder[levelIdx+1]:'J6';
@@ -3877,8 +3903,8 @@ footer{
       '</div>'+
       '<div class="dash-card">'+
         '<div class="dash-card-label">Прогноз P50 · '+route.name+'</div>'+
-        '<div class="dash-card-value">~'+p50+'</div>'+
-        '<div class="dash-card-sub" style="font-size:10px">2026 + 6 × (1 − JRI/100)<br>JRI='+jri.value+' → '+(6*(1-jri.value/100)).toFixed(1)+' лет</div>'+
+        '<div class="dash-card-value">'+displayP50+'</div>'+
+        '<div class="dash-card-sub" style="font-size:10px;line-height:1.4">'+p50Explain+'</div>'+
       '</div>'+
       '<div class="dash-card" style="display:flex;align-items:center">'+
         '<p style="font-size:13px;color:var(--text2);line-height:1.6;margin:0">Jarvis — персональный ИИ, который постоянно понимает контекст человека, помнит его историю и предпочтения, самостоятельно планирует и выполняет цифровые или физические действия, оставаясь управляемым, безопасным и экономически доступным.</p>'+
