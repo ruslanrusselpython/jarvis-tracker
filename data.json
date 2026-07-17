@@ -1096,6 +1096,14 @@
       ],
       "news": [
         {
+          "date": "2026-07-03",
+          "title": "Alphio AI Integrates with Robinhood to Launch Advanced Natural Language Agentic Trading Capabilities",
+          "url": "https://www.manilatimes.net/2026/07/03/tmt-newswire/globenewswire/alphio-ai-integrates-with-robinhood-to-launch-advanced-natural-language-agentic-trading-capabilities/2378221",
+          "source": "The Manila Times",
+          "direction": "positive",
+          "signal_score": 29
+        },
+        {
           "date": "2026-05-21",
           "title": "MCP Specification Release Candidate — standard for AI tool integration",
           "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/",
@@ -1990,8 +1998,8 @@
         "0": "Нет модели",
         "1": "Эксперименты с ценами",
         "2": "Первые прибыльные AI-продукты",
-        "3": "Устойчивые бизнес-модели ($20/мес)",
-        "4": "Рынок AI-помощников $100B+",
+        "3": "Устойчивые бизнес-модели (20 USD/мес)",
+        "4": "Рынок AI-помощников 100B+",
         "5": "AI-помощник как utility, предсказуемая экономика"
       },
       "baseline": {
@@ -2015,7 +2023,16 @@
         "H3",
         "F3"
       ],
-      "news": []
+      "news": [
+        {
+          "date": "2026-06-17",
+          "title": "LTM Launches BlueVerse on Databricks to Accelerate AI Monetization",
+          "url": "https://scanx.trade/stock-market-news/companies/ltm-introduces-blueverse-currency-for-outcome-based-pricing-in-agentic-ai-era/42615664",
+          "source": "scanx.trade",
+          "direction": "positive",
+          "signal_score": 29
+        }
+      ]
     }
   ],
   "gates": {
@@ -2097,7 +2114,7 @@
       {
         "node": "F3",
         "minMaturity": 4,
-        "label": "Стоимость $1-5/мес"
+        "label": "Стоимость 1-5 USD/мес"
       },
       {
         "node": "D3",

@@ -2228,8 +2228,8 @@ footer{
         "0": "Нет модели",
         "1": "Эксперименты с ценами",
         "2": "Первые прибыльные AI-продукты",
-        "3": "Устойчивые бизнес-модели ($20/мес)",
-        "4": "Рынок AI-помощников $100B+",
+        "3": "Устойчивые бизнес-модели (20 USD/мес)",
+        "4": "Рынок AI-помощников 100B+",
         "5": "AI-помощник как utility, предсказуемая экономика"
       },
       "baseline": {
@@ -2344,7 +2344,7 @@ footer{
       {
         "node": "F3",
         "minMaturity": 4,
-        "label": "Стоимость $1-5/мес"
+        "label": "Стоимость 1-5 USD/мес"
       },
       {
         "node": "D3",
@@ -2632,7 +2632,6 @@ footer{
         '<div class="dash-card-label">Текущий уровень</div>'+
         '<div class="dash-card-value">'+level+' / J6</div>'+
         '<div class="dash-card-sub">'+data.levels.find(function(l){return l.code===level}).description+'</div>'+
-        '<div class="level-drop" id="level-drop" style="display:none"></div>'+
       '</div>'+
       '<div class="dash-card">'+
         '<div class="dash-card-label">Прогноз P50 · '+route.name+'</div>'+
@@ -2643,26 +2642,33 @@ footer{
         '<p style="font-size:13px;color:var(--text2);line-height:1.6;margin:0">Jarvis — персональный ИИ, который постоянно понимает контекст человека, помнит его историю и предпочтения, самостоятельно планирует и выполняет цифровые или физические действия, оставаясь управляемым, безопасным и экономически доступным.</p>'+
       '</div>';
 
-    // Level dropdown
+    // Level dropdown as modal popup
     var lvlCard=document.getElementById('level-card');
-    var lvlDrop=document.getElementById('level-drop');
-    lvlDrop.innerHTML='<div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;padding-top:8px">Уровни Jarvis J0–J6</div>'+
-      data.levels.map(function(l){
-        var isCurrent=l.code===level;
-        return '<div style="padding:8px 10px;border-radius:6px;margin-bottom:4px;'+(isCurrent?'background:rgba(251,191,36,0.1);border:1px solid var(--gold)':'')+'">'+
-          '<b style="font-size:13px;'+(isCurrent?'color:var(--gold)':'')+'">'+l.code+'</b>'+
-          (isCurrent?' <span style="font-size:10px;color:var(--gold);margin-left:4px">← текущий</span>':'')+
-          '<div style="font-size:10px;color:var(--text3);margin-top:2px">'+l.name+'</div>'+
-          '<div style="font-size:10px;color:var(--text2);margin-top:2px;line-height:1.3">'+l.description+'</div>'+
-        '</div>';
-      }).join('');
     lvlCard.addEventListener('click',function(e){
       e.stopPropagation();
-      var isOpen=lvlDrop.style.display==='block';
-      lvlDrop.style.display=isOpen?'none':'block';
-      lvlCard.classList.toggle('open',!isOpen);
+      var exist=document.getElementById('level-popup');
+      if(exist){exist.remove();return;}
+      var popup=document.createElement('div');
+      popup.id='level-popup';
+      popup.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;z-index:25;min-width:360px;max-width:95vw;max-height:75vh;overflow-y:auto;box-shadow:0 16px 48px rgba(0,0,0,0.6)';
+      popup.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h3 style="font-size:15px;color:var(--text);margin:0">Уровни Jarvis J0–J6</h3><button style="background:none;border:none;color:var(--text2);font-size:18px;cursor:pointer" onclick="this.parentElement.parentElement.remove()">&times;</button></div>'+
+        data.levels.map(function(l){
+          var isCurrent=l.code===level;
+          return '<div style="padding:10px 12px;border-radius:8px;margin-bottom:6px;'+(isCurrent?'background:rgba(251,191,36,0.12);border:1px solid var(--gold)':'border:1px solid transparent')+'">'+
+            '<div style="display:flex;align-items:center;gap:8px"><b style="font-size:14px;'+(isCurrent?'color:var(--gold)':'color:var(--text)')+'">'+l.code+'</b>'+
+            (isCurrent?'<span style="font-size:10px;background:var(--gold);color:#000;padding:2px 6px;border-radius:4px;font-weight:600">ТЕКУЩИЙ</span>':'')+
+            '<span style="font-size:12px;color:var(--text2)">'+l.name+'</span></div>'+
+            '<div style="font-size:11px;color:var(--text3);margin-top:4px;line-height:1.4">'+l.description+'</div>'+
+          '</div>';
+        }).join('');
+      document.body.appendChild(popup);
+      // Overlay
+      var overlay=document.createElement('div');
+      overlay.id='level-overlay';
+      overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:24';
+      overlay.addEventListener('click',function(){popup.remove();overlay.remove();});
+      document.body.appendChild(overlay);
     });
-    document.addEventListener('click',function f(e){if(!lvlCard.contains(e.target)){lvlDrop.style.display='none';lvlCard.classList.remove('open');}});
 
     // Tracks
     var tg=document.getElementById('tracks-grid');tg.innerHTML='';
