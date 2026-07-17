@@ -2590,13 +2590,14 @@ footer{
 
     // Dashboard cards
     var p50=2026+Math.round((6*(1-jri.value/100)));
-    var nextLevel=currentLevel(jri.value+1,route);
+    var levelOrder=['J0','J1','J2','J3','J4','J5','J6'];
+    var levelIdx=levelOrder.indexOf(level);
+    var nextLevel=levelIdx<levelOrder.length-1?levelOrder[levelIdx+1]:'J6';
     var dash=document.getElementById('dash-row');
     dash.innerHTML=''+
-      '<div class="dash-card"><div class="dash-card-label">Текущий уровень · '+route.name+'</div><div class="dash-card-value">'+level+'</div><div class="dash-card-sub">'+data.levels.find(function(l){return l.code===level}).description+'</div></div>'+
+      '<div class="dash-card"><div class="dash-card-label">Текущий уровень · '+route.name+'</div><div class="dash-card-value">'+level+' / J6</div><div class="dash-card-sub">'+data.levels.find(function(l){return l.code===level}).description+'</div></div>'+
       '<div class="dash-card"><div class="dash-card-label">Следующий уровень</div><div class="dash-card-value">'+nextLevel+'</div><div class="dash-card-sub">Барьеров: '+nextGates.length+'</div></div>'+
-      '<div class="dash-card"><div class="dash-card-label">Прогноз P50</div><div class="dash-card-value">~'+p50+'</div><div class="dash-card-sub">'+route.name+'</div></div>'+
-      '<div class="dash-card"><div class="dash-card-label">Подэтапов</div><div class="dash-card-value">'+data.nodes.length+'</div><div class="dash-card-sub">В 8 треках</div></div>';
+      '<div class="dash-card"><div class="dash-card-label">Прогноз P50</div><div class="dash-card-value">~'+p50+'</div><div class="dash-card-sub">'+route.name+'</div></div>';
 
     // Tracks
     var tg=document.getElementById('tracks-grid');tg.innerHTML='';
