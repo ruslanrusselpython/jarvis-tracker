@@ -996,6 +996,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:10px
 
   var currentData = null;
   var activeTrack = '';
+  var overallProgress = 0;
 
   function avgProgress(nodes) {
     if (!nodes.length) return 0;
@@ -1038,12 +1039,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:10px
     }
 
     var regular = currentData.nodes.filter(function(n) { return n.id !== 'jarvis'; });
-    var overall = avgProgress(regular);
-    document.getElementById('overall-pct').textContent = overall + '%';
-    document.getElementById('progress-fill').style.width = overall + '%';
+    overallProgress = avgProgress(regular);
+    document.getElementById('overall-pct').textContent = overallProgress + '%';
+    document.getElementById('progress-fill').style.width = overallProgress + '%';
 
     var tY = currentData.meta.targetYear || 2032;
-    var etaYear = Math.max(2027, Math.round(2026 + (tY - 2026) * (1 - overall / 100)));
+    var etaYear = Math.max(2027, Math.round(2026 + (tY - 2026) * (1 - overallProgress / 100)));
     document.getElementById('eta-text').textContent = '~' + etaYear;
     document.getElementById('footer-updated').textContent = 'Обновлено: ' + (currentData.meta.lastUpdated || '—');
 
@@ -1168,9 +1169,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:10px
           var nd = trackNodes[ni];
           var isGoal = nd.id === 'jarvis';
           var nHex = isGoal ? '#FBBF24' : tHex;
-          var nPct = isGoal ? '—' : nd.progress + '%';
-          var nW = isGoal ? 0 : nd.progress;
-          var nDate = isGoal ? TY + '' : progressToDate(nd.progress, TY);
+          var nPct = isGoal ? overallProgress + '%' : nd.progress + '%';
+          var nW = isGoal ? overallProgress : nd.progress;
+          var nDate = isGoal ? progressToDate(overallProgress, TY) : progressToDate(nd.progress, TY);
           var nNews = nd.news ? nd.news.length : 0;
 
           var card = document.createElement('div');
@@ -1206,11 +1207,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:10px
     document.getElementById('panel-overlay').classList.add('open');
     document.getElementById('panel').classList.add('open');
     document.getElementById('panel-title').textContent = d.name;
-    document.getElementById('panel-pct').textContent = (d.id === 'jarvis') ? 'Цель' : d.progress + '%';
+    var pct = (d.id === 'jarvis') ? overallProgress : d.progress;
+    document.getElementById('panel-pct').textContent = (d.id === 'jarvis') ? overallProgress + '%' : d.progress + '%';
 
     var hex = TRACK_HEX[d.track] || '#FBBF24';
     var f = document.getElementById('panel-mini-fill');
-    f.style.width = (d.id === 'jarvis') ? '0%' : d.progress + '%';
+    f.style.width = pct + '%';
     f.style.background = hex;
 
     document.getElementById('panel-desc').textContent = d.description;
