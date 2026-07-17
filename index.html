@@ -37,6 +37,11 @@ header{
   padding:4px 12px;border-radius:10px;font-size:12px;font-weight:700;
   background:var(--surface2);border:1px solid var(--border)
 }
+.hero{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:14px 24px;text-align:center;
+}
+.hero p{font-size:14px;color:var(--text2);max-width:800px;margin:0 auto;line-height:1.6}
 main{padding:20px 24px 50px;max-width:1100px;margin:0 auto}
 /* JRI Dashboard Row */
 .dash-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:24px}
@@ -198,6 +203,10 @@ footer{
   </div>
   <div class="level-badge" id="level-badge">J?</div>
 </header>
+
+<div class="hero">
+  <p>Jarvis — персональный ИИ, который постоянно понимает контекст человека, помнит его историю и предпочтения, самостоятельно планирует и выполняет цифровые или физические действия, оставаясь управляемым, безопасным и экономически доступным.</p>
+</div>
 
 <main>
   <div class="dash-row" id="dash-row"></div>
@@ -1317,6 +1326,14 @@ footer{
       ],
       "news": [
         {
+          "date": "2026-07-03",
+          "title": "Alphio AI Integrates with Robinhood to Launch Advanced Natural Language Agentic Trading Capabilities",
+          "url": "https://www.manilatimes.net/2026/07/03/tmt-newswire/globenewswire/alphio-ai-integrates-with-robinhood-to-launch-advanced-natural-language-agentic-trading-capabilities/2378221",
+          "source": "The Manila Times",
+          "direction": "positive",
+          "signal_score": 29
+        },
+        {
           "date": "2026-05-21",
           "title": "MCP Specification Release Candidate — standard for AI tool integration",
           "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/",
@@ -2236,7 +2253,16 @@ footer{
         "H3",
         "F3"
       ],
-      "news": []
+      "news": [
+        {
+          "date": "2026-06-17",
+          "title": "LTM Launches BlueVerse on Databricks to Accelerate AI Monetization",
+          "url": "https://scanx.trade/stock-market-news/companies/ltm-introduces-blueverse-currency-for-outcome-based-pricing-in-agentic-ai-era/42615664",
+          "source": "scanx.trade",
+          "direction": "positive",
+          "signal_score": 29
+        }
+      ]
     }
   ],
   "gates": {
@@ -2593,11 +2619,20 @@ footer{
     var levelOrder=['J0','J1','J2','J3','J4','J5','J6'];
     var levelIdx=levelOrder.indexOf(level);
     var nextLevel=levelIdx<levelOrder.length-1?levelOrder[levelIdx+1]:'J6';
+    // Build barrier list — show which gates are NOT met
+    var barrierNames=[];
+    for(var bi=0;bi<nextGates.length;bi++){
+      var g=nextGates[bi];var gn=data.nodes.find(function(x){return x.id===g.node});
+      if(gn&&gn.maturity<g.minMaturity) barrierNames.push('<span style="color:'+(TRACK_COLORS[gn.track]||'#888')+'">'+g.node+'</span> '+g.label+' (нужно '+g.minMaturity+', сейчас '+gn.maturity+')');
+    }
+    var barrierHtml=barrierNames.length>0
+      ?barrierNames.slice(0,3).join('<br>')+(barrierNames.length>3?'<br>...и ещё '+(barrierNames.length-3):'')
+      :'Все барьеры пройдены ✅';
     var dash=document.getElementById('dash-row');
     dash.innerHTML=''+
       '<div class="dash-card"><div class="dash-card-label">Текущий уровень · '+route.name+'</div><div class="dash-card-value">'+level+' / J6</div><div class="dash-card-sub">'+data.levels.find(function(l){return l.code===level}).description+'</div></div>'+
-      '<div class="dash-card"><div class="dash-card-label">Следующий уровень</div><div class="dash-card-value">'+nextLevel+'</div><div class="dash-card-sub">Барьеров: '+nextGates.length+'</div></div>'+
-      '<div class="dash-card"><div class="dash-card-label">Прогноз P50</div><div class="dash-card-value">~'+p50+'</div><div class="dash-card-sub">'+route.name+'</div></div>';
+      '<div class="dash-card"><div class="dash-card-label">Следующий уровень: '+nextLevel+'</div><div class="dash-card-value">'+nextGates.length+' барьеров</div><div class="dash-card-sub" style="font-size:10px;line-height:1.5">'+barrierHtml+'</div></div>'+
+      '<div class="dash-card"><div class="dash-card-label">Прогноз P50</div><div class="dash-card-value">~'+p50+'</div><div class="dash-card-sub" style="font-size:10px">2026 + 6 × (1 − JRI/100)<br>JRI='+jri.value+' → '+(6*(1-jri.value/100)).toFixed(1)+' лет</div></div>';
 
     // Tracks
     var tg=document.getElementById('tracks-grid');tg.innerHTML='';
