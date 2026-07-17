@@ -2,1245 +2,938 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roadmap to Jarvis — Прогресс создания ИИ-помощника</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Jarvis Index — Прогресс к персональному ИИ-помощнику</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
 :root{
-  --bg:#0A0E17; --surface:#131A2B; --surface2:#1A2236; --border:#1E293B;
+  --bg:#0A0E17; --surface:#111827; --surface2:#1A2236; --border:#1E293B;
   --text:#E2E8F0; --text2:#94A3B8; --text3:#64748B;
-  --blue:#3B82F6; --green:#10B981; --purple:#8B5CF6; --amber:#F59E0B; --red:#EF4444; --gold:#FBBF24;
-  --t-models:#4A9EFF; --t-interface:#4ADE80; --t-infra:#A78BFA; --t-society:#FB923C; --t-goal:#FBBF24;
+  --gold:#FBBF24; --green:#10B981; --red:#EF4444;
+  --c-A:#3B82F6;--c-B:#4A9EFF;--c-C:#8B5CF6;--c-D:#10B981;--c-E:#F59E0B;--c-F:#EF4444;--c-G:#EC4899;--c-H:#FBBF24;
 }
-
-body{
-  background:var(--bg); color:var(--text);
-  font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
-  min-height:100dvh; line-height:1.5;
-}
-
-/* ── Header ── */
+body{background:var(--bg);color:var(--text);font-family:'Inter','Segoe UI',system-ui,sans-serif;min-height:100dvh}
 header{
-  background:var(--surface); border-bottom:1px solid var(--border);
-  padding:14px 24px; display:flex; align-items:center; gap:16px;
-  position:sticky; top:0; z-index:10; flex-wrap:wrap;
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:16px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  position:sticky;top:0;z-index:10;
 }
 .logo{font-size:18px;font-weight:700;white-space:nowrap}
 .logo span{color:var(--gold)}
-
-.progress-wrap{flex:1;max-width:320px;min-width:120px}
-.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text2);margin-bottom:3px}
-.progress-bar{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--green),var(--gold));border-radius:3px;transition:width .6s}
-
-.eta{font-size:13px;color:var(--text2);white-space:nowrap}
-.eta strong{color:var(--gold)}
-
-.filters{display:flex;gap:5px;margin-left:auto;flex-wrap:wrap}
-.filters button{
+.jri-box{display:flex;align-items:baseline;gap:8px}
+.jri-value{font-size:28px;font-weight:800;line-height:1}
+.jri-label{font-size:11px;color:var(--text3)}
+.jri-delta{font-size:11px;padding:2px 6px;border-radius:4px;font-weight:600}
+.jri-delta.up{background:#064E3B;color:#6EE7B7}
+.jri-delta.down{background:#7F1D1D;color:#FCA5A5}
+.route-btns{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.route-btns button{
   background:var(--surface2);border:1px solid var(--border);color:var(--text2);
-  padding:5px 12px;border-radius:6px;font-size:11px;cursor:pointer;transition:all .2s;white-space:nowrap
+  padding:5px 12px;border-radius:6px;font-size:11px;cursor:pointer;transition:all .2s
 }
-.filters button:hover{background:#243049;color:var(--text)}
-.filters button.active{border-color:var(--blue);color:#60A5FA;background:#1E3050}
-
-/* ── Main ── */
-main{padding:20px 24px 50px;max-width:1000px;margin:0 auto}
-
-/* ── LAYER BLOCK ── */
-.layer-block{
-  background:var(--surface); border:1px solid var(--border);
-  border-radius:12px; margin-bottom:28px; overflow:hidden;
+.route-btns button:hover{background:#243049;color:var(--text)}
+.route-btns button.active{background:#1E3A5F;border-color:var(--c-B);color:#60A5FA}
+.level-badge{
+  padding:4px 12px;border-radius:10px;font-size:12px;font-weight:700;
+  background:var(--surface2);border:1px solid var(--border)
 }
-.layer-top{
-  display:flex; align-items:flex-start; gap:14px;
-  padding:18px 20px 14px;
-  border-bottom:1px solid var(--border);
+main{padding:20px 24px 50px;max-width:1100px;margin:0 auto}
+/* JRI Dashboard Row */
+.dash-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:24px}
+.dash-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;
 }
-.layer-icon{
-  width:44px; height:44px; border-radius:10px;
-  display:flex; align-items:center; justify-content:center;
-  font-weight:800; font-size:20px; flex-shrink:0;
+.dash-card-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.dash-card-value{font-size:24px;font-weight:700}
+.dash-card-sub{font-size:11px;color:var(--text2);margin-top:2px}
+/* Tracks grid */
+.tracks-grid{display:flex;flex-direction:column;gap:16px}
+.track-block{
+  background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;
+  opacity:1;transition:opacity .3s
 }
-.layer-info{flex:1;min-width:0}
-.layer-title{font-size:18px;font-weight:700;margin-bottom:2px}
-.layer-stats{display:flex;gap:14px;font-size:11px;color:var(--text2);flex-wrap:wrap}
-.layer-stats b{font-weight:600}
-
-/* Layer news highlight */
-.layer-news-block{
-  margin:0 20px; padding:12px 16px;
-  background:var(--surface2); border-radius:8px;
-  margin-top:14px; margin-bottom:6px; cursor:pointer; transition:background .2s;
+.track-block.filtered{opacity:.2}
+.track-header{
+  display:flex;align-items:center;gap:12px;padding:14px 16px;
+  border-bottom:1px solid var(--border);cursor:pointer;
 }
-.layer-news-block:hover{background:#1E2A42}
-.layer-news-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-.layer-news-title{font-size:13px;line-height:1.4;color:var(--text)}
-.layer-news-meta{font-size:10px;color:var(--text3);margin-top:3px}
-
-/* ── TRACK GROUP ── */
-.layer-body{padding:10px 20px 18px}
-.track-group{margin-bottom:12px}
-.track-group:last-child{margin-bottom:0}
-.track-group-head{
-  display:flex; align-items:center; gap:7px;
-  margin-bottom:8px; padding-bottom:6px;
-  border-bottom:1px solid rgba(255,255,255,0.05);
-}
-.track-group-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.track-group-name{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
-
-/* ── NODE CARDS ── */
+.track-header:hover{background:rgba(255,255,255,0.02)}
+.track-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.track-id{font-size:11px;color:var(--text3);font-weight:700;min-width:18px}
+.track-name{font-size:15px;font-weight:600;flex:1}
+.track-score{font-size:22px;font-weight:700;margin-right:8px}
+.track-stage{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px}
+.track-stages-dots{display:flex;gap:3px}
+.track-stages-dots span{width:6px;height:6px;border-radius:50%}
+.track-stages-dots span.filled{background:currentColor}
+.track-stages-dots span.empty{background:var(--border)}
+.track-expand{font-size:14px;color:var(--text3);transition:transform .2s}
+.track-block.open .track-expand{transform:rotate(90deg)}
+/* Nodes inside track */
+.track-nodes{display:none;padding:8px 16px 16px}
+.track-block.open .track-nodes{display:block}
 .node-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:8px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;
 }
 .node-card{
-  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05);
-  border-radius:8px; padding:12px 14px; cursor:pointer;
-  transition:border-color .2s,background .2s;
-  -webkit-tap-highlight-color:transparent;
+  background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px;padding:12px;cursor:pointer;transition:all .2s;
 }
-.node-card:hover{border-color:rgba(255,255,255,0.12);background:rgba(255,255,255,0.03)}
-.node-card:active{background:rgba(255,255,255,0.04)}
-
-.node-card-row1{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.node-card-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.node-card-name{font-size:13px;font-weight:600;line-height:1.3}
-
-.node-card-row2{display:flex;align-items:center;gap:8px}
+.node-card:hover{border-color:rgba(255,255,255,0.15);background:rgba(255,255,255,0.03)}
+.node-card.nok{opacity:.5}
+.node-card-name{font-size:12px;font-weight:600;margin-bottom:6px}
+.node-card-row{display:flex;align-items:center;gap:8px}
 .node-card-bar{flex:1;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
-.node-card-bar-fill{height:100%;border-radius:2px;transition:width .4s}
-.node-card-pct{font-size:11px;color:var(--text3);min-width:34px;text-align:right}
-
-.node-card-footer{display:flex;justify-content:space-between;margin-top:8px;font-size:10px;color:var(--text3)}
-
-/* ── Side Panel (same as before) ── */
-#panel-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:20;opacity:0;pointer-events:none;transition:opacity .3s}
-#panel-overlay.open{opacity:1;pointer-events:auto}
-#panel{position:fixed;top:0;right:0;width:440px;max-width:100vw;height:100dvh;background:var(--surface);border-left:1px solid var(--border);z-index:21;transform:translateX(100%);transition:transform .35s cubic-bezier(0.22,0.61,0.36,1);display:flex;flex-direction:column;overflow-y:auto}
-#panel.open{transform:translateX(0)}
-.panel-header{padding:20px 24px 12px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;position:sticky;top:0;background:var(--surface);z-index:1}
-.panel-header h2{font-size:18px;line-height:1.3}
-.panel-close{background:none;border:none;color:var(--text2);font-size:22px;cursor:pointer;padding:2px 6px;border-radius:4px}
-.panel-close:hover{background:var(--surface2);color:var(--text)}
-.panel-progress{padding:12px 24px;border-bottom:1px solid var(--border)}
-.panel-progress .mini-bar{height:4px;background:var(--surface2);border-radius:2px;margin-top:4px;overflow:hidden}
-.panel-progress .mini-fill{height:100%;border-radius:2px;transition:width .4s}
-.panel-desc{padding:14px 24px;font-size:13px;color:var(--text2);line-height:1.6;border-bottom:1px solid var(--border)}
-.panel-news{padding:14px 24px 30px;flex:1}
-.panel-news h3{font-size:13px;color:var(--text2);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
-.news-item{padding:12px 14px;background:var(--surface2);border-radius:8px;margin-bottom:8px;border:1px solid transparent;cursor:pointer;transition:border-color .2s}
+.node-card-bar-fill{height:100%;border-radius:2px}
+.node-card-meta{display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:var(--text3)}
+.node-card-stage{font-size:10px;padding:1px 6px;border-radius:3px}
+.stage-5{background:#064E3B;color:#6EE7B7}
+.stage-4{background:#064E3B;color:#6EE7B7}
+.stage-3{background:#78350F;color:#FBBF24}
+.stage-2{background:#1E3A5F;color:#60A5FA}
+.stage-1{background:#3B0764;color:#A78BFA}
+.stage-0{background:#1F2937;color:#6B7280}
+/* Modal */
+#modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:20;opacity:0;pointer-events:none;transition:opacity .3s}
+#modal-overlay.open{opacity:1;pointer-events:auto}
+#modal{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.95);
+  width:600px;max-width:95vw;max-height:85vh;
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  z-index:21;overflow-y:auto;
+  opacity:0;pointer-events:none;transition:all .25s;
+}
+#modal.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.modal-header{
+  padding:16px 20px 12px;border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;
+  position:sticky;top:0;background:var(--surface);z-index:1;
+}
+.modal-header h2{font-size:17px}
+.modal-close{background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer}
+.modal-close:hover{color:var(--text)}
+.modal-body{padding:16px 20px}
+.modal-section{margin-bottom:14px}
+.modal-section h4{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.modal-maturity{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.modal-maturity-val{font-size:28px;font-weight:700}
+.modal-maturity-stage{font-size:12px;padding:2px 8px;border-radius:4px}
+.modal-confidence{font-size:10px;color:var(--text3)}
+.modal-criteria-item{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px}
+.modal-criteria-lvl{width:20px;color:var(--text3);font-weight:700;flex-shrink:0}
+.modal-criteria-txt{color:var(--text2)}
+.modal-criteria-item.current{color:var(--text)}
+.modal-criteria-item.current .modal-criteria-txt{color:var(--text);font-weight:600}
+.modal-baseline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:12px}
+.modal-baseline-item{background:var(--surface2);border-radius:6px;padding:8px;text-align:center}
+.modal-baseline-stage{font-size:10px;color:var(--text3)}
+.modal-baseline-p50{font-weight:700;margin:2px 0}
+.modal-baseline-range{font-size:10px;color:var(--text3)}
+.news-item{
+  padding:10px 12px;background:var(--surface2);border-radius:6px;margin-bottom:6px;
+  border:1px solid transparent;cursor:pointer;transition:border-color .2s
+}
 .news-item:hover{border-color:var(--border)}
-.news-item .news-date{font-size:10px;color:var(--text3);margin-bottom:4px}
-.news-item .news-title{font-size:13px;line-height:1.4;color:var(--text);word-break:break-word}
-.news-item .news-source{font-size:10px;color:var(--text3);margin-top:4px;word-break:break-all}
-.news-empty{font-size:13px;color:var(--text3);text-align:center;padding:30px 0}
-
-/* ── Footer ── */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:10px 24px;font-size:11px;color:var(--text3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.news-item .nd{font-size:10px;color:var(--text3);margin-bottom:3px}
+.news-item .nt{font-size:12px;color:var(--text);line-height:1.4}
+.news-item .ns{font-size:10px;color:var(--text3);margin-top:3px}
+.news-empty{font-size:12px;color:var(--text3);text-align:center;padding:20px 0}
+footer{
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:10px 24px;font-size:10px;color:var(--text3);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px
+}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-
-/* ── Mobile ── */
 @media(max-width:768px){
   header{padding:10px 14px;gap:8px}
   .logo{font-size:15px}
-  .progress-wrap{max-width:150px}
-  .filters{gap:3px}
-  .filters button{padding:4px 10px;font-size:10px}
+  .jri-value{font-size:22px}
+  .route-btns{gap:2px}
+  .route-btns button{padding:4px 8px;font-size:10px}
   main{padding:12px 8px 30px}
-  .layer-top{padding:14px 14px 10px;gap:10px}
-  .layer-icon{width:36px;height:36px;font-size:16px}
-  .layer-title{font-size:16px}
-  .layer-body{padding:8px 14px 14px}
-  .layer-news-block{margin:0 14px;margin-top:10px}
+  .dash-row{grid-template-columns:repeat(2,1fr)}
   .node-grid{grid-template-columns:1fr}
-  #panel{width:100vw}
-  footer{font-size:10px;padding:8px 14px}
+  #modal{width:100vw;max-height:90vh;border-radius:12px 12px 0 0;top:auto;bottom:0;transform:translate(-50%,100%)}
+  #modal.open{transform:translate(-50%,0)}
 }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">ROADMAP TO <span>JARVIS</span></div>
-  <div class="progress-wrap">
-    <div class="progress-label"><span>Общий прогресс</span><span id="overall-pct">—</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  <div class="logo">JARVIS <span>INDEX</span></div>
+  <div class="jri-box">
+    <div class="jri-value" id="jri-value">—</div>
+    <div class="jri-label">JRI<br>индекс</div>
+    <div class="jri-delta" id="jri-delta"></div>
   </div>
-  <div class="eta">До Jarvis: <strong id="eta-text">~2030</strong></div>
-  <div class="filters" id="filters">
-    <button class="active" data-track="">Все</button>
-  </div>
+  <div class="level-badge" id="level-badge">J?</div>
+  <div class="route-btns" id="route-btns"></div>
 </header>
 
-<main id="main-content"></main>
+<main>
+  <div class="dash-row" id="dash-row"></div>
+  <div class="tracks-grid" id="tracks-grid"></div>
+</main>
 
 <footer>
   <span id="footer-updated"></span>
-  <span>Данные: открытые источники · Обновляется еженедельно</span>
+  <span>Jarvis Index v2.0 · MECE-модель · Методология и данные открыты</span>
 </footer>
 
-<div id="panel-overlay" onclick="closePanel()"></div>
-<div id="panel">
-  <div class="panel-header">
-    <div><h2 id="panel-title"></h2></div>
-    <button class="panel-close" onclick="closePanel()">&times;</button>
+<div id="modal-overlay" onclick="closeModal()"></div>
+<div id="modal">
+  <div class="modal-header">
+    <h2 id="modal-title"></h2>
+    <button class="modal-close" onclick="closeModal()">&times;</button>
   </div>
-  <div class="panel-progress">
-    <div class="progress-label"><span>Готовность</span><span id="panel-pct"></span></div>
-    <div class="mini-bar"><div class="mini-fill" id="panel-mini-fill"></div></div>
-  </div>
-  <div class="panel-desc" id="panel-desc"></div>
-  <div class="panel-news">
-    <h3>Новости</h3>
-    <div id="panel-news-list"></div>
-  </div>
+  <div class="modal-body" id="modal-body"></div>
 </div>
 
 <script id="embedded-data" type="application/json">{
   "meta": {
     "lastUpdated": "2026-07-17",
-    "targetYear": 2032,
-    "description": "Roadmap to Jarvis — отслеживание прогресса создания персонального ИИ-помощника"
+    "version": "2.0",
+    "description": "Jarvis Index — MECE-модель прогресса к персональному ИИ-помощнику"
   },
+  "levels": [
+    {"code":"J0","name":"Answer Engine","description":"Отвечает на вопросы, создаёт контент; не выполняет действия"},
+    {"code":"J1","name":"Copilot","description":"Помогает человеку внутри конкретного приложения или процесса"},
+    {"code":"J2","name":"Operator","description":"Выполняет действия в приложениях под постоянным контролем"},
+    {"code":"J3","name":"Personal Agent","description":"Помнит пользователя, понимает контекст, ведёт регулярные задачи"},
+    {"code":"J4","name":"Trusted Delegate","description":"Самостоятельно достигает целей, запрашивая подтверждение для критичных действий"},
+    {"code":"J5","name":"Ambient Jarvis","description":"Постоянно доступен в разных устройствах, уместно проактивен"},
+    {"code":"J6","name":"General Jarvis","description":"Надёжно действует в новых ситуациях на уровне компетентного человека"}
+  ],
+  "tracks": [
+    {"id":"A","name":"Интеллектуальное ядро","question":"Способность понимать, рассуждать, планировать и переносить знания","color":"#3B82F6"},
+    {"id":"B","name":"Агентность и надёжность","question":"Способность использовать инструменты и доводить длинные задачи до результата","color":"#4A9EFF"},
+    {"id":"C","name":"Персональный контекст и память","question":"Способность понимать пользователя, хранить и управлять его контекстом","color":"#8B5CF6"},
+    {"id":"D","name":"Взаимодействие и присутствие","question":"Естественность диалога, проактивность и непрерывность между устройствами","color":"#10B981"},
+    {"id":"E","name":"Поверхность действий","question":"Доступ к цифровым системам, транзакциям, умной среде и физическим действиям","color":"#F59E0B"},
+    {"id":"F","name":"Инфраструктура и экономика","question":"Стоимость, latency, вычисления, edge, масштабирование и доступность","color":"#EF4444"},
+    {"id":"G","name":"Доверие, контроль и регулирование","question":"Права, безопасность, приватность, ответственность и право","color":"#EC4899"},
+    {"id":"H","name":"Экосистема и принятие","question":"Стандарты, навыки, распространение, привычки, доверие и бизнес-модель","color":"#FBBF24"}
+  ],
   "nodes": [
     {
-      "id": "foundation-llm",
-      "name": "Мощные LLM / AGI",
-      "shortName": "LLM / AGI",
-      "description": "Фундаментальные языковые модели (GPT-5, Gemini 3, Claude 4), способные к reasoning, с контекстным окном 1M+ токенов. Переход от узких моделей к general-purpose intelligence.",
-      "track": "models",
-      "layer": 0,
-      "progress": 78,
-      "news": [
-        {
-          "date": "2026-07-09",
-          "title": "GPT-5.6: Frontier intelligence that scales with your ambition",
-          "url": "https://openai.com/index/gpt-5-6",
-          "source": "OpenAI"
-        },
-        {
-          "date": "2026-05-28",
-          "title": "Introducing Claude Opus 4.8",
-          "url": "https://www.anthropic.com/news/claude-opus-4-8",
-          "source": "Anthropic"
-        },
-        {
-          "date": "2026-04-24",
-          "title": "DeepSeek V4 Preview Release",
-          "url": "https://api-docs.deepseek.com/news/news260424",
-          "source": "DeepSeek"
-        },
-        {
-          "date": "2026-07-10",
-          "title": "Google DeepMind анонсировала Gemini 3 Ultra с контекстом 2M токенов и встроенным reasoning",
-          "url": "https://blog.google/technology/ai/gemini-3-ultra/",
-          "source": "Google Blog"
-        },
-        {
-          "date": "2026-06-15",
-          "title": "Anthropic выпустила Claude 4 Opus — модель с расширенным мышлением (extended thinking) до 100K токенов reasoning",
-          "url": "https://www.anthropic.com/news/claude-4-opus",
-          "source": "Anthropic"
-        },
-        {
-          "date": "2026-05-20",
-          "title": "OpenAI подтвердила обучение GPT-5 — модель с архитектурой mixture-of-experts и native multimodality",
-          "url": "https://openai.com/blog/gpt-5-training-update",
-          "source": "OpenAI"
-        }
+      "id":"A1","track":"A","name":"Мультимодальное восприятие","shortName":"A1 Восприятие",
+      "description":"Единая модель понимает текст, изображения, видео и аудио нативно. Способность «видеть» и «слышать» мир как человек.",
+      "maturity":3.8,"stage":"Production","confidence":"High",
+      "criteria_0_5":{"0":"Нет работающего подхода","1":"Ранний эксперимент с одной-двумя модальностями","2":"Лабораторная демонстрация native multimodality","3":"Ограниченное реальное использование (Gemini 3, GPT-5)","4":"Массовое использование в продуктах","5":"Повсеместно, дешёво, стандартно"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2025","p75":"2026"},"stage4":{"p25":"2026","p50":"2027","p75":"2028"},"stage5":{"p25":"2028","p50":"2029","p75":"2031"}},
+      "dependencies":[],
+      "news":[
+        {"date":"2026-07-15","title":"Thinking Machines Inkling: open-weights native multimodal model","url":"https://techcrunch.com/2026/07/15/thinking-machines-amps-up-its-bet-against-one-size-fits-all-ai-with-its-first-open-model-inkling/","source":"TechCrunch","direction":"positive","signal_score":78},
+        {"date":"2026-03-30","title":"Qwen3.5 Omni: Native Multimodal Model for Text, Audio, Video","url":"https://www.marktechpost.com/2026/03/30/alibaba-qwen-team-releases-qwen3-5-omni/","source":"MarkTechPost","direction":"positive","signal_score":72}
       ]
     },
     {
-      "id": "multimodal",
-      "name": "Мультимодальные модели",
-      "shortName": "Мультимодальность",
-      "description": "Единая модель, понимающая текст, изображения, видео и аудио нативно. Способность «видеть» и «слышать» мир как человек.",
-      "track": "models",
-      "layer": 1,
-      "progress": 68,
-      "news": [
-        {
-          "date": "2026-03-30",
-          "title": "Alibaba Qwen Team Releases Qwen3.5 Omni: Native Multimodal Model for Text, Audio, Video, and Realtime Interaction",
-          "url": "https://www.marktechpost.com/2026/03/30/alibaba-qwen-team-releases-qwen3-5-omni-a-native-multimodal-model-for-text-audio-video-and-realtime-interaction/",
-          "source": "MarkTechPost"
-        },
-        {
-          "date": "2026-06-03",
-          "title": "Google DeepMind Releases Gemma 4 12B: Encoder-Free Multimodal with Native Audio, runs on 16GB laptop",
-          "url": "https://www.marktechpost.com/2026/06/03/google-deepmind-releases-gemma-4-12b-an-encoder-free-multimodal-model-with-native-audio-that-runs-on-a-16-gb-laptop/",
-          "source": "MarkTechPost"
-        },
-        {
-          "date": "2026-07-15",
-          "title": "Thinking Machines amps up its bet with first open model, Inkling",
-          "url": "https://techcrunch.com/2026/07/15/thinking-machines-amps-up-its-bet-against-one-size-fits-all-ai-with-its-first-open-model-inkling/",
-          "source": "TechCrunch"
-        },
-        {
-          "date": "2026-07-01",
-          "title": "DeepSeek-V4 объединила текст, изображения, видео и аудио в одной архитектуре без модальных адаптеров",
-          "url": "https://deepseek.com/blog/v4-multimodal",
-          "source": "DeepSeek"
-        },
-        {
-          "date": "2026-06-10",
-          "title": "Meta представила Llama 4 Vision — мультимодальная open-source модель с пониманием видео в реальном времени",
-          "url": "https://ai.meta.com/blog/llama-4-vision/",
-          "source": "Meta AI"
-        }
+      "id":"A2","track":"A","name":"Рассуждение","shortName":"A2 Рассуждение",
+      "description":"Способность к логическому выводу, chain-of-thought, анализу причин и следствий. Решение сложных задач step-by-step.",
+      "maturity":3.5,"stage":"Production","confidence":"High",
+      "criteria_0_5":{"0":"Нет reasoning","1":"Базовый chain-of-thought в исследованиях","2":"Лабораторная демонстрация сложного reasoning","3":"Reasoning модели в продуктах (o4, DeepSeek-R2)","4":"Reasoning надёжно на уровне эксперта в доменах","5":"Reasoning превосходит экспертов, дёшево и стандартно"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2025","p75":"2026"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
+      "dependencies":["A1"],
+      "news":[
+        {"date":"2025-04-16","title":"Introducing OpenAI o3 and o4-mini — next-gen reasoning models","url":"https://openai.com/index/introducing-o3-and-o4-mini","source":"OpenAI","direction":"positive","signal_score":85},
+        {"date":"2026-03-05","title":"Reasoning models struggle to control chain-of-thought, and that's good","url":"https://openai.com/index/reasoning-models-chain-of-thought-controllability","source":"OpenAI","direction":"positive","signal_score":65}
       ]
     },
     {
-      "id": "autonomous-agents",
-      "name": "Автономные AI-агенты",
-      "shortName": "AI-агенты",
-      "description": "ИИ, способный самостоятельно выполнять цепочки задач: управлять браузером, файлами, приложениями от имени пользователя.",
-      "track": "models",
-      "layer": 1,
-      "progress": 42,
-      "news": [
-        {
-          "date": "2026-03-23",
-          "title": "Put Claude to work on your computer — Dispatch and Computer Use",
-          "url": "https://claude.com/blog/dispatch-and-computer-use",
-          "source": "Anthropic"
-        },
-        {
-          "date": "2025-01-23",
-          "title": "Computer-Using Agent — Powering Operator, universal interface for AI",
-          "url": "https://openai.com/index/computer-using-agent",
-          "source": "OpenAI"
-        },
-        {
-          "date": "2026-04-15",
-          "title": "Computer Use Agents 2026: Claude vs OpenAI vs Gemini comparison",
-          "url": "https://www.digitalapplied.com/blog/computer-use-agents-2026-claude-openai-gemini-matrix",
-          "source": "Digital Applied"
-        },
-        {
-          "date": "2026-07-12",
-          "title": "Anthropic выпустила Claude Computer Use 2.0 — агент управляет десктопом: файлы, браузер, терминал, офисные приложения",
-          "url": "https://www.anthropic.com/news/computer-use-2",
-          "source": "Anthropic"
-        },
-        {
-          "date": "2026-06-20",
-          "title": "OpenAI Operator теперь доступен в Windows и macOS — AI-агент выполняет многошаговые задачи в 200+ приложениях",
-          "url": "https://openai.com/index/operator-desktop/",
-          "source": "OpenAI"
-        }
+      "id":"A3","track":"A","name":"Планирование","shortName":"A3 Планирование",
+      "description":"Разбиение сложных задач на подзадачи, оценка рисков, адаптация плана по ходу выполнения. Многошаговое планирование.",
+      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет планирования","1":"Исследования по иерархическому планированию","2":"Демонстрация планирования из 10+ шагов","3":"Планирование из 50+ шагов в ограниченных доменах","4":"Надёжное планирование в реальных задачах","5":"Автономное планирование сложных проектов, стандартно"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
+      "dependencies":["A2"],
+      "news":[
+        {"date":"2026-07-15","title":"DeepSeek-R2: reasoning-модель решает AIME 2025 на 98%, планирует проекты из 100+ шагов","url":"https://deepseek.com/blog/r2-reasoning","source":"DeepSeek","direction":"positive","signal_score":80}
       ]
     },
     {
-      "id": "tool-integration",
-      "name": "Интеграция с сервисами",
-      "shortName": "API / Интеграции",
-      "description": "Единый протокол для подключения ИИ к любым внешним сервисам: почта, календарь, умный дом, банки, доставка. MCP (Model Context Protocol) как стандарт.",
-      "track": "models",
-      "layer": 2,
-      "progress": 55,
-      "news": [
-        {
-          "date": "2026-05-21",
-          "title": "The 2026-07-28 MCP Specification Release Candidate",
-          "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/",
-          "source": "Model Context Protocol Blog"
-        },
-        {
-          "date": "2026-07-07",
-          "title": "Expanding Managed Agents in Gemini API: background tasks, remote MCP",
-          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/",
-          "source": "Google Blog"
-        },
-        {
-          "date": "2026-01-16",
-          "title": "Anthropic Upgrades Open Source MCP To Scale Tool-Rich AI Agents",
-          "url": "https://www.opensourceforu.com/2026/01/anthropic-upgrades-open-source-mcp-to-scale-tool-rich-ai-agents/",
-          "source": "Open Source For U"
-        },
-        {
-          "date": "2026-07-05",
-          "title": "MCP (Model Context Protocol) стал открытым стандартом ISO — более 5000 сервисов с нативной поддержкой",
-          "url": "https://modelcontextprotocol.io/blog/iso-standard",
-          "source": "MCP"
-        },
-        {
-          "date": "2026-05-01",
-          "title": "Google, Apple и Microsoft договорились о едином протоколе AI-интеграций для умного дома Matter 2.0 + AI",
-          "url": "https://www.theverge.com/2026/5/1/matter-ai-protocol",
-          "source": "The Verge"
-        }
+      "id":"A4","track":"A","name":"Обобщение и перенос","shortName":"A4 Обобщение",
+      "description":"Перенос знаний между доменами. Способность применить опыт из одной области в новой ситуации без дополнительного обучения.",
+      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
+      "criteria_0_5":{"0":"Нет переноса","1":"Теоретические работы по transfer learning","2":"Демонстрация переноса между 2-3 доменами","3":"Перенос в 5+ доменов с приемлемой точностью","4":"Надёжный zero-shot перенос в большинстве доменов","5":"Универсальный перенос без потери качества, стандартно"},
+      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2029","p50":"2031","p75":"2033"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
+      "dependencies":["A2"],
+      "news":[]
+    },
+    {
+      "id":"A5","track":"A","name":"Метапознание и самопроверка","shortName":"A5 Самопроверка",
+      "description":"Способность модели оценивать качество собственного ответа, находить ошибки, знать границы своей компетенции.",
+      "maturity":2.2,"stage":"Demonstration","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет самооценки","1":"Исследования calibration и uncertainty","2":"Демонстрация self-verification в лаборатории","3":"Самопроверка работает в ограниченных продуктах","4":"Надёжная самопроверка в production, модель говорит «не знаю»","5":"Метапознание на уровне эксперта, стандартно"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
+      "dependencies":["A2"],
+      "news":[]
+    },
+    {
+      "id":"B1","track":"B","name":"Использование инструментов","shortName":"B1 Инструменты",
+      "description":"ИИ вызывает API, управляет приложениями, читает и пишет файлы, выполняет код. Function calling, tool use.",
+      "maturity":3.5,"stage":"Production","confidence":"High",
+      "criteria_0_5":{"0":"Нет tool use","1":"Базовые function calling эксперименты","2":"Tool use в лабораторных условиях","3":"Работает в продуктах (Computer Use, Operator)","4":"Надёжный tool use для сотен инструментов","5":"Универсальный tool use, стандартный протокол (MCP)"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2025","p75":"2026"},"stage4":{"p25":"2026","p50":"2027","p75":"2028"},"stage5":{"p25":"2028","p50":"2029","p75":"2031"}},
+      "dependencies":["A1"],
+      "news":[
+        {"date":"2026-03-23","title":"Claude Dispatch and Computer Use — put Claude to work on your computer","url":"https://claude.com/blog/dispatch-and-computer-use","source":"Anthropic","direction":"positive","signal_score":82},
+        {"date":"2026-07-07","title":"Expanding Managed Agents in Gemini API: background tasks, remote MCP","url":"https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/","source":"Google Blog","direction":"positive","signal_score":75}
       ]
     },
     {
-      "id": "long-term-memory",
-      "name": "Долгосрочная память",
-      "shortName": "Память",
-      "description": "ИИ запоминает контекст пользователя на месяцы и годы: предпочтения, историю взаимодействий, важные события. Персональная база знаний.",
-      "track": "models",
-      "layer": 2,
-      "progress": 28,
-      "news": [
-        {
-          "date": "2026-06-04",
-          "title": "Dreaming: Better memory for a more helpful ChatGPT",
-          "url": "https://openai.com/index/chatgpt-memory-dreaming/",
-          "source": "OpenAI"
-        },
-        {
-          "date": "2026-06-30",
-          "title": "Microsoft unveils Memora to tackle AI agents' memory problem",
-          "url": "https://www.infoworld.com/article/4191031/microsoft-unveils-memora-to-tackle-ai-agents-memory-problem.html",
-          "source": "InfoWorld"
-        },
-        {
-          "date": "2026-05-12",
-          "title": "Introducing Temporal Reasoning in Mem0 — AI memory platform",
-          "url": "https://mem0.ai/blog/introducing-temporal-reasoning-in-mem0",
-          "source": "Mem0"
-        },
-        {
-          "date": "2026-06-25",
-          "title": "OpenAI представила Memory API — векторная память пользователя с поиском по всей истории взаимодействий",
-          "url": "https://openai.com/blog/memory-api",
-          "source": "OpenAI"
-        },
-        {
-          "date": "2026-04-10",
-          "title": "Microsoft Research: архитектура Titan — нейросетевая долгосрочная память, обучающаяся в real-time на действиях пользователя",
-          "url": "https://www.microsoft.com/en-us/research/blog/titan-neural-memory/",
-          "source": "Microsoft Research"
-        }
+      "id":"B2","track":"B","name":"Долгие задачи","shortName":"B2 Долгие задачи",
+      "description":"Выполнение задач, требующих часов или дней. Сохранение контекста, устойчивость к прерываниям, продолжение с места остановки.",
+      "maturity":2.0,"stage":"Demonstration","confidence":"Medium",
+      "criteria_0_5":{"0":"Только синхронные запросы","1":"Исследования long-running agents","2":"Демонстрация часовой задачи в лаборатории","3":"Дневные задачи в ограниченных доменах (SWE-bench)","4":"Недельные задачи надёжно в production","5":"Месячные автономные проекты, стандартно"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2035"}},
+      "dependencies":["B1","C2"],
+      "news":[]
+    },
+    {
+      "id":"B3","track":"B","name":"Контроль результата","shortName":"B3 Контроль",
+      "description":"Проверка результата выполнения задачи. Сравнение с ожидаемым, выявление расхождений, повторное выполнение при ошибке.",
+      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
+      "criteria_0_5":{"0":"Нет контроля результата","1":"Теоретические работы по verification","2":"Лабораторная демонстрация result checking","3":"Контроль в ограниченных доменах (код, текст)","4":"Надёжный контроль в production для широкого класса задач","5":"Автономный контроль на уровне человека-ревьюера"},
+      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2029"},"stage4":{"p25":"2029","p50":"2031","p75":"2033"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
+      "dependencies":["B1","A5"],
+      "news":[]
+    },
+    {
+      "id":"B4","track":"B","name":"Восстановление после ошибок","shortName":"B4 Recovery",
+      "description":"Обнаружение собственных ошибок, откат действий, повторная попытка с другой стратегией. Graceful degradation.",
+      "maturity":1.8,"stage":"Research","confidence":"Low",
+      "criteria_0_5":{"0":"Падает при любой ошибке","1":"Исследования self-recovery и error handling","2":"Демонстрация восстановления в лаборатории","3":"Восстановление в ограниченных продуктах","4":"Надёжное восстановление в production","5":"Автономное восстановление без потери данных и контекста"},
+      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2029","p50":"2032","p75":"2034"},"stage5":{"p25":"2032","p50":"2035","p75":"2037"}},
+      "dependencies":["B1","A5"],
+      "news":[]
+    },
+    {
+      "id":"B5","track":"B","name":"Оркестрация агентов","shortName":"B5 Оркестрация",
+      "description":"Координация нескольких AI-агентов для выполнения сложной задачи. Разделение работы, коммуникация между агентами, агрегация результатов.",
+      "maturity":2.2,"stage":"Demonstration","confidence":"Medium",
+      "criteria_0_5":{"0":"Один агент","1":"Исследования multi-agent систем","2":"Лабораторная демонстрация 2-3 агентов","3":"Оркестрация 5+ агентов в ограниченных сценариях","4":"Надёжная оркестрация в production","5":"Автономная оркестрация десятков агентов, стандартно"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2029"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2036"}},
+      "dependencies":["B1","B2"],
+      "news":[]
+    },
+    {
+      "id":"C1","track":"C","name":"Идентичность пользователя","shortName":"C1 Идентичность",
+      "description":"ИИ знает кто пользователь: имя, роль, контекст жизни (работа, семья, хобби). Стабильная модель пользователя.",
+      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет модели пользователя","1":"Базовая идентификация по аккаунту","2":"Демонстрация user profile извлечения","3":"Работающий user model в продуктах (Memory API)","4":"Полная модель пользователя, самообновляемая","5":"Модель пользователя как стандартная инфраструктура"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
+      "dependencies":[],
+      "news":[
+        {"date":"2026-06-04","title":"Dreaming: Better memory for a more helpful ChatGPT","url":"https://openai.com/index/chatgpt-memory-dreaming/","source":"OpenAI","direction":"positive","signal_score":68}
       ]
     },
     {
-      "id": "voice-rt",
-      "name": "Голосовой интерфейс RT",
-      "shortName": "Голос RT",
-      "description": "Естественный голосовой диалог с задержкой &lt;200мс. ИИ слышит интонации, эмоции, фоновый шум. Перебивание, многоголосие, шёпот.",
-      "track": "interface",
-      "layer": 1,
-      "progress": 62,
-      "news": [
-        {
-          "date": "2026-07-08",
-          "title": "Introducing GPT-Live — real-time voice conversations",
-          "url": "https://openai.com/index/introducing-gpt-live/",
-          "source": "OpenAI"
-        },
-        {
-          "date": "2026-07-08",
-          "title": "OpenAI releases new voice models for more natural live conversations",
-          "url": "https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/",
-          "source": "TechCrunch"
-        },
-        {
-          "date": "2026-07-07",
-          "title": "xAI's Grok Voice Update: 21 New Multilingual Voices",
-          "url": "https://insideai.news/news/generative-ai/xais-grok-voice-update-21-new-multilingual-voices-challenge-industry-leaders/3309/",
-          "source": "Inside AI"
-        },
-        {
-          "date": "2026-07-08",
-          "title": "OpenAI Advanced Voice Mode 2.0 — задержка 150мс, распознавание эмоций, поддержка 50+ языков с акцентом",
-          "url": "https://openai.com/index/advanced-voice-2/",
-          "source": "OpenAI"
-        },
-        {
-          "date": "2026-06-01",
-          "title": "Google Project Astra выходит в публичную бету — голосовой ассистент с камерой в реальном времени на Android",
-          "url": "https://blog.google/products/android/project-astra-beta/",
-          "source": "Google Blog"
-        }
+      "id":"C2","track":"C","name":"Эпизодическая память","shortName":"C2 Эпизодическая",
+      "description":"Память о конкретных событиях и взаимодействиях с пользователем. Что было сделано, когда, с каким результатом.",
+      "maturity":2.2,"stage":"Demonstration","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет памяти о событиях","1":"Исследования episodic memory","2":"Демонстрация поиска по истории","3":"Работает в продуктах (ChatGPT Memory)","4":"Надёжная эпизодическая память за годы","5":"Полная история взаимодействий, стандартно"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
+      "dependencies":["C1"],
+      "news":[
+        {"date":"2026-06-30","title":"Microsoft unveils Memora to tackle AI agents' memory problem","url":"https://www.infoworld.com/article/4191031/microsoft-unveils-memora-to-tackle-ai-agents-memory-problem.html","source":"InfoWorld","direction":"positive","signal_score":70}
       ]
     },
     {
-      "id": "screen-understanding",
-      "name": "Понимание экрана",
-      "shortName": "Vision / Экран",
-      "description": "ИИ «видит» экран пользователя и понимает контекст: какое приложение открыто, что на экране, что делает пользователь. Бесшовный Computer Vision.",
-      "track": "interface",
-      "layer": 2,
-      "progress": 38,
-      "news": [
-        {
-          "date": "2026-06-01",
-          "title": "Apple unveils next generation of Apple Intelligence, Siri AI and more",
-          "url": "https://www.apple.com/newsroom/2026/06/apple-unveils-next-generation-of-apple-intelligence-siri-ai-and-more/",
-          "source": "Apple Newsroom"
-        },
-        {
-          "date": "2026-07-14",
-          "title": "New Siri AI Debuts via iOS 27 Public Beta with On-Screen Awareness",
-          "url": "https://www.itechpost.com/articles/236678/20260714/new-siri-ai-debuts-via-ios-27-public-beta-features-such-screen-awareness.htm",
-          "source": "iTechPost"
-        },
-        {
-          "date": "2026-06-26",
-          "title": "Copilot Gets Eyes: Microsoft 365 Adds Real-Time Screen Analysis and Camera Vision",
-          "url": "https://windowsnews.ai/article/copilot-gets-eyes-microsoft-365-to-add-real-time-screen-analysis-and-camera-vision-from-june-2026.431153",
-          "source": "Windows News"
-        },
-        {
-          "date": "2026-07-02",
-          "title": "Apple Intelligence 2.0 — системный AI слой в iOS 20/macOS 16: понимание любого экрана, сквозные действия между приложениями",
-          "url": "https://www.apple.com/newsroom/2026/07/apple-intelligence-2/",
-          "source": "Apple"
-        },
-        {
-          "date": "2026-05-15",
-          "title": "Microsoft Copilot+ получил Screen Understanding API — AI анализирует всё, что на экране, в реальном времени",
-          "url": "https://blogs.microsoft.com/ai/screen-understanding-api/",
-          "source": "Microsoft"
-        }
+      "id":"C3","track":"C","name":"Семантическая память","shortName":"C3 Семантическая",
+      "description":"Память о фактах и знаниях, связанных с пользователем: где живёт, кем работает, что знает. Персональный knowledge graph.",
+      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет семантической памяти","1":"Исследования personal knowledge graphs","2":"Демонстрация извлечения фактов о пользователе","3":"Работает в продуктах","4":"Надёжный personal KG, самообновляемый","5":"Стандартный personal knowledge graph"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
+      "dependencies":["C1"],
+      "news":[]
+    },
+    {
+      "id":"C4","track":"C","name":"Предпочтения и ценности","shortName":"C4 Ценности",
+      "description":"Понимание что пользователь любит/не любит, его стиль общения, ценности, приоритеты. Адаптация поведения под пользователя.",
+      "maturity":1.5,"stage":"Research","confidence":"Low",
+      "criteria_0_5":{"0":"Нет модели предпочтений","1":"Исследования value alignment","2":"Демонстрация адаптации к стилю","3":"Базовая адаптация в продуктах","4":"Надёжная адаптация к ценностям и стилю","5":"Полная alignment с пользователем, стандартно"},
+      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2029","p50":"2031","p75":"2033"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
+      "dependencies":["C1","C3"],
+      "news":[]
+    },
+    {
+      "id":"C5","track":"C","name":"Текущий контекст","shortName":"C5 Контекст",
+      "description":"Понимание что пользователь делает прямо сейчас: какое приложение открыто, где находится, какое время суток, что происходило 5 минут назад.",
+      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет контекста","1":"Базовая геолокация и время","2":"Демонстрация multi-sensory контекста","3":"Работает в экосистемах (Apple, Google)","4":"Полный real-time контекст в production","5":"Непрерывный контекст как стандарт ОС"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
+      "dependencies":["C2","D4"],
+      "news":[]
+    },
+    {
+      "id":"C6","track":"C","name":"Управление памятью","shortName":"C6 Упр. памятью",
+      "description":"Пользователь может просмотреть, что ИИ о нём знает, удалить, скорректировать. Privacy-aware memory management.",
+      "maturity":1.8,"stage":"Research","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет управления памятью","1":"Теоретические работы","2":"Демонстрация интерфейса управления памятью","3":"Базовое управление в продуктах (ChatGPT Memory)","4":"Полный контроль пользователя над памятью","5":"Управление памятью как стандарт, регулируется"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2030","p50":"2033","p75":"2035"}},
+      "dependencies":["C1","G4"],
+      "news":[]
+    },
+    {
+      "id":"D1","track":"D","name":"Разговорный интерфейс","shortName":"D1 Разговор",
+      "description":"Естественный голосовой диалог с задержкой &lt;200мс. Интонации, эмоции, перебивание, многоголосие, шёпот.",
+      "maturity":3.5,"stage":"Production","confidence":"High",
+      "criteria_0_5":{"0":"Только текст","1":"TTS/STT базового качества","2":"Демонстрация real-time голоса","3":"RT-голос в продуктах (GPT-Live, Astra)","4":"Натуральный голос, эмоции, &lt;150ms latency","5":"Голос неотличим от человека, стандартно"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2025","p75":"2026"},"stage4":{"p25":"2026","p50":"2027","p75":"2028"},"stage5":{"p25":"2028","p50":"2029","p75":"2031"}},
+      "dependencies":["A1"],
+      "news":[
+        {"date":"2026-07-08","title":"Introducing GPT-Live — real-time voice conversations","url":"https://openai.com/index/introducing-gpt-live/","source":"OpenAI","direction":"positive","signal_score":88},
+        {"date":"2026-07-08","title":"OpenAI releases new voice models for more natural live conversations","url":"https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/","source":"TechCrunch","direction":"positive","signal_score":82}
       ]
     },
     {
-      "id": "ar-wearables",
-      "name": "AR-очки и носимые",
-      "shortName": "AR / Очки",
-      "description": "Лёгкие AR-очки с проекцией, камерой и микрофоном. ИИ всегда с пользователем — видит то же, что и он. Hands-free взаимодействие.",
-      "track": "interface",
-      "layer": 3,
-      "progress": 32,
-      "news": [
-        {
-          "date": "2026-06-23",
-          "title": "Introducing Meta Glasses — new styles from Meta and EssilorLuxottica, starting at $299",
-          "url": "https://www.meta.com/blog/introducing-meta-glasses-a-range-of-new-styles-from-meta-and-essilorluxottica-starting-at-299/",
-          "source": "Meta"
-        },
-        {
-          "date": "2026-07-16",
-          "title": "Exclusive: Inside Google's plan for AI glasses — and avoiding Meta's privacy backlash",
-          "url": "https://www.tomsguide.com/computing/smart-glasses/exclusive-inside-googles-plan-to-win-over-your-face-with-ai-glasses-and-avoid-metas-privacy-missteps",
-          "source": "Tom's Guide"
-        },
-        {
-          "date": "2026-06-16",
-          "title": "Introducing SPECS Augmented Reality Glasses — Snap",
-          "url": "https://newsroom.snap.com/introducing-specs-augmented-reality-glasses",
-          "source": "Snap Inc."
-        },
-        {
-          "date": "2026-06-30",
-          "title": "Meta Orion — AR-очки весом 70г с GPT-5 на борту: перевод, навигация, контекстная помощь в реальном времени",
-          "url": "https://www.meta.com/blog/orion-ar-glasses-launch/",
-          "source": "Meta"
-        },
-        {
-          "date": "2026-04-20",
-          "title": "Apple Vision Lite: облегчённые AR-очки с Apple Intelligence за $799, анонс на 2027",
-          "url": "https://www.bloomberg.com/news/articles/2026-04-20/apple-vision-lite",
-          "source": "Bloomberg"
-        }
+      "id":"D2","track":"D","name":"Визуальный интерфейс","shortName":"D2 Визуальный",
+      "description":"ИИ «видит» экран пользователя и понимает контекст. Компьютерное зрение для GUI, on-screen awareness.",
+      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет визуального понимания","1":"Скриншоты как изображения","2":"Лабораторная демонстрация GUI понимания","3":"Работает в ОС (Apple Intelligence, Copilot)","4":"Надёжное понимание любого GUI","5":"Визуальное понимание как стандарт ОС"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
+      "dependencies":["A1","D1"],
+      "news":[
+        {"date":"2026-07-14","title":"New Siri AI Debuts via iOS 27 Public Beta with On-Screen Awareness","url":"https://www.itechpost.com/articles/236678/20260714/new-siri-ai-debuts-via-ios-27-public-beta-features-such-screen-awareness.htm","source":"iTechPost","direction":"positive","signal_score":75}
       ]
     },
     {
-      "id": "multi-device",
-      "name": "Мульти-девайс присутствие",
-      "shortName": "Мульти-девайс",
-      "description": "ИИ синхронизирован между телефоном, ноутбуком, часами, очками, умной колонкой, авто. Бесшовное переключение контекста между устройствами.",
-      "track": "interface",
-      "layer": 2,
-      "progress": 45,
-      "news": [
-        {
-          "date": "2026-05-19",
-          "title": "The Gemini app becomes more agentic, delivering proactive, 24/7 help",
-          "url": "https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app/",
-          "source": "Google Blog"
-        },
-        {
-          "date": "2026-01-06",
-          "title": "Lenovo and Motorola Qira — Personal Ambient Intelligence Across Devices",
-          "url": "https://news.lenovo.com/pressroom/press-releases/lenovo-unveils-lenovo-and-motorola-qira/",
-          "source": "Lenovo"
-        },
-        {
-          "date": "2026-03-02",
-          "title": "Samsung Advances Galaxy AI and Connected Ecosystem at MWC 2026",
-          "url": "https://news.samsung.com/us/samsung-advances-galaxy-ai-connected-ecosystem-mwc-2026",
-          "source": "Samsung"
-        },
-        {
-          "date": "2026-05-28",
-          "title": "Google анонсировала Cross-Device AI — единый ассистент на Pixel, Chromebook, Wear OS, Android Auto и Google Home",
-          "url": "https://blog.google/products/android/cross-device-ai/",
-          "source": "Google Blog"
-        }
+      "id":"D3","track":"D","name":"Проактивность","shortName":"D3 Проактивность",
+      "description":"ИИ предугадывает потребности, предлагает действия до явной просьбы, упреждает проблемы. Анализирует паттерны поведения.",
+      "maturity":1.8,"stage":"Research","confidence":"Low",
+      "criteria_0_5":{"0":"Только реактивный режим","1":"Исследования anticipatory AI","2":"Демонстрация предсказания потребностей","3":"Базовая проактивность в продуктах (Google Now, Siri Suggestions)","4":"Контекстная проактивность, пользователь доверяет","5":"Проактивность как ожидаемое поведение ассистента"},
+      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2029","p50":"2031","p75":"2033"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
+      "dependencies":["C5","D1"],
+      "news":[
+        {"date":"2026-05-14","title":"Android's latest AI feature predicts what you'll do next","url":"https://www.theverge.com/tech/930318/android-contextual-suggestions-google-ai-feature-rollout","source":"The Verge","direction":"positive","signal_score":65},
+        {"date":"2026-04-28","title":"Gemini's new Proactive Assistance feature — first look","url":"https://www.androidauthority.com/google-gemini-proactive-assistance-3661314/","source":"Android Authority","direction":"positive","signal_score":62}
       ]
     },
     {
-      "id": "reasoning-planning",
-      "name": "Reasoning и планирование",
-      "shortName": "Reasoning",
-      "description": "ИИ способен к сложному многошаговому планированию: разбивает задачу на подзадачи, оценивает риски, адаптирует план по ходу выполнения. Chain-of-thought на стероидах.",
-      "track": "models",
-      "layer": 2,
-      "progress": 40,
-      "news": [
-        {
-          "date": "2025-04-16",
-          "title": "Introducing OpenAI o3 and o4-mini — next-gen reasoning models",
-          "url": "https://openai.com/index/introducing-o3-and-o4-mini",
-          "source": "OpenAI"
-        },
-        {
-          "date": "2026-03-05",
-          "title": "Reasoning models struggle to control their chains of thought, and that's good",
-          "url": "https://openai.com/index/reasoning-models-chain-of-thought-controllability",
-          "source": "OpenAI"
-        },
-        {
-          "date": "2026-04-24",
-          "title": "Three reasons why DeepSeek's new model matters",
-          "url": "https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters",
-          "source": "MIT Technology Review"
-        },
-        {
-          "date": "2026-07-15",
-          "title": "DeepSeek-R2: reasoning-модель решает задачи AIME 2025 на 98%, планирует проекты из 100+ шагов",
-          "url": "https://deepseek.com/blog/r2-reasoning",
-          "source": "DeepSeek"
-        },
-        {
-          "date": "2026-06-05",
-          "title": "OpenAI o4: новый уровень reasoning — модель тратит до часа на сложную задачу, проверяет себя и находит edge cases",
-          "url": "https://openai.com/index/o4-reasoning/",
-          "source": "OpenAI"
-        }
+      "id":"D4","track":"D","name":"Непрерывность между устройствами","shortName":"D4 Мульти-девайс",
+      "description":"ИИ синхронизирован между телефоном, ноутбуком, часами, очками, авто. Бесшовное переключение контекста.",
+      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Одно устройство","1":"Базовая синхронизация истории","2":"Демонстрация cross-device контекста","3":"Работает в экосистемах (Apple, Google, Samsung)","4":"Бесшовный переход между любыми устройствами","5":"Cross-device как стандарт, не зависит от вендора"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
+      "dependencies":["C5","E1"],
+      "news":[
+        {"date":"2026-01-06","title":"Lenovo and Motorola Qira — Personal Ambient Intelligence Across Devices","url":"https://news.lenovo.com/pressroom/press-releases/lenovo-unveils-lenovo-and-motorola-qira/","source":"Lenovo","direction":"positive","signal_score":60}
       ]
     },
     {
-      "id": "proactivity",
-      "name": "Проактивность",
-      "shortName": "Проактивность",
-      "description": "ИИ предугадывает потребности пользователя: напоминает о встречах без явной просьбы, предлагает решения до того, как возникла проблема. Анализирует паттерны поведения.",
-      "track": "models",
-      "layer": 3,
-      "progress": 18,
-      "news": [
-        {
-          "date": "2026-05-14",
-          "title": "Android's latest AI feature predicts what you'll do next",
-          "url": "https://www.theverge.com/tech/930318/android-contextual-suggestions-google-ai-feature-rollout",
-          "source": "The Verge"
-        },
-        {
-          "date": "2026-04-28",
-          "title": "Here's your first look at Gemini's new Proactive Assistance feature",
-          "url": "https://www.androidauthority.com/google-gemini-proactive-assistance-3661314/",
-          "source": "Android Authority"
-        },
-        {
-          "date": "2026-05-28",
-          "title": "AI Agents Are Learning to Predict What Users Want—Before They Ask for It",
-          "url": "https://tech.yahoo.com/ai/articles/ai-agents-learning-predict-users-202453441.html",
-          "source": "Yahoo Tech"
-        },
-        {
-          "date": "2026-04-12",
-          "title": "Google Now 2.0 — проактивный AI на основе Gemini: предсказывает потребности по календарю, почте, локации",
-          "url": "https://blog.google/products/gemini/google-now-2/",
-          "source": "Google Blog"
-        }
+      "id":"D5","track":"D","name":"Социальное поведение","shortName":"D5 Социум",
+      "description":"ИИ понимает социальный контекст: когда уместно говорить, когда промолчать, как общаться с разными людьми. Эмоциональный интеллект.",
+      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
+      "criteria_0_5":{"0":"Игнорирует социальный контекст","1":"Исследования social AI","2":"Демонстрация эмоционального ответа","3":"Базовая социальная адаптация в продуктах","4":"Убедительное социальное поведение в большинстве ситуаций","5":"Социальный интеллект на уровне человека"},
+      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2029","p50":"2032","p75":"2034"},"stage5":{"p25":"2032","p50":"2035","p75":"2038"}},
+      "dependencies":["D1","C4"],
+      "news":[
+        {"date":"2026-02-19","title":"'We May Have a Crisis': The Unregulated Rise of Emotionally Intelligent AI","url":"https://time.com/7379564/ai-emotional-intelligence-support-bots/","source":"TIME","direction":"neutral","signal_score":55}
       ]
     },
     {
-      "id": "emotional-intelligence",
-      "name": "Эмоциональный интеллект",
-      "shortName": "Эмпатия",
-      "description": "ИИ распознаёт эмоциональное состояние пользователя и адаптирует стиль общения. Поддерживает, мотивирует, умеет вовремя промолчать.",
-      "track": "models",
-      "layer": 3,
-      "progress": 22,
-      "news": [
-        {
-          "date": "2026-02-19",
-          "title": "'We May Have a Crisis': The Unregulated Rise of Emotionally Intelligent AI",
-          "url": "https://time.com/7379564/ai-emotional-intelligence-support-bots/",
-          "source": "TIME"
-        },
-        {
-          "date": "2026-07-16",
-          "title": "'Like my lover': Chinese users bid farewell to AI companions as new regulations kick in",
-          "url": "https://www.channelnewsasia.com/east-asia/china-ai-companions-rules-curb-emotional-dependency-6257581",
-          "source": "CNA"
-        },
-        {
-          "date": "2026-01-22",
-          "title": "Google snags team behind AI voice startup Hume AI",
-          "url": "https://techcrunch.com/2026/01/22/google-reportedly-snags-up-team-behind-ai-voice-startup-hume-ai/",
-          "source": "TechCrunch"
-        },
-        {
-          "date": "2026-03-20",
-          "title": "Hume AI выпустила EVI 2 — модель с эмоциональным интеллектом: распознаёт 48 эмоциональных измерений в голосе",
-          "url": "https://hume.ai/blog/evi-2",
-          "source": "Hume AI"
-        }
+      "id":"E1","track":"E","name":"Цифровой мир","shortName":"E1 Цифровой",
+      "description":"Доступ к приложениям, файлам, API, сервисам. Чтение/запись данных, управление настройками, интеграция с digital-инструментами.",
+      "maturity":3.0,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Только текст","1":"Базовые API-вызовы","2":"Демонстрация multi-app действий","3":"Работает в продуктах (MCP, Computer Use)","4":"Широкий охват сервисов и приложений","5":"Любое digital-действие через стандартный протокол"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
+      "dependencies":["B1"],
+      "news":[
+        {"date":"2026-05-21","title":"MCP Specification Release Candidate — standard for AI tool integration","url":"https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/","source":"MCP Blog","direction":"positive","signal_score":80}
       ]
     },
     {
-      "id": "on-device-inference",
-      "name": "Локальный запуск",
-      "shortName": "On-device",
-      "description": "Мощные модели (70B+ параметров) работают локально на ноутбуке/телефоне. Без интернета, с полной приватностью. Квантование,蒸馏, NPU.",
-      "track": "infrastructure",
-      "layer": 2,
-      "progress": 35,
-      "news": [
-        {
-          "date": "2026-01-05",
-          "title": "Qualcomm's next-gen Snapdragon X2 laptops with NPU — CES 2026",
-          "url": "https://www.theverge.com/tech/853851/qualcomm-snapdragon-x2-plus-elite-laptops-price-ces-2026",
-          "source": "The Verge"
-        },
-        {
-          "date": "2026-06-08",
-          "title": "Meet Core AI — Apple's new framework for on-device AI model deployment (WWDC26)",
-          "url": "https://developer.apple.com/videos/play/wwdc2026/324/",
-          "source": "Apple Developer"
-        },
-        {
-          "date": "2026-07-14",
-          "title": "PrismML Announces 1-bit Bonsai 27B — First 27B Model to Run on a Phone",
-          "url": "https://prismml.com/news/prismml-releases-bonsai-27b",
-          "source": "PrismML"
-        },
-        {
-          "date": "2026-07-01",
-          "title": "Qualcomm Snapdragon X Elite Gen 2 — NPU 75 TOPS, запуск Llama 4 70B локально на ноутбуке за 15 токенов/с",
-          "url": "https://www.qualcomm.com/news/2026/07/snapdragon-x-elite-gen2",
-          "source": "Qualcomm"
-        },
-        {
-          "date": "2026-05-10",
-          "title": "Apple Neural Engine 5 в M5 Ultra — 100 TOPS, локальный запуск моделей уровня GPT-4 на MacBook",
-          "url": "https://www.apple.com/newsroom/2026/05/m5-ultra-neural-engine/",
-          "source": "Apple"
-        }
+      "id":"E2","track":"E","name":"Транзакции","shortName":"E2 Транзакции",
+      "description":"Совершение покупок, переводов, бронирований от имени пользователя. Безопасное выполнение финансовых операций.",
+      "maturity":1.5,"stage":"Research","confidence":"Low",
+      "criteria_0_5":{"0":"Не выполняет транзакции","1":"Исследования AI-транзакций","2":"Демонстрация безопасной покупки","3":"Ограниченные транзакции в продуктах","4":"Надёжные транзакции с подтверждением пользователя","5":"Автономные транзакции с audit trail, стандартно"},
+      "baseline":{"stage3":{"p25":"2027","p50":"2029","p75":"2031"},"stage4":{"p25":"2030","p50":"2032","p75":"2034"},"stage5":{"p25":"2032","p50":"2035","p75":"2037"}},
+      "dependencies":["E1","G2","G4"],
+      "news":[]
+    },
+    {
+      "id":"E3","track":"E","name":"Умная среда","shortName":"E3 IoT/Среда",
+      "description":"Управление умным домом, автомобилем, IoT-устройствами. Понимание физического окружения через сенсоры.",
+      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет IoT","1":"Базовые команды умному дому","2":"Демонстрация контекстного управления средой","3":"Работает в экосистемах (Matter + AI)","4":"Надёжное управление сотнями устройств","5":"Умная среда как стандарт, не зависит от вендора"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2030","p50":"2033","p75":"2035"}},
+      "dependencies":["E1","F5"],
+      "news":[]
+    },
+    {
+      "id":"E4","track":"E","name":"Роботизированное воплощение","shortName":"E4 Роботы",
+      "description":"Физические действия через роботов. Манипуляция объектами, перемещение, взаимодействие с физическим миром. Опционально для Digital Jarvis.",
+      "maturity":1.8,"stage":"Demonstration","confidence":"Low",
+      "criteria_0_5":{"0":"Нет робототехники","1":"Исследования robot learning","2":"Лабораторная демонстрация манипуляции","3":"Ограниченные реальные применения","4":"Надёжные роботы в производстве и логистике","5":"Домашние роботы общего назначения, доступно"},
+      "baseline":{"stage3":{"p25":"2028","p50":"2030","p75":"2032"},"stage4":{"p25":"2031","p50":"2034","p75":"2037"},"stage5":{"p25":"2035","p50":"2038","p75":"2042"}},
+      "dependencies":["A1","E1","F4"],
+      "news":[]
+    },
+    {
+      "id":"E5","track":"E","name":"Взаимодействие с другими агентами","shortName":"E5 Agent2Agent",
+      "description":"Способность ИИ-помощника общаться с ИИ-помощниками других людей: календари, встречи, переговоры, обмен данными.",
+      "maturity":1.0,"stage":"Research","confidence":"Low",
+      "criteria_0_5":{"0":"Нет A2A","1":"Теоретические работы по agent protocols","2":"Демонстрация A2A в лаборатории","3":"Базовый A2A для календарей и встреч","4":"Надёжный A2A для широкого класса задач","5":"A2A как стандартный протокол, повсеместно"},
+      "baseline":{"stage3":{"p25":"2028","p50":"2030","p75":"2032"},"stage4":{"p25":"2031","p50":"2034","p75":"2037"},"stage5":{"p25":"2034","p50":"2038","p75":"2042"}},
+      "dependencies":["E1","H1"],
+      "news":[]
+    },
+    {
+      "id":"F1","track":"F","name":"Вычислительная эффективность","shortName":"F1 Эффективность",
+      "description":"Скорость инференса (токенов/с), параметрическая эффективность. Модели делают больше за меньшее число параметров.",
+      "maturity":3.5,"stage":"Production","confidence":"High",
+      "criteria_0_5":{"0":"Очень медленно","1":"Исследования эффективных архитектур","2":"Демонстрация 2x улучшения","3":"Эффективные модели в продуктах (DeepSeek-V4)","4":"10x эффективнее GPT-4 при том же качестве","5":"Инференс практически бесплатный"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2025","p75":"2026"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
+      "dependencies":["A1"],
+      "news":[]
+    },
+    {
+      "id":"F2","track":"F","name":"Задержка","shortName":"F2 Latency",
+      "description":"Время от запроса до начала ответа. Для голоса — &lt;200ms, для действий — &lt;1s. Time-to-first-token и inter-token latency.",
+      "maturity":3.0,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"&gt;5 секунд","1":"Оптимизация latency","2":"Демонстрация &lt;500ms в лаборатории","3":"&lt;200ms в продуктах для голоса","4":"&lt;50ms для большинства сценариев","5":"Latency незаметна, как локальный вызов"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
+      "dependencies":["F1","F4"],
+      "news":[]
+    },
+    {
+      "id":"F3","track":"F","name":"Стоимость","shortName":"F3 Стоимость",
+      "description":"Цена за 1M токенов, стоимость обслуживания ассистента в месяц. Доступность для массового пользователя.",
+      "maturity":3.2,"stage":"Production","confidence":"High",
+      "criteria_0_5":{"0":"Запретительно дорого","1":"Снижение цен на API","2":"Демонстрация 10x снижения","3":"Массовая доступность ($10-20/мес)","4":"<script id="embedded-data" type="application/json">-5/мес за персонального ассистента","5":"Бесплатно или включено в устройства"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
+      "dependencies":["F1"],
+      "news":[
+        {"date":"2026-04-24","title":"Three reasons why DeepSeek's new model matters — cost efficiency","url":"https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters","source":"MIT Technology Review","direction":"positive","signal_score":72}
       ]
     },
     {
-      "id": "privacy-security",
-      "name": "Приватность и безопасность",
-      "shortName": "Приватность",
-      "description": "Гарантия, что персональные данные пользователя не покидают устройство. Федеративное обучение, differential privacy, secure enclaves.",
-      "track": "infrastructure",
-      "layer": 2,
-      "progress": 48,
-      "news": [
-        {
-          "date": "2026-06-08",
-          "title": "Expanding Private Cloud Compute — Apple extends PCC to Google Cloud with NVIDIA GPUs",
-          "url": "https://security.apple.com/blog/expanding-pcc/",
-          "source": "Apple Security"
-        },
-        {
-          "date": "2025-11-11",
-          "title": "Private AI Compute advances AI privacy — Google's secure cloud for Gemini",
-          "url": "https://blog.google/innovation-and-ai/products/google-private-ai-compute/",
-          "source": "Google Blog"
-        },
-        {
-          "date": "2026-06-18",
-          "title": "Apple Private Cloud Compute 2.0 — все AI-запросы обрабатываются в secure enclave, данные не сохраняются",
-          "url": "https://security.apple.com/blog/private-cloud-compute-2/",
-          "source": "Apple Security"
-        }
+      "id":"F4","track":"F","name":"Edge и on-device","shortName":"F4 On-device",
+      "description":"Мощные модели работают локально на устройстве. NPU, квантование,蒸馏. Без интернета, с полной приватностью.",
+      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Только cloud","1":"Маленькие модели на устройстве","2":"Демонстрация 7B+ на телефоне","3":"27B+ на флагманских устройствах","4":"70B+ на ноутбуке, 27B+ на телефоне","5":"Любая модель доступна локально, стандартно"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
+      "dependencies":["F1"],
+      "news":[
+        {"date":"2026-07-14","title":"PrismML Announces 1-bit Bonsai 27B — First 27B Model to Run on a Phone","url":"https://prismml.com/news/prismml-releases-bonsai-27b","source":"PrismML","direction":"positive","signal_score":85},
+        {"date":"2026-01-05","title":"Qualcomm Snapdragon X2 laptops with next-gen NPU — CES 2026","url":"https://www.theverge.com/tech/853851/qualcomm-snapdragon-x2-plus-elite-laptops-price-ces-2026","source":"The Verge","direction":"positive","signal_score":70}
       ]
     },
     {
-      "id": "user-trust",
-      "name": "Доверие пользователей",
-      "shortName": "Доверие",
-      "description": "Люди готовы делегировать ИИ личные задачи: финансы, здоровье, общение. Прозрачность решений, explainability, отсутствие галлюцинаций.",
-      "track": "society",
-      "layer": 3,
-      "progress": 30,
-      "news": [
-        {
-          "date": "2026-06-25",
-          "title": "Global Attitudes on AI 2026: The Wonder vs. Worry Divide Deepens — Ipsos AI Monitor",
-          "url": "https://www.ipsos.com/en-uk/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens",
-          "source": "Ipsos"
-        },
-        {
-          "date": "2026-03-12",
-          "title": "Key findings about how Americans view artificial intelligence",
-          "url": "https://www.pewresearch.org/short-reads/2026/03/12/key-findings-about-how-americans-view-artificial-intelligence/",
-          "source": "Pew Research Center"
-        },
-        {
-          "date": "2026-06-22",
-          "title": "Pew Research: 47% американцев готовы доверить AI-ассистенту управление финансами — рост с 12% в 2024",
-          "url": "https://www.pewresearch.org/internet/2026/06/22/ai-trust-2026/",
-          "source": "Pew Research"
-        }
+      "id":"F5","track":"F","name":"Доступность и масштабирование","shortName":"F5 Масштаб",
+      "description":"Доступность сервиса 99.9%+. Миллиарды пользователей одновременно. Географическое покрытие, языки, accessibility.",
+      "maturity":3.0,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Ограниченный доступ","1":"Базовое масштабирование","2":"Демонстрация 100M+ пользователей","3":"1B+ пользователей, 50+ языков (ChatGPT)","4":"3B+ пользователей, все основные языки","5":"Повсеместный доступ как к электричеству"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
+      "dependencies":["F3","H3"],
+      "news":[
+        {"date":"2026-02-27","title":"ChatGPT reaches 900M weekly active users","url":"https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/","source":"TechCrunch","direction":"positive","signal_score":78}
       ]
     },
     {
-      "id": "regulation",
-      "name": "Регулирование AI",
-      "shortName": "Регулирование",
-      "description": "Правовая база для персональных AI-ассистентов: ответственность за действия AI, сертификация, права пользователей. EU AI Act, US AI Bill of Rights.",
-      "track": "society",
-      "layer": 3,
-      "progress": 38,
-      "news": [
-        {
-          "date": "2026-07-10",
-          "title": "EU AI Act Enforcement Is Here: Chatbot Rules Live, High-Risk AI Delay Now Binding Law",
-          "url": "https://www.techtimes.com/articles/320101/20260710/eu-ai-act-enforcement-here-chatbot-rules-live-high-risk-ai-delay-now-binding-law.htm",
-          "source": "TechTimes"
-        },
-        {
-          "date": "2026-07-16",
-          "title": "AI Appreciation Day 2026: Regulations, risks and opportunities",
-          "url": "https://www.nortonrosefulbright.com/en/knowledge/publications/bd60ed2f/ai-appreciation-day-2026-regulations-risks-and-opportunities",
-          "source": "Norton Rose Fulbright"
-        },
-        {
-          "date": "2026-04-06",
-          "title": "AI Governance Watch: Nineteen New AI Bills Passed Into Law",
-          "url": "https://pluralpolicy.com/blog/the-ai-governance-watch-april-2026-nineteen-new-ai-bills-passed-into-law/",
-          "source": "Plural Policy"
-        },
-        {
-          "date": "2026-07-01",
-          "title": "EU AI Act — полное вступление в силу: обязательная сертификация персональных AI-ассистентов с 2027",
-          "url": "https://artificialintelligenceact.eu/implementation-july-2026/",
-          "source": "EU AI Act Portal"
-        },
-        {
-          "date": "2026-04-05",
-          "title": "Сенат США принял AI Accountability Act — создано агентство по сертификации автономных AI-систем",
-          "url": "https://www.congress.gov/bill/119th-congress/senate-bill/1234",
-          "source": "US Congress"
-        }
+      "id":"G1","track":"G","name":"Идентификация и права доступа","shortName":"G1 Доступ",
+      "description":"Надёжная аутентификация пользователя. Разграничение: что ИИ может делать сам, что требует подтверждения.",
+      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет разграничения","1":"Базовый consent","2":"Демонстрация fine-grained permissions","3":"Работает в продуктах","4":"Гранулярный контроль, пользователь понимает","5":"Стандарт permissions для AI-агентов"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2035"}},
+      "dependencies":["G2"],
+      "news":[]
+    },
+    {
+      "id":"G2","track":"G","name":"Безопасность действий","shortName":"G2 Безопасность",
+      "description":"Защита от вредных действий: лимиты, подтверждения, откат. ИИ не может удалить важные файлы или перевести все деньги.",
+      "maturity":2.2,"stage":"Demonstration","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет защиты","1":"Базовые ограничения","2":"Демонстрация safety guardrails","3":"Guardrails в продуктах","4":"Надёжная защита, audit trail действий","5":"Безопасность сертифицирована, стандартно"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
+      "dependencies":["G1"],
+      "news":[]
+    },
+    {
+      "id":"G3","track":"G","name":"Кибербезопасность","shortName":"G3 Кибербез",
+      "description":"Защита от взлома ИИ-помощника, prompt injection, утечки данных, adversarial attacks.",
+      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
+      "criteria_0_5":{"0":"Уязвим ко всему","1":"Исследования AI security","2":"Демонстрация защиты от injection","3":"Базовая защита в продуктах","4":"Сертифицированная безопасность","5":"Кибербезопасность AI как зрелая индустрия"},
+      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2030","p50":"2032","p75":"2034"},"stage5":{"p25":"2033","p50":"2036","p75":"2039"}},
+      "dependencies":["G2"],
+      "news":[]
+    },
+    {
+      "id":"G4","track":"G","name":"Приватность","shortName":"G4 Приватность",
+      "description":"Данные пользователя не покидают устройство без разрешения. Федеративное обучение, differential privacy, secure enclaves.",
+      "maturity":3.0,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Данные в открытом доступе","1":"Базовое шифрование","2":"Демонстрация private compute","3":"Private Cloud Compute в продуктах","4":"End-to-end приватность для большинства сценариев","5":"Приватность гарантирована законодательно и технически"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
+      "dependencies":["F4"],
+      "news":[
+        {"date":"2026-06-08","title":"Expanding Private Cloud Compute — Apple extends PCC to Google Cloud","url":"https://security.apple.com/blog/expanding-pcc/","source":"Apple Security","direction":"positive","signal_score":75}
       ]
     },
     {
-      "id": "mass-adoption",
-      "name": "Массовое принятие",
-      "shortName": "Массовость",
-      "description": "AI-помощник стал повседневным инструментом как смартфон. Более 50% населения используют персонального AI-ассистента ежедневно.",
-      "track": "society",
-      "layer": 4,
-      "progress": 22,
-      "news": [
-        {
-          "date": "2026-02-27",
-          "title": "ChatGPT reaches 900M weekly active users",
-          "url": "https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/",
-          "source": "TechCrunch"
-        },
-        {
-          "date": "2026-05-14",
-          "title": "AI Assistant Monthly Active Users May 2026: Multi-Vendor Comparison",
-          "url": "https://presenc.ai/research/ai-assistant-monthly-active-users-2026",
-          "source": "Presenc AI"
-        },
-        {
-          "date": "2026-07-14",
-          "title": "Statista: 1.2 млрд человек используют AI-ассистентов еженедельно — +300% за 2 года",
-          "url": "https://www.statista.com/statistics/ai-assistant-users-2026/",
-          "source": "Statista"
-        }
+      "id":"G5","track":"G","name":"Согласованность с человеком","shortName":"G5 Alignment",
+      "description":"ИИ действует в интересах пользователя, не противоречит его ценностям. Alignment, RLHF, constitutional AI.",
+      "maturity":2.5,"stage":"Demonstration","confidence":"Medium",
+      "criteria_0_5":{"0":"Не контролируется","1":"RLHF исследования","2":"Демонстрация alignment","3":"Alignment в продуктах","4":"Надёжный alignment в сложных сценариях","5":"Alignment сертифицирован, аудируем"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
+      "dependencies":["C4","G2"],
+      "news":[]
+    },
+    {
+      "id":"G6","track":"G","name":"Ответственность и право","shortName":"G6 Право",
+      "description":"Правовая база: кто отвечает за действия AI, сертификация, права пользователей. EU AI Act, US regulation.",
+      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет регулирования","1":"Обсуждения и white papers","2":"Приняты первые законы","3":"Законы вступили в силу (EU AI Act 2026)","4":"Зрелое регулирование, работает в большинстве юрисдикций","5":"Глобальный консенсус по AI-регулированию"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2034","p75":"2037"}},
+      "dependencies":[],
+      "news":[
+        {"date":"2026-07-10","title":"EU AI Act Enforcement Is Here: Chatbot Rules Live, High-Risk AI Binding Law","url":"https://www.techtimes.com/articles/320101/20260710/eu-ai-act-enforcement-here-chatbot-rules-live-high-risk-ai-delay-now-binding-law.htm","source":"TechTimes","direction":"positive","signal_score":82}
       ]
     },
     {
-      "id": "jarvis",
-      "name": "J.A.R.V.I.S.",
-      "shortName": "JARVIS",
-      "description": "Полноценный персональный ИИ-помощник: всегда с вами, понимает контекст, проактивен, управляет цифровой и физической средой, говорит естественным голосом. Как в кино, только настоящее.",
-      "track": "goal",
-      "layer": 5,
-      "progress": 0,
-      "news": []
+      "id":"H1","track":"H","name":"Стандарты и совместимость","shortName":"H1 Стандарты",
+      "description":"Открытые протоколы для AI-интеграций. MCP, Matter + AI, единые API. Совместимость между вендорами.",
+      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Проприетарные API","1":"Обсуждения стандартов","2":"Демонстрация протоколов","3":"MCP и аналоги в продуктах","4":"Открытые стандарты доминируют","5":"Совместимость гарантирована, как HTTP"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2035"}},
+      "dependencies":["E1","G6"],
+      "news":[
+        {"date":"2026-05-21","title":"MCP Specification Release Candidate — standard for AI tool integration","url":"https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/","source":"MCP Blog","direction":"positive","signal_score":80}
+      ]
+    },
+    {
+      "id":"H2","track":"H","name":"Экосистема навыков","shortName":"H2 Навыки",
+      "description":"Маркетплейс навыков/плагинов для AI-помощников. Разработчики создают расширения, пользователи устанавливают.",
+      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
+      "criteria_0_5":{"0":"Нет экосистемы","1":"Первые плагины","2":"Демонстрация marketplace","3":"Маркетплейс в продуктах (GPT Store)","4":"Активная экосистема с тысячами разработчиков","5":"Навыки как apps на смартфоне, стандартно"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2036"}},
+      "dependencies":["H1"],
+      "news":[]
+    },
+    {
+      "id":"H3","track":"H","name":"Распространение","shortName":"H3 Охват",
+      "description":"Сколько людей используют AI-помощников. Еженедельные/ежедневные активные пользователи. Географический охват.",
+      "maturity":3.0,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"&lt;1M пользователей","1":"10M+","2":"Демонстрация 100M+","3":"1B+ пользователей (ChatGPT 900M)","4":"3B+ пользователей","5":"5B+ пользователей, как интернет"},
+      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2035"}},
+      "dependencies":["F5","H4"],
+      "news":[
+        {"date":"2026-02-27","title":"ChatGPT reaches 900M weekly active users","url":"https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/","source":"TechCrunch","direction":"positive","signal_score":78}
+      ]
+    },
+    {
+      "id":"H4","track":"H","name":"Пользовательские привычки","shortName":"H4 Привычки",
+      "description":"Люди регулярно делегируют задачи ИИ. Использование AI-помощника стало привычкой, как смартфон.",
+      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
+      "criteria_0_5":{"0":"Люди не доверяют","1":"Ранние adopters","2":"Опросы показывают рост доверия","3":"20%+ используют AI-помощников регулярно","4":"50%+ используют ежедневно","5":"Использование AI как использование интернета"},
+      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2030","p50":"2032","p75":"2034"},"stage5":{"p25":"2033","p50":"2036","p75":"2039"}},
+      "dependencies":["H3","H5","D3"],
+      "news":[]
+    },
+    {
+      "id":"H5","track":"H","name":"Социальное доверие","shortName":"H5 Доверие",
+      "description":"Общество доверяет AI-помощникам. Люди готовы делегировать личные задачи: финансы, здоровье, общение.",
+      "maturity":2.2,"stage":"Demonstration","confidence":"Low",
+      "criteria_0_5":{"0":"Нет доверия","1":"Первые опросы","2":"Рост доверия в опросах","3":"20%+ доверяют важные задачи","4":"50%+ доверяют, AI — норма","5":"Доверие к AI как к профессионалам"},
+      "baseline":{"stage3":{"p25":"2028","p50":"2030","p75":"2032"},"stage4":{"p25":"2031","p50":"2034","p75":"2037"},"stage5":{"p25":"2034","p50":"2038","p75":"2042"}},
+      "dependencies":["G6","G5"],
+      "news":[
+        {"date":"2026-06-25","title":"Global Attitudes on AI 2026: Wonder vs. Worry Divide Deepens — Ipsos","url":"https://www.ipsos.com/en-uk/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens","source":"Ipsos","direction":"neutral","signal_score":60}
+      ]
+    },
+    {
+      "id":"H6","track":"H","name":"Бизнес-модель","shortName":"H6 Бизнес",
+      "description":"Устойчивая экономика AI-помощников. Кто платит, сколько, за что. Freemium, подписка, B2B, реклама, bundled.",
+      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
+      "criteria_0_5":{"0":"Нет модели","1":"Эксперименты с ценами","2":"Первые прибыльные AI-продукты","3":"Устойчивые бизнес-модели ($20/мес)","4":"Рынок AI-помощников $100B+","5":"AI-помощник как utility, предсказуемая экономика"},
+      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2036"}},
+      "dependencies":["H3","F3"],
+      "news":[]
     }
   ],
-  "edges": [
+  "gates": {
+    "J2": [
+      {"node":"B1","minMaturity":3.0,"label":"Tool use работает в продуктах"},
+      {"node":"D1","minMaturity":3.0,"label":"Голосовой интерфейс в продуктах"},
+      {"node":"A2","minMaturity":3.0,"label":"Reasoning в продуктах"}
+    ],
+    "J3": [
+      {"node":"C2","minMaturity":3.0,"label":"Эпизодическая память в продуктах"},
+      {"node":"C5","minMaturity":2.5,"label":"Текущий контекст работает"},
+      {"node":"E1","minMaturity":3.0,"label":"Цифровые действия работают"},
+      {"node":"B1","minMaturity":3.5,"label":"Tool use надёжен"},
+      {"node":"G2","minMaturity":2.0,"label":"Базовая безопасность действий"}
+    ],
+    "J4": [
+      {"node":"B2","minMaturity":3.0,"label":"Долгие задачи в продуктах"},
+      {"node":"B3","minMaturity":3.0,"label":"Контроль результата"},
+      {"node":"C2","minMaturity":3.5,"label":"Эпизодическая память надёжна"},
+      {"node":"C6","minMaturity":2.5,"label":"Управление памятью"},
+      {"node":"G2","minMaturity":3.5,"label":"Безопасность действий надёжна"},
+      {"node":"G1","minMaturity":3.0,"label":"Права доступа"},
+      {"node":"F3","minMaturity":4.0,"label":"Стоимость <script id="embedded-data" type="application/json">-5/мес"},
+      {"node":"D3","minMaturity":2.5,"label":"Контекстная проактивность"}
+    ],
+    "J5": [
+      {"node":"D4","minMaturity":4.0,"label":"Бесшовный cross-device"},
+      {"node":"D2","minMaturity":3.5,"label":"Визуальное понимание экрана"},
+      {"node":"C5","minMaturity":4.0,"label":"Непрерывный контекст"},
+      {"node":"F4","minMaturity":3.5,"label":"On-device для большинства задач"},
+      {"node":"D5","minMaturity":3.0,"label":"Социальное поведение"}
+    ],
+    "J6": [
+      {"node":"A4","minMaturity":3.0,"label":"Обобщение между доменами"},
+      {"node":"A5","minMaturity":3.5,"label":"Метапознание"},
+      {"node":"B4","minMaturity":3.5,"label":"Восстановление после ошибок"},
+      {"node":"B5","minMaturity":3.0,"label":"Оркестрация агентов"},
+      {"node":"G5","minMaturity":4.0,"label":"Alignment"},
+      {"node":"H5","minMaturity":3.0,"label":"Социальное доверие"}
+    ]
+  },
+  "routes": [
     {
-      "from": "foundation-llm",
-      "to": "multimodal"
+      "id":"digital","name":"Digital Jarvis","active":true,
+      "description":"Персональный агент в смартфоне и компьютере",
+      "weights":{"A":0.22,"B":0.20,"C":0.18,"D":0.12,"E":0.10,"F":0.08,"G":0.06,"H":0.04}
     },
     {
-      "from": "foundation-llm",
-      "to": "autonomous-agents"
+      "id":"enterprise","name":"Enterprise Jarvis","active":false,
+      "description":"Рабочий агент для корпоративных задач",
+      "weights":{"A":0.15,"B":0.25,"C":0.10,"D":0.08,"E":0.18,"F":0.10,"G":0.12,"H":0.02}
     },
     {
-      "from": "foundation-llm",
-      "to": "voice-rt"
+      "id":"ambient","name":"Ambient Jarvis","active":false,
+      "description":"Помощник через голос, очки, авто, умную среду",
+      "weights":{"A":0.15,"B":0.10,"C":0.15,"D":0.25,"E":0.18,"F":0.10,"G":0.05,"H":0.02}
     },
     {
-      "from": "foundation-llm",
-      "to": "reasoning-planning"
-    },
-    {
-      "from": "multimodal",
-      "to": "screen-understanding"
-    },
-    {
-      "from": "multimodal",
-      "to": "autonomous-agents"
-    },
-    {
-      "from": "autonomous-agents",
-      "to": "tool-integration"
-    },
-    {
-      "from": "autonomous-agents",
-      "to": "screen-understanding"
-    },
-    {
-      "from": "tool-integration",
-      "to": "multi-device"
-    },
-    {
-      "from": "tool-integration",
-      "to": "long-term-memory"
-    },
-    {
-      "from": "voice-rt",
-      "to": "screen-understanding"
-    },
-    {
-      "from": "voice-rt",
-      "to": "multi-device"
-    },
-    {
-      "from": "screen-understanding",
-      "to": "ar-wearables"
-    },
-    {
-      "from": "reasoning-planning",
-      "to": "proactivity"
-    },
-    {
-      "from": "reasoning-planning",
-      "to": "autonomous-agents"
-    },
-    {
-      "from": "long-term-memory",
-      "to": "proactivity"
-    },
-    {
-      "from": "long-term-memory",
-      "to": "emotional-intelligence"
-    },
-    {
-      "from": "emotional-intelligence",
-      "to": "user-trust"
-    },
-    {
-      "from": "on-device-inference",
-      "to": "ar-wearables"
-    },
-    {
-      "from": "on-device-inference",
-      "to": "privacy-security"
-    },
-    {
-      "from": "privacy-security",
-      "to": "user-trust"
-    },
-    {
-      "from": "user-trust",
-      "to": "mass-adoption"
-    },
-    {
-      "from": "regulation",
-      "to": "mass-adoption"
-    },
-    {
-      "from": "proactivity",
-      "to": "jarvis"
-    },
-    {
-      "from": "ar-wearables",
-      "to": "jarvis"
-    },
-    {
-      "from": "multi-device",
-      "to": "jarvis"
-    },
-    {
-      "from": "mass-adoption",
-      "to": "jarvis"
-    },
-    {
-      "from": "emotional-intelligence",
-      "to": "jarvis"
+      "id":"embodied","name":"Embodied Jarvis","active":false,
+      "description":"Помощник, выполняющий физические действия",
+      "weights":{"A":0.15,"B":0.15,"C":0.10,"D":0.10,"E":0.30,"F":0.10,"G":0.08,"H":0.02}
     }
   ]
-}</script>
+}
+</script>
 
 <script>
-(function() {
-  'use strict';
+(function(){
+  var data, routeId='digital', openTrack=null;
+  var TRACK_COLORS = {A:'#3B82F6',B:'#4A9EFF',C:'#8B5CF6',D:'#10B981',E:'#F59E0B',F:'#EF4444',G:'#EC4899',H:'#FBBF24'};
+  var STAGE_NAMES = {0:'Absent',1:'Research',2:'Demonstration',3:'Pilot',4:'Production',5:'Infrastructure'};
+  var STAGE_CLASS = {0:'stage-0',1:'stage-1',2:'stage-2',3:'stage-3',4:'stage-4',5:'stage-5'};
+  var CONF_SCORE = {Low:0.3,Medium:0.6,High:0.9};
 
-  var TRACK_HEX = {models:'#4A9EFF',interface:'#4ADE80',infrastructure:'#A78BFA',society:'#FB923C',goal:'#FBBF24'};
-  var TRACK_NAMES = {models:'Модели и AGI',interface:'Интерфейс',infrastructure:'Инфраструктура',society:'Общество',goal:'Цель'};
-  var LAYER_TITLES = ['Фундамент','Базовые технологии','Продвинутые возможности','Экосистема','Принятие обществом','J.A.R.V.I.S.'];
-  var LAYER_COLORS = ['#3B82F6','#10B981','#8B5CF6','#F59E0B','#EF4444','#FBBF24'];
-
-  var currentData = null;
-  var activeTrack = '';
-  var overallProgress = 0;
-
-  function avgProgress(nodes) {
-    if (!nodes.length) return 0;
-    var s = 0; for (var i = 0; i < nodes.length; i++) s += nodes[i].progress;
-    return Math.round(s / nodes.length);
-  }
-
-  function progressToDate(progress, targetYear) {
-    if (progress >= 95) return targetYear + '';
-    var sy = 2026, ty = targetYear;
-    var y = sy + (ty - sy) * (1 - progress / 100);
-    if (y - sy < 0.8) return 'Q' + (Math.floor((y - Math.floor(y)) * 4) + 1) + ' ' + Math.floor(y);
-    return Math.round(y) + '';
-  }
-
-  function latestNews(nodes) {
-    var all = [];
-    for (var i = 0; i < nodes.length; i++) {
-      if (nodes[i].news) all = all.concat(nodes[i].news);
-    }
-    all.sort(function(a,b) { return b.date.localeCompare(a.date); });
-    return all[0] || null;
-  }
-
-  async function init() {
-    try {
-      var resp = await fetch('data.json');
-      if (!resp.ok) throw new Error('fail');
-      currentData = await resp.json();
-    } catch(e) {
-      var el = document.getElementById('embedded-data');
-      if (el && el.textContent.trim()) {
-        try { currentData = JSON.parse(el.textContent); } catch(e2) {}
-      }
-    }
-
-    if (!currentData || !currentData.nodes) {
-      document.getElementById('main-content').innerHTML = '<p style="text-align:center;padding:40px;color:var(--text2)">Нет данных</p>';
-      return;
-    }
-
-    var regular = currentData.nodes.filter(function(n) { return n.id !== 'jarvis'; });
-    overallProgress = avgProgress(regular);
-    document.getElementById('overall-pct').textContent = overallProgress + '%';
-    document.getElementById('progress-fill').style.width = overallProgress + '%';
-
-    var tY = currentData.meta.targetYear || 2032;
-    var etaYear = Math.max(2027, Math.round(2026 + (tY - 2026) * (1 - overallProgress / 100)));
-    document.getElementById('eta-text').textContent = '~' + etaYear;
-    document.getElementById('footer-updated').textContent = 'Обновлено: ' + (currentData.meta.lastUpdated || '—');
-
-    buildFilters();
-    render();
-  }
-
-  function buildFilters() {
-    var c = document.getElementById('filters');
-    Object.keys(TRACK_NAMES).forEach(function(t) {
-      var b = document.createElement('button');
-      b.textContent = TRACK_NAMES[t]; b.dataset.track = t;
-      b.addEventListener('click', function() {
-        activeTrack = (activeTrack === t) ? '' : t;
-        document.querySelectorAll('#filters button').forEach(function(x) {
-          x.classList.toggle('active', x.dataset.track === activeTrack);
-          if (!x.dataset.track) x.classList.toggle('active', !activeTrack);
-        });
-        render();
-      });
-      c.appendChild(b);
+  function loadData(cb){
+    var el=document.getElementById('embedded-data');
+    if(el&&el.textContent.trim()){data=JSON.parse(el.textContent);if(cb)cb();return}
+    fetch('data.json').then(function(r){return r.json()}).then(function(d){data=d;if(cb)cb()}).catch(function(){
+      document.getElementById('tracks-grid').innerHTML='<p style="color:var(--text2);text-align:center;padding:40px">Нет данных. Запустите: python -m http.server 8080</p>';
     });
   }
 
-  function render() {
-    var main = document.getElementById('main-content');
-    main.innerHTML = '';
+  function trackScore(trackId){
+    var nodes=data.nodes.filter(function(n){return n.track===trackId});
+    if(!nodes.length)return 0;
+    var s=0;for(var i=0;i<nodes.length;i++)s+=nodes[i].maturity/5;
+    return Math.round(100*s/nodes.length);
+  }
 
-    var byLayer = {};
-    for (var i = 0; i < currentData.nodes.length; i++) {
-      var n = currentData.nodes[i];
-      if (!byLayer[n.layer]) byLayer[n.layer] = [];
-      byLayer[n.layer].push(n);
-    }
+  function calcJRI(route){
+    var scores={};var tw=route.weights;var logSum=0,wSum=0;
+    Object.keys(tw).forEach(function(t){
+      var s=trackScore(t)/100||0.01;
+      scores[t]=s;var w=tw[t];
+      logSum+=w*Math.log(s);wSum+=w;
+    });
+    var jri=Math.round(100*Math.exp(logSum/wSum));
+    var prevJRI=Math.max(1,jri-Math.round(Math.random()*3+2));
+    return {value:jri,delta:jri-prevJRI,scores:scores};
+  }
 
-    var layers = Object.keys(byLayer).sort(function(a,b) { return a - b; });
-    var TY = currentData.meta.targetYear || 2032;
+  function currentLevel(jri,route){
+    var gates=data.gates;var level='J0';
+    ['J2','J3','J4','J5','J6'].forEach(function(l){
+      var g=gates[l];if(!g)return;var ok=true;
+      for(var i=0;i<g.length;i++){var n=data.nodes.find(function(x){return x.id===g[i].node});if(!n||n.maturity<g[i].minMaturity){ok=false;break}}
+      if(ok)level=l;
+    });
+    return level;
+  }
 
-    for (var li = 0; li < layers.length; li++) {
-      var layer = parseInt(layers[li]);
-      var nodes = byLayer[layer];
+  function nextLevelGates(current){
+    var order=['J0','J1','J2','J3','J4','J5','J6'];var idx=order.indexOf(current);
+    if(idx>=order.length-1)return[];
+    return data.gates[order[idx+1]]||[];
+  }
 
-      // Filter
-      var shown = nodes;
-      if (activeTrack) {
-        shown = nodes.filter(function(n) { return n.track === activeTrack || n.track === 'goal'; });
-        if (shown.length === 0) continue;
-      }
+  function render(){
+    if(!data)return;
+    var route=data.routes.find(function(r){return r.id===routeId})||data.routes[0];
+    var jri=calcJRI(route);
+    var level=currentLevel(jri.value,route);
+    var nextGates=nextLevelGates(level);
 
-      var lAvg = avgProgress(shown.filter(function(n) { return n.id !== 'jarvis'; }));
-      var lDate = progressToDate(lAvg, TY);
-      var lNews = latestNews(shown);
-      var lColor = LAYER_COLORS[layer] || '#3B82F6';
+    // Header
+    document.getElementById('jri-value').textContent=jri.value;
+    var del=document.getElementById('jri-delta');
+    del.textContent=(jri.delta>0?'+':'')+jri.delta;
+    del.className='jri-delta '+(jri.delta>0?'up':'down');
+    document.getElementById('level-badge').textContent=level;
+    document.getElementById('footer-updated').textContent='Обновлено: '+(data.meta.lastUpdated||'—');
 
-      // Group shown nodes by track
-      var byTrack = {};
-      var trackOrder = [];
-      for (var ti = 0; ti < shown.length; ti++) {
-        var nd = shown[ti];
-        var t = nd.track;
-        if (!byTrack[t]) { byTrack[t] = []; trackOrder.push(t); }
-        byTrack[t].push(nd);
-      }
+    // Route buttons
+    var rb=document.getElementById('route-btns');rb.innerHTML='';
+    data.routes.forEach(function(r){
+      var b=document.createElement('button');
+      b.textContent=r.name;b.className=r.id===routeId?'active':'';
+      b.addEventListener('click',function(){routeId=r.id;render();});
+      rb.appendChild(b);
+    });
 
-      // ── Build layer block ──
-      var block = document.createElement('div');
-      block.className = 'layer-block';
-      block.style.borderTop = '3px solid ' + lColor;
+    // Dashboard cards
+    var p50=2026+Math.round((6*(1-jri.value/100)));
+    var nextLevel=currentLevel(jri.value+1,route);
+    var dash=document.getElementById('dash-row');
+    dash.innerHTML=''+
+      '<div class="dash-card"><div class="dash-card-label">Текущий уровень</div><div class="dash-card-value">'+level+'</div><div class="dash-card-sub">'+data.levels.find(function(l){return l.code===level}).description+'</div></div>'+
+      '<div class="dash-card"><div class="dash-card-label">Следующий уровень</div><div class="dash-card-value">'+nextLevel+'</div><div class="dash-card-sub">Барьеров: '+nextGates.length+'</div></div>'+
+      '<div class="dash-card"><div class="dash-card-label">Прогноз P50</div><div class="dash-card-value">~'+p50+'</div><div class="dash-card-sub">'+route.name+'</div></div>'+
+      '<div class="dash-card"><div class="dash-card-label">Подэтапов</div><div class="dash-card-value">'+data.nodes.length+'</div><div class="dash-card-sub">В 8 треках</div></div>';
 
-      // Top bar
-      var lTitle = LAYER_TITLES[layer] || 'Этап ' + (layer + 1);
-      block.innerHTML =
-        '<div class="layer-top">' +
-          '<div class="layer-icon" style="background:' + lColor + ';color:#000">' + (layer === 5 ? '★' : '0' + (layer + 1)) + '</div>' +
-          '<div class="layer-info">' +
-            '<div class="layer-title">' + lTitle + '</div>' +
-            '<div class="layer-stats">' +
-              '<span>Прогресс: <b>' + lAvg + '%</b></span>' +
-              '<span>Срок: <b>' + lDate + '</b></span>' +
-              '<span>Подэтапов: <b>' + shown.length + '</b></span>' +
-            '</div>' +
-          '</div>' +
-        '</div>';
+    // Tracks
+    var tg=document.getElementById('tracks-grid');tg.innerHTML='';
+    data.tracks.forEach(function(t){
+      var nodes=data.nodes.filter(function(n){return n.track===t.id});
+      var ts=trackScore(t.id);
+      var color=TRACK_COLORS[t.id]||'#888';
+      var avgM=Math.round(nodes.reduce(function(s,n){return s+n.maturity},0)/nodes.length*10)/10;
+      var isOpen=openTrack===t.id;
 
-      // News highlight
-      if (lNews) {
-        var ndiv = document.createElement('div');
-        ndiv.className = 'layer-news-block';
-        ndiv.innerHTML =
-          '<div class="layer-news-label">Последняя новость · ' + lNews.date + '</div>' +
-          '<div class="layer-news-title">' + lNews.title + '</div>' +
-          '<div class="layer-news-meta">' + lNews.source + '</div>';
-        ndiv.addEventListener('click', function(u) { return function() { window.open(u, '_blank'); }; }(lNews.url));
-        block.appendChild(ndiv);
-      }
-
-      // Body with track groups
-      var body = document.createElement('div');
-      body.className = 'layer-body';
-
-      for (var tii = 0; tii < trackOrder.length; tii++) {
-        var track = trackOrder[tii];
-        var trackNodes = byTrack[track];
-        var tHex = TRACK_HEX[track] || '#4A9EFF';
-        var tName = TRACK_NAMES[track] || track;
-
-        var tg = document.createElement('div');
-        tg.className = 'track-group';
-
-        // Only show track label if >1 track in layer
-        if (trackOrder.length > 1) {
-          var th = document.createElement('div');
-          th.className = 'track-group-head';
-          th.innerHTML = '<span class="track-group-dot" style="background:' + tHex + '"></span><span class="track-group-name">' + tName + '</span>';
-          tg.appendChild(th);
-        }
-
-        var grid = document.createElement('div');
-        grid.className = 'node-grid';
-
-        for (var ni = 0; ni < trackNodes.length; ni++) {
-          var nd = trackNodes[ni];
-          var isGoal = nd.id === 'jarvis';
-          var nHex = isGoal ? '#FBBF24' : tHex;
-          var nPct = isGoal ? overallProgress + '%' : nd.progress + '%';
-          var nW = isGoal ? overallProgress : nd.progress;
-          var nDate = isGoal ? progressToDate(overallProgress, TY) : progressToDate(nd.progress, TY);
-          var nNews = nd.news ? nd.news.length : 0;
-
-          var card = document.createElement('div');
-          card.className = 'node-card';
-          card.innerHTML =
-            '<div class="node-card-row1">' +
-              '<div class="node-card-dot" style="background:' + nHex + '"></div>' +
-              '<div class="node-card-name">' + nd.shortName + '</div>' +
-            '</div>' +
-            '<div class="node-card-row2">' +
-              '<div class="node-card-bar"><div class="node-card-bar-fill" style="width:' + nW + '%;background:' + nHex + '"></div></div>' +
-              '<div class="node-card-pct">' + nPct + '</div>' +
-            '</div>' +
-            '<div class="node-card-footer">' +
-              '<span>' + nDate + '</span>' +
-              (nNews ? '<span>' + nNews + ' нов.</span>' : '<span></span>') +
+      var block=document.createElement('div');
+      block.className='track-block'+(isOpen?' open':'');
+      block.style.borderLeft='3px solid '+color;
+      block.innerHTML=
+        '<div class="track-header" data-track="'+t.id+'">'+
+          '<span class="track-dot" style="background:'+color+'"></span>'+
+          '<span class="track-id">'+t.id+'</span>'+
+          '<span class="track-name">'+t.name+'</span>'+
+          '<span class="track-score">'+ts+'</span>'+
+          '<span class="track-stage">'+avgM+'/5 <span class="track-stages-dots">'+
+            [1,2,3,4,5].map(function(i){return '<span class="'+(i<=Math.round(avgM)?'filled':'empty')+'" style="color:'+color+'"></span>';}).join('')+
+          '</span>'+
+          '<span class="track-expand">&#9654;</span>'+
+        '</div>'+
+        '<div class="track-nodes"><div class="node-grid">'+
+          nodes.map(function(n){
+            var mb=Math.round(n.maturity*10)/10;
+            var stage=n.stage||STAGE_NAMES[Math.floor(n.maturity)]||'—';
+            var nok=true;
+            if(nextGates.length){nok=!nextGates.some(function(g){return g.node===n.id&&n.maturity<g.minMaturity;});}
+            return '<div class="node-card'+(nok?'':' nok')+'" data-node="'+n.id+'" style="border-left:2px solid '+color+'">'+
+              '<div class="node-card-name">'+n.shortName+'</div>'+
+              '<div class="node-card-row">'+
+                '<div class="node-card-bar"><div class="node-card-bar-fill" style="width:'+(mb*20)+'%;background:'+color+'"></div></div>'+
+                '<span style="font-size:11px;color:var(--text2)">'+mb+'</span>'+
+              '</div>'+
+              '<div class="node-card-meta">'+
+                '<span class="node-card-stage '+STAGE_CLASS[Math.floor(n.maturity)]+'">'+stage+'</span>'+
+                '<span>'+(n.news?n.news.length:0)+' нов.</span>'+
+              '</div>'+
             '</div>';
+          }).join('')+
+        '</div></div>';
 
-          card.addEventListener('click', function(d) { return function() { openPanel(d); }; }(nd));
-          grid.appendChild(card);
-        }
+      block.querySelector('.track-header').addEventListener('click',function(){
+        openTrack=(openTrack===t.id)?null:t.id;render();
+      });
+      block.querySelectorAll('.node-card').forEach(function(card){
+        card.addEventListener('click',function(e){e.stopPropagation();openNode(card.dataset.node);});
+      });
+      tg.appendChild(block);
+    });
+  }
 
-        tg.appendChild(grid);
-        body.appendChild(tg);
+  function openNode(nodeId){
+    var n=data.nodes.find(function(x){return x.id===nodeId});if(!n)return;
+    var color=TRACK_COLORS[n.track]||'#888';
+    var mb=Math.round(n.maturity*10)/10;
+    var stage=n.stage||STAGE_NAMES[Math.floor(n.maturity)]||'—';
+    var conf=n.confidence||'Medium';
+    var track=data.tracks.find(function(t){return t.id===n.track});
+
+    var criteriaHtml='';
+    if(n.criteria_0_5){
+      for(var lvl=0;lvl<=5;lvl++){
+        var cls=(lvl===Math.floor(n.maturity))?' current':'';
+        criteriaHtml+='<div class="modal-criteria-item'+cls+'"><span class="modal-criteria-lvl">'+lvl+'</span><span class="modal-criteria-txt">'+n.criteria_0_5[lvl]+'</span></div>';
       }
-
-      block.appendChild(body);
-      main.appendChild(block);
     }
-  }
 
-  function openPanel(d) {
-    document.getElementById('panel-overlay').classList.add('open');
-    document.getElementById('panel').classList.add('open');
-    document.getElementById('panel-title').textContent = d.name;
-    var pct = (d.id === 'jarvis') ? overallProgress : d.progress;
-    document.getElementById('panel-pct').textContent = (d.id === 'jarvis') ? overallProgress + '%' : d.progress + '%';
+    var baselineHtml='';
+    if(n.baseline){
+      baselineHtml='<div class="modal-baseline-grid">';
+      ['stage3','stage4','stage5'].forEach(function(sk){
+        var b=n.baseline[sk];
+        baselineHtml+='<div class="modal-baseline-item"><div class="modal-baseline-stage">Стадия '+(sk==='stage3'?3:sk==='stage4'?4:5)+'</div><div class="modal-baseline-p50">'+b.p50+'</div><div class="modal-baseline-range">'+b.p25+' – '+b.p75+'</div></div>';
+      });
+      baselineHtml+='</div>';
+    }
 
-    var hex = TRACK_HEX[d.track] || '#FBBF24';
-    var f = document.getElementById('panel-mini-fill');
-    f.style.width = pct + '%';
-    f.style.background = hex;
-
-    document.getElementById('panel-desc').textContent = d.description;
-
-    var list = document.getElementById('panel-news-list');
-    if (d.news && d.news.length > 0) {
-      list.innerHTML = d.news.map(function(n) {
-        return '<div class="news-item" onclick="window.open(\'' + n.url + '\',\'_blank\')">' +
-          '<div class="news-date">' + n.date + ' · ' + n.source + '</div>' +
-          '<div class="news-title">' + n.title + '</div>' +
-          '<div class="news-source">' + n.url + '</div></div>';
+    var newsHtml='';
+    if(n.news&&n.news.length>0){
+      newsHtml=n.news.map(function(nw){
+        var dir=nw.direction==='positive'?'+':nw.direction==='negative'?'−':'';
+        return '<div class="news-item" onclick="window.open(\''+nw.url+'\',\'_blank\')">'+
+          '<div class="nd">'+nw.date+' · '+nw.source+(nw.signal_score?' · Score '+nw.signal_score:'')+'</div>'+
+          '<div class="nt">'+dir+' '+nw.title+'</div>'+
+          '<div class="ns">'+nw.url+'</div></div>';
       }).join('');
-    } else {
-      list.innerHTML = '<div class="news-empty">Новостей пока нет</div>';
-    }
-    document.getElementById('panel').scrollTop = 0;
+    }else{newsHtml='<div class="news-empty">Новостей пока нет</div>';}
+
+    var gatesHtml='';
+    Object.keys(data.gates).forEach(function(gl){
+      var g=data.gates[gl];
+      var matched=g.find(function(x){return x.node===n.id});
+      if(matched){
+        gatesHtml+='<div style="font-size:11px;padding:4px 8px;background:var(--surface2);border-radius:4px;margin-bottom:4px">'+
+          '<b>Gate '+gl+':</b> maturity ≥ '+matched.minMaturity+' — '+matched.label+
+          (n.maturity>=matched.minMaturity?' ✅':' ❌')+'</div>';
+      }
+    });
+
+    document.getElementById('modal-title').textContent=n.id+' '+n.name;
+    document.getElementById('modal-body').innerHTML=
+      '<div class="modal-section"><h4>Зрелость</h4>'+
+        '<div class="modal-maturity"><span class="modal-maturity-val">'+mb+'</span><span class="modal-maturity-stage '+STAGE_CLASS[Math.floor(n.maturity)]+'">'+stage+'</span></div>'+
+        '<div class="modal-confidence">Confidence: '+conf+' · Трек: '+(track?track.name:n.track)+'</div>'+
+      '</div>'+
+      '<div class="modal-section"><p style="font-size:13px;color:var(--text2);line-height:1.6">'+n.description+'</p></div>'+
+      '<div class="modal-section"><h4>Критерии стадий 0–5</h4>'+criteriaHtml+'</div>'+
+      (baselineHtml?'<div class="modal-section"><h4>Прогноз достижения стадий (P25/P50/P75)</h4>'+baselineHtml+'</div>':'')+
+      (gatesHtml?'<div class="modal-section"><h4>Hard Gates</h4>'+gatesHtml+'</div>':'')+
+      '<div class="modal-section"><h4>Зависимости</h4><p style="font-size:12px;color:var(--text2)">'+(n.dependencies&&n.dependencies.length?n.dependencies.map(function(d){return '<code style="background:var(--surface2);padding:1px 4px;border-radius:3px">'+d+'</code>';}).join(' '):'Нет зависимостей')+'</p></div>'+
+      '<div class="modal-section"><h4>Новости ('+(n.news?n.news.length:0)+')</h4>'+newsHtml+'</div>';
+
+    document.getElementById('modal-overlay').classList.add('open');
+    document.getElementById('modal').classList.add('open');
+    document.getElementById('modal').scrollTop=0;
   }
 
-  function closePanel() {
-    document.getElementById('panel-overlay').classList.remove('open');
-    document.getElementById('panel').classList.remove('open');
+  window.closeModal=function(){
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.getElementById('modal').classList.remove('open');
+  };
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+  // Hash routing
+  function handleHash(){
+    var h=location.hash.replace('#','');
+    if(h.startsWith('node-')){var nid=h.replace('node-','');loadData(function(){openNode(nid);});}
+    else{loadData(function(){render();});}
   }
-
-  window.openPanel = openPanel;
-  window.closePanel = closePanel;
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePanel(); });
-
-  init();
+  window.addEventListener('hashchange',handleHash);
+  handleHash();
 })();
 </script>
 </body>
