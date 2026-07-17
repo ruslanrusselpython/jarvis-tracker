@@ -1,106 +1,88 @@
 const fs = require('fs');
-
 const d = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+
+// Reset all maturities to expert baseline (hardcoded — reasonable starting point)
+// These are INITIAL expert assessments, not auto-inflated
+const EXPERT_MATURITY = {
+  A1:3.8, A2:3.5, A3:2.8, A4:2.0, A5:2.2,
+  B1:3.5, B2:2.0, B3:2.0, B4:1.8, B5:2.2,
+  C1:2.5, C2:3.2, C3:2.8, C4:1.5, C5:2.5, C6:1.8,
+  D1:3.8, D2:2.8, D3:1.8, D4:2.8, D5:2.0,
+  E1:3.0, E2:1.5, E3:2.5, E4:1.8, E5:1.0,
+  F1:3.5, F2:3.0, F3:3.2, F4:2.8, F5:3.0,
+  G1:2.5, G2:2.2, G3:2.0, G4:3.0, G5:2.5, G6:2.8,
+  H1:2.5, H2:2.0, H3:3.0, H4:2.0, H5:2.2, H6:2.5
+};
+
 const STAGE_NAMES = ['Absent','Research','Demonstration','Pilot','Production','Infrastructure'];
 
 let changes = [];
 
 for (const node of d.nodes) {
-  if (!node.news || node.news.length === 0) continue;
+  const base = EXPERT_MATURITY[node.id] || node.maturity;
 
-  const oldMaturity = node.maturity;
+  // Apply ONE-TIME signal adjustment (capped at ±0.5 from expert baseline)
   let delta = 0;
-
-  // Count signals by strength
-  for (const n of node.news) {
-    const score = n.signal_score || 0;
-    const dir = n.direction || 'neutral';
-
-    if (dir === 'positive' && score >= 80) delta += 0.25;
-    else if (dir === 'positive' && score >= 70) delta += 0.15;
-    else if (dir === 'positive' && score >= 60) delta += 0.08;
-    else if (dir === 'positive') delta += 0.04;
-
-    if (dir === 'negative' && score >= 70) delta -= 0.15;
-    else if (dir === 'negative' && score >= 50) delta -= 0.08;
-    else if (dir === 'negative') delta -= 0.04;
+  if (node.news) {
+    for (const n of node.news) {
+      const score = n.signal_score || 0;
+      const dir = n.direction || 'neutral';
+      if (dir === 'positive' && score >= 80) delta += 0.15;
+      else if (dir === 'positive' && score >= 70) delta += 0.10;
+      else if (dir === 'positive' && score >= 60) delta += 0.05;
+      if (dir === 'negative' && score >= 70) delta -= 0.10;
+      else if (dir === 'negative' && score >= 50) delta -= 0.05;
+    }
   }
-
-  // Cap delta — max change per cycle
   delta = Math.max(-0.5, Math.min(0.5, delta));
 
-  const newMaturity = Math.round((oldMaturity + delta) * 10) / 10;
-  const clamped = Math.max(0, Math.min(5, newMaturity));
-  node.maturity = clamped;
+  const newM = Math.round((base + delta) * 10) / 10;
+  const clamped = Math.max(0, Math.min(5, newM));
 
-  // Update stage
-  const stageIdx = Math.min(5, Math.floor(clamped));
-  node.stage = STAGE_NAMES[stageIdx];
-
-  // Update confidence based on news quantity and recency
-  const totalNews = node.news.length;
-  const recentNews = node.news.filter(n => n.date >= '2026-01-01').length;
-  if (totalNews >= 4 && recentNews >= 2) node.confidence = 'High';
-  else if (totalNews >= 2 && recentNews >= 1) node.confidence = 'Medium';
-  else node.confidence = node.confidence || 'Low';
-
-  if (Math.abs(delta) > 0.05) {
-    changes.push({
-      id: node.id,
-      name: node.shortName,
-      old: oldMaturity,
-      new: clamped,
-      delta: delta.toFixed(2),
-      stage: node.stage,
-      confidence: node.confidence,
-      signals: node.news.length
-    });
+  if (Math.abs(clamped - node.maturity) > 0.05 || node.maturity === undefined) {
+    changes.push({id:node.id, old:node.maturity, new:clamped, delta:(clamped-node.maturity).toFixed(1)});
   }
+
+  node.maturity = clamped;
+  node.stage = STAGE_NAMES[Math.min(5, Math.floor(clamped))];
+
+  // Confidence: based on news quality
+  const total = (node.news || []).length;
+  const recent = (node.news || []).filter(n => n.date >= '2026-01-01').length;
+  if (total >= 5 && recent >= 3) node.confidence = 'High';
+  else if (total >= 3 && recent >= 1) node.confidence = 'Medium';
+  else node.confidence = 'Low';
 }
 
-// Update baselines based on new maturity
+// Recalculate baselines CORRECTLY
+const NOW = 2026;
 for (const node of d.nodes) {
-  if (!node.baseline) continue;
   const m = node.maturity;
-  const baseYear = 2026;
+  if (!node.baseline) node.baseline = {};
 
-  // stage3 baseline — if already above 3, set to past
+  // stage3
   if (m >= 3.0) {
     node.baseline.stage3 = { p25: '2025', p50: '2026', p75: '2026' };
   } else {
-    const years = (3.0 - m) * 1.5;
-    const p50 = Math.round(baseYear + years);
-    node.baseline.stage3 = {
-      p25: String(p50 - 1),
-      p50: String(p50),
-      p75: String(p50 + 2)
-    };
+    const y = Math.max(0.5, (3.0 - m) * 1.5);
+    const p50 = Math.round(NOW + y);
+    node.baseline.stage3 = { p25: String(p50 - 1), p50: String(p50), p75: String(p50 + 2) };
   }
-
   // stage4
   if (m >= 4.0) {
-    node.baseline.stage4 = { p25: '2026', p50: '2027', p75: '2028' };
+    node.baseline.stage4 = { p25: '2026', p50: '2026', p75: '2027' };
   } else {
-    const years = (4.0 - m) * 1.5;
-    const p50 = Math.round(baseYear + years);
-    node.baseline.stage4 = {
-      p25: String(p50 - 1),
-      p50: String(p50),
-      p75: String(p50 + 2)
-    };
+    const y = Math.max(0.5, (4.0 - m) * 1.5);
+    const p50 = Math.round(NOW + y);
+    node.baseline.stage4 = { p25: String(p50 - 1), p50: String(p50), p75: String(p50 + 2) };
   }
-
   // stage5
   if (m >= 5.0) {
-    node.baseline.stage5 = { p25: '2027', p50: '2028', p75: '2029' };
+    node.baseline.stage5 = { p25: '2026', p50: '2026', p75: '2027' };
   } else {
-    const years = (5.0 - m) * 1.5;
-    const p50 = Math.round(baseYear + years);
-    node.baseline.stage5 = {
-      p25: String(p50 - 2),
-      p50: String(p50),
-      p75: String(p50 + 3)
-    };
+    const y = Math.max(1.0, (5.0 - m) * 1.5);
+    const p50 = Math.round(NOW + y);
+    node.baseline.stage5 = { p25: String(p50 - 2), p50: String(p50), p75: String(p50 + 3) };
   }
 }
 
@@ -108,24 +90,53 @@ d.meta.lastUpdated = new Date().toISOString().slice(0, 10);
 fs.writeFileSync('data.json', JSON.stringify(d, null, 2), 'utf8');
 
 // Report
-console.log('Maturity changes:');
-changes.sort((a,b) => b.delta - a.delta);
-changes.forEach(c => {
-  const sign = c.delta > 0 ? '+' : '';
-  console.log(`  ${c.id} ${c.name}: ${c.old} → ${c.new} (${sign}${c.delta}) | ${c.stage} | ${c.confidence}`);
-});
-console.log(`\nTotal changed: ${changes.length} nodes`);
+if (changes.length > 0) {
+  console.log('Maturity changes:');
+  changes.forEach(c => console.log(`  ${c.id}: ${c.old} → ${c.new} (${c.delta>0?'+':''}${c.delta})`));
+} else {
+  console.log('No maturity changes (already at expert baseline)');
+}
 
-// Recalc JRI
+// JRI & Level
 const route = d.routes[0];
 let logSum = 0, wSum = 0;
+const trackScores = {};
 for (const t of d.tracks) {
   const nodes = d.nodes.filter(n => n.track === t.id);
   const avg = nodes.reduce((s,n) => s + n.maturity/5, 0) / nodes.length;
+  trackScores[t.id] = Math.round(100 * avg);
   const w = route.weights[t.id] || 0.1;
   logSum += w * Math.log(Math.max(0.01, avg));
   wSum += w;
 }
 const jri = Math.round(100 * Math.exp(logSum / wSum));
-const p50 = 2026 + Math.round(6 * (1 - jri/100));
-console.log(`\nNew JRI: ${jri} | P50: ~${p50} | Target: ${d.meta.targetYear}`);
+const p50 = NOW + Math.round(6 * (1 - jri/100));
+
+// Current level
+function currentLevel() {
+  const order = ['J0','J1','J2','J3','J4','J5','J6'];
+  let lvl = 'J0';
+  for (const l of order) {
+    const gates = d.gates[l];
+    if (!gates) continue;
+    let ok = true;
+    for (const g of gates) {
+      const n = d.nodes.find(x => x.id === g.node);
+      if (!n || n.maturity < g.minMaturity) { ok = false; break; }
+    }
+    if (ok) lvl = l; else break;
+  }
+  return lvl;
+}
+const level = currentLevel();
+
+console.log(`\nJRI: ${jri} | Level: ${level} | P50: ~${p50}`);
+console.log('Track scores:');
+Object.entries(trackScores).forEach(([t,s]) => console.log(`  ${t}: ${s}`));
+
+// Sample baselines
+console.log('\nSample baselines:');
+['A1','C2','B3','A4'].forEach(id => {
+  const n = d.nodes.find(x => x.id === id);
+  console.log(`  ${id} m=${n.maturity}: s3=${n.baseline.stage3.p50} s4=${n.baseline.stage4.p50} s5=${n.baseline.stage5.p50}`);
+});
