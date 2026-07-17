@@ -138,6 +138,20 @@ main{padding:20px 24px 50px;max-width:1100px;margin:0 auto}
 .news-item .nt{font-size:12px;color:var(--text);line-height:1.4}
 .news-item .ns{font-size:10px;color:var(--text3);margin-top:3px}
 .news-empty{font-size:12px;color:var(--text3);text-align:center;padding:20px 0}
+/* Methodology */
+#methodology{margin-top:32px}
+.meth-block{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px}
+.meth-block h3{font-size:15px;margin-bottom:12px;color:var(--gold)}
+.meth-levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.meth-level{background:var(--surface2);border-radius:8px;padding:12px 14px;border-left:3px solid var(--gold)}
+.meth-level-code{font-size:14px;font-weight:700;margin-bottom:2px}
+.meth-level-name{font-size:11px;color:var(--text2)}
+.meth-level-desc{font-size:11px;color:var(--text3);margin-top:4px;line-height:1.4}
+.meth-tracks{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.meth-track{background:var(--surface2);border-radius:8px;padding:12px 14px}
+.meth-track-id{font-size:13px;font-weight:700;margin-bottom:4px}
+.meth-track-q{font-size:11px;color:var(--text3);line-height:1.4}
+.meth-formula{font-size:12px;color:var(--text2);line-height:1.8;background:var(--surface2);padding:14px;border-radius:8px;font-family:monospace}
 footer{
   background:var(--surface);border-top:1px solid var(--border);
   padding:10px 24px;font-size:10px;color:var(--text3);
@@ -170,12 +184,12 @@ footer{
     <div class="jri-delta" id="jri-delta"></div>
   </div>
   <div class="level-badge" id="level-badge">J?</div>
-  <div class="route-btns" id="route-btns"></div>
 </header>
 
 <main>
   <div class="dash-row" id="dash-row"></div>
   <div class="tracks-grid" id="tracks-grid"></div>
+  <div id="methodology"></div>
 </main>
 
 <footer>
@@ -199,522 +213,2233 @@ footer{
     "description": "Jarvis Index — MECE-модель прогресса к персональному ИИ-помощнику"
   },
   "levels": [
-    {"code":"J0","name":"Answer Engine","description":"Отвечает на вопросы, создаёт контент; не выполняет действия"},
-    {"code":"J1","name":"Copilot","description":"Помогает человеку внутри конкретного приложения или процесса"},
-    {"code":"J2","name":"Operator","description":"Выполняет действия в приложениях под постоянным контролем"},
-    {"code":"J3","name":"Personal Agent","description":"Помнит пользователя, понимает контекст, ведёт регулярные задачи"},
-    {"code":"J4","name":"Trusted Delegate","description":"Самостоятельно достигает целей, запрашивая подтверждение для критичных действий"},
-    {"code":"J5","name":"Ambient Jarvis","description":"Постоянно доступен в разных устройствах, уместно проактивен"},
-    {"code":"J6","name":"General Jarvis","description":"Надёжно действует в новых ситуациях на уровне компетентного человека"}
+    {
+      "code": "J0",
+      "name": "Answer Engine",
+      "description": "Отвечает на вопросы, создаёт контент; не выполняет действия"
+    },
+    {
+      "code": "J1",
+      "name": "Copilot",
+      "description": "Помогает человеку внутри конкретного приложения или процесса"
+    },
+    {
+      "code": "J2",
+      "name": "Operator",
+      "description": "Выполняет действия в приложениях под постоянным контролем"
+    },
+    {
+      "code": "J3",
+      "name": "Personal Agent",
+      "description": "Помнит пользователя, понимает контекст, ведёт регулярные задачи"
+    },
+    {
+      "code": "J4",
+      "name": "Trusted Delegate",
+      "description": "Самостоятельно достигает целей, запрашивая подтверждение для критичных действий"
+    },
+    {
+      "code": "J5",
+      "name": "Ambient Jarvis",
+      "description": "Постоянно доступен в разных устройствах, уместно проактивен"
+    },
+    {
+      "code": "J6",
+      "name": "General Jarvis",
+      "description": "Надёжно действует в новых ситуациях на уровне компетентного человека"
+    }
   ],
   "tracks": [
-    {"id":"A","name":"Интеллектуальное ядро","question":"Способность понимать, рассуждать, планировать и переносить знания","color":"#3B82F6"},
-    {"id":"B","name":"Агентность и надёжность","question":"Способность использовать инструменты и доводить длинные задачи до результата","color":"#4A9EFF"},
-    {"id":"C","name":"Персональный контекст и память","question":"Способность понимать пользователя, хранить и управлять его контекстом","color":"#8B5CF6"},
-    {"id":"D","name":"Взаимодействие и присутствие","question":"Естественность диалога, проактивность и непрерывность между устройствами","color":"#10B981"},
-    {"id":"E","name":"Поверхность действий","question":"Доступ к цифровым системам, транзакциям, умной среде и физическим действиям","color":"#F59E0B"},
-    {"id":"F","name":"Инфраструктура и экономика","question":"Стоимость, latency, вычисления, edge, масштабирование и доступность","color":"#EF4444"},
-    {"id":"G","name":"Доверие, контроль и регулирование","question":"Права, безопасность, приватность, ответственность и право","color":"#EC4899"},
-    {"id":"H","name":"Экосистема и принятие","question":"Стандарты, навыки, распространение, привычки, доверие и бизнес-модель","color":"#FBBF24"}
+    {
+      "id": "A",
+      "name": "Интеллектуальное ядро",
+      "question": "Способность понимать, рассуждать, планировать и переносить знания",
+      "color": "#3B82F6"
+    },
+    {
+      "id": "B",
+      "name": "Агентность и надёжность",
+      "question": "Способность использовать инструменты и доводить длинные задачи до результата",
+      "color": "#4A9EFF"
+    },
+    {
+      "id": "C",
+      "name": "Персональный контекст и память",
+      "question": "Способность понимать пользователя, хранить и управлять его контекстом",
+      "color": "#8B5CF6"
+    },
+    {
+      "id": "D",
+      "name": "Взаимодействие и присутствие",
+      "question": "Естественность диалога, проактивность и непрерывность между устройствами",
+      "color": "#10B981"
+    },
+    {
+      "id": "E",
+      "name": "Поверхность действий",
+      "question": "Доступ к цифровым системам, транзакциям, умной среде и физическим действиям",
+      "color": "#F59E0B"
+    },
+    {
+      "id": "F",
+      "name": "Инфраструктура и экономика",
+      "question": "Стоимость, latency, вычисления, edge, масштабирование и доступность",
+      "color": "#EF4444"
+    },
+    {
+      "id": "G",
+      "name": "Доверие, контроль и регулирование",
+      "question": "Права, безопасность, приватность, ответственность и право",
+      "color": "#EC4899"
+    },
+    {
+      "id": "H",
+      "name": "Экосистема и принятие",
+      "question": "Стандарты, навыки, распространение, привычки, доверие и бизнес-модель",
+      "color": "#FBBF24"
+    }
   ],
   "nodes": [
     {
-      "id":"A1","track":"A","name":"Мультимодальное восприятие","shortName":"A1 Восприятие",
-      "description":"Единая модель понимает текст, изображения, видео и аудио нативно. Способность «видеть» и «слышать» мир как человек.",
-      "maturity":3.8,"stage":"Production","confidence":"High",
-      "criteria_0_5":{"0":"Нет работающего подхода","1":"Ранний эксперимент с одной-двумя модальностями","2":"Лабораторная демонстрация native multimodality","3":"Ограниченное реальное использование (Gemini 3, GPT-5)","4":"Массовое использование в продуктах","5":"Повсеместно, дешёво, стандартно"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2025","p75":"2026"},"stage4":{"p25":"2026","p50":"2027","p75":"2028"},"stage5":{"p25":"2028","p50":"2029","p75":"2031"}},
-      "dependencies":[],
-      "news":[
-        {"date":"2026-07-15","title":"Thinking Machines Inkling: open-weights native multimodal model","url":"https://techcrunch.com/2026/07/15/thinking-machines-amps-up-its-bet-against-one-size-fits-all-ai-with-its-first-open-model-inkling/","source":"TechCrunch","direction":"positive","signal_score":78},
-        {"date":"2026-03-30","title":"Qwen3.5 Omni: Native Multimodal Model for Text, Audio, Video","url":"https://www.marktechpost.com/2026/03/30/alibaba-qwen-team-releases-qwen3-5-omni/","source":"MarkTechPost","direction":"positive","signal_score":72}
+      "id": "A1",
+      "track": "A",
+      "name": "Мультимодальное восприятие",
+      "shortName": "A1 Восприятие",
+      "description": "Единая модель понимает текст, изображения, видео и аудио нативно. Способность «видеть» и «слышать» мир как человек.",
+      "maturity": 3.8,
+      "stage": "Production",
+      "confidence": "High",
+      "criteria_0_5": {
+        "0": "Нет работающего подхода",
+        "1": "Ранний эксперимент с одной-двумя модальностями",
+        "2": "Лабораторная демонстрация native multimodality",
+        "3": "Ограниченное реальное использование (Gemini 3, GPT-5)",
+        "4": "Массовое использование в продуктах",
+        "5": "Повсеместно, дешёво, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2025",
+          "p75": "2026"
+        },
+        "stage4": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage5": {
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
+        }
+      },
+      "dependencies": [],
+      "news": [
+        {
+          "date": "2026-07-15",
+          "title": "Thinking Machines Inkling: open-weights native multimodal model",
+          "url": "https://techcrunch.com/2026/07/15/thinking-machines-amps-up-its-bet-against-one-size-fits-all-ai-with-its-first-open-model-inkling/",
+          "source": "TechCrunch",
+          "direction": "positive",
+          "signal_score": 78
+        },
+        {
+          "date": "2026-03-30",
+          "title": "Qwen3.5 Omni: Native Multimodal Model for Text, Audio, Video",
+          "url": "https://www.marktechpost.com/2026/03/30/alibaba-qwen-team-releases-qwen3-5-omni/",
+          "source": "MarkTechPost",
+          "direction": "positive",
+          "signal_score": 72
+        }
       ]
     },
     {
-      "id":"A2","track":"A","name":"Рассуждение","shortName":"A2 Рассуждение",
-      "description":"Способность к логическому выводу, chain-of-thought, анализу причин и следствий. Решение сложных задач step-by-step.",
-      "maturity":3.5,"stage":"Production","confidence":"High",
-      "criteria_0_5":{"0":"Нет reasoning","1":"Базовый chain-of-thought в исследованиях","2":"Лабораторная демонстрация сложного reasoning","3":"Reasoning модели в продуктах (o4, DeepSeek-R2)","4":"Reasoning надёжно на уровне эксперта в доменах","5":"Reasoning превосходит экспертов, дёшево и стандартно"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2025","p75":"2026"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
-      "dependencies":["A1"],
-      "news":[
-        {"date":"2025-04-16","title":"Introducing OpenAI o3 and o4-mini — next-gen reasoning models","url":"https://openai.com/index/introducing-o3-and-o4-mini","source":"OpenAI","direction":"positive","signal_score":85},
-        {"date":"2026-03-05","title":"Reasoning models struggle to control chain-of-thought, and that's good","url":"https://openai.com/index/reasoning-models-chain-of-thought-controllability","source":"OpenAI","direction":"positive","signal_score":65}
+      "id": "A2",
+      "track": "A",
+      "name": "Рассуждение",
+      "shortName": "A2 Рассуждение",
+      "description": "Способность к логическому выводу, chain-of-thought, анализу причин и следствий. Решение сложных задач step-by-step.",
+      "maturity": 3.5,
+      "stage": "Production",
+      "confidence": "High",
+      "criteria_0_5": {
+        "0": "Нет reasoning",
+        "1": "Базовый chain-of-thought в исследованиях",
+        "2": "Лабораторная демонстрация сложного reasoning",
+        "3": "Reasoning модели в продуктах (o4, DeepSeek-R2)",
+        "4": "Reasoning надёжно на уровне эксперта в доменах",
+        "5": "Reasoning превосходит экспертов, дёшево и стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2025",
+          "p75": "2026"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage5": {
+          "p25": "2029",
+          "p50": "2031",
+          "p75": "2033"
+        }
+      },
+      "dependencies": [
+        "A1"
+      ],
+      "news": [
+        {
+          "date": "2025-04-16",
+          "title": "Introducing OpenAI o3 and o4-mini — next-gen reasoning models",
+          "url": "https://openai.com/index/introducing-o3-and-o4-mini",
+          "source": "OpenAI",
+          "direction": "positive",
+          "signal_score": 85
+        },
+        {
+          "date": "2026-03-05",
+          "title": "Reasoning models struggle to control chain-of-thought, and that's good",
+          "url": "https://openai.com/index/reasoning-models-chain-of-thought-controllability",
+          "source": "OpenAI",
+          "direction": "positive",
+          "signal_score": 65
+        }
       ]
     },
     {
-      "id":"A3","track":"A","name":"Планирование","shortName":"A3 Планирование",
-      "description":"Разбиение сложных задач на подзадачи, оценка рисков, адаптация плана по ходу выполнения. Многошаговое планирование.",
-      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет планирования","1":"Исследования по иерархическому планированию","2":"Демонстрация планирования из 10+ шагов","3":"Планирование из 50+ шагов в ограниченных доменах","4":"Надёжное планирование в реальных задачах","5":"Автономное планирование сложных проектов, стандартно"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
-      "dependencies":["A2"],
-      "news":[
-        {"date":"2026-07-15","title":"DeepSeek-R2: reasoning-модель решает AIME 2025 на 98%, планирует проекты из 100+ шагов","url":"https://deepseek.com/blog/r2-reasoning","source":"DeepSeek","direction":"positive","signal_score":80}
+      "id": "A3",
+      "track": "A",
+      "name": "Планирование",
+      "shortName": "A3 Планирование",
+      "description": "Разбиение сложных задач на подзадачи, оценка рисков, адаптация плана по ходу выполнения. Многошаговое планирование.",
+      "maturity": 2.8,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет планирования",
+        "1": "Исследования по иерархическому планированию",
+        "2": "Демонстрация планирования из 10+ шагов",
+        "3": "Планирование из 50+ шагов в ограниченных доменах",
+        "4": "Надёжное планирование в реальных задачах",
+        "5": "Автономное планирование сложных проектов, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        }
+      },
+      "dependencies": [
+        "A2"
+      ],
+      "news": [
+        {
+          "date": "2026-07-15",
+          "title": "DeepSeek-R2: reasoning-модель решает AIME 2025 на 98%, планирует проекты из 100+ шагов",
+          "url": "https://deepseek.com/blog/r2-reasoning",
+          "source": "DeepSeek",
+          "direction": "positive",
+          "signal_score": 80
+        }
       ]
     },
     {
-      "id":"A4","track":"A","name":"Обобщение и перенос","shortName":"A4 Обобщение",
-      "description":"Перенос знаний между доменами. Способность применить опыт из одной области в новой ситуации без дополнительного обучения.",
-      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
-      "criteria_0_5":{"0":"Нет переноса","1":"Теоретические работы по transfer learning","2":"Демонстрация переноса между 2-3 доменами","3":"Перенос в 5+ доменов с приемлемой точностью","4":"Надёжный zero-shot перенос в большинстве доменов","5":"Универсальный перенос без потери качества, стандартно"},
-      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2029","p50":"2031","p75":"2033"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
-      "dependencies":["A2"],
-      "news":[]
+      "id": "A4",
+      "track": "A",
+      "name": "Обобщение и перенос",
+      "shortName": "A4 Обобщение",
+      "description": "Перенос знаний между доменами. Способность применить опыт из одной области в новой ситуации без дополнительного обучения.",
+      "maturity": 2,
+      "stage": "Demonstration",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Нет переноса",
+        "1": "Теоретические работы по transfer learning",
+        "2": "Демонстрация переноса между 2-3 доменами",
+        "3": "Перенос в 5+ доменов с приемлемой точностью",
+        "4": "Надёжный zero-shot перенос в большинстве доменов",
+        "5": "Универсальный перенос без потери качества, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage4": {
+          "p25": "2029",
+          "p50": "2031",
+          "p75": "2033"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2034",
+          "p75": "2036"
+        }
+      },
+      "dependencies": [
+        "A2"
+      ],
+      "news": []
     },
     {
-      "id":"A5","track":"A","name":"Метапознание и самопроверка","shortName":"A5 Самопроверка",
-      "description":"Способность модели оценивать качество собственного ответа, находить ошибки, знать границы своей компетенции.",
-      "maturity":2.2,"stage":"Demonstration","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет самооценки","1":"Исследования calibration и uncertainty","2":"Демонстрация self-verification в лаборатории","3":"Самопроверка работает в ограниченных продуктах","4":"Надёжная самопроверка в production, модель говорит «не знаю»","5":"Метапознание на уровне эксперта, стандартно"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
-      "dependencies":["A2"],
-      "news":[]
+      "id": "A5",
+      "track": "A",
+      "name": "Метапознание и самопроверка",
+      "shortName": "A5 Самопроверка",
+      "description": "Способность модели оценивать качество собственного ответа, находить ошибки, знать границы своей компетенции.",
+      "maturity": 2.2,
+      "stage": "Demonstration",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет самооценки",
+        "1": "Исследования calibration и uncertainty",
+        "2": "Демонстрация self-verification в лаборатории",
+        "3": "Самопроверка работает в ограниченных продуктах",
+        "4": "Надёжная самопроверка в production, модель говорит «не знаю»",
+        "5": "Метапознание на уровне эксперта, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        }
+      },
+      "dependencies": [
+        "A2"
+      ],
+      "news": []
     },
     {
-      "id":"B1","track":"B","name":"Использование инструментов","shortName":"B1 Инструменты",
-      "description":"ИИ вызывает API, управляет приложениями, читает и пишет файлы, выполняет код. Function calling, tool use.",
-      "maturity":3.5,"stage":"Production","confidence":"High",
-      "criteria_0_5":{"0":"Нет tool use","1":"Базовые function calling эксперименты","2":"Tool use в лабораторных условиях","3":"Работает в продуктах (Computer Use, Operator)","4":"Надёжный tool use для сотен инструментов","5":"Универсальный tool use, стандартный протокол (MCP)"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2025","p75":"2026"},"stage4":{"p25":"2026","p50":"2027","p75":"2028"},"stage5":{"p25":"2028","p50":"2029","p75":"2031"}},
-      "dependencies":["A1"],
-      "news":[
-        {"date":"2026-03-23","title":"Claude Dispatch and Computer Use — put Claude to work on your computer","url":"https://claude.com/blog/dispatch-and-computer-use","source":"Anthropic","direction":"positive","signal_score":82},
-        {"date":"2026-07-07","title":"Expanding Managed Agents in Gemini API: background tasks, remote MCP","url":"https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/","source":"Google Blog","direction":"positive","signal_score":75}
+      "id": "B1",
+      "track": "B",
+      "name": "Использование инструментов",
+      "shortName": "B1 Инструменты",
+      "description": "ИИ вызывает API, управляет приложениями, читает и пишет файлы, выполняет код. Function calling, tool use.",
+      "maturity": 3.5,
+      "stage": "Production",
+      "confidence": "High",
+      "criteria_0_5": {
+        "0": "Нет tool use",
+        "1": "Базовые function calling эксперименты",
+        "2": "Tool use в лабораторных условиях",
+        "3": "Работает в продуктах (Computer Use, Operator)",
+        "4": "Надёжный tool use для сотен инструментов",
+        "5": "Универсальный tool use, стандартный протокол (MCP)"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2025",
+          "p75": "2026"
+        },
+        "stage4": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage5": {
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
+        }
+      },
+      "dependencies": [
+        "A1"
+      ],
+      "news": [
+        {
+          "date": "2026-03-23",
+          "title": "Claude Dispatch and Computer Use — put Claude to work on your computer",
+          "url": "https://claude.com/blog/dispatch-and-computer-use",
+          "source": "Anthropic",
+          "direction": "positive",
+          "signal_score": 82
+        },
+        {
+          "date": "2026-07-07",
+          "title": "Expanding Managed Agents in Gemini API: background tasks, remote MCP",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/",
+          "source": "Google Blog",
+          "direction": "positive",
+          "signal_score": 75
+        }
       ]
     },
     {
-      "id":"B2","track":"B","name":"Долгие задачи","shortName":"B2 Долгие задачи",
-      "description":"Выполнение задач, требующих часов или дней. Сохранение контекста, устойчивость к прерываниям, продолжение с места остановки.",
-      "maturity":2.0,"stage":"Demonstration","confidence":"Medium",
-      "criteria_0_5":{"0":"Только синхронные запросы","1":"Исследования long-running agents","2":"Демонстрация часовой задачи в лаборатории","3":"Дневные задачи в ограниченных доменах (SWE-bench)","4":"Недельные задачи надёжно в production","5":"Месячные автономные проекты, стандартно"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2035"}},
-      "dependencies":["B1","C2"],
-      "news":[]
+      "id": "B2",
+      "track": "B",
+      "name": "Долгие задачи",
+      "shortName": "B2 Долгие задачи",
+      "description": "Выполнение задач, требующих часов или дней. Сохранение контекста, устойчивость к прерываниям, продолжение с места остановки.",
+      "maturity": 2,
+      "stage": "Demonstration",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Только синхронные запросы",
+        "1": "Исследования long-running agents",
+        "2": "Демонстрация часовой задачи в лаборатории",
+        "3": "Дневные задачи в ограниченных доменах (SWE-bench)",
+        "4": "Недельные задачи надёжно в production",
+        "5": "Месячные автономные проекты, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2033",
+          "p75": "2035"
+        }
+      },
+      "dependencies": [
+        "B1",
+        "C2"
+      ],
+      "news": []
     },
     {
-      "id":"B3","track":"B","name":"Контроль результата","shortName":"B3 Контроль",
-      "description":"Проверка результата выполнения задачи. Сравнение с ожидаемым, выявление расхождений, повторное выполнение при ошибке.",
-      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
-      "criteria_0_5":{"0":"Нет контроля результата","1":"Теоретические работы по verification","2":"Лабораторная демонстрация result checking","3":"Контроль в ограниченных доменах (код, текст)","4":"Надёжный контроль в production для широкого класса задач","5":"Автономный контроль на уровне человека-ревьюера"},
-      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2029"},"stage4":{"p25":"2029","p50":"2031","p75":"2033"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
-      "dependencies":["B1","A5"],
-      "news":[]
+      "id": "B3",
+      "track": "B",
+      "name": "Контроль результата",
+      "shortName": "B3 Контроль",
+      "description": "Проверка результата выполнения задачи. Сравнение с ожидаемым, выявление расхождений, повторное выполнение при ошибке.",
+      "maturity": 2,
+      "stage": "Demonstration",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Нет контроля результата",
+        "1": "Теоретические работы по verification",
+        "2": "Лабораторная демонстрация result checking",
+        "3": "Контроль в ограниченных доменах (код, текст)",
+        "4": "Надёжный контроль в production для широкого класса задач",
+        "5": "Автономный контроль на уровне человека-ревьюера"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2029"
+        },
+        "stage4": {
+          "p25": "2029",
+          "p50": "2031",
+          "p75": "2033"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2034",
+          "p75": "2036"
+        }
+      },
+      "dependencies": [
+        "B1",
+        "A5"
+      ],
+      "news": []
     },
     {
-      "id":"B4","track":"B","name":"Восстановление после ошибок","shortName":"B4 Recovery",
-      "description":"Обнаружение собственных ошибок, откат действий, повторная попытка с другой стратегией. Graceful degradation.",
-      "maturity":1.8,"stage":"Research","confidence":"Low",
-      "criteria_0_5":{"0":"Падает при любой ошибке","1":"Исследования self-recovery и error handling","2":"Демонстрация восстановления в лаборатории","3":"Восстановление в ограниченных продуктах","4":"Надёжное восстановление в production","5":"Автономное восстановление без потери данных и контекста"},
-      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2029","p50":"2032","p75":"2034"},"stage5":{"p25":"2032","p50":"2035","p75":"2037"}},
-      "dependencies":["B1","A5"],
-      "news":[]
+      "id": "B4",
+      "track": "B",
+      "name": "Восстановление после ошибок",
+      "shortName": "B4 Recovery",
+      "description": "Обнаружение собственных ошибок, откат действий, повторная попытка с другой стратегией. Graceful degradation.",
+      "maturity": 1.8,
+      "stage": "Research",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Падает при любой ошибке",
+        "1": "Исследования self-recovery и error handling",
+        "2": "Демонстрация восстановления в лаборатории",
+        "3": "Восстановление в ограниченных продуктах",
+        "4": "Надёжное восстановление в production",
+        "5": "Автономное восстановление без потери данных и контекста"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage4": {
+          "p25": "2029",
+          "p50": "2032",
+          "p75": "2034"
+        },
+        "stage5": {
+          "p25": "2032",
+          "p50": "2035",
+          "p75": "2037"
+        }
+      },
+      "dependencies": [
+        "B1",
+        "A5"
+      ],
+      "news": []
     },
     {
-      "id":"B5","track":"B","name":"Оркестрация агентов","shortName":"B5 Оркестрация",
-      "description":"Координация нескольких AI-агентов для выполнения сложной задачи. Разделение работы, коммуникация между агентами, агрегация результатов.",
-      "maturity":2.2,"stage":"Demonstration","confidence":"Medium",
-      "criteria_0_5":{"0":"Один агент","1":"Исследования multi-agent систем","2":"Лабораторная демонстрация 2-3 агентов","3":"Оркестрация 5+ агентов в ограниченных сценариях","4":"Надёжная оркестрация в production","5":"Автономная оркестрация десятков агентов, стандартно"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2029"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2036"}},
-      "dependencies":["B1","B2"],
-      "news":[]
+      "id": "B5",
+      "track": "B",
+      "name": "Оркестрация агентов",
+      "shortName": "B5 Оркестрация",
+      "description": "Координация нескольких AI-агентов для выполнения сложной задачи. Разделение работы, коммуникация между агентами, агрегация результатов.",
+      "maturity": 2.2,
+      "stage": "Demonstration",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Один агент",
+        "1": "Исследования multi-agent систем",
+        "2": "Лабораторная демонстрация 2-3 агентов",
+        "3": "Оркестрация 5+ агентов в ограниченных сценариях",
+        "4": "Надёжная оркестрация в production",
+        "5": "Автономная оркестрация десятков агентов, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2029"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2033",
+          "p75": "2036"
+        }
+      },
+      "dependencies": [
+        "B1",
+        "B2"
+      ],
+      "news": []
     },
     {
-      "id":"C1","track":"C","name":"Идентичность пользователя","shortName":"C1 Идентичность",
-      "description":"ИИ знает кто пользователь: имя, роль, контекст жизни (работа, семья, хобби). Стабильная модель пользователя.",
-      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет модели пользователя","1":"Базовая идентификация по аккаунту","2":"Демонстрация user profile извлечения","3":"Работающий user model в продуктах (Memory API)","4":"Полная модель пользователя, самообновляемая","5":"Модель пользователя как стандартная инфраструктура"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
-      "dependencies":[],
-      "news":[
-        {"date":"2026-06-04","title":"Dreaming: Better memory for a more helpful ChatGPT","url":"https://openai.com/index/chatgpt-memory-dreaming/","source":"OpenAI","direction":"positive","signal_score":68}
+      "id": "C1",
+      "track": "C",
+      "name": "Идентичность пользователя",
+      "shortName": "C1 Идентичность",
+      "description": "ИИ знает кто пользователь: имя, роль, контекст жизни (работа, семья, хобби). Стабильная модель пользователя.",
+      "maturity": 2.5,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет модели пользователя",
+        "1": "Базовая идентификация по аккаунту",
+        "2": "Демонстрация user profile извлечения",
+        "3": "Работающий user model в продуктах (Memory API)",
+        "4": "Полная модель пользователя, самообновляемая",
+        "5": "Модель пользователя как стандартная инфраструктура"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2027"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage5": {
+          "p25": "2029",
+          "p50": "2031",
+          "p75": "2033"
+        }
+      },
+      "dependencies": [],
+      "news": [
+        {
+          "date": "2026-06-04",
+          "title": "Dreaming: Better memory for a more helpful ChatGPT",
+          "url": "https://openai.com/index/chatgpt-memory-dreaming/",
+          "source": "OpenAI",
+          "direction": "positive",
+          "signal_score": 68
+        }
       ]
     },
     {
-      "id":"C2","track":"C","name":"Эпизодическая память","shortName":"C2 Эпизодическая",
-      "description":"Память о конкретных событиях и взаимодействиях с пользователем. Что было сделано, когда, с каким результатом.",
-      "maturity":2.2,"stage":"Demonstration","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет памяти о событиях","1":"Исследования episodic memory","2":"Демонстрация поиска по истории","3":"Работает в продуктах (ChatGPT Memory)","4":"Надёжная эпизодическая память за годы","5":"Полная история взаимодействий, стандартно"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
-      "dependencies":["C1"],
-      "news":[
-        {"date":"2026-06-30","title":"Microsoft unveils Memora to tackle AI agents' memory problem","url":"https://www.infoworld.com/article/4191031/microsoft-unveils-memora-to-tackle-ai-agents-memory-problem.html","source":"InfoWorld","direction":"positive","signal_score":70}
+      "id": "C2",
+      "track": "C",
+      "name": "Эпизодическая память",
+      "shortName": "C2 Эпизодическая",
+      "description": "Память о конкретных событиях и взаимодействиях с пользователем. Что было сделано, когда, с каким результатом.",
+      "maturity": 2.2,
+      "stage": "Demonstration",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет памяти о событиях",
+        "1": "Исследования episodic memory",
+        "2": "Демонстрация поиска по истории",
+        "3": "Работает в продуктах (ChatGPT Memory)",
+        "4": "Надёжная эпизодическая память за годы",
+        "5": "Полная история взаимодействий, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        }
+      },
+      "dependencies": [
+        "C1"
+      ],
+      "news": [
+        {
+          "date": "2026-06-30",
+          "title": "Microsoft unveils Memora to tackle AI agents' memory problem",
+          "url": "https://www.infoworld.com/article/4191031/microsoft-unveils-memora-to-tackle-ai-agents-memory-problem.html",
+          "source": "InfoWorld",
+          "direction": "positive",
+          "signal_score": 70
+        }
       ]
     },
     {
-      "id":"C3","track":"C","name":"Семантическая память","shortName":"C3 Семантическая",
-      "description":"Память о фактах и знаниях, связанных с пользователем: где живёт, кем работает, что знает. Персональный knowledge graph.",
-      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет семантической памяти","1":"Исследования personal knowledge graphs","2":"Демонстрация извлечения фактов о пользователе","3":"Работает в продуктах","4":"Надёжный personal KG, самообновляемый","5":"Стандартный personal knowledge graph"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
-      "dependencies":["C1"],
-      "news":[]
+      "id": "C3",
+      "track": "C",
+      "name": "Семантическая память",
+      "shortName": "C3 Семантическая",
+      "description": "Память о фактах и знаниях, связанных с пользователем: где живёт, кем работает, что знает. Персональный knowledge graph.",
+      "maturity": 2.8,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет семантической памяти",
+        "1": "Исследования personal knowledge graphs",
+        "2": "Демонстрация извлечения фактов о пользователе",
+        "3": "Работает в продуктах",
+        "4": "Надёжный personal KG, самообновляемый",
+        "5": "Стандартный personal knowledge graph"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2026",
+          "p75": "2027"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage5": {
+          "p25": "2029",
+          "p50": "2031",
+          "p75": "2033"
+        }
+      },
+      "dependencies": [
+        "C1"
+      ],
+      "news": []
     },
     {
-      "id":"C4","track":"C","name":"Предпочтения и ценности","shortName":"C4 Ценности",
-      "description":"Понимание что пользователь любит/не любит, его стиль общения, ценности, приоритеты. Адаптация поведения под пользователя.",
-      "maturity":1.5,"stage":"Research","confidence":"Low",
-      "criteria_0_5":{"0":"Нет модели предпочтений","1":"Исследования value alignment","2":"Демонстрация адаптации к стилю","3":"Базовая адаптация в продуктах","4":"Надёжная адаптация к ценностям и стилю","5":"Полная alignment с пользователем, стандартно"},
-      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2029","p50":"2031","p75":"2033"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
-      "dependencies":["C1","C3"],
-      "news":[]
+      "id": "C4",
+      "track": "C",
+      "name": "Предпочтения и ценности",
+      "shortName": "C4 Ценности",
+      "description": "Понимание что пользователь любит/не любит, его стиль общения, ценности, приоритеты. Адаптация поведения под пользователя.",
+      "maturity": 1.5,
+      "stage": "Research",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Нет модели предпочтений",
+        "1": "Исследования value alignment",
+        "2": "Демонстрация адаптации к стилю",
+        "3": "Базовая адаптация в продуктах",
+        "4": "Надёжная адаптация к ценностям и стилю",
+        "5": "Полная alignment с пользователем, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage4": {
+          "p25": "2029",
+          "p50": "2031",
+          "p75": "2033"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2034",
+          "p75": "2036"
+        }
+      },
+      "dependencies": [
+        "C1",
+        "C3"
+      ],
+      "news": []
     },
     {
-      "id":"C5","track":"C","name":"Текущий контекст","shortName":"C5 Контекст",
-      "description":"Понимание что пользователь делает прямо сейчас: какое приложение открыто, где находится, какое время суток, что происходило 5 минут назад.",
-      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет контекста","1":"Базовая геолокация и время","2":"Демонстрация multi-sensory контекста","3":"Работает в экосистемах (Apple, Google)","4":"Полный real-time контекст в production","5":"Непрерывный контекст как стандарт ОС"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
-      "dependencies":["C2","D4"],
-      "news":[]
+      "id": "C5",
+      "track": "C",
+      "name": "Текущий контекст",
+      "shortName": "C5 Контекст",
+      "description": "Понимание что пользователь делает прямо сейчас: какое приложение открыто, где находится, какое время суток, что происходило 5 минут назад.",
+      "maturity": 2.5,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет контекста",
+        "1": "Базовая геолокация и время",
+        "2": "Демонстрация multi-sensory контекста",
+        "3": "Работает в экосистемах (Apple, Google)",
+        "4": "Полный real-time контекст в production",
+        "5": "Непрерывный контекст как стандарт ОС"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        }
+      },
+      "dependencies": [
+        "C2",
+        "D4"
+      ],
+      "news": []
     },
     {
-      "id":"C6","track":"C","name":"Управление памятью","shortName":"C6 Упр. памятью",
-      "description":"Пользователь может просмотреть, что ИИ о нём знает, удалить, скорректировать. Privacy-aware memory management.",
-      "maturity":1.8,"stage":"Research","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет управления памятью","1":"Теоретические работы","2":"Демонстрация интерфейса управления памятью","3":"Базовое управление в продуктах (ChatGPT Memory)","4":"Полный контроль пользователя над памятью","5":"Управление памятью как стандарт, регулируется"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2030","p50":"2033","p75":"2035"}},
-      "dependencies":["C1","G4"],
-      "news":[]
+      "id": "C6",
+      "track": "C",
+      "name": "Управление памятью",
+      "shortName": "C6 Упр. памятью",
+      "description": "Пользователь может просмотреть, что ИИ о нём знает, удалить, скорректировать. Privacy-aware memory management.",
+      "maturity": 1.8,
+      "stage": "Research",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет управления памятью",
+        "1": "Теоретические работы",
+        "2": "Демонстрация интерфейса управления памятью",
+        "3": "Базовое управление в продуктах (ChatGPT Memory)",
+        "4": "Полный контроль пользователя над памятью",
+        "5": "Управление памятью как стандарт, регулируется"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2033",
+          "p75": "2035"
+        }
+      },
+      "dependencies": [
+        "C1",
+        "G4"
+      ],
+      "news": []
     },
     {
-      "id":"D1","track":"D","name":"Разговорный интерфейс","shortName":"D1 Разговор",
-      "description":"Естественный голосовой диалог с задержкой &lt;200мс. Интонации, эмоции, перебивание, многоголосие, шёпот.",
-      "maturity":3.5,"stage":"Production","confidence":"High",
-      "criteria_0_5":{"0":"Только текст","1":"TTS/STT базового качества","2":"Демонстрация real-time голоса","3":"RT-голос в продуктах (GPT-Live, Astra)","4":"Натуральный голос, эмоции, &lt;150ms latency","5":"Голос неотличим от человека, стандартно"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2025","p75":"2026"},"stage4":{"p25":"2026","p50":"2027","p75":"2028"},"stage5":{"p25":"2028","p50":"2029","p75":"2031"}},
-      "dependencies":["A1"],
-      "news":[
-        {"date":"2026-07-08","title":"Introducing GPT-Live — real-time voice conversations","url":"https://openai.com/index/introducing-gpt-live/","source":"OpenAI","direction":"positive","signal_score":88},
-        {"date":"2026-07-08","title":"OpenAI releases new voice models for more natural live conversations","url":"https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/","source":"TechCrunch","direction":"positive","signal_score":82}
+      "id": "D1",
+      "track": "D",
+      "name": "Разговорный интерфейс",
+      "shortName": "D1 Разговор",
+      "description": "Естественный голосовой диалог с задержкой &lt;200мс. Интонации, эмоции, перебивание, многоголосие, шёпот.",
+      "maturity": 3.5,
+      "stage": "Production",
+      "confidence": "High",
+      "criteria_0_5": {
+        "0": "Только текст",
+        "1": "TTS/STT базового качества",
+        "2": "Демонстрация real-time голоса",
+        "3": "RT-голос в продуктах (GPT-Live, Astra)",
+        "4": "Натуральный голос, эмоции, &lt;150ms latency",
+        "5": "Голос неотличим от человека, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2025",
+          "p75": "2026"
+        },
+        "stage4": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage5": {
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
+        }
+      },
+      "dependencies": [
+        "A1"
+      ],
+      "news": [
+        {
+          "date": "2026-07-08",
+          "title": "Introducing GPT-Live — real-time voice conversations",
+          "url": "https://openai.com/index/introducing-gpt-live/",
+          "source": "OpenAI",
+          "direction": "positive",
+          "signal_score": 88
+        },
+        {
+          "date": "2026-07-08",
+          "title": "OpenAI releases new voice models for more natural live conversations",
+          "url": "https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/",
+          "source": "TechCrunch",
+          "direction": "positive",
+          "signal_score": 82
+        }
       ]
     },
     {
-      "id":"D2","track":"D","name":"Визуальный интерфейс","shortName":"D2 Визуальный",
-      "description":"ИИ «видит» экран пользователя и понимает контекст. Компьютерное зрение для GUI, on-screen awareness.",
-      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет визуального понимания","1":"Скриншоты как изображения","2":"Лабораторная демонстрация GUI понимания","3":"Работает в ОС (Apple Intelligence, Copilot)","4":"Надёжное понимание любого GUI","5":"Визуальное понимание как стандарт ОС"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
-      "dependencies":["A1","D1"],
-      "news":[
-        {"date":"2026-07-14","title":"New Siri AI Debuts via iOS 27 Public Beta with On-Screen Awareness","url":"https://www.itechpost.com/articles/236678/20260714/new-siri-ai-debuts-via-ios-27-public-beta-features-such-screen-awareness.htm","source":"iTechPost","direction":"positive","signal_score":75}
+      "id": "D2",
+      "track": "D",
+      "name": "Визуальный интерфейс",
+      "shortName": "D2 Визуальный",
+      "description": "ИИ «видит» экран пользователя и понимает контекст. Компьютерное зрение для GUI, on-screen awareness.",
+      "maturity": 2.8,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет визуального понимания",
+        "1": "Скриншоты как изображения",
+        "2": "Лабораторная демонстрация GUI понимания",
+        "3": "Работает в ОС (Apple Intelligence, Copilot)",
+        "4": "Надёжное понимание любого GUI",
+        "5": "Визуальное понимание как стандарт ОС"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        }
+      },
+      "dependencies": [
+        "A1",
+        "D1"
+      ],
+      "news": [
+        {
+          "date": "2026-07-14",
+          "title": "New Siri AI Debuts via iOS 27 Public Beta with On-Screen Awareness",
+          "url": "https://www.itechpost.com/articles/236678/20260714/new-siri-ai-debuts-via-ios-27-public-beta-features-such-screen-awareness.htm",
+          "source": "iTechPost",
+          "direction": "positive",
+          "signal_score": 75
+        }
       ]
     },
     {
-      "id":"D3","track":"D","name":"Проактивность","shortName":"D3 Проактивность",
-      "description":"ИИ предугадывает потребности, предлагает действия до явной просьбы, упреждает проблемы. Анализирует паттерны поведения.",
-      "maturity":1.8,"stage":"Research","confidence":"Low",
-      "criteria_0_5":{"0":"Только реактивный режим","1":"Исследования anticipatory AI","2":"Демонстрация предсказания потребностей","3":"Базовая проактивность в продуктах (Google Now, Siri Suggestions)","4":"Контекстная проактивность, пользователь доверяет","5":"Проактивность как ожидаемое поведение ассистента"},
-      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2029","p50":"2031","p75":"2033"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
-      "dependencies":["C5","D1"],
-      "news":[
-        {"date":"2026-05-14","title":"Android's latest AI feature predicts what you'll do next","url":"https://www.theverge.com/tech/930318/android-contextual-suggestions-google-ai-feature-rollout","source":"The Verge","direction":"positive","signal_score":65},
-        {"date":"2026-04-28","title":"Gemini's new Proactive Assistance feature — first look","url":"https://www.androidauthority.com/google-gemini-proactive-assistance-3661314/","source":"Android Authority","direction":"positive","signal_score":62}
+      "id": "D3",
+      "track": "D",
+      "name": "Проактивность",
+      "shortName": "D3 Проактивность",
+      "description": "ИИ предугадывает потребности, предлагает действия до явной просьбы, упреждает проблемы. Анализирует паттерны поведения.",
+      "maturity": 1.8,
+      "stage": "Research",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Только реактивный режим",
+        "1": "Исследования anticipatory AI",
+        "2": "Демонстрация предсказания потребностей",
+        "3": "Базовая проактивность в продуктах (Google Now, Siri Suggestions)",
+        "4": "Контекстная проактивность, пользователь доверяет",
+        "5": "Проактивность как ожидаемое поведение ассистента"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage4": {
+          "p25": "2029",
+          "p50": "2031",
+          "p75": "2033"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2034",
+          "p75": "2036"
+        }
+      },
+      "dependencies": [
+        "C5",
+        "D1"
+      ],
+      "news": [
+        {
+          "date": "2026-05-14",
+          "title": "Android's latest AI feature predicts what you'll do next",
+          "url": "https://www.theverge.com/tech/930318/android-contextual-suggestions-google-ai-feature-rollout",
+          "source": "The Verge",
+          "direction": "positive",
+          "signal_score": 65
+        },
+        {
+          "date": "2026-04-28",
+          "title": "Gemini's new Proactive Assistance feature — first look",
+          "url": "https://www.androidauthority.com/google-gemini-proactive-assistance-3661314/",
+          "source": "Android Authority",
+          "direction": "positive",
+          "signal_score": 62
+        }
       ]
     },
     {
-      "id":"D4","track":"D","name":"Непрерывность между устройствами","shortName":"D4 Мульти-девайс",
-      "description":"ИИ синхронизирован между телефоном, ноутбуком, часами, очками, авто. Бесшовное переключение контекста.",
-      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Одно устройство","1":"Базовая синхронизация истории","2":"Демонстрация cross-device контекста","3":"Работает в экосистемах (Apple, Google, Samsung)","4":"Бесшовный переход между любыми устройствами","5":"Cross-device как стандарт, не зависит от вендора"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
-      "dependencies":["C5","E1"],
-      "news":[
-        {"date":"2026-01-06","title":"Lenovo and Motorola Qira — Personal Ambient Intelligence Across Devices","url":"https://news.lenovo.com/pressroom/press-releases/lenovo-unveils-lenovo-and-motorola-qira/","source":"Lenovo","direction":"positive","signal_score":60}
+      "id": "D4",
+      "track": "D",
+      "name": "Непрерывность между устройствами",
+      "shortName": "D4 Мульти-девайс",
+      "description": "ИИ синхронизирован между телефоном, ноутбуком, часами, очками, авто. Бесшовное переключение контекста.",
+      "maturity": 2.8,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Одно устройство",
+        "1": "Базовая синхронизация истории",
+        "2": "Демонстрация cross-device контекста",
+        "3": "Работает в экосистемах (Apple, Google, Samsung)",
+        "4": "Бесшовный переход между любыми устройствами",
+        "5": "Cross-device как стандарт, не зависит от вендора"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        }
+      },
+      "dependencies": [
+        "C5",
+        "E1"
+      ],
+      "news": [
+        {
+          "date": "2026-01-06",
+          "title": "Lenovo and Motorola Qira — Personal Ambient Intelligence Across Devices",
+          "url": "https://news.lenovo.com/pressroom/press-releases/lenovo-unveils-lenovo-and-motorola-qira/",
+          "source": "Lenovo",
+          "direction": "positive",
+          "signal_score": 60
+        }
       ]
     },
     {
-      "id":"D5","track":"D","name":"Социальное поведение","shortName":"D5 Социум",
-      "description":"ИИ понимает социальный контекст: когда уместно говорить, когда промолчать, как общаться с разными людьми. Эмоциональный интеллект.",
-      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
-      "criteria_0_5":{"0":"Игнорирует социальный контекст","1":"Исследования social AI","2":"Демонстрация эмоционального ответа","3":"Базовая социальная адаптация в продуктах","4":"Убедительное социальное поведение в большинстве ситуаций","5":"Социальный интеллект на уровне человека"},
-      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2029","p50":"2032","p75":"2034"},"stage5":{"p25":"2032","p50":"2035","p75":"2038"}},
-      "dependencies":["D1","C4"],
-      "news":[
-        {"date":"2026-02-19","title":"'We May Have a Crisis': The Unregulated Rise of Emotionally Intelligent AI","url":"https://time.com/7379564/ai-emotional-intelligence-support-bots/","source":"TIME","direction":"neutral","signal_score":55}
+      "id": "D5",
+      "track": "D",
+      "name": "Социальное поведение",
+      "shortName": "D5 Социум",
+      "description": "ИИ понимает социальный контекст: когда уместно говорить, когда промолчать, как общаться с разными людьми. Эмоциональный интеллект.",
+      "maturity": 2,
+      "stage": "Demonstration",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Игнорирует социальный контекст",
+        "1": "Исследования social AI",
+        "2": "Демонстрация эмоционального ответа",
+        "3": "Базовая социальная адаптация в продуктах",
+        "4": "Убедительное социальное поведение в большинстве ситуаций",
+        "5": "Социальный интеллект на уровне человека"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage4": {
+          "p25": "2029",
+          "p50": "2032",
+          "p75": "2034"
+        },
+        "stage5": {
+          "p25": "2032",
+          "p50": "2035",
+          "p75": "2038"
+        }
+      },
+      "dependencies": [
+        "D1",
+        "C4"
+      ],
+      "news": [
+        {
+          "date": "2026-02-19",
+          "title": "'We May Have a Crisis': The Unregulated Rise of Emotionally Intelligent AI",
+          "url": "https://time.com/7379564/ai-emotional-intelligence-support-bots/",
+          "source": "TIME",
+          "direction": "neutral",
+          "signal_score": 55
+        }
       ]
     },
     {
-      "id":"E1","track":"E","name":"Цифровой мир","shortName":"E1 Цифровой",
-      "description":"Доступ к приложениям, файлам, API, сервисам. Чтение/запись данных, управление настройками, интеграция с digital-инструментами.",
-      "maturity":3.0,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Только текст","1":"Базовые API-вызовы","2":"Демонстрация multi-app действий","3":"Работает в продуктах (MCP, Computer Use)","4":"Широкий охват сервисов и приложений","5":"Любое digital-действие через стандартный протокол"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
-      "dependencies":["B1"],
-      "news":[
-        {"date":"2026-05-21","title":"MCP Specification Release Candidate — standard for AI tool integration","url":"https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/","source":"MCP Blog","direction":"positive","signal_score":80}
+      "id": "E1",
+      "track": "E",
+      "name": "Цифровой мир",
+      "shortName": "E1 Цифровой",
+      "description": "Доступ к приложениям, файлам, API, сервисам. Чтение/запись данных, управление настройками, интеграция с digital-инструментами.",
+      "maturity": 3,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Только текст",
+        "1": "Базовые API-вызовы",
+        "2": "Демонстрация multi-app действий",
+        "3": "Работает в продуктах (MCP, Computer Use)",
+        "4": "Широкий охват сервисов и приложений",
+        "5": "Любое digital-действие через стандартный протокол"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2027"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage5": {
+          "p25": "2029",
+          "p50": "2031",
+          "p75": "2033"
+        }
+      },
+      "dependencies": [
+        "B1"
+      ],
+      "news": [
+        {
+          "date": "2026-05-21",
+          "title": "MCP Specification Release Candidate — standard for AI tool integration",
+          "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/",
+          "source": "MCP Blog",
+          "direction": "positive",
+          "signal_score": 80
+        }
       ]
     },
     {
-      "id":"E2","track":"E","name":"Транзакции","shortName":"E2 Транзакции",
-      "description":"Совершение покупок, переводов, бронирований от имени пользователя. Безопасное выполнение финансовых операций.",
-      "maturity":1.5,"stage":"Research","confidence":"Low",
-      "criteria_0_5":{"0":"Не выполняет транзакции","1":"Исследования AI-транзакций","2":"Демонстрация безопасной покупки","3":"Ограниченные транзакции в продуктах","4":"Надёжные транзакции с подтверждением пользователя","5":"Автономные транзакции с audit trail, стандартно"},
-      "baseline":{"stage3":{"p25":"2027","p50":"2029","p75":"2031"},"stage4":{"p25":"2030","p50":"2032","p75":"2034"},"stage5":{"p25":"2032","p50":"2035","p75":"2037"}},
-      "dependencies":["E1","G2","G4"],
-      "news":[]
+      "id": "E2",
+      "track": "E",
+      "name": "Транзакции",
+      "shortName": "E2 Транзакции",
+      "description": "Совершение покупок, переводов, бронирований от имени пользователя. Безопасное выполнение финансовых операций.",
+      "maturity": 1.5,
+      "stage": "Research",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Не выполняет транзакции",
+        "1": "Исследования AI-транзакций",
+        "2": "Демонстрация безопасной покупки",
+        "3": "Ограниченные транзакции в продуктах",
+        "4": "Надёжные транзакции с подтверждением пользователя",
+        "5": "Автономные транзакции с audit trail, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage4": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        },
+        "stage5": {
+          "p25": "2032",
+          "p50": "2035",
+          "p75": "2037"
+        }
+      },
+      "dependencies": [
+        "E1",
+        "G2",
+        "G4"
+      ],
+      "news": []
     },
     {
-      "id":"E3","track":"E","name":"Умная среда","shortName":"E3 IoT/Среда",
-      "description":"Управление умным домом, автомобилем, IoT-устройствами. Понимание физического окружения через сенсоры.",
-      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет IoT","1":"Базовые команды умному дому","2":"Демонстрация контекстного управления средой","3":"Работает в экосистемах (Matter + AI)","4":"Надёжное управление сотнями устройств","5":"Умная среда как стандарт, не зависит от вендора"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2030","p50":"2033","p75":"2035"}},
-      "dependencies":["E1","F5"],
-      "news":[]
+      "id": "E3",
+      "track": "E",
+      "name": "Умная среда",
+      "shortName": "E3 IoT/Среда",
+      "description": "Управление умным домом, автомобилем, IoT-устройствами. Понимание физического окружения через сенсоры.",
+      "maturity": 2.5,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет IoT",
+        "1": "Базовые команды умному дому",
+        "2": "Демонстрация контекстного управления средой",
+        "3": "Работает в экосистемах (Matter + AI)",
+        "4": "Надёжное управление сотнями устройств",
+        "5": "Умная среда как стандарт, не зависит от вендора"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2033",
+          "p75": "2035"
+        }
+      },
+      "dependencies": [
+        "E1",
+        "F5"
+      ],
+      "news": []
     },
     {
-      "id":"E4","track":"E","name":"Роботизированное воплощение","shortName":"E4 Роботы",
-      "description":"Физические действия через роботов. Манипуляция объектами, перемещение, взаимодействие с физическим миром. Опционально для Digital Jarvis.",
-      "maturity":1.8,"stage":"Demonstration","confidence":"Low",
-      "criteria_0_5":{"0":"Нет робототехники","1":"Исследования robot learning","2":"Лабораторная демонстрация манипуляции","3":"Ограниченные реальные применения","4":"Надёжные роботы в производстве и логистике","5":"Домашние роботы общего назначения, доступно"},
-      "baseline":{"stage3":{"p25":"2028","p50":"2030","p75":"2032"},"stage4":{"p25":"2031","p50":"2034","p75":"2037"},"stage5":{"p25":"2035","p50":"2038","p75":"2042"}},
-      "dependencies":["A1","E1","F4"],
-      "news":[]
+      "id": "E4",
+      "track": "E",
+      "name": "Роботизированное воплощение",
+      "shortName": "E4 Роботы",
+      "description": "Физические действия через роботов. Манипуляция объектами, перемещение, взаимодействие с физическим миром. Опционально для Digital Jarvis.",
+      "maturity": 1.8,
+      "stage": "Demonstration",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Нет робототехники",
+        "1": "Исследования robot learning",
+        "2": "Лабораторная демонстрация манипуляции",
+        "3": "Ограниченные реальные применения",
+        "4": "Надёжные роботы в производстве и логистике",
+        "5": "Домашние роботы общего назначения, доступно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage4": {
+          "p25": "2031",
+          "p50": "2034",
+          "p75": "2037"
+        },
+        "stage5": {
+          "p25": "2035",
+          "p50": "2038",
+          "p75": "2042"
+        }
+      },
+      "dependencies": [
+        "A1",
+        "E1",
+        "F4"
+      ],
+      "news": []
     },
     {
-      "id":"E5","track":"E","name":"Взаимодействие с другими агентами","shortName":"E5 Agent2Agent",
-      "description":"Способность ИИ-помощника общаться с ИИ-помощниками других людей: календари, встречи, переговоры, обмен данными.",
-      "maturity":1.0,"stage":"Research","confidence":"Low",
-      "criteria_0_5":{"0":"Нет A2A","1":"Теоретические работы по agent protocols","2":"Демонстрация A2A в лаборатории","3":"Базовый A2A для календарей и встреч","4":"Надёжный A2A для широкого класса задач","5":"A2A как стандартный протокол, повсеместно"},
-      "baseline":{"stage3":{"p25":"2028","p50":"2030","p75":"2032"},"stage4":{"p25":"2031","p50":"2034","p75":"2037"},"stage5":{"p25":"2034","p50":"2038","p75":"2042"}},
-      "dependencies":["E1","H1"],
-      "news":[]
+      "id": "E5",
+      "track": "E",
+      "name": "Взаимодействие с другими агентами",
+      "shortName": "E5 Agent2Agent",
+      "description": "Способность ИИ-помощника общаться с ИИ-помощниками других людей: календари, встречи, переговоры, обмен данными.",
+      "maturity": 1,
+      "stage": "Research",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Нет A2A",
+        "1": "Теоретические работы по agent protocols",
+        "2": "Демонстрация A2A в лаборатории",
+        "3": "Базовый A2A для календарей и встреч",
+        "4": "Надёжный A2A для широкого класса задач",
+        "5": "A2A как стандартный протокол, повсеместно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage4": {
+          "p25": "2031",
+          "p50": "2034",
+          "p75": "2037"
+        },
+        "stage5": {
+          "p25": "2034",
+          "p50": "2038",
+          "p75": "2042"
+        }
+      },
+      "dependencies": [
+        "E1",
+        "H1"
+      ],
+      "news": []
     },
     {
-      "id":"F1","track":"F","name":"Вычислительная эффективность","shortName":"F1 Эффективность",
-      "description":"Скорость инференса (токенов/с), параметрическая эффективность. Модели делают больше за меньшее число параметров.",
-      "maturity":3.5,"stage":"Production","confidence":"High",
-      "criteria_0_5":{"0":"Очень медленно","1":"Исследования эффективных архитектур","2":"Демонстрация 2x улучшения","3":"Эффективные модели в продуктах (DeepSeek-V4)","4":"10x эффективнее GPT-4 при том же качестве","5":"Инференс практически бесплатный"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2025","p75":"2026"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
-      "dependencies":["A1"],
-      "news":[]
+      "id": "F1",
+      "track": "F",
+      "name": "Вычислительная эффективность",
+      "shortName": "F1 Эффективность",
+      "description": "Скорость инференса (токенов/с), параметрическая эффективность. Модели делают больше за меньшее число параметров.",
+      "maturity": 3.5,
+      "stage": "Production",
+      "confidence": "High",
+      "criteria_0_5": {
+        "0": "Очень медленно",
+        "1": "Исследования эффективных архитектур",
+        "2": "Демонстрация 2x улучшения",
+        "3": "Эффективные модели в продуктах (DeepSeek-V4)",
+        "4": "10x эффективнее GPT-4 при том же качестве",
+        "5": "Инференс практически бесплатный"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2025",
+          "p75": "2026"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage5": {
+          "p25": "2029",
+          "p50": "2031",
+          "p75": "2033"
+        }
+      },
+      "dependencies": [
+        "A1"
+      ],
+      "news": []
     },
     {
-      "id":"F2","track":"F","name":"Задержка","shortName":"F2 Latency",
-      "description":"Время от запроса до начала ответа. Для голоса — &lt;200ms, для действий — &lt;1s. Time-to-first-token и inter-token latency.",
-      "maturity":3.0,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"&gt;5 секунд","1":"Оптимизация latency","2":"Демонстрация &lt;500ms в лаборатории","3":"&lt;200ms в продуктах для голоса","4":"&lt;50ms для большинства сценариев","5":"Latency незаметна, как локальный вызов"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
-      "dependencies":["F1","F4"],
-      "news":[]
+      "id": "F2",
+      "track": "F",
+      "name": "Задержка",
+      "shortName": "F2 Latency",
+      "description": "Время от запроса до начала ответа. Для голоса — &lt;200ms, для действий — &lt;1s. Time-to-first-token и inter-token latency.",
+      "maturity": 3,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "&gt;5 секунд",
+        "1": "Оптимизация latency",
+        "2": "Демонстрация &lt;500ms в лаборатории",
+        "3": "&lt;200ms в продуктах для голоса",
+        "4": "&lt;50ms для большинства сценариев",
+        "5": "Latency незаметна, как локальный вызов"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2027"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        }
+      },
+      "dependencies": [
+        "F1",
+        "F4"
+      ],
+      "news": []
     },
     {
-      "id":"F3","track":"F","name":"Стоимость","shortName":"F3 Стоимость",
-      "description":"Цена за 1M токенов, стоимость обслуживания ассистента в месяц. Доступность для массового пользователя.",
-      "maturity":3.2,"stage":"Production","confidence":"High",
-      "criteria_0_5":{"0":"Запретительно дорого","1":"Снижение цен на API","2":"Демонстрация 10x снижения","3":"Массовая доступность ($10-20/мес)","4":"$1-5/мес за персонального ассистента","5":"Бесплатно или включено в устройства"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2028","p75":"2030"},"stage5":{"p25":"2029","p50":"2031","p75":"2033"}},
-      "dependencies":["F1"],
-      "news":[
-        {"date":"2026-04-24","title":"Three reasons why DeepSeek's new model matters — cost efficiency","url":"https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters","source":"MIT Technology Review","direction":"positive","signal_score":72}
+      "id": "F3",
+      "track": "F",
+      "name": "Стоимость",
+      "shortName": "F3 Стоимость",
+      "description": "Цена за 1M токенов, стоимость обслуживания ассистента в месяц. Доступность для массового пользователя.",
+      "maturity": 3.2,
+      "stage": "Production",
+      "confidence": "High",
+      "criteria_0_5": {
+        "0": "Запретительно дорого",
+        "1": "Снижение цен на API",
+        "2": "Демонстрация 10x снижения",
+        "3": "Массовая доступность (10-20 USD/мес)",
+        "4": "1-5 USD/мес за персонального ассистента",
+        "5": "Бесплатно или включено в устройства"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2027"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage5": {
+          "p25": "2029",
+          "p50": "2031",
+          "p75": "2033"
+        }
+      },
+      "dependencies": [
+        "F1"
+      ],
+      "news": [
+        {
+          "date": "2026-04-24",
+          "title": "Three reasons why DeepSeek's new model matters — cost efficiency",
+          "url": "https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters",
+          "source": "MIT Technology Review",
+          "direction": "positive",
+          "signal_score": 72
+        }
       ]
     },
     {
-      "id":"F4","track":"F","name":"Edge и on-device","shortName":"F4 On-device",
-      "description":"Мощные модели работают локально на устройстве. NPU, квантование,蒸馏. Без интернета, с полной приватностью.",
-      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Только cloud","1":"Маленькие модели на устройстве","2":"Демонстрация 7B+ на телефоне","3":"27B+ на флагманских устройствах","4":"70B+ на ноутбуке, 27B+ на телефоне","5":"Любая модель доступна локально, стандартно"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
-      "dependencies":["F1"],
-      "news":[
-        {"date":"2026-07-14","title":"PrismML Announces 1-bit Bonsai 27B — First 27B Model to Run on a Phone","url":"https://prismml.com/news/prismml-releases-bonsai-27b","source":"PrismML","direction":"positive","signal_score":85},
-        {"date":"2026-01-05","title":"Qualcomm Snapdragon X2 laptops with next-gen NPU — CES 2026","url":"https://www.theverge.com/tech/853851/qualcomm-snapdragon-x2-plus-elite-laptops-price-ces-2026","source":"The Verge","direction":"positive","signal_score":70}
+      "id": "F4",
+      "track": "F",
+      "name": "Edge и on-device",
+      "shortName": "F4 On-device",
+      "description": "Мощные модели работают локально на устройстве. NPU, квантование,蒸馏. Без интернета, с полной приватностью.",
+      "maturity": 2.8,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Только cloud",
+        "1": "Маленькие модели на устройстве",
+        "2": "Демонстрация 7B+ на телефоне",
+        "3": "27B+ на флагманских устройствах",
+        "4": "70B+ на ноутбуке, 27B+ на телефоне",
+        "5": "Любая модель доступна локально, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2027"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        }
+      },
+      "dependencies": [
+        "F1"
+      ],
+      "news": [
+        {
+          "date": "2026-07-14",
+          "title": "PrismML Announces 1-bit Bonsai 27B — First 27B Model to Run on a Phone",
+          "url": "https://prismml.com/news/prismml-releases-bonsai-27b",
+          "source": "PrismML",
+          "direction": "positive",
+          "signal_score": 85
+        },
+        {
+          "date": "2026-01-05",
+          "title": "Qualcomm Snapdragon X2 laptops with next-gen NPU — CES 2026",
+          "url": "https://www.theverge.com/tech/853851/qualcomm-snapdragon-x2-plus-elite-laptops-price-ces-2026",
+          "source": "The Verge",
+          "direction": "positive",
+          "signal_score": 70
+        }
       ]
     },
     {
-      "id":"F5","track":"F","name":"Доступность и масштабирование","shortName":"F5 Масштаб",
-      "description":"Доступность сервиса 99.9%+. Миллиарды пользователей одновременно. Географическое покрытие, языки, accessibility.",
-      "maturity":3.0,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Ограниченный доступ","1":"Базовое масштабирование","2":"Демонстрация 100M+ пользователей","3":"1B+ пользователей, 50+ языков (ChatGPT)","4":"3B+ пользователей, все основные языки","5":"Повсеместный доступ как к электричеству"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
-      "dependencies":["F3","H3"],
-      "news":[
-        {"date":"2026-02-27","title":"ChatGPT reaches 900M weekly active users","url":"https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/","source":"TechCrunch","direction":"positive","signal_score":78}
+      "id": "F5",
+      "track": "F",
+      "name": "Доступность и масштабирование",
+      "shortName": "F5 Масштаб",
+      "description": "Доступность сервиса 99.9%+. Миллиарды пользователей одновременно. Географическое покрытие, языки, accessibility.",
+      "maturity": 3,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Ограниченный доступ",
+        "1": "Базовое масштабирование",
+        "2": "Демонстрация 100M+ пользователей",
+        "3": "1B+ пользователей, 50+ языков (ChatGPT)",
+        "4": "3B+ пользователей, все основные языки",
+        "5": "Повсеместный доступ как к электричеству"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2027"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        }
+      },
+      "dependencies": [
+        "F3",
+        "H3"
+      ],
+      "news": [
+        {
+          "date": "2026-02-27",
+          "title": "ChatGPT reaches 900M weekly active users",
+          "url": "https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/",
+          "source": "TechCrunch",
+          "direction": "positive",
+          "signal_score": 78
+        }
       ]
     },
     {
-      "id":"G1","track":"G","name":"Идентификация и права доступа","shortName":"G1 Доступ",
-      "description":"Надёжная аутентификация пользователя. Разграничение: что ИИ может делать сам, что требует подтверждения.",
-      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет разграничения","1":"Базовый consent","2":"Демонстрация fine-grained permissions","3":"Работает в продуктах","4":"Гранулярный контроль, пользователь понимает","5":"Стандарт permissions для AI-агентов"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2035"}},
-      "dependencies":["G2"],
-      "news":[]
+      "id": "G1",
+      "track": "G",
+      "name": "Идентификация и права доступа",
+      "shortName": "G1 Доступ",
+      "description": "Надёжная аутентификация пользователя. Разграничение: что ИИ может делать сам, что требует подтверждения.",
+      "maturity": 2.5,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет разграничения",
+        "1": "Базовый consent",
+        "2": "Демонстрация fine-grained permissions",
+        "3": "Работает в продуктах",
+        "4": "Гранулярный контроль, пользователь понимает",
+        "5": "Стандарт permissions для AI-агентов"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2033",
+          "p75": "2035"
+        }
+      },
+      "dependencies": [
+        "G2"
+      ],
+      "news": []
     },
     {
-      "id":"G2","track":"G","name":"Безопасность действий","shortName":"G2 Безопасность",
-      "description":"Защита от вредных действий: лимиты, подтверждения, откат. ИИ не может удалить важные файлы или перевести все деньги.",
-      "maturity":2.2,"stage":"Demonstration","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет защиты","1":"Базовые ограничения","2":"Демонстрация safety guardrails","3":"Guardrails в продуктах","4":"Надёжная защита, audit trail действий","5":"Безопасность сертифицирована, стандартно"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
-      "dependencies":["G1"],
-      "news":[]
+      "id": "G2",
+      "track": "G",
+      "name": "Безопасность действий",
+      "shortName": "G2 Безопасность",
+      "description": "Защита от вредных действий: лимиты, подтверждения, откат. ИИ не может удалить важные файлы или перевести все деньги.",
+      "maturity": 2.2,
+      "stage": "Demonstration",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет защиты",
+        "1": "Базовые ограничения",
+        "2": "Демонстрация safety guardrails",
+        "3": "Guardrails в продуктах",
+        "4": "Надёжная защита, audit trail действий",
+        "5": "Безопасность сертифицирована, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2034",
+          "p75": "2036"
+        }
+      },
+      "dependencies": [
+        "G1"
+      ],
+      "news": []
     },
     {
-      "id":"G3","track":"G","name":"Кибербезопасность","shortName":"G3 Кибербез",
-      "description":"Защита от взлома ИИ-помощника, prompt injection, утечки данных, adversarial attacks.",
-      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
-      "criteria_0_5":{"0":"Уязвим ко всему","1":"Исследования AI security","2":"Демонстрация защиты от injection","3":"Базовая защита в продуктах","4":"Сертифицированная безопасность","5":"Кибербезопасность AI как зрелая индустрия"},
-      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2030","p50":"2032","p75":"2034"},"stage5":{"p25":"2033","p50":"2036","p75":"2039"}},
-      "dependencies":["G2"],
-      "news":[]
+      "id": "G3",
+      "track": "G",
+      "name": "Кибербезопасность",
+      "shortName": "G3 Кибербез",
+      "description": "Защита от взлома ИИ-помощника, prompt injection, утечки данных, adversarial attacks.",
+      "maturity": 2,
+      "stage": "Demonstration",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Уязвим ко всему",
+        "1": "Исследования AI security",
+        "2": "Демонстрация защиты от injection",
+        "3": "Базовая защита в продуктах",
+        "4": "Сертифицированная безопасность",
+        "5": "Кибербезопасность AI как зрелая индустрия"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage4": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        },
+        "stage5": {
+          "p25": "2033",
+          "p50": "2036",
+          "p75": "2039"
+        }
+      },
+      "dependencies": [
+        "G2"
+      ],
+      "news": []
     },
     {
-      "id":"G4","track":"G","name":"Приватность","shortName":"G4 Приватность",
-      "description":"Данные пользователя не покидают устройство без разрешения. Федеративное обучение, differential privacy, secure enclaves.",
-      "maturity":3.0,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Данные в открытом доступе","1":"Базовое шифрование","2":"Демонстрация private compute","3":"Private Cloud Compute в продуктах","4":"End-to-end приватность для большинства сценариев","5":"Приватность гарантирована законодательно и технически"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2034"}},
-      "dependencies":["F4"],
-      "news":[
-        {"date":"2026-06-08","title":"Expanding Private Cloud Compute — Apple extends PCC to Google Cloud","url":"https://security.apple.com/blog/expanding-pcc/","source":"Apple Security","direction":"positive","signal_score":75}
+      "id": "G4",
+      "track": "G",
+      "name": "Приватность",
+      "shortName": "G4 Приватность",
+      "description": "Данные пользователя не покидают устройство без разрешения. Федеративное обучение, differential privacy, secure enclaves.",
+      "maturity": 3,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Данные в открытом доступе",
+        "1": "Базовое шифрование",
+        "2": "Демонстрация private compute",
+        "3": "Private Cloud Compute в продуктах",
+        "4": "End-to-end приватность для большинства сценариев",
+        "5": "Приватность гарантирована законодательно и технически"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2027"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        }
+      },
+      "dependencies": [
+        "F4"
+      ],
+      "news": [
+        {
+          "date": "2026-06-08",
+          "title": "Expanding Private Cloud Compute — Apple extends PCC to Google Cloud",
+          "url": "https://security.apple.com/blog/expanding-pcc/",
+          "source": "Apple Security",
+          "direction": "positive",
+          "signal_score": 75
+        }
       ]
     },
     {
-      "id":"G5","track":"G","name":"Согласованность с человеком","shortName":"G5 Alignment",
-      "description":"ИИ действует в интересах пользователя, не противоречит его ценностям. Alignment, RLHF, constitutional AI.",
-      "maturity":2.5,"stage":"Demonstration","confidence":"Medium",
-      "criteria_0_5":{"0":"Не контролируется","1":"RLHF исследования","2":"Демонстрация alignment","3":"Alignment в продуктах","4":"Надёжный alignment в сложных сценариях","5":"Alignment сертифицирован, аудируем"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2034","p75":"2036"}},
-      "dependencies":["C4","G2"],
-      "news":[]
+      "id": "G5",
+      "track": "G",
+      "name": "Согласованность с человеком",
+      "shortName": "G5 Alignment",
+      "description": "ИИ действует в интересах пользователя, не противоречит его ценностям. Alignment, RLHF, constitutional AI.",
+      "maturity": 2.5,
+      "stage": "Demonstration",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Не контролируется",
+        "1": "RLHF исследования",
+        "2": "Демонстрация alignment",
+        "3": "Alignment в продуктах",
+        "4": "Надёжный alignment в сложных сценариях",
+        "5": "Alignment сертифицирован, аудируем"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2034",
+          "p75": "2036"
+        }
+      },
+      "dependencies": [
+        "C4",
+        "G2"
+      ],
+      "news": []
     },
     {
-      "id":"G6","track":"G","name":"Ответственность и право","shortName":"G6 Право",
-      "description":"Правовая база: кто отвечает за действия AI, сертификация, права пользователей. EU AI Act, US regulation.",
-      "maturity":2.8,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет регулирования","1":"Обсуждения и white papers","2":"Приняты первые законы","3":"Законы вступили в силу (EU AI Act 2026)","4":"Зрелое регулирование, работает в большинстве юрисдикций","5":"Глобальный консенсус по AI-регулированию"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2034","p75":"2037"}},
-      "dependencies":[],
-      "news":[
-        {"date":"2026-07-10","title":"EU AI Act Enforcement Is Here: Chatbot Rules Live, High-Risk AI Binding Law","url":"https://www.techtimes.com/articles/320101/20260710/eu-ai-act-enforcement-here-chatbot-rules-live-high-risk-ai-delay-now-binding-law.htm","source":"TechTimes","direction":"positive","signal_score":82}
+      "id": "G6",
+      "track": "G",
+      "name": "Ответственность и право",
+      "shortName": "G6 Право",
+      "description": "Правовая база: кто отвечает за действия AI, сертификация, права пользователей. EU AI Act, US regulation.",
+      "maturity": 2.8,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет регулирования",
+        "1": "Обсуждения и white papers",
+        "2": "Приняты первые законы",
+        "3": "Законы вступили в силу (EU AI Act 2026)",
+        "4": "Зрелое регулирование, работает в большинстве юрисдикций",
+        "5": "Глобальный консенсус по AI-регулированию"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2027"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2034",
+          "p75": "2037"
+        }
+      },
+      "dependencies": [],
+      "news": [
+        {
+          "date": "2026-07-10",
+          "title": "EU AI Act Enforcement Is Here: Chatbot Rules Live, High-Risk AI Binding Law",
+          "url": "https://www.techtimes.com/articles/320101/20260710/eu-ai-act-enforcement-here-chatbot-rules-live-high-risk-ai-delay-now-binding-law.htm",
+          "source": "TechTimes",
+          "direction": "positive",
+          "signal_score": 82
+        }
       ]
     },
     {
-      "id":"H1","track":"H","name":"Стандарты и совместимость","shortName":"H1 Стандарты",
-      "description":"Открытые протоколы для AI-интеграций. MCP, Matter + AI, единые API. Совместимость между вендорами.",
-      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Проприетарные API","1":"Обсуждения стандартов","2":"Демонстрация протоколов","3":"MCP и аналоги в продуктах","4":"Открытые стандарты доминируют","5":"Совместимость гарантирована, как HTTP"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2035"}},
-      "dependencies":["E1","G6"],
-      "news":[
-        {"date":"2026-05-21","title":"MCP Specification Release Candidate — standard for AI tool integration","url":"https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/","source":"MCP Blog","direction":"positive","signal_score":80}
+      "id": "H1",
+      "track": "H",
+      "name": "Стандарты и совместимость",
+      "shortName": "H1 Стандарты",
+      "description": "Открытые протоколы для AI-интеграций. MCP, Matter + AI, единые API. Совместимость между вендорами.",
+      "maturity": 2.5,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Проприетарные API",
+        "1": "Обсуждения стандартов",
+        "2": "Демонстрация протоколов",
+        "3": "MCP и аналоги в продуктах",
+        "4": "Открытые стандарты доминируют",
+        "5": "Совместимость гарантирована, как HTTP"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2033",
+          "p75": "2035"
+        }
+      },
+      "dependencies": [
+        "E1",
+        "G6"
+      ],
+      "news": [
+        {
+          "date": "2026-05-21",
+          "title": "MCP Specification Release Candidate — standard for AI tool integration",
+          "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/",
+          "source": "MCP Blog",
+          "direction": "positive",
+          "signal_score": 80
+        }
       ]
     },
     {
-      "id":"H2","track":"H","name":"Экосистема навыков","shortName":"H2 Навыки",
-      "description":"Маркетплейс навыков/плагинов для AI-помощников. Разработчики создают расширения, пользователи устанавливают.",
-      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
-      "criteria_0_5":{"0":"Нет экосистемы","1":"Первые плагины","2":"Демонстрация marketplace","3":"Маркетплейс в продуктах (GPT Store)","4":"Активная экосистема с тысячами разработчиков","5":"Навыки как apps на смартфоне, стандартно"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2036"}},
-      "dependencies":["H1"],
-      "news":[]
+      "id": "H2",
+      "track": "H",
+      "name": "Экосистема навыков",
+      "shortName": "H2 Навыки",
+      "description": "Маркетплейс навыков/плагинов для AI-помощников. Разработчики создают расширения, пользователи устанавливают.",
+      "maturity": 2,
+      "stage": "Demonstration",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Нет экосистемы",
+        "1": "Первые плагины",
+        "2": "Демонстрация marketplace",
+        "3": "Маркетплейс в продуктах (GPT Store)",
+        "4": "Активная экосистема с тысячами разработчиков",
+        "5": "Навыки как apps на смартфоне, стандартно"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2033",
+          "p75": "2036"
+        }
+      },
+      "dependencies": [
+        "H1"
+      ],
+      "news": []
     },
     {
-      "id":"H3","track":"H","name":"Распространение","shortName":"H3 Охват",
-      "description":"Сколько людей используют AI-помощников. Еженедельные/ежедневные активные пользователи. Географический охват.",
-      "maturity":3.0,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"&lt;1M пользователей","1":"10M+","2":"Демонстрация 100M+","3":"1B+ пользователей (ChatGPT 900M)","4":"3B+ пользователей","5":"5B+ пользователей, как интернет"},
-      "baseline":{"stage3":{"p25":"2025","p50":"2026","p75":"2027"},"stage4":{"p25":"2027","p50":"2029","p75":"2031"},"stage5":{"p25":"2030","p50":"2032","p75":"2035"}},
-      "dependencies":["F5","H4"],
-      "news":[
-        {"date":"2026-02-27","title":"ChatGPT reaches 900M weekly active users","url":"https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/","source":"TechCrunch","direction":"positive","signal_score":78}
+      "id": "H3",
+      "track": "H",
+      "name": "Распространение",
+      "shortName": "H3 Охват",
+      "description": "Сколько людей используют AI-помощников. Еженедельные/ежедневные активные пользователи. Географический охват.",
+      "maturity": 3,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "&lt;1M пользователей",
+        "1": "10M+",
+        "2": "Демонстрация 100M+",
+        "3": "1B+ пользователей (ChatGPT 900M)",
+        "4": "3B+ пользователей",
+        "5": "5B+ пользователей, как интернет"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2025",
+          "p50": "2026",
+          "p75": "2027"
+        },
+        "stage4": {
+          "p25": "2027",
+          "p50": "2029",
+          "p75": "2031"
+        },
+        "stage5": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2035"
+        }
+      },
+      "dependencies": [
+        "F5",
+        "H4"
+      ],
+      "news": [
+        {
+          "date": "2026-02-27",
+          "title": "ChatGPT reaches 900M weekly active users",
+          "url": "https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/",
+          "source": "TechCrunch",
+          "direction": "positive",
+          "signal_score": 78
+        }
       ]
     },
     {
-      "id":"H4","track":"H","name":"Пользовательские привычки","shortName":"H4 Привычки",
-      "description":"Люди регулярно делегируют задачи ИИ. Использование AI-помощника стало привычкой, как смартфон.",
-      "maturity":2.0,"stage":"Demonstration","confidence":"Low",
-      "criteria_0_5":{"0":"Люди не доверяют","1":"Ранние adopters","2":"Опросы показывают рост доверия","3":"20%+ используют AI-помощников регулярно","4":"50%+ используют ежедневно","5":"Использование AI как использование интернета"},
-      "baseline":{"stage3":{"p25":"2027","p50":"2028","p75":"2030"},"stage4":{"p25":"2030","p50":"2032","p75":"2034"},"stage5":{"p25":"2033","p50":"2036","p75":"2039"}},
-      "dependencies":["H3","H5","D3"],
-      "news":[]
+      "id": "H4",
+      "track": "H",
+      "name": "Пользовательские привычки",
+      "shortName": "H4 Привычки",
+      "description": "Люди регулярно делегируют задачи ИИ. Использование AI-помощника стало привычкой, как смартфон.",
+      "maturity": 2,
+      "stage": "Demonstration",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Люди не доверяют",
+        "1": "Ранние adopters",
+        "2": "Опросы показывают рост доверия",
+        "3": "20%+ используют AI-помощников регулярно",
+        "4": "50%+ используют ежедневно",
+        "5": "Использование AI как использование интернета"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2027",
+          "p50": "2028",
+          "p75": "2030"
+        },
+        "stage4": {
+          "p25": "2030",
+          "p50": "2032",
+          "p75": "2034"
+        },
+        "stage5": {
+          "p25": "2033",
+          "p50": "2036",
+          "p75": "2039"
+        }
+      },
+      "dependencies": [
+        "H3",
+        "H5",
+        "D3"
+      ],
+      "news": []
     },
     {
-      "id":"H5","track":"H","name":"Социальное доверие","shortName":"H5 Доверие",
-      "description":"Общество доверяет AI-помощникам. Люди готовы делегировать личные задачи: финансы, здоровье, общение.",
-      "maturity":2.2,"stage":"Demonstration","confidence":"Low",
-      "criteria_0_5":{"0":"Нет доверия","1":"Первые опросы","2":"Рост доверия в опросах","3":"20%+ доверяют важные задачи","4":"50%+ доверяют, AI — норма","5":"Доверие к AI как к профессионалам"},
-      "baseline":{"stage3":{"p25":"2028","p50":"2030","p75":"2032"},"stage4":{"p25":"2031","p50":"2034","p75":"2037"},"stage5":{"p25":"2034","p50":"2038","p75":"2042"}},
-      "dependencies":["G6","G5"],
-      "news":[
-        {"date":"2026-06-25","title":"Global Attitudes on AI 2026: Wonder vs. Worry Divide Deepens — Ipsos","url":"https://www.ipsos.com/en-uk/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens","source":"Ipsos","direction":"neutral","signal_score":60}
+      "id": "H5",
+      "track": "H",
+      "name": "Социальное доверие",
+      "shortName": "H5 Доверие",
+      "description": "Общество доверяет AI-помощникам. Люди готовы делегировать личные задачи: финансы, здоровье, общение.",
+      "maturity": 2.2,
+      "stage": "Demonstration",
+      "confidence": "Low",
+      "criteria_0_5": {
+        "0": "Нет доверия",
+        "1": "Первые опросы",
+        "2": "Рост доверия в опросах",
+        "3": "20%+ доверяют важные задачи",
+        "4": "50%+ доверяют, AI — норма",
+        "5": "Доверие к AI как к профессионалам"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage4": {
+          "p25": "2031",
+          "p50": "2034",
+          "p75": "2037"
+        },
+        "stage5": {
+          "p25": "2034",
+          "p50": "2038",
+          "p75": "2042"
+        }
+      },
+      "dependencies": [
+        "G6",
+        "G5"
+      ],
+      "news": [
+        {
+          "date": "2026-06-25",
+          "title": "Global Attitudes on AI 2026: Wonder vs. Worry Divide Deepens — Ipsos",
+          "url": "https://www.ipsos.com/en-uk/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens",
+          "source": "Ipsos",
+          "direction": "neutral",
+          "signal_score": 60
+        }
       ]
     },
     {
-      "id":"H6","track":"H","name":"Бизнес-модель","shortName":"H6 Бизнес",
-      "description":"Устойчивая экономика AI-помощников. Кто платит, сколько, за что. Freemium, подписка, B2B, реклама, bundled.",
-      "maturity":2.5,"stage":"Pilot","confidence":"Medium",
-      "criteria_0_5":{"0":"Нет модели","1":"Эксперименты с ценами","2":"Первые прибыльные AI-продукты","3":"Устойчивые бизнес-модели ($20/мес)","4":"Рынок AI-помощников $100B+","5":"AI-помощник как utility, предсказуемая экономика"},
-      "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2036"}},
-      "dependencies":["H3","F3"],
-      "news":[]
+      "id": "H6",
+      "track": "H",
+      "name": "Бизнес-модель",
+      "shortName": "H6 Бизнес",
+      "description": "Устойчивая экономика AI-помощников. Кто платит, сколько, за что. Freemium, подписка, B2B, реклама, bundled.",
+      "maturity": 2.5,
+      "stage": "Pilot",
+      "confidence": "Medium",
+      "criteria_0_5": {
+        "0": "Нет модели",
+        "1": "Эксперименты с ценами",
+        "2": "Первые прибыльные AI-продукты",
+        "3": "Устойчивые бизнес-модели ($20/мес)",
+        "4": "Рынок AI-помощников $100B+",
+        "5": "AI-помощник как utility, предсказуемая экономика"
+      },
+      "baseline": {
+        "stage3": {
+          "p25": "2026",
+          "p50": "2027",
+          "p75": "2028"
+        },
+        "stage4": {
+          "p25": "2028",
+          "p50": "2030",
+          "p75": "2032"
+        },
+        "stage5": {
+          "p25": "2031",
+          "p50": "2033",
+          "p75": "2036"
+        }
+      },
+      "dependencies": [
+        "H3",
+        "F3"
+      ],
+      "news": []
     }
   ],
   "gates": {
     "J2": [
-      {"node":"B1","minMaturity":3.0,"label":"Tool use работает в продуктах"},
-      {"node":"D1","minMaturity":3.0,"label":"Голосовой интерфейс в продуктах"},
-      {"node":"A2","minMaturity":3.0,"label":"Reasoning в продуктах"}
+      {
+        "node": "B1",
+        "minMaturity": 3,
+        "label": "Tool use работает в продуктах"
+      },
+      {
+        "node": "D1",
+        "minMaturity": 3,
+        "label": "Голосовой интерфейс в продуктах"
+      },
+      {
+        "node": "A2",
+        "minMaturity": 3,
+        "label": "Reasoning в продуктах"
+      }
     ],
     "J3": [
-      {"node":"C2","minMaturity":3.0,"label":"Эпизодическая память в продуктах"},
-      {"node":"C5","minMaturity":2.5,"label":"Текущий контекст работает"},
-      {"node":"E1","minMaturity":3.0,"label":"Цифровые действия работают"},
-      {"node":"B1","minMaturity":3.5,"label":"Tool use надёжен"},
-      {"node":"G2","minMaturity":2.0,"label":"Базовая безопасность действий"}
+      {
+        "node": "C2",
+        "minMaturity": 3,
+        "label": "Эпизодическая память в продуктах"
+      },
+      {
+        "node": "C5",
+        "minMaturity": 2.5,
+        "label": "Текущий контекст работает"
+      },
+      {
+        "node": "E1",
+        "minMaturity": 3,
+        "label": "Цифровые действия работают"
+      },
+      {
+        "node": "B1",
+        "minMaturity": 3.5,
+        "label": "Tool use надёжен"
+      },
+      {
+        "node": "G2",
+        "minMaturity": 2,
+        "label": "Базовая безопасность действий"
+      }
     ],
     "J4": [
-      {"node":"B2","minMaturity":3.0,"label":"Долгие задачи в продуктах"},
-      {"node":"B3","minMaturity":3.0,"label":"Контроль результата"},
-      {"node":"C2","minMaturity":3.5,"label":"Эпизодическая память надёжна"},
-      {"node":"C6","minMaturity":2.5,"label":"Управление памятью"},
-      {"node":"G2","minMaturity":3.5,"label":"Безопасность действий надёжна"},
-      {"node":"G1","minMaturity":3.0,"label":"Права доступа"},
-      {"node":"F3","minMaturity":4.0,"label":"Стоимость $1-5/мес"},
-      {"node":"D3","minMaturity":2.5,"label":"Контекстная проактивность"}
+      {
+        "node": "B2",
+        "minMaturity": 3,
+        "label": "Долгие задачи в продуктах"
+      },
+      {
+        "node": "B3",
+        "minMaturity": 3,
+        "label": "Контроль результата"
+      },
+      {
+        "node": "C2",
+        "minMaturity": 3.5,
+        "label": "Эпизодическая память надёжна"
+      },
+      {
+        "node": "C6",
+        "minMaturity": 2.5,
+        "label": "Управление памятью"
+      },
+      {
+        "node": "G2",
+        "minMaturity": 3.5,
+        "label": "Безопасность действий надёжна"
+      },
+      {
+        "node": "G1",
+        "minMaturity": 3,
+        "label": "Права доступа"
+      },
+      {
+        "node": "F3",
+        "minMaturity": 4,
+        "label": "Стоимость $1-5/мес"
+      },
+      {
+        "node": "D3",
+        "minMaturity": 2.5,
+        "label": "Контекстная проактивность"
+      }
     ],
     "J5": [
-      {"node":"D4","minMaturity":4.0,"label":"Бесшовный cross-device"},
-      {"node":"D2","minMaturity":3.5,"label":"Визуальное понимание экрана"},
-      {"node":"C5","minMaturity":4.0,"label":"Непрерывный контекст"},
-      {"node":"F4","minMaturity":3.5,"label":"On-device для большинства задач"},
-      {"node":"D5","minMaturity":3.0,"label":"Социальное поведение"}
+      {
+        "node": "D4",
+        "minMaturity": 4,
+        "label": "Бесшовный cross-device"
+      },
+      {
+        "node": "D2",
+        "minMaturity": 3.5,
+        "label": "Визуальное понимание экрана"
+      },
+      {
+        "node": "C5",
+        "minMaturity": 4,
+        "label": "Непрерывный контекст"
+      },
+      {
+        "node": "F4",
+        "minMaturity": 3.5,
+        "label": "On-device для большинства задач"
+      },
+      {
+        "node": "D5",
+        "minMaturity": 3,
+        "label": "Социальное поведение"
+      }
     ],
     "J6": [
-      {"node":"A4","minMaturity":3.0,"label":"Обобщение между доменами"},
-      {"node":"A5","minMaturity":3.5,"label":"Метапознание"},
-      {"node":"B4","minMaturity":3.5,"label":"Восстановление после ошибок"},
-      {"node":"B5","minMaturity":3.0,"label":"Оркестрация агентов"},
-      {"node":"G5","minMaturity":4.0,"label":"Alignment"},
-      {"node":"H5","minMaturity":3.0,"label":"Социальное доверие"}
+      {
+        "node": "A4",
+        "minMaturity": 3,
+        "label": "Обобщение между доменами"
+      },
+      {
+        "node": "A5",
+        "minMaturity": 3.5,
+        "label": "Метапознание"
+      },
+      {
+        "node": "B4",
+        "minMaturity": 3.5,
+        "label": "Восстановление после ошибок"
+      },
+      {
+        "node": "B5",
+        "minMaturity": 3,
+        "label": "Оркестрация агентов"
+      },
+      {
+        "node": "G5",
+        "minMaturity": 4,
+        "label": "Alignment"
+      },
+      {
+        "node": "H5",
+        "minMaturity": 3,
+        "label": "Социальное доверие"
+      }
     ]
   },
   "routes": [
     {
-      "id":"digital","name":"Digital Jarvis","active":true,
-      "description":"Персональный агент в смартфоне и компьютере",
-      "weights":{"A":0.22,"B":0.20,"C":0.18,"D":0.12,"E":0.10,"F":0.08,"G":0.06,"H":0.04}
+      "id": "digital",
+      "name": "Digital Jarvis",
+      "active": true,
+      "description": "Персональный агент в смартфоне и компьютере",
+      "weights": {
+        "A": 0.22,
+        "B": 0.2,
+        "C": 0.18,
+        "D": 0.12,
+        "E": 0.1,
+        "F": 0.08,
+        "G": 0.06,
+        "H": 0.04
+      }
     },
     {
-      "id":"enterprise","name":"Enterprise Jarvis","active":false,
-      "description":"Рабочий агент для корпоративных задач",
-      "weights":{"A":0.15,"B":0.25,"C":0.10,"D":0.08,"E":0.18,"F":0.10,"G":0.12,"H":0.02}
+      "id": "enterprise",
+      "name": "Enterprise Jarvis",
+      "active": false,
+      "description": "Рабочий агент для корпоративных задач",
+      "weights": {
+        "A": 0.15,
+        "B": 0.25,
+        "C": 0.1,
+        "D": 0.08,
+        "E": 0.18,
+        "F": 0.1,
+        "G": 0.12,
+        "H": 0.02
+      }
     },
     {
-      "id":"ambient","name":"Ambient Jarvis","active":false,
-      "description":"Помощник через голос, очки, авто, умную среду",
-      "weights":{"A":0.15,"B":0.10,"C":0.15,"D":0.25,"E":0.18,"F":0.10,"G":0.05,"H":0.02}
+      "id": "ambient",
+      "name": "Ambient Jarvis",
+      "active": false,
+      "description": "Помощник через голос, очки, авто, умную среду",
+      "weights": {
+        "A": 0.15,
+        "B": 0.1,
+        "C": 0.15,
+        "D": 0.25,
+        "E": 0.18,
+        "F": 0.1,
+        "G": 0.05,
+        "H": 0.02
+      }
     },
     {
-      "id":"embodied","name":"Embodied Jarvis","active":false,
-      "description":"Помощник, выполняющий физические действия",
-      "weights":{"A":0.15,"B":0.15,"C":0.10,"D":0.10,"E":0.30,"F":0.10,"G":0.08,"H":0.02}
+      "id": "embodied",
+      "name": "Embodied Jarvis",
+      "active": false,
+      "description": "Помощник, выполняющий физические действия",
+      "weights": {
+        "A": 0.15,
+        "B": 0.15,
+        "C": 0.1,
+        "D": 0.1,
+        "E": 0.3,
+        "F": 0.1,
+        "G": 0.08,
+        "H": 0.02
+      }
     }
   ]
-}
-</script>0/мес)","4":"Рынок AI-помощников <script id="embedded-data" type="application/json">00B+","5":"AI-помощник как utility, предсказуемая экономика"},
+}</script>0/мес)","4":"Рынок AI-помощников <script id="embedded-data" type="application/json">00B+","5":"AI-помощник как utility, предсказуемая экономика"},
       "baseline":{"stage3":{"p25":"2026","p50":"2027","p75":"2028"},"stage4":{"p25":"2028","p50":"2030","p75":"2032"},"stage5":{"p25":"2031","p50":"2033","p75":"2036"}},
       "dependencies":["H3","F3"],
       "news":[]
@@ -850,15 +2575,6 @@ footer{
     document.getElementById('level-badge').textContent=level;
     document.getElementById('footer-updated').textContent='Обновлено: '+(data.meta.lastUpdated||'—');
 
-    // Route buttons
-    var rb=document.getElementById('route-btns');rb.innerHTML='';
-    data.routes.forEach(function(r){
-      var b=document.createElement('button');
-      b.textContent=r.name;b.className=r.id===routeId?'active':'';
-      b.addEventListener('click',function(){routeId=r.id;render();});
-      rb.appendChild(b);
-    });
-
     // Dashboard cards
     var p50=2026+Math.round((6*(1-jri.value/100)));
     var nextLevel=currentLevel(jri.value+1,route);
@@ -920,6 +2636,43 @@ footer{
       });
       tg.appendChild(block);
     });
+
+    // ── Methodology section ──
+    var meth=document.getElementById('methodology');
+    meth.innerHTML=
+      '<div class="meth-block">'+
+        '<h3>Методология Jarvis Index</h3>'+
+        '<div class="meth-formula">'+
+          '<b>JRI (Jarvis Readiness Index)</b> = 100 × ∏(TrackScore<sub>k</sub> / 100)<sup>w<sub>k</sub></sup><br><br>'+
+          '<b>TrackScore</b> = 100 × среднее(maturity<sub>i</sub> / 5) по всем подэтапам трека<br><br>'+
+          'JRI использует взвешенное геометрическое среднее, чтобы сильный прогресс одного трека не компенсировал критическое отставание другого.'+
+        '</div>'+
+      '</div>'+
+      '<div class="meth-block">'+
+        '<h3>Уровни зрелости Jarvis (J0–J6)</h3>'+
+        '<div class="meth-levels">'+
+          data.levels.map(function(l){return '<div class="meth-level"><div class="meth-level-code">'+l.code+'</div><div class="meth-level-name">'+l.name+'</div><div class="meth-level-desc">'+l.description+'</div></div>';}).join('')+
+        '</div>'+
+      '</div>'+
+      '<div class="meth-block">'+
+        '<h3>Треки (A–H)</h3>'+
+        '<div class="meth-tracks">'+
+          data.tracks.map(function(t){return '<div class="meth-track"><div class="meth-track-id" style="color:'+(TRACK_COLORS[t.id]||'#888')+'">'+t.id+' · '+t.name+'</div><div class="meth-track-q">'+t.question+'</div></div>';}).join('')+
+        '</div>'+
+      '</div>'+
+      '<div class="meth-block">'+
+        '<h3>Шкала зрелости 0–5</h3>'+
+        '<div class="meth-levels">'+
+          ['0 — Absent: Работающего подхода нет, нет проверяемого доказательства',
+           '1 — Research: Есть теория, ранний эксперимент или разовая демонстрация',
+           '2 — Demonstration: Повторяемая лабораторная демонстрация в контролируемой среде',
+           '3 — Pilot: Работает в ограниченных реальных сценариях с участием человека',
+           '4 — Production: Надёжно работает в массовом продукте для типовых задач',
+           '5 — Infrastructure: Стало дешёвым, стандартным, масштабируемым и повсеместным'].map(function(s,i){
+            return '<div class="meth-level" style="border-left-color:'+['#6B7280','#A78BFA','#60A5FA','#FBBF24','#6EE7B7','#34D399'][i]+'"><div class="meth-level-code">'+s+'</div></div>';
+          }).join('')+
+        '</div>'+
+      '</div>';
   }
 
   function openNode(nodeId){
