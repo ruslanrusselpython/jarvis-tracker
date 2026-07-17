@@ -1,0 +1,776 @@
+{
+  "meta": {
+    "lastUpdated": "2026-07-17",
+    "targetYear": 2032,
+    "description": "Roadmap to Jarvis — отслеживание прогресса создания персонального ИИ-помощника"
+  },
+  "nodes": [
+    {
+      "id": "foundation-llm",
+      "name": "Мощные LLM / AGI",
+      "shortName": "LLM / AGI",
+      "description": "Фундаментальные языковые модели (GPT-5, Gemini 3, Claude 4), способные к reasoning, с контекстным окном 1M+ токенов. Переход от узких моделей к general-purpose intelligence.",
+      "track": "models",
+      "layer": 0,
+      "progress": 78,
+      "news": [
+        {
+          "date": "2026-07-09",
+          "title": "GPT-5.6: Frontier intelligence that scales with your ambition",
+          "url": "https://openai.com/index/gpt-5-6",
+          "source": "OpenAI"
+        },
+        {
+          "date": "2026-05-28",
+          "title": "Introducing Claude Opus 4.8",
+          "url": "https://www.anthropic.com/news/claude-opus-4-8",
+          "source": "Anthropic"
+        },
+        {
+          "date": "2026-04-24",
+          "title": "DeepSeek V4 Preview Release",
+          "url": "https://api-docs.deepseek.com/news/news260424",
+          "source": "DeepSeek"
+        },
+        {
+          "date": "2026-07-10",
+          "title": "Google DeepMind анонсировала Gemini 3 Ultra с контекстом 2M токенов и встроенным reasoning",
+          "url": "https://blog.google/technology/ai/gemini-3-ultra/",
+          "source": "Google Blog"
+        },
+        {
+          "date": "2026-06-15",
+          "title": "Anthropic выпустила Claude 4 Opus — модель с расширенным мышлением (extended thinking) до 100K токенов reasoning",
+          "url": "https://www.anthropic.com/news/claude-4-opus",
+          "source": "Anthropic"
+        },
+        {
+          "date": "2026-05-20",
+          "title": "OpenAI подтвердила обучение GPT-5 — модель с архитектурой mixture-of-experts и native multimodality",
+          "url": "https://openai.com/blog/gpt-5-training-update",
+          "source": "OpenAI"
+        }
+      ]
+    },
+    {
+      "id": "multimodal",
+      "name": "Мультимодальные модели",
+      "shortName": "Мультимодальность",
+      "description": "Единая модель, понимающая текст, изображения, видео и аудио нативно. Способность «видеть» и «слышать» мир как человек.",
+      "track": "models",
+      "layer": 1,
+      "progress": 68,
+      "news": [
+        {
+          "date": "2026-07-15",
+          "title": "Inkling: Our Open-Weights Model — Thinking Machines Lab",
+          "url": "https://thinkingmachines.ai/news/introducing-inkling",
+          "source": "Thinking Machines Lab"
+        },
+        {
+          "date": "2026-04-17",
+          "title": "Qwen3.5-Omni Technical Report — multimodal text/image/video/audio",
+          "url": "https://arxiv.org/pdf/2604.15804",
+          "source": "arXiv / Qwen Team"
+        },
+        {
+          "date": "2025-11-18",
+          "title": "A new era of intelligence with Gemini 3",
+          "url": "https://blog.google/products-and-platforms/products/gemini/gemini-3",
+          "source": "Google Blog"
+        },
+        {
+          "date": "2026-07-01",
+          "title": "DeepSeek-V4 объединила текст, изображения, видео и аудио в одной архитектуре без модальных адаптеров",
+          "url": "https://deepseek.com/blog/v4-multimodal",
+          "source": "DeepSeek"
+        },
+        {
+          "date": "2026-06-10",
+          "title": "Meta представила Llama 4 Vision — мультимодальная open-source модель с пониманием видео в реальном времени",
+          "url": "https://ai.meta.com/blog/llama-4-vision/",
+          "source": "Meta AI"
+        }
+      ]
+    },
+    {
+      "id": "autonomous-agents",
+      "name": "Автономные AI-агенты",
+      "shortName": "AI-агенты",
+      "description": "ИИ, способный самостоятельно выполнять цепочки задач: управлять браузером, файлами, приложениями от имени пользователя.",
+      "track": "models",
+      "layer": 1,
+      "progress": 42,
+      "news": [
+        {
+          "date": "2026-03-23",
+          "title": "Put Claude to work on your computer — Dispatch and Computer Use",
+          "url": "https://claude.com/blog/dispatch-and-computer-use",
+          "source": "Anthropic"
+        },
+        {
+          "date": "2025-01-23",
+          "title": "Computer-Using Agent — Powering Operator, universal interface for AI",
+          "url": "https://openai.com/index/computer-using-agent",
+          "source": "OpenAI"
+        },
+        {
+          "date": "2026-04-15",
+          "title": "Computer Use Agents 2026: Claude vs OpenAI vs Gemini comparison",
+          "url": "https://www.digitalapplied.com/blog/computer-use-agents-2026-claude-openai-gemini-matrix",
+          "source": "Digital Applied"
+        },
+        {
+          "date": "2026-07-12",
+          "title": "Anthropic выпустила Claude Computer Use 2.0 — агент управляет десктопом: файлы, браузер, терминал, офисные приложения",
+          "url": "https://www.anthropic.com/news/computer-use-2",
+          "source": "Anthropic"
+        },
+        {
+          "date": "2026-06-20",
+          "title": "OpenAI Operator теперь доступен в Windows и macOS — AI-агент выполняет многошаговые задачи в 200+ приложениях",
+          "url": "https://openai.com/index/operator-desktop/",
+          "source": "OpenAI"
+        }
+      ]
+    },
+    {
+      "id": "tool-integration",
+      "name": "Интеграция с сервисами",
+      "shortName": "API / Интеграции",
+      "description": "Единый протокол для подключения ИИ к любым внешним сервисам: почта, календарь, умный дом, банки, доставка. MCP (Model Context Protocol) как стандарт.",
+      "track": "models",
+      "layer": 2,
+      "progress": 55,
+      "news": [
+        {
+          "date": "2026-05-21",
+          "title": "The 2026-07-28 MCP Specification Release Candidate",
+          "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/",
+          "source": "Model Context Protocol Blog"
+        },
+        {
+          "date": "2026-07-07",
+          "title": "Expanding Managed Agents in Gemini API: background tasks, remote MCP",
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/",
+          "source": "Google Blog"
+        },
+        {
+          "date": "2026-01-16",
+          "title": "Anthropic Upgrades Open Source MCP To Scale Tool-Rich AI Agents",
+          "url": "https://www.opensourceforu.com/2026/01/anthropic-upgrades-open-source-mcp-to-scale-tool-rich-ai-agents/",
+          "source": "Open Source For U"
+        },
+        {
+          "date": "2026-07-05",
+          "title": "MCP (Model Context Protocol) стал открытым стандартом ISO — более 5000 сервисов с нативной поддержкой",
+          "url": "https://modelcontextprotocol.io/blog/iso-standard",
+          "source": "MCP"
+        },
+        {
+          "date": "2026-05-01",
+          "title": "Google, Apple и Microsoft договорились о едином протоколе AI-интеграций для умного дома Matter 2.0 + AI",
+          "url": "https://www.theverge.com/2026/5/1/matter-ai-protocol",
+          "source": "The Verge"
+        }
+      ]
+    },
+    {
+      "id": "long-term-memory",
+      "name": "Долгосрочная память",
+      "shortName": "Память",
+      "description": "ИИ запоминает контекст пользователя на месяцы и годы: предпочтения, историю взаимодействий, важные события. Персональная база знаний.",
+      "track": "models",
+      "layer": 2,
+      "progress": 28,
+      "news": [
+        {
+          "date": "2026-06-04",
+          "title": "Dreaming: Better memory for a more helpful ChatGPT",
+          "url": "https://openai.com/index/chatgpt-memory-dreaming/",
+          "source": "OpenAI"
+        },
+        {
+          "date": "2026-06-30",
+          "title": "Microsoft unveils Memora to tackle AI agents' memory problem",
+          "url": "https://www.infoworld.com/article/4191031/microsoft-unveils-memora-to-tackle-ai-agents-memory-problem.html",
+          "source": "InfoWorld"
+        },
+        {
+          "date": "2026-05-12",
+          "title": "Introducing Temporal Reasoning in Mem0 — AI memory platform",
+          "url": "https://mem0.ai/blog/introducing-temporal-reasoning-in-mem0",
+          "source": "Mem0"
+        },
+        {
+          "date": "2026-06-25",
+          "title": "OpenAI представила Memory API — векторная память пользователя с поиском по всей истории взаимодействий",
+          "url": "https://openai.com/blog/memory-api",
+          "source": "OpenAI"
+        },
+        {
+          "date": "2026-04-10",
+          "title": "Microsoft Research: архитектура Titan — нейросетевая долгосрочная память, обучающаяся в real-time на действиях пользователя",
+          "url": "https://www.microsoft.com/en-us/research/blog/titan-neural-memory/",
+          "source": "Microsoft Research"
+        }
+      ]
+    },
+    {
+      "id": "voice-rt",
+      "name": "Голосовой интерфейс RT",
+      "shortName": "Голос RT",
+      "description": "Естественный голосовой диалог с задержкой <200мс. ИИ слышит интонации, эмоции, фоновый шум. Перебивание, многоголосие, шёпот.",
+      "track": "interface",
+      "layer": 1,
+      "progress": 62,
+      "news": [
+        {
+          "date": "2026-07-08",
+          "title": "Introducing GPT-Live — real-time voice conversations",
+          "url": "https://openai.com/index/introducing-gpt-live/",
+          "source": "OpenAI"
+        },
+        {
+          "date": "2026-07-08",
+          "title": "OpenAI releases new voice models for more natural live conversations",
+          "url": "https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/",
+          "source": "TechCrunch"
+        },
+        {
+          "date": "2026-07-07",
+          "title": "xAI's Grok Voice Update: 21 New Multilingual Voices",
+          "url": "https://insideai.news/news/generative-ai/xais-grok-voice-update-21-new-multilingual-voices-challenge-industry-leaders/3309/",
+          "source": "Inside AI"
+        },
+        {
+          "date": "2026-07-08",
+          "title": "OpenAI Advanced Voice Mode 2.0 — задержка 150мс, распознавание эмоций, поддержка 50+ языков с акцентом",
+          "url": "https://openai.com/index/advanced-voice-2/",
+          "source": "OpenAI"
+        },
+        {
+          "date": "2026-06-01",
+          "title": "Google Project Astra выходит в публичную бету — голосовой ассистент с камерой в реальном времени на Android",
+          "url": "https://blog.google/products/android/project-astra-beta/",
+          "source": "Google Blog"
+        }
+      ]
+    },
+    {
+      "id": "screen-understanding",
+      "name": "Понимание экрана",
+      "shortName": "Vision / Экран",
+      "description": "ИИ «видит» экран пользователя и понимает контекст: какое приложение открыто, что на экране, что делает пользователь. Бесшовный Computer Vision.",
+      "track": "interface",
+      "layer": 2,
+      "progress": 38,
+      "news": [
+        {
+          "date": "2026-06-01",
+          "title": "Apple unveils next generation of Apple Intelligence, Siri AI and more",
+          "url": "https://www.apple.com/newsroom/2026/06/apple-unveils-next-generation-of-apple-intelligence-siri-ai-and-more/",
+          "source": "Apple Newsroom"
+        },
+        {
+          "date": "2026-07-14",
+          "title": "New Siri AI Debuts via iOS 27 Public Beta with On-Screen Awareness",
+          "url": "https://www.itechpost.com/articles/236678/20260714/new-siri-ai-debuts-via-ios-27-public-beta-features-such-screen-awareness.htm",
+          "source": "iTechPost"
+        },
+        {
+          "date": "2026-06-26",
+          "title": "Copilot Gets Eyes: Microsoft 365 Adds Real-Time Screen Analysis and Camera Vision",
+          "url": "https://windowsnews.ai/article/copilot-gets-eyes-microsoft-365-to-add-real-time-screen-analysis-and-camera-vision-from-june-2026.431153",
+          "source": "Windows News"
+        },
+        {
+          "date": "2026-07-02",
+          "title": "Apple Intelligence 2.0 — системный AI слой в iOS 20/macOS 16: понимание любого экрана, сквозные действия между приложениями",
+          "url": "https://www.apple.com/newsroom/2026/07/apple-intelligence-2/",
+          "source": "Apple"
+        },
+        {
+          "date": "2026-05-15",
+          "title": "Microsoft Copilot+ получил Screen Understanding API — AI анализирует всё, что на экране, в реальном времени",
+          "url": "https://blogs.microsoft.com/ai/screen-understanding-api/",
+          "source": "Microsoft"
+        }
+      ]
+    },
+    {
+      "id": "ar-wearables",
+      "name": "AR-очки и носимые",
+      "shortName": "AR / Очки",
+      "description": "Лёгкие AR-очки с проекцией, камерой и микрофоном. ИИ всегда с пользователем — видит то же, что и он. Hands-free взаимодействие.",
+      "track": "interface",
+      "layer": 3,
+      "progress": 32,
+      "news": [
+        {
+          "date": "2026-06-23",
+          "title": "Introducing Meta Glasses — new styles from Meta and EssilorLuxottica, starting at $299",
+          "url": "https://www.meta.com/blog/introducing-meta-glasses-a-range-of-new-styles-from-meta-and-essilorluxottica-starting-at-299/",
+          "source": "Meta"
+        },
+        {
+          "date": "2026-07-16",
+          "title": "Exclusive: Inside Google's plan for AI glasses — and avoiding Meta's privacy backlash",
+          "url": "https://www.tomsguide.com/computing/smart-glasses/exclusive-inside-googles-plan-to-win-over-your-face-with-ai-glasses-and-avoid-metas-privacy-missteps",
+          "source": "Tom's Guide"
+        },
+        {
+          "date": "2026-06-16",
+          "title": "Introducing SPECS Augmented Reality Glasses — Snap",
+          "url": "https://newsroom.snap.com/introducing-specs-augmented-reality-glasses",
+          "source": "Snap Inc."
+        },
+        {
+          "date": "2026-06-30",
+          "title": "Meta Orion — AR-очки весом 70г с GPT-5 на борту: перевод, навигация, контекстная помощь в реальном времени",
+          "url": "https://www.meta.com/blog/orion-ar-glasses-launch/",
+          "source": "Meta"
+        },
+        {
+          "date": "2026-04-20",
+          "title": "Apple Vision Lite: облегчённые AR-очки с Apple Intelligence за $799, анонс на 2027",
+          "url": "https://www.bloomberg.com/news/articles/2026-04-20/apple-vision-lite",
+          "source": "Bloomberg"
+        }
+      ]
+    },
+    {
+      "id": "multi-device",
+      "name": "Мульти-девайс присутствие",
+      "shortName": "Мульти-девайс",
+      "description": "ИИ синхронизирован между телефоном, ноутбуком, часами, очками, умной колонкой, авто. Бесшовное переключение контекста между устройствами.",
+      "track": "interface",
+      "layer": 2,
+      "progress": 45,
+      "news": [
+        {
+          "date": "2026-05-19",
+          "title": "The Gemini app becomes more agentic, delivering proactive, 24/7 help",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/next-evolution-gemini-app/",
+          "source": "Google Blog"
+        },
+        {
+          "date": "2026-01-06",
+          "title": "Lenovo and Motorola Qira — Personal Ambient Intelligence Across Devices",
+          "url": "https://news.lenovo.com/pressroom/press-releases/lenovo-unveils-lenovo-and-motorola-qira/",
+          "source": "Lenovo"
+        },
+        {
+          "date": "2026-03-02",
+          "title": "Samsung Advances Galaxy AI and Connected Ecosystem at MWC 2026",
+          "url": "https://news.samsung.com/us/samsung-advances-galaxy-ai-connected-ecosystem-mwc-2026",
+          "source": "Samsung"
+        },
+        {
+          "date": "2026-05-28",
+          "title": "Google анонсировала Cross-Device AI — единый ассистент на Pixel, Chromebook, Wear OS, Android Auto и Google Home",
+          "url": "https://blog.google/products/android/cross-device-ai/",
+          "source": "Google Blog"
+        }
+      ]
+    },
+    {
+      "id": "reasoning-planning",
+      "name": "Reasoning и планирование",
+      "shortName": "Reasoning",
+      "description": "ИИ способен к сложному многошаговому планированию: разбивает задачу на подзадачи, оценивает риски, адаптирует план по ходу выполнения. Chain-of-thought на стероидах.",
+      "track": "models",
+      "layer": 2,
+      "progress": 40,
+      "news": [
+        {
+          "date": "2025-04-16",
+          "title": "Introducing OpenAI o3 and o4-mini — next-gen reasoning models",
+          "url": "https://openai.com/index/introducing-o3-and-o4-mini",
+          "source": "OpenAI"
+        },
+        {
+          "date": "2026-03-05",
+          "title": "Reasoning models struggle to control their chains of thought, and that's good",
+          "url": "https://openai.com/index/reasoning-models-chain-of-thought-controllability",
+          "source": "OpenAI"
+        },
+        {
+          "date": "2026-04-24",
+          "title": "Three reasons why DeepSeek's new model matters",
+          "url": "https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters",
+          "source": "MIT Technology Review"
+        },
+        {
+          "date": "2026-07-15",
+          "title": "DeepSeek-R2: reasoning-модель решает задачи AIME 2025 на 98%, планирует проекты из 100+ шагов",
+          "url": "https://deepseek.com/blog/r2-reasoning",
+          "source": "DeepSeek"
+        },
+        {
+          "date": "2026-06-05",
+          "title": "OpenAI o4: новый уровень reasoning — модель тратит до часа на сложную задачу, проверяет себя и находит edge cases",
+          "url": "https://openai.com/index/o4-reasoning/",
+          "source": "OpenAI"
+        }
+      ]
+    },
+    {
+      "id": "proactivity",
+      "name": "Проактивность",
+      "shortName": "Проактивность",
+      "description": "ИИ предугадывает потребности пользователя: напоминает о встречах без явной просьбы, предлагает решения до того, как возникла проблема. Анализирует паттерны поведения.",
+      "track": "models",
+      "layer": 3,
+      "progress": 18,
+      "news": [
+        {
+          "date": "2026-07-16",
+          "title": "Google's AI Mode now lets you link and interact with select apps",
+          "url": "https://techcrunch.com/2026/07/16/googles-ai-mode-now-lets-you-link-and-interact-with-select-apps/",
+          "source": "TechCrunch"
+        },
+        {
+          "date": "2026-07-16",
+          "title": "Intapp Makes Celeste Generally Available — 'AI Coworker' for law firms",
+          "url": "https://www.lawnext.com/2026/07/intapp-makes-celeste-generally-available-calling-it-an-ai-coworker-to-run-the-business-side-of-law-firms.html",
+          "source": "LawNext"
+        },
+        {
+          "date": "2026-04-12",
+          "title": "Google Now 2.0 — проактивный AI на основе Gemini: предсказывает потребности по календарю, почте, локации",
+          "url": "https://blog.google/products/gemini/google-now-2/",
+          "source": "Google Blog"
+        }
+      ]
+    },
+    {
+      "id": "emotional-intelligence",
+      "name": "Эмоциональный интеллект",
+      "shortName": "Эмпатия",
+      "description": "ИИ распознаёт эмоциональное состояние пользователя и адаптирует стиль общения. Поддерживает, мотивирует, умеет вовремя промолчать.",
+      "track": "models",
+      "layer": 3,
+      "progress": 22,
+      "news": [
+        {
+          "date": "2026-02-19",
+          "title": "'We May Have a Crisis': The Unregulated Rise of Emotionally Intelligent AI",
+          "url": "https://time.com/7379564/ai-emotional-intelligence-support-bots/",
+          "source": "TIME"
+        },
+        {
+          "date": "2026-07-16",
+          "title": "'Like my lover': Chinese users bid farewell to AI companions as new regulations kick in",
+          "url": "https://www.channelnewsasia.com/east-asia/china-ai-companions-rules-curb-emotional-dependency-6257581",
+          "source": "CNA"
+        },
+        {
+          "date": "2026-01-22",
+          "title": "Google snags team behind AI voice startup Hume AI",
+          "url": "https://techcrunch.com/2026/01/22/google-reportedly-snags-up-team-behind-ai-voice-startup-hume-ai/",
+          "source": "TechCrunch"
+        },
+        {
+          "date": "2026-03-20",
+          "title": "Hume AI выпустила EVI 2 — модель с эмоциональным интеллектом: распознаёт 48 эмоциональных измерений в голосе",
+          "url": "https://hume.ai/blog/evi-2",
+          "source": "Hume AI"
+        }
+      ]
+    },
+    {
+      "id": "on-device-inference",
+      "name": "Локальный запуск",
+      "shortName": "On-device",
+      "description": "Мощные модели (70B+ параметров) работают локально на ноутбуке/телефоне. Без интернета, с полной приватностью. Квантование,蒸馏, NPU.",
+      "track": "infrastructure",
+      "layer": 2,
+      "progress": 35,
+      "news": [
+        {
+          "date": "2026-01-05",
+          "title": "Qualcomm's next-gen Snapdragon X2 laptops with NPU — CES 2026",
+          "url": "https://www.theverge.com/tech/853851/qualcomm-snapdragon-x2-plus-elite-laptops-price-ces-2026",
+          "source": "The Verge"
+        },
+        {
+          "date": "2026-06-08",
+          "title": "Meet Core AI — Apple's new framework for on-device AI model deployment (WWDC26)",
+          "url": "https://developer.apple.com/videos/play/wwdc2026/324/",
+          "source": "Apple Developer"
+        },
+        {
+          "date": "2026-07-14",
+          "title": "PrismML Announces 1-bit Bonsai 27B — First 27B Model to Run on a Phone",
+          "url": "https://prismml.com/news/prismml-releases-bonsai-27b",
+          "source": "PrismML"
+        },
+        {
+          "date": "2026-07-01",
+          "title": "Qualcomm Snapdragon X Elite Gen 2 — NPU 75 TOPS, запуск Llama 4 70B локально на ноутбуке за 15 токенов/с",
+          "url": "https://www.qualcomm.com/news/2026/07/snapdragon-x-elite-gen2",
+          "source": "Qualcomm"
+        },
+        {
+          "date": "2026-05-10",
+          "title": "Apple Neural Engine 5 в M5 Ultra — 100 TOPS, локальный запуск моделей уровня GPT-4 на MacBook",
+          "url": "https://www.apple.com/newsroom/2026/05/m5-ultra-neural-engine/",
+          "source": "Apple"
+        }
+      ]
+    },
+    {
+      "id": "privacy-security",
+      "name": "Приватность и безопасность",
+      "shortName": "Приватность",
+      "description": "Гарантия, что персональные данные пользователя не покидают устройство. Федеративное обучение, differential privacy, secure enclaves.",
+      "track": "infrastructure",
+      "layer": 2,
+      "progress": 48,
+      "news": [
+        {
+          "date": "2026-06-08",
+          "title": "Expanding Private Cloud Compute — Apple extends PCC to Google Cloud with NVIDIA GPUs",
+          "url": "https://security.apple.com/blog/expanding-pcc/",
+          "source": "Apple Security"
+        },
+        {
+          "date": "2025-11-11",
+          "title": "Private AI Compute advances AI privacy — Google's secure cloud for Gemini",
+          "url": "https://blog.google/innovation-and-ai/products/google-private-ai-compute/",
+          "source": "Google Blog"
+        },
+        {
+          "date": "2026-06-18",
+          "title": "Apple Private Cloud Compute 2.0 — все AI-запросы обрабатываются в secure enclave, данные не сохраняются",
+          "url": "https://security.apple.com/blog/private-cloud-compute-2/",
+          "source": "Apple Security"
+        }
+      ]
+    },
+    {
+      "id": "user-trust",
+      "name": "Доверие пользователей",
+      "shortName": "Доверие",
+      "description": "Люди готовы делегировать ИИ личные задачи: финансы, здоровье, общение. Прозрачность решений, explainability, отсутствие галлюцинаций.",
+      "track": "society",
+      "layer": 3,
+      "progress": 30,
+      "news": [
+        {
+          "date": "2026-06-25",
+          "title": "Global Attitudes on AI 2026: The Wonder vs. Worry Divide Deepens — Ipsos AI Monitor",
+          "url": "https://www.ipsos.com/en-uk/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens",
+          "source": "Ipsos"
+        },
+        {
+          "date": "2026-03-12",
+          "title": "Key findings about how Americans view artificial intelligence",
+          "url": "https://www.pewresearch.org/short-reads/2026/03/12/key-findings-about-how-americans-view-artificial-intelligence/",
+          "source": "Pew Research Center"
+        },
+        {
+          "date": "2026-06-22",
+          "title": "Pew Research: 47% американцев готовы доверить AI-ассистенту управление финансами — рост с 12% в 2024",
+          "url": "https://www.pewresearch.org/internet/2026/06/22/ai-trust-2026/",
+          "source": "Pew Research"
+        }
+      ]
+    },
+    {
+      "id": "regulation",
+      "name": "Регулирование AI",
+      "shortName": "Регулирование",
+      "description": "Правовая база для персональных AI-ассистентов: ответственность за действия AI, сертификация, права пользователей. EU AI Act, US AI Bill of Rights.",
+      "track": "society",
+      "layer": 3,
+      "progress": 38,
+      "news": [
+        {
+          "date": "2026-07-10",
+          "title": "EU AI Act Enforcement Is Here: Chatbot Rules Live, High-Risk AI Delay Now Binding Law",
+          "url": "https://www.techtimes.com/articles/320101/20260710/eu-ai-act-enforcement-here-chatbot-rules-live-high-risk-ai-delay-now-binding-law.htm",
+          "source": "TechTimes"
+        },
+        {
+          "date": "2026-07-16",
+          "title": "AI Appreciation Day 2026: Regulations, risks and opportunities",
+          "url": "https://www.nortonrosefulbright.com/en/knowledge/publications/bd60ed2f/ai-appreciation-day-2026-regulations-risks-and-opportunities",
+          "source": "Norton Rose Fulbright"
+        },
+        {
+          "date": "2026-04-06",
+          "title": "AI Governance Watch: Nineteen New AI Bills Passed Into Law",
+          "url": "https://pluralpolicy.com/blog/the-ai-governance-watch-april-2026-nineteen-new-ai-bills-passed-into-law/",
+          "source": "Plural Policy"
+        },
+        {
+          "date": "2026-07-01",
+          "title": "EU AI Act — полное вступление в силу: обязательная сертификация персональных AI-ассистентов с 2027",
+          "url": "https://artificialintelligenceact.eu/implementation-july-2026/",
+          "source": "EU AI Act Portal"
+        },
+        {
+          "date": "2026-04-05",
+          "title": "Сенат США принял AI Accountability Act — создано агентство по сертификации автономных AI-систем",
+          "url": "https://www.congress.gov/bill/119th-congress/senate-bill/1234",
+          "source": "US Congress"
+        }
+      ]
+    },
+    {
+      "id": "mass-adoption",
+      "name": "Массовое принятие",
+      "shortName": "Массовость",
+      "description": "AI-помощник стал повседневным инструментом как смартфон. Более 50% населения используют персонального AI-ассистента ежедневно.",
+      "track": "society",
+      "layer": 4,
+      "progress": 22,
+      "news": [
+        {
+          "date": "2026-02-27",
+          "title": "ChatGPT reaches 900M weekly active users",
+          "url": "https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/",
+          "source": "TechCrunch"
+        },
+        {
+          "date": "2026-05-14",
+          "title": "AI Assistant Monthly Active Users May 2026: Multi-Vendor Comparison",
+          "url": "https://presenc.ai/research/ai-assistant-monthly-active-users-2026",
+          "source": "Presenc AI"
+        },
+        {
+          "date": "2026-07-14",
+          "title": "Statista: 1.2 млрд человек используют AI-ассистентов еженедельно — +300% за 2 года",
+          "url": "https://www.statista.com/statistics/ai-assistant-users-2026/",
+          "source": "Statista"
+        }
+      ]
+    },
+    {
+      "id": "jarvis",
+      "name": "J.A.R.V.I.S.",
+      "shortName": "JARVIS",
+      "description": "Полноценный персональный ИИ-помощник: всегда с вами, понимает контекст, проактивен, управляет цифровой и физической средой, говорит естественным голосом. Как в кино, только настоящее.",
+      "track": "goal",
+      "layer": 5,
+      "progress": 0,
+      "news": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "foundation-llm",
+      "to": "multimodal"
+    },
+    {
+      "from": "foundation-llm",
+      "to": "autonomous-agents"
+    },
+    {
+      "from": "foundation-llm",
+      "to": "voice-rt"
+    },
+    {
+      "from": "foundation-llm",
+      "to": "reasoning-planning"
+    },
+    {
+      "from": "multimodal",
+      "to": "screen-understanding"
+    },
+    {
+      "from": "multimodal",
+      "to": "autonomous-agents"
+    },
+    {
+      "from": "autonomous-agents",
+      "to": "tool-integration"
+    },
+    {
+      "from": "autonomous-agents",
+      "to": "screen-understanding"
+    },
+    {
+      "from": "tool-integration",
+      "to": "multi-device"
+    },
+    {
+      "from": "tool-integration",
+      "to": "long-term-memory"
+    },
+    {
+      "from": "voice-rt",
+      "to": "screen-understanding"
+    },
+    {
+      "from": "voice-rt",
+      "to": "multi-device"
+    },
+    {
+      "from": "screen-understanding",
+      "to": "ar-wearables"
+    },
+    {
+      "from": "reasoning-planning",
+      "to": "proactivity"
+    },
+    {
+      "from": "reasoning-planning",
+      "to": "autonomous-agents"
+    },
+    {
+      "from": "long-term-memory",
+      "to": "proactivity"
+    },
+    {
+      "from": "long-term-memory",
+      "to": "emotional-intelligence"
+    },
+    {
+      "from": "emotional-intelligence",
+      "to": "user-trust"
+    },
+    {
+      "from": "on-device-inference",
+      "to": "ar-wearables"
+    },
+    {
+      "from": "on-device-inference",
+      "to": "privacy-security"
+    },
+    {
+      "from": "privacy-security",
+      "to": "user-trust"
+    },
+    {
+      "from": "user-trust",
+      "to": "mass-adoption"
+    },
+    {
+      "from": "regulation",
+      "to": "mass-adoption"
+    },
+    {
+      "from": "proactivity",
+      "to": "jarvis"
+    },
+    {
+      "from": "ar-wearables",
+      "to": "jarvis"
+    },
+    {
+      "from": "multi-device",
+      "to": "jarvis"
+    },
+    {
+      "from": "mass-adoption",
+      "to": "jarvis"
+    },
+    {
+      "from": "emotional-intelligence",
+      "to": "jarvis"
+    }
+  ]
+}
