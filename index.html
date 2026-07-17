@@ -2593,7 +2593,7 @@ footer{
     var nextLevel=currentLevel(jri.value+1,route);
     var dash=document.getElementById('dash-row');
     dash.innerHTML=''+
-      '<div class="dash-card"><div class="dash-card-label">Текущий уровень</div><div class="dash-card-value">'+level+'</div><div class="dash-card-sub">'+data.levels.find(function(l){return l.code===level}).description+'</div></div>'+
+      '<div class="dash-card"><div class="dash-card-label">Текущий уровень · '+route.name+'</div><div class="dash-card-value">'+level+'</div><div class="dash-card-sub">'+data.levels.find(function(l){return l.code===level}).description+'</div></div>'+
       '<div class="dash-card"><div class="dash-card-label">Следующий уровень</div><div class="dash-card-value">'+nextLevel+'</div><div class="dash-card-sub">Барьеров: '+nextGates.length+'</div></div>'+
       '<div class="dash-card"><div class="dash-card-label">Прогноз P50</div><div class="dash-card-value">~'+p50+'</div><div class="dash-card-sub">'+route.name+'</div></div>'+
       '<div class="dash-card"><div class="dash-card-label">Подэтапов</div><div class="dash-card-value">'+data.nodes.length+'</div><div class="dash-card-sub">В 8 треках</div></div>';
